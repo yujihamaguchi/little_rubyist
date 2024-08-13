@@ -2,7 +2,6 @@
 
 require_relative "little_rubyist/version"
 
-
 class Array
   # Q001: haskell の zip と同様の機能の関数 my-zip を書け （パラメータの数は可変であること）
   # zip :: [a] -> [b] -> [(a, b)]
@@ -10,7 +9,9 @@ class Array
   def my_zip(*lists)
     return self if lists.empty?
     # self.zip(*lists).reject { |tuple| tuple.include?(nil) }
-    lists.unshift(self).transpose
+    lists = lists.unshift(self)
+    length = lists.min_by { |list| list.length }.length
+    lists.map { |list| list.take(length) }.transpose
   end
 end
 
