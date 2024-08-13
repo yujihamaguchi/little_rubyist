@@ -7,7 +7,11 @@ class Money
   end
 
   def +(other)
-    self.class.new(amount: @amount + other.amount, currency: @currency)
+    if currency == other.currency
+      Money.new(amount: @amount + other.amount, currency: @currency)
+    else
+      MoneySum.new(monies: Multiset.new([self, other]))
+    end
   end
 
   def ==(other)
