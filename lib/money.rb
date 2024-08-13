@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Money
   attr_reader :amount, :currency
 
@@ -8,11 +6,11 @@ class Money
     @currency = currency
   end
 
-  def +(another_money)
-    self.class.new(amount: @amount + another_money.amount, currency: @currency)
+  def +(other)
+    self.class.new(amount: @amount + other.amount, currency: @currency)
   end
 
-  def ==(another_money)
-    @amount == another_money.amount && @currency == another_money.currency
+  def ==(other)
+    @amount == other.amount && @currency == other.currency
   end
 end

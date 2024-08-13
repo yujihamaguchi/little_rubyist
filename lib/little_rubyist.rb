@@ -8,9 +8,9 @@ class Array
   # not using recursion
   def my_zip(*lists)
     return self if lists.empty?
-    # self.zip(*lists).reject { |tuple| tuple.include?(nil) }
-    lists = lists.unshift(self)
-    length = lists.min_by { |list| list.length }.length
+
+    lists.unshift(self)
+    length = lists.min_by(&:length).length
     lists.map { |list| list.take(length) }.transpose
   end
 end
