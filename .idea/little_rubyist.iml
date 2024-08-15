@@ -15,17 +15,17 @@
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.5.16, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.7.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.3, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.24.1, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multiset (v0.5.3, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parallel (v1.25.1, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.4.0, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parallel (v1.26.2, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.4.2, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rainbow (v3.1.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.2.1, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.2, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.3.2, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.65.0, rbenv: 3.2.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.31.3, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.3.5, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.65.1, rbenv: 3.2.4) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.32.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.13.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="strscan (v3.1.0, rbenv: 3.2.4) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v2.5.0, rbenv: 3.2.4) [gem]" level="application" />
@@ -62,7 +62,7 @@
             <subtasks>
               <RakeTaskImpl description="Print out the test command" fullCommand="test:cmd" id="cmd" />
               <RakeTaskImpl description="Show which test files fail when run in isolation" fullCommand="test:isolated" id="isolated" />
-              <RakeTaskImpl description="Show bottom 25 tests wrt time" fullCommand="test:slow" id="slow" />
+              <RakeTaskImpl description="Run the test suite and report the slowest 25 tests" fullCommand="test:slow" id="slow" />
               <RakeTaskImpl description="" fullCommand="test:deps" id="deps" />
             </subtasks>
           </RakeTaskImpl>

@@ -8,18 +8,19 @@ class MoneySum
   end
 
   def +(other)
-    other.add(money_sum: self)
+    other.add_money_sum(self)
   end
 
-  def add(money: other)
-    MoneySum.new(monies: @monies.add(other))
+  def add_money(other)
+    MoneySum.new(monies: self.monies.add(other))
+  end
+
+  def add_money_sum(other)
+    MoneySum.new(monies: @monies.merge(other.dup.monies))
+  end
+
+  def ==(other)
+    other.is_a?(MoneySum) && @monies == other.monies
   end
 end
 
-def add(money_sum: other)
-  MoneySum.new(monies: @monies.merge(other.monies))
-end
-
-def ==(other)
-  @monies == other.monies
-end

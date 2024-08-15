@@ -7,23 +7,22 @@ class Money
   end
 
   def +(other)
-    other.add(money: self)
+    other.add_money(self)
   end
 
-  def add(money: other)
+  def add_money(other)
     if currency == other.currency
-      Money.new(amount: @amount + other.amount, currency: @currency)
+      self.class.new(amount: @amount + other.amount, currency: @currency)
     else
       MoneySum.new(monies: Multiset.new([self, other]))
     end
   end
 
-  def add(money_sum: other)
-    MoneySum.new(monies: other.monies.add(self))
+  def add_money_sum(other)
+    other.add_money(self)
   end
 
   def ==(other)
-    puts(other)
     @amount == other.amount && @currency == other.currency
   end
 end
