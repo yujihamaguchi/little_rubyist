@@ -7,7 +7,19 @@ class MoneySum
     @monies = monies
   end
 
-  def ==(other)
-    @monies == other.monies
+  def +(other)
+    other.add(money_sum: self)
   end
+
+  def add(money: other)
+    MoneySum.new(monies: @monies.add(other))
+  end
+end
+
+def add(money_sum: other)
+  MoneySum.new(monies: @monies.merge(other.monies))
+end
+
+def ==(other)
+  @monies == other.monies
 end

@@ -7,6 +7,10 @@ class Money
   end
 
   def +(other)
+    other.add(money: self)
+  end
+
+  def add(money: other)
     if currency == other.currency
       Money.new(amount: @amount + other.amount, currency: @currency)
     else
@@ -14,7 +18,12 @@ class Money
     end
   end
 
+  def add(money_sum: other)
+    MoneySum.new(monies: other.monies.add(self))
+  end
+
   def ==(other)
+    puts(other)
     @amount == other.amount && @currency == other.currency
   end
 end

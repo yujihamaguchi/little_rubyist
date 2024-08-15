@@ -29,4 +29,42 @@ class MoneyTest < Minitest::Test
     # Assert
     assert_equal expected, actual
   end
+
+  def test_plus_money_and_money_sum
+    # Arrange
+    usd = Money.new(amount: 1, currency: :USD)
+    gbp = Money.new(amount: 2, currency: :GBP)
+    expected = MoneySum.new(monies: Multiset.new([usd, gbp, usd]))
+
+    # Act
+    actual = usd + (gbp + usd)
+
+    # Assert
+    assert_equal expected, actual
+  end
+
+  def test_plus_money_sum_and_money
+    # Arrange
+    usd = Money.new(amount: 1, currency: :USD)
+    gbp = Money.new(amount: 2, currency: :GBP)
+    expected = MoneySum.new(monies: Multiset.new([usd, gbp, usd]))
+
+    # Act
+    actual = usd + gbp + usd
+
+    # Assert
+    assert_equal expected, actual
+  end
+
+  def test_plus_money_sum_and_money_sum
+    # Arrange
+    usd = Money.new(amount: 1, currency: :USD)
+    gbp = Money.new(amount: 2, currency: :GBP)
+    expected = MoneySum.new(monies: Multiset.new([usd, gbp, usd, gbp]))
+    # Act
+    actual = usd + gbp + (usd + gbp)
+
+    # Assert
+    assert_equal expected, actual
+  end
 end
