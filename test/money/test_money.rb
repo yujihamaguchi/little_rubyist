@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "multiset"
-require_relative "../lib/money"
-require_relative "../lib/money_sum"
+require_relative "../../lib/money/money"
+require_relative "../../lib/money/money_sum"
 
 class MoneyTest < Minitest::Test
   def test_plus_money
