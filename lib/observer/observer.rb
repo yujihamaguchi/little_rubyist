@@ -2,7 +2,7 @@
 
 class Observer
   def initialize(subject:)
-    @subject = subject
+    subject.register(observer: self)
   end
 
   def update(subject: 100)

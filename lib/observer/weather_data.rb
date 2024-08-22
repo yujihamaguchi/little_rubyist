@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class WeatherData
+  attr_reader :temperature, :humidity
+
   def initialize
     @observers = Set.new
   end
@@ -10,6 +12,10 @@ class WeatherData
   end
 
   def update(temperature:, humidity:)
-    @observers.each { |observer| observer.update(subject: self) }
+    @temperature = temperature
+    @humidity = humidity
+    @observers.each do |observer|
+      observer.update(subject: self)
+    end
   end
 end
