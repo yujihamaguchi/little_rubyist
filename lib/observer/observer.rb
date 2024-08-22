@@ -5,7 +5,7 @@ class Observer
     subject.register(observer: self)
   end
 
-  def update(subject: 100)
+  def update(subject:)
     raise NotImplementedError
   end
 end

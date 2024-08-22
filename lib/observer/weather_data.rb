@@ -14,8 +14,6 @@ class WeatherData
   def update(temperature:, humidity:)
     @temperature = temperature
     @humidity = humidity
-    @observers.each do |observer|
-      observer.update(subject: self)
-    end
+    @observers.each { |observer| observer.update(subject: self) }
   end
 end

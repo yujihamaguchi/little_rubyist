@@ -13,11 +13,9 @@ class WeatherDataTest < Minitest::Test
     observer2.expect :update, nil, subject: subject
     subject.register(observer: observer1)
     subject.register(observer: observer2)
-    temperature = CustomMock.new
-    humidity = CustomMock.new
 
     # Act
-    subject.update(temperature: temperature, humidity: humidity)
+    subject.update(temperature: CustomMock.new, humidity: CustomMock.new)
 
     # Assert
     observer1.verify
