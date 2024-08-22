@@ -5,7 +5,7 @@ class Observer
     @subject = subject
   end
 
-  def update(subject:)
+  def update(subject: 100)
     raise NotImplementedError
   end
 end

@@ -8,9 +8,9 @@ class WeatherDataTest < Minitest::Test
     # Arrange
     subject = WeatherData.new
     observer1 = CustomMock.new
-    observer1.expect :update, nil, [{ subject: subject }]
+    observer1.expect :update, nil, subject: subject
     observer2 = CustomMock.new
-    observer2.expect :update, nil, [{ subject: subject }]
+    observer2.expect :update, nil, subject: subject
     subject.register(observer: observer1)
     subject.register(observer: observer2)
     temperature = CustomMock.new
