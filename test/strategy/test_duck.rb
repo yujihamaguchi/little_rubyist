@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DuckTest < Minitest::Test
+class TestDuck < Minitest::Test
   def test_fly
     # Arrange
     fly_behavior = Minitest::Mock.new

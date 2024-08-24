@@ -3,7 +3,7 @@
 require_relative "../../lib/observer/weather_data"
 require_relative "../custom_mock"
 
-class WeatherDataTest < Minitest::Test
+class TestWeatherData < Minitest::Test
   def test_update
     # Arrange
     subject = WeatherData.new

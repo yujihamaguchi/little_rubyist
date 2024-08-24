@@ -4,7 +4,7 @@ require "minitest/autorun"
 require_relative "../../lib/strategy/duck"
 require_relative "../../lib/strategy/fly_with_wings"
 
-class DuckE2eTest < Minitest::Test
+class TestE2eDuck < Minitest::Test
   def test_fly
     # Arrange
     duck = Duck.new(fly_behavior: FlyWithWings.new)

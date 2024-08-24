@@ -3,7 +3,7 @@ require "multiset"
 require_relative "../../lib/money/money"
 require_relative "../../lib/money/money_sum"
 
-class MoneyTest < Minitest::Test
+class TestMoney < Minitest::Test
   def test_plus_money
     # Arrange
     money1 = Money.new(amount: 1, currency: :USD)

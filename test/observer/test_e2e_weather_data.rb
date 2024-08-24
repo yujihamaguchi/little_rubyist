@@ -4,7 +4,7 @@ require_relative "../../lib/observer/weather_data"
 require_relative "../../lib/observer/forecast_display"
 require_relative "../../lib/observer/statistic_analyze"
 
-class WeatherDataE2eTest < Minitest::Test
+class TestE2eWeatherData < Minitest::Test
   def test_update
     # Arrange
     subject = WeatherData.new
