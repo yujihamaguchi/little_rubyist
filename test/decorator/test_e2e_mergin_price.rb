@@ -5,7 +5,7 @@ require_relative "../../lib/decorator/prime_price"
 require_relative "../../lib/decorator/double_price"
 require_relative "../../lib/decorator/wholesale_price"
 
-class TestMarginPrice < Minitest::Test
+class TestE2eMarginPrice < Minitest::Test
   def test_value
     # Arrange
     prime_price = PrimePrice.new(value: 3)

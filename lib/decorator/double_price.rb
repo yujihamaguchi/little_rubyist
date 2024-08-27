@@ -5,6 +5,6 @@ class DoublePrice
     @price = price
   end
   def value
-
+    @price.value * 2
   end
 end
