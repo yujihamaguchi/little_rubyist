@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MoneySum
   attr_reader :monies
 
@@ -21,4 +23,3 @@ class MoneySum
     other.is_a?(MoneySum) && @monies == other.monies
   end
 end
-

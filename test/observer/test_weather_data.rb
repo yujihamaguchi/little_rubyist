@@ -22,4 +22,3 @@ class TestWeatherData < Minitest::Test
     observer2.verify
   end
 end
-

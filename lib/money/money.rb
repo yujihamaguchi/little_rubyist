@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Money
   attr_reader :amount, :currency
 

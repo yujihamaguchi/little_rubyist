@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative "price"
 
 class PrimePrice
@@ -8,7 +9,5 @@ class PrimePrice
     @value = value
   end
 
-  def value
-    @value
-  end
+  attr_reader :value
 end

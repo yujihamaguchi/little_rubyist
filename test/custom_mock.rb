@@ -8,6 +8,6 @@ class CustomMock < Minitest::Mock
   end
 
   def ==(other)
-    self.object_id == other.object_id
+    self.equal?(other)
   end
 end

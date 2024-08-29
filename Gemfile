@@ -11,4 +11,4 @@ gem "minitest", "~> 5.16"
 
 gem "rubocop", "~> 1.21"
 
-gem 'multiset', '~> 0.5.1'
+gem "multiset", "~> 0.5.1"
