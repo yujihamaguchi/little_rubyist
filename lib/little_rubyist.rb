@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# noinspection SpellCheckingInspection
 require_relative "little_rubyist/version"
 
 # Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
@@ -10,6 +11,7 @@ class Array
     return self if lists.empty?
 
     lists.unshift(self)
+    # noinspection RubyNilAnalysis
     length = lists.min_by(&:length).length
     lists.map { |list| list.take(length) }.transpose
   end

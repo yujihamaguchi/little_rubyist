@@ -4,7 +4,7 @@ require_relative "margin_price"
 
 class WholesalePrice < MarginPrice
   def initialize(price:, advantage:)
-    @price = price
+    super(price: price)
     @advantage = advantage
   end
 
