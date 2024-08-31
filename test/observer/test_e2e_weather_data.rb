@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../../lib/observer/weather_data"
-require_relative "../../lib/observer/forecast_display"
-require_relative "../../lib/observer/statistic_analyze"
+require "observer/weather_data"
+require "observer/forecast_display"
+require "observer/statistic_analyze"
 
 class TestE2eWeatherData < Minitest::Test
   def test_update

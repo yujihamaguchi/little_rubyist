@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-require_relative "../custom_mock"
+require "decorator/double_price"
 
 class TestDoublePrice < Minitest::Test
   def test_value

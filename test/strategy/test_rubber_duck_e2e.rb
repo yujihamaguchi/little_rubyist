@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-require_relative "../../lib/strategy/rubber_duck"
-require_relative "../../lib/strategy/fly_no_way"
+require "strategy/rubber_duck"
+require "strategy/fly_no_way"
 
 class TestE2eRubberDuck < Minitest::Test
   def test_fly

@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require "minitest/autorun"
-
-require_relative "../../lib/decorator/prime_price"
-require_relative "../../lib/decorator/double_price"
-require_relative "../../lib/decorator/wholesale_price"
+require "decorator/prime_price"
+require "decorator/double_price"
+require "decorator/wholesale_price"
 
 class TestE2eMarginPrice < Minitest::Test
   def test_value

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "strategy/duck"
+
 class TestDuck < Minitest::Test
   def test_fly
     # Arrange
