@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# noinspection RubyMismatchedArgumentType
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "little_rubyist"
 

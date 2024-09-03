@@ -57,7 +57,7 @@ class Array
   # end
 end
 
-# Q003: クイックソート関数 qsort01 を書け（リスト内包表記を使うこと）
+# Q003: クイックソート関数 my_quick_sort を書け（リスト内包表記を使うこと）
 class Array
   def my_quick_sort
     return [] if self.empty?
