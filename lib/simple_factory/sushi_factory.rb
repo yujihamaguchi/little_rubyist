@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SushiFactory
-  def create(symbol)
-    raise NotImplementedError
+  def create(_symbol)
+    Ikura.new
   end
 end

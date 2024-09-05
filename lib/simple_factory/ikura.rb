@@ -2,18 +2,20 @@
 
 class Ikura
   def prepared?
-    raise NotImplementedError
+    @prepared
   end
 
   def boxed?
-    raise NotImplementedError
+    @boxed
   end
 
   def prepare
-    raise NotImplementedError
+    @prepared = true
+    self
   end
 
   def box
-    raise NotImplementedError
+    @boxed = true
+    self
   end
 end
