@@ -7,29 +7,24 @@ require "simple_factory/ikura"
 require "simple_factory/norimaki"
 
 class TestE2eSushiRestaurant < Minitest::Test
-  def test_order_ikura
-    # Arrange
-    sushi_restaurant = SushiRestaurant.new(factory: SushiFactory.new)
+  TESTCASES = {
+    # input => expected
+    Ikura: Ikura,
+    Norimaki: Norimaki
+  }.freeze
 
-    # Act
-    actual = sushi_restaurant.order(:Ikura)
+  def test_order
+    TESTCASES.each do |input, expected|
+      # Arrange
+      sushi_restaurant = SushiRestaurant.new(factory: SushiFactory.new)
 
-    # Assert
-    assert_equal Ikura, actual.class
-    assert actual.prepared?
-    assert actual.boxed?
-  end
+      # Act
+      actual = sushi_restaurant.order(input)
 
-  def test_order_norimaki
-    # Arrange
-    sushi_restaurant = SushiRestaurant.new(factory: SushiFactory.new)
-
-    # Act
-    actual = sushi_restaurant.order(:Norimaki)
-
-    # Assert
-    assert_equal Norimaki, actual.class
-    assert actual.prepared?
-    assert actual.boxed?
+      # Assert
+      assert_equal expected, actual.class
+      assert actual.prepared?
+      assert actual.boxed?
+    end
   end
 end

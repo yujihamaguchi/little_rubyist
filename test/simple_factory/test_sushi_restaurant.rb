@@ -3,20 +3,20 @@
 require_relative "../test_helper"
 
 class TestSushiRestaurant < Minitest::Test
-  def test_order_ikura
+  def test_order
     # Arrange
-    ikura = CustomMock.new
-    ikura.expect :prepare, nil
-    ikura.expect :box, nil
+    sushi = CustomMock.new
+    sushi.expect :prepare, nil
+    sushi.expect :box, nil
     sushi_factory = CustomMock.new
-    sushi_factory.expect :create, ikura, [:Ikura]
+    sushi_factory.expect :create, sushi, [:some_sushi]
     sushi_restaurant = SushiRestaurant.new(factory: sushi_factory)
 
     # Act
-    sushi_restaurant.order :Ikura
+    sushi_restaurant.order :some_sushi
 
     # Assert
     sushi_factory.verify
-    ikura.verify
+    sushi.verify
   end
 end

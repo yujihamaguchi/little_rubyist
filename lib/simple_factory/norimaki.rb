@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class Norimaki
+require_relative "sushi"
+
+class Norimaki < Sushi
 end
