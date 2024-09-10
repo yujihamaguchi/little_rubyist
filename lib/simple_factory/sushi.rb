@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Sushi
+  def initialize
+    @boxed = false
+    @prepared = false
+  end
+
   def box
     @boxed = true
     self

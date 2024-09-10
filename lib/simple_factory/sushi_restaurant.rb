@@ -7,7 +7,6 @@ class SushiRestaurant
 
   def order(symbol)
     sushi = @factory.create(symbol)
-    sushi.prepare
-    sushi.box
+    sushi.prepare.box
   end
 end

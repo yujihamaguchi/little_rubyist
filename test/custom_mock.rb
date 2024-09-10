@@ -10,4 +10,8 @@ class CustomMock < Minitest::Mock
   def ==(other)
     self.equal?(other)
   end
+
+  def equal?(other)
+    self.hash == other.hash
+  end
 end

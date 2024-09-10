@@ -2,9 +2,9 @@
 
 class SushiFactory
   def create(symbol)
-    return Ikura.new if symbol == :Ikura
-    return Norimaki.new if symbol == :Norimaki
+    return Ikura.new if symbol == :ikura
+    return Norimaki.new if symbol == :norimaki
 
-    nil
+    raise ArgumentError, "Unknown sushi type: #{symbol}"
   end
 end

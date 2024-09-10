@@ -9,8 +9,8 @@ require "simple_factory/norimaki"
 class TestE2eSushiRestaurant < Minitest::Test
   TESTCASES = {
     # input => expected
-    Ikura: Ikura,
-    Norimaki: Norimaki
+    ikura: Ikura,
+    norimaki: Norimaki
   }.freeze
 
   def test_order
