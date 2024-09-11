@@ -25,7 +25,7 @@ class Array
   # end
 end
 
-# Q002: haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン、 apply を用いるパターン)
+# Q002: haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
 # sum :: (Num a) => [a] -> a
 # sum ns
 #     数値のリスト ns の総和を返す。
@@ -44,17 +44,6 @@ class Array
   # def my_sum
   #   self.reduce(0) { |acc, n| acc + n }
   # end
-
-  # # apply
-  # class Utils
-  #   def self.plus(*args)
-  #     args.reduce(0) { |acc, n| acc + n }
-  #   end
-  # end
-  #
-  # def my_sum
-  #   Utils.plus(*self)
-  # end
 end
 
 # Q003: クイックソート関数 my_quick_sort を書け（リスト内包表記を使うこと）
@@ -70,4 +59,25 @@ class Array
 
     lt.my_quick_sort + [x] + ge.my_quick_sort
   end
+end
+
+# Q004: Haskell の product と同様の機能の関数を書け(再帰を用いるパターン、 reduce を用いるパターン)
+# product :: (Num a) => [a] -> a
+# product ns
+#     数値のリスト ns の全要素の積を返す。
+#         product [2, 3, 4]   = 24
+#         product [4, 5, 0]   = 0
+#         product []          = 1
+class Array
+  # recursion
+  def product
+    return 1 if self.empty?
+
+    self.first * self.drop(1).product
+  end
+
+  # # reduce
+  # def product
+  #   self.reduce(1) { |acc, n| acc * n }
+  # end
 end

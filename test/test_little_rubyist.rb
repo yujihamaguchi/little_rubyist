@@ -34,4 +34,10 @@ class TestLittleRubyist < Minitest::Test
     assert_equal %w[a], %w[a].my_quick_sort
     assert_equal [], [].my_quick_sort
   end
+
+  def test_product
+    assert_equal 6, [1, 2, 3].product
+    assert_equal 1, [1].product
+    assert_equal 1, [].product
+  end
 end
