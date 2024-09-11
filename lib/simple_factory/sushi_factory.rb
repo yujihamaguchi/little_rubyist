@@ -1,10 +1,18 @@
 # frozen_string_literal: true
 
-class SushiFactory
-  def create(symbol)
-    return Ikura.new if symbol == :ikura
-    return Norimaki.new if symbol == :norimaki
+require "simple_factory/ikura"
+require "simple_factory/norimaki"
 
-    raise ArgumentError, "Unknown sushi type: #{symbol}"
+class SushiFactory
+  SUSHI_TYPES = {
+    ikura: Ikura,
+    norimaki: Norimaki
+  }.freeze
+
+  def create(symbol)
+    klass = SUSHI_TYPES[symbol]
+    raise ArgumentError, "Unknown sushi type: #{symbol}" unless klass
+
+    klass.new
   end
 end
