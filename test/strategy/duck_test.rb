@@ -2,7 +2,7 @@
 
 require "strategy/duck"
 
-class TestDuck < Minitest::Test
+class DuckTest < Minitest::Test
   def test_fly
     # Arrange
     fly_behavior = Minitest::Mock.new

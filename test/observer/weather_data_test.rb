@@ -2,7 +2,7 @@
 
 require "observer/weather_data"
 
-class TestWeatherData < Minitest::Test
+class WeatherDataTest < Minitest::Test
   def test_update
     # Arrange
     subject = WeatherData.new

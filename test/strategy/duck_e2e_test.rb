@@ -3,7 +3,7 @@
 require "strategy/duck"
 require "strategy/fly_with_wings"
 
-class TestE2eDuck < Minitest::Test
+class DuckE2eTest < Minitest::Test
   def test_fly
     # Arrange
     duck = Duck.new(fly_behavior: FlyWithWings.new)

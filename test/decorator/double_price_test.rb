@@ -2,7 +2,7 @@
 
 require "decorator/double_price"
 
-class TestDoublePrice < Minitest::Test
+class DoublePriceTest < Minitest::Test
   def test_value
     # Arrange
     original_value = 3

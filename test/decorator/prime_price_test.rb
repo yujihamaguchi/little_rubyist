@@ -2,7 +2,7 @@
 
 require "decorator/prime_price"
 
-class TestPrimePriceTest < Minitest::Test
+class PrimePriceTest < Minitest::Test
   def test_value
     # Arrange
     expected = 20

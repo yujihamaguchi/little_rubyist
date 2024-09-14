@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 
-class TestSushiRestaurant < Minitest::Test
+class SushiRestaurantTest < Minitest::Test
   def test_order
     # Arrange
     sushi = CustomMock.new

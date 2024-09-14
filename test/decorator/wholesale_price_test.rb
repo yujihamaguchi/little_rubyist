@@ -2,7 +2,7 @@
 
 require "decorator/wholesale_price"
 
-class TestWholesalePriceTest < Minitest::Test
+class WholesalePriceTest < Minitest::Test
   def test_value
     # Arrange
     original_value = 10

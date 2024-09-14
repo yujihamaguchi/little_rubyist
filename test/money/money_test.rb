@@ -4,7 +4,7 @@ require "multiset"
 require "money/money"
 require "money/money_sum"
 
-class TestMoney < Minitest::Test
+class MoneyTest < Minitest::Test
   def test_plus_money
     # Arrange
     money1 = Money.new(amount: 1, currency: :USD)

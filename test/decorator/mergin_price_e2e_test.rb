@@ -4,7 +4,7 @@ require "decorator/prime_price"
 require "decorator/double_price"
 require "decorator/wholesale_price"
 
-class TestE2eMarginPrice < Minitest::Test
+class MarginPriceE2eTest < Minitest::Test
   def test_value
     # Arrange
     prime_price = PrimePrice.new(value: 3)

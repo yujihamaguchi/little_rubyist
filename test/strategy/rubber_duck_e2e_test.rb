@@ -3,7 +3,7 @@
 require "strategy/rubber_duck"
 require "strategy/fly_no_way"
 
-class TestE2eRubberDuck < Minitest::Test
+class RubberDuckE2eTest < Minitest::Test
   def test_fly
     # Arrange
     rubber_duck = RubberDuck.new(fly_behavior: FlyNoWay.new)
