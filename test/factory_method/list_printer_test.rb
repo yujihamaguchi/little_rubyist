@@ -7,11 +7,12 @@ class ListPrinterTest < Minitest::Test
   def test_print_list
     # Arrange
     list_printer = ListPrinter.new
-    comparator = CustomMock.new
-
     list = CustomMock.new
     sorted_list = CustomMock.new
-    list.expect :sorted_using, sorted_list, [comparator]
+    comparator = CustomMock.new
+    comparison_proc = proc {}
+    comparator.expect :comparison_proc, comparison_proc
+    list.expect(:sort_by, sorted_list) { |&block| block == comparison_proc }
     sorted_list_string = CustomMock.new
     sorted_list.expect :to_s, sorted_list_string
 
