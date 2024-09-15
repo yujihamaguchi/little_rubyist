@@ -7,6 +7,8 @@ class ListPrinter
 
   def print_list(list)
     comparator = self.create_comparator
-    list.sort_by(&comparator.comparison_proc).to_s
+    comparison_proc = comparator.comparison_proc
+    sorted_list = list.sort_by(&comparison_proc)
+    sorted_list.to_s
   end
 end
