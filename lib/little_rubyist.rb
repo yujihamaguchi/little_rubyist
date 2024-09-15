@@ -81,3 +81,16 @@ class Array
   #   self.reduce(1) { |acc, n| acc * n }
   # end
 end
+
+# Q005: リストを逆順に整列する関数 rqsort を再帰を用いて書け
+class Array
+  def rqsort
+    return [] if self.empty?
+
+    x = self.first
+    xs = self.drop(1)
+    lt = xs.filter { |x_| x_ < x }
+    ge = xs.filter { |x_| x_ >= x }
+    ge.rqsort + [x] + lt.rqsort
+  end
+end

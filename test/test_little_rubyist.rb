@@ -40,4 +40,12 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 1, [1].product
     assert_equal 1, [].product
   end
+
+  def test_rqsort
+    assert_equal [3, 2, 1], [3, 2, 1].rqsort
+    assert_equal [3, 2, 1], [2, 3, 1].rqsort
+    assert_equal [3, 2, 1], [1, 2, 3].rqsort
+    assert_equal [1], [1].rqsort
+    assert_equal [], [].rqsort
+  end
 end
