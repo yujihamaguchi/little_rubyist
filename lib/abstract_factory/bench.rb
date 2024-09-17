@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Bench
+require_relative "furniture"
+
+class Bench < Furniture
   def lie
     raise NotImplementedError
   end

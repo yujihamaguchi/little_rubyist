@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Chair
+require_relative "furniture"
+
+class Chair < Furniture
   def sit
     raise NotImplementedError
   end

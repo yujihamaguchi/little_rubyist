@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-class ModernStyleFactory
+require_relative "furniture_factory"
+
+class ModernStyleFactory < FurnitureFactory
 end
