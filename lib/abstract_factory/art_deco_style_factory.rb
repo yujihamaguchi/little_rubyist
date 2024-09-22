@@ -4,14 +4,14 @@ require_relative "furniture_factory"
 
 class ArtDecoStyleFactory < FurnitureFactory
   def create_chair
-    "Sit on the art deco chair."
+    ArtDecoStyleChair.new
   end
 
   def create_table
-    "Stand on the art deco table."
+    ArtDecoStyleTable.new
   end
 
   def create_bench
-    "Lie on the art deco bench."
+    ArtDecoStyleBench.new
   end
 end

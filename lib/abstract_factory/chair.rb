@@ -4,6 +4,6 @@ require_relative "furniture"
 
 class Chair < Furniture
   def sit
-    raise NotImplementedError
+    "Sit on the #{self.style} chair."
   end
 end

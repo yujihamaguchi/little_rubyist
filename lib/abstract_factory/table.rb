@@ -4,6 +4,6 @@ require_relative "furniture"
 
 class Table < Furniture
   def stand
-    raise NotImplementedError
+    "Stand on the #{self.style} table."
   end
 end

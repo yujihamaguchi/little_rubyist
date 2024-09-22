@@ -7,13 +7,13 @@ require "abstract_factory/modern_style_factory"
 
 class FurnitureStudioE2eTest < Minitest::Test
   TESTCASES = [
-    { klass: ArtDecoStyleFactory, str: "art deco" },
-    { klass: ModernStyleFactory, str: "modern" }
+    { furniture_class: ArtDecoStyleFactory, str: "art deco" },
+    { furniture_class: ModernStyleFactory, str: "modern" }
   ].freeze
 
   def test_create_table_set
     TESTCASES.each do |testcase|
-      klass = testcase[:klass]
+      klass = testcase[:furniture_class]
       str = testcase[:str]
 
       # Arrange

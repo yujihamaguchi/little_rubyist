@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class Furniture
-  attr_accessor :style
-
-  def initialize(style:)
-    @style = style
+  def stand
+    "Stand on the #{self.style} table."
   end
 end

@@ -13,6 +13,7 @@ class FurnitureStudioTest < Minitest::Test
     furniture_factory.expect :create_table, table
     bench = CustomMock.new
     furniture_factory.expect :create_bench, bench
+
     furniture_studio = FurnitureStudio.new(factory: furniture_factory)
 
     table_set = CustomMock.new

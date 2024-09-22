@@ -4,6 +4,6 @@ require_relative "furniture"
 
 class Bench < Furniture
   def lie
-    raise NotImplementedError
+    "Lie on the #{self.style} bench."
   end
 end
