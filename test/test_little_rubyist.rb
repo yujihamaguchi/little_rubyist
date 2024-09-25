@@ -48,4 +48,17 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1], [1].rqsort
     assert_equal [], [].rqsort
   end
+
+  def test_my_last
+    # (is (=  3 (my-last [1 2 3])))
+    # (is (=  2 (my-last [1 2])))
+    # (is (=  1 (my-last [1])))
+    # (is (thrown? java.util.NoSuchElementException (my-last [])))
+    assert_equal 3, [1, 2, 3].my_last
+    assert_equal 2, [1, 2].my_last
+    assert_equal 1, [1].my_last
+    assert_raises StopIteration do
+      [].my_last
+    end
+  end
 end

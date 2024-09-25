@@ -94,3 +94,14 @@ class Array
     ge.rqsort + [x] + lt.rqsort
   end
 end
+
+# Q007: Haskell の last と同様の機能の関数 my-last を書け(再帰を用いるバージョンも書くこと)
+# last :: [a] -> a
+#     リストの最後の要素を返す。
+#         last [1,2,3]   = 3
+#         last []        = エラー
+class Array
+  def my_last
+    raise NotImplementedError
+  end
+end
