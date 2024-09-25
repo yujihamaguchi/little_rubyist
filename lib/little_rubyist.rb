@@ -102,6 +102,13 @@ end
 #         last []        = エラー
 class Array
   def my_last
-    raise NotImplementedError
+    raise StopIteration if self.empty?
+    self.reverse.first
   end
+  # recursion
+  # def my_last
+  #   raise StopIteration if self.empty?
+  #   return self.first if self.length == 1
+  #   self.drop(1).my_last
+  # end
 end
