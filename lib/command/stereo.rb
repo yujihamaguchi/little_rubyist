@@ -6,4 +6,8 @@ class Stereo
   def initialize
     @volume = 5
   end
+
+  def volume_up
+    @volume += 1
+  end
 end

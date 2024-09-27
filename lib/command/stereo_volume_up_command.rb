@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
-class StereoVolumeUpCommand
-  def initialize(receiver:) end
+require_relative "command"
+
+class StereoVolumeUpCommand < Command
+  def execute
+    @receiver.volume_up
+  end
 end
