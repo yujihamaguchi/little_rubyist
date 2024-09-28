@@ -10,4 +10,8 @@ class Stereo
   def volume_up
     @volume += 1
   end
+
+  def volume_down
+    @volume -= 1
+  end
 end
