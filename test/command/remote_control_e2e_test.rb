@@ -100,4 +100,21 @@ class RemoteControlE2eTest < Minitest::Test
     # Assert 2
     assert_equal init_volume, stereo.volume
   end
+
+  def test_push_on_button_and_its_command_failed
+    # Arrange
+    remote_control = RemoteControl.new
+    command = CustomMock.new
+    cause = "something wrong.."
+    command.expect :execute, nil do
+      raise cause
+    end
+    remote_control.add_command(slot_number: 1, on_command: command, off_command: nil)
+
+    # Act
+    remote_control.push_on_button(slot_number: 1)
+
+    # Assert
+    assert_equal "Command failed because of #{cause}", remote_control.display_message
+  end
 end

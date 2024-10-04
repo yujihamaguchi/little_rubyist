@@ -1,27 +1,31 @@
 # frozen_string_literal: true
 
 class RemoteControl
-  attr_accessor :command_map, :undo_command
+  attr_accessor :button_layout, :undo_command, :display_message
 
   def initialize
-    @command_map = {}
+    @button_layout = {}
   end
 
   def push_on_button(slot_number:)
     @undo_command = off_command(slot_number)
-    on_command(slot_number).execute
+    begin
+      on_command(slot_number).execute
+    rescue StandardError => e
+      @display_message = "Command failed because of #{e.message}"
+    end
   end
 
   def on_command(slot_number)
-    command_map.dig(slot_number, :on)
+    button_layout.dig(slot_number, :on)
   end
 
   def off_command(slot_number)
-    command_map.dig(slot_number, :off)
+    button_layout.dig(slot_number, :off)
   end
 
   def add_command(slot_number:, on_command:, off_command:)
-    command_map[slot_number] = { on: on_command, off: off_command }
+    button_layout[slot_number] = { on: on_command, off: off_command }
   end
 
   def push_off_button(slot_number:)
