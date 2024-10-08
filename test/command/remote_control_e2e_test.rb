@@ -141,13 +141,13 @@ class RemoteControlE2eTest < Minitest::Test
     remote_control = RemoteControl.new
     error_command = CustomMock.new
     cause = "something wrong.."
-    error_command.expect :execute, nil do
+    error_command.expect :undo, nil do
       raise cause
     end
     remote_control.add_command(slot_number: 1, on_command: nil, off_command: error_command)
 
     # Act
-    remote_control.stub :undo_command, error_command do
+    remote_control.stub :last_command, error_command do
       remote_control.push_undo_button
     end
 
@@ -184,7 +184,7 @@ class RemoteControlE2eTest < Minitest::Test
     remote_control = RemoteControl.new
     slot_number = 1
     command = CustomMock.new
-    command.expect :execute, nil
+    command.expect :undo, nil
     remote_control.add_command(slot_number: slot_number, on_command: command, off_command: nil)
 
     # Act

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemoteControl
-  attr_accessor :button_layout, :undo_command, :display_message
+  attr_accessor :button_layout, :last_command, :display_message
 
   def initialize
     @button_layout = {}
@@ -12,27 +12,33 @@ class RemoteControl
   end
 
   def push_on_button(slot_number:)
-    on_command(slot_number).execute
-    @undo_command = off_command(slot_number)
-  rescue NoMethodError => _e
-    @display_message = "No command is assigned to on button of slot number #{slot_number}"
+    if (command = on_command(slot_number))
+      command.execute
+      @last_command = command
+    else
+      @display_message = "No command is assigned to on button of slot number #{slot_number}"
+    end
   rescue StandardError => e
     @display_message = display_message_with(error: e)
   end
 
   def push_off_button(slot_number:)
-    off_command(slot_number).execute
-    @undo_command = on_command(slot_number)
-  rescue NoMethodError => _e
-    @display_message = "No command is assigned to off button of slot number #{slot_number}"
+    if (command = off_command(slot_number))
+      command.execute
+      @last_command = command
+    else
+      @display_message = "No command is assigned to off button of slot number #{slot_number}"
+    end
   rescue StandardError => e
     @display_message = display_message_with(error: e)
   end
 
   def push_undo_button
-    undo_command.execute
-  rescue NoMethodError => _e
-    @display_message = "Cannot perform the undo operation"
+    if last_command
+      last_command.undo
+    else
+      @display_message = "Cannot perform the undo operation"
+    end
   rescue StandardError => e
     @display_message = display_message_with(error: e)
   end

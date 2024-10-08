@@ -6,4 +6,8 @@ class FanOnCommand < Command
   def execute
     @receiver.on
   end
+
+  def undo
+    @receiver.off
+  end
 end
