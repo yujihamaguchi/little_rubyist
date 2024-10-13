@@ -61,4 +61,18 @@ class TestLittleRubyist < Minitest::Test
       [].my_last
     end
   end
+
+  def test_halve
+    assert_equal [[1], [2]], [1, 2].halve
+    assert_equal [[1, 2], [3, 4]], [1, 2, 3, 4].halve
+    assert_raises ArgumentError do
+      [].halve
+    end
+    assert_raises ArgumentError do
+      [1].halve
+    end
+    assert_raises ArgumentError do
+      [1, 2, 3].halve
+    end
+  end
 end

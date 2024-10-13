@@ -103,12 +103,25 @@ end
 class Array
   def my_last
     raise StopIteration if self.empty?
+
     self.reverse.first
   end
+
   # recursion
   # def my_last
   #   raise StopIteration if self.empty?
   #   return self.first if self.length == 1
   #   self.drop(1).my_last
   # end
+end
+
+# Q008: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
+class Array
+  def halve
+    raise ArgumentError if self.empty?
+    raise ArgumentError if self.length.odd?
+
+    halve_length = self.length / 2
+    [self.take(halve_length), self.drop(halve_length)]
+  end
 end
