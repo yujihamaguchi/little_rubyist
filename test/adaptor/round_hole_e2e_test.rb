@@ -19,7 +19,7 @@ class RoundHoleE2eTest < Minitest::Test
   def test_fits_square_peg
     # Arrange
     radius = 5
-    width = radius * Math.sqrt(2)
+    width = radius / Math.sqrt(2) * 2
     hole = RoundHole.new(radius: radius)
     square_peg = SquarePeg.new(width: width)
 
@@ -27,6 +27,7 @@ class RoundHoleE2eTest < Minitest::Test
     assert hole.fits(square_peg)
   end
 
+  # sqrt 2 : 1 = 5 : x
   def test_not_fits_square_peg
     # Arrange
     radius = 5
