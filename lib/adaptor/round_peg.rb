@@ -6,6 +6,7 @@ class RoundPeg
   def initialize(radius:)
     @radius = radius
   end
+
   def fits?(hole)
     @radius <= hole.radius
   end
