@@ -5,7 +5,7 @@ class SquarePeg
     @width = width
   end
 
-  def fits(hole)
+  def fits?(hole)
     @width <= hole.radius / Math.sqrt(2) * 2
   end
 end
