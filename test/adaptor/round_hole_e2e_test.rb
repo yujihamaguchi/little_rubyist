@@ -19,21 +19,21 @@ class RoundHoleE2eTest < Minitest::Test
 
   def test_fits_square_peg
     # Arrange
-    round_hole = RoundHole.new(radius: 5)
-    square_peg = SquarePeg.new(width: 5 / Math.sqrt(2) * 2)
-    sqquare_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
+    hole = RoundHole.new(radius: 5)
+    square_peg = SquarePeg.new(width: 5 * Math.sqrt(2))
+    square_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
 
     # Assert
-    assert round_hole.fits?(sqquare_peg_adaptor)
+    assert hole.fits?(square_peg_adaptor)
   end
 
   def test_not_fits_square_peg
     # Arrange
     round_hole = RoundHole.new(radius: 5)
-    square_peg = SquarePeg.new(width: 5 / Math.sqrt(2) * 2 + 1)
-    sqquare_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
+    square_peg = SquarePeg.new(width: 5 * Math.sqrt(2) + 1)
+    square_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
 
     # Assert
-    assert !round_hole.fits?(sqquare_peg_adaptor)
+    assert !round_hole.fits?(square_peg_adaptor)
   end
 end

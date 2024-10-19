@@ -18,4 +18,6 @@ class RoundHoleTest < Minitest::Test
     # Assert
     round_peg.verify
   end
+
+  def test_fits_square_peg; end
 end
