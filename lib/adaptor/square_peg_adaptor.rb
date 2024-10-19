@@ -9,6 +9,3 @@ class SquarePegAdaptor < RoundPeg
     @square_peg.width / Math.sqrt(2)
   end
 end
-
-# peg.getWidth() * Math.sqrt(2) / 2
-# @square_peg.width / Math.sqrt(2)
