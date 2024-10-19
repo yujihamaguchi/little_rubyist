@@ -5,6 +5,7 @@ require_relative "../test_helper"
 require "adaptor/round_peg"
 require "adaptor/round_hole"
 require "adaptor/square_peg"
+require "adaptor/square_peg_adaptor"
 
 class RoundHoleE2eTest < Minitest::Test
   def test_fits_round_peg
@@ -18,24 +19,21 @@ class RoundHoleE2eTest < Minitest::Test
 
   def test_fits_square_peg
     # Arrange
-    radius = 5
-    width = radius / Math.sqrt(2) * 2
-    hole = RoundHole.new(radius: radius)
-    square_peg = SquarePeg.new(width: width)
+    round_hole = RoundHole.new(radius: 5)
+    square_peg = SquarePeg.new(width: 5 / Math.sqrt(2) * 2)
+    sqquare_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
 
     # Assert
-    assert hole.fits?(square_peg)
+    assert round_hole.fits?(sqquare_peg_adaptor)
   end
 
-  # sqrt 2 : 1 = 5 : x
   def test_not_fits_square_peg
     # Arrange
-    radius = 5
-    width = radius * Math.sqrt(2)
-    hole = RoundHole.new(radius: radius)
-    large_square_peg = SquarePeg.new(width: width + 1)
+    round_hole = RoundHole.new(radius: 5)
+    square_peg = SquarePeg.new(width: 5 / Math.sqrt(2) * 2 + 1)
+    sqquare_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
 
     # Assert
-    assert !hole.fits?(large_square_peg)
+    assert !round_hole.fits?(sqquare_peg_adaptor)
   end
 end
