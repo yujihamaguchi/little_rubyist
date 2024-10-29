@@ -107,7 +107,7 @@ class Array
     self.reverse.first
   end
 
-  # recursion
+  # # recursion
   # def my_last
   #   raise StopIteration if self.empty?
   #   return self.first if self.length == 1
@@ -124,4 +124,25 @@ class Array
     halve_length = self.length / 2
     [self.take(halve_length), self.drop(halve_length)]
   end
+end
+
+#  Q009: my-concat を書け。
+#  concat :: [[a]] -> [a]
+#  concat xs
+#      リストのリスト xs を一つのリストに連結する。
+#          concat [[1,2], [3,4], [5,6]]    = [1,2,3,4,5,6]
+#          concat ["ab", "cd", "ef"]       = "abcdef"
+#          concat [[]]                     = []
+#          concat []                       = []
+class Array
+  def my_concat
+    self.reduce([]) { |acc, x| acc + x }
+  end
+
+  # # recursion
+  # def my_concat
+  #   return [] if self.empty?
+  #
+  #   self.first + self.drop(1).my_concat
+  # end
 end

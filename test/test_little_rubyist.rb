@@ -75,4 +75,11 @@ class TestLittleRubyist < Minitest::Test
       [1, 2, 3].halve
     end
   end
+
+  def test_concat
+    assert_equal [1, 2, 3, 4], [[1, 2], [3, 4]].my_concat
+    assert_equal [1, 2, 3], [[1, 2], [3]].my_concat
+    assert_equal [1, 2], [[1, 2]].my_concat
+    assert_equal [], [].my_concat
+  end
 end
