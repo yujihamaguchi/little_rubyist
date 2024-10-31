@@ -10,6 +10,7 @@ class GumballMachineE2eTest < Minitest::Test
   def test_insert_coin
     # Arrange
     machine = GumballMachine.new(monitor: nil)
+    assert_equal NoCoin, machine.state.class
 
     # Act
     machine.insert_coin
@@ -21,6 +22,8 @@ class GumballMachineE2eTest < Minitest::Test
   def test_eject_coin
     # Arrange
     machine = GumballMachine.new(monitor: nil)
+    machine.insert_coin
+    assert_equal HasCoin, machine.state.class
 
     # Act
     machine.eject_coin
@@ -49,7 +52,6 @@ class GumballMachineE2eTest < Minitest::Test
     monitor = CustomMock.new
     monitor.expect :display, nil, ["Please insert coin before turning the crank."]
     machine = GumballMachine.new(monitor: monitor)
-    machine.eject_coin
 
     # Act
     machine.turn_crank
@@ -72,6 +74,19 @@ class GumballMachineE2eTest < Minitest::Test
 
     # Assert
     monitor.verify
+  end
+
+  def test_turn_crank_on_last_gumball
+    # Arrange
+    monitor = CustomMock.new
+    monitor.expect :display, nil, ["A gumball come out!"]
+    machine = GumballMachine.new(monitor: monitor, remaining: 1)
+    machine.insert_coin
+
+    # Act
+    machine.turn_crank
+
+    # Assert
     assert_equal SoldOut, machine.state.class
   end
 end
