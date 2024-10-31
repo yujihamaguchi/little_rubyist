@@ -3,6 +3,8 @@
 require_relative "../test_helper"
 require "state/gumball_machine"
 require "state/has_coin"
+require "state/sold_out"
+require "state/no_coin"
 
 class GumballMachineE2eTest < Minitest::Test
   def test_insert_coin
@@ -30,8 +32,9 @@ class GumballMachineE2eTest < Minitest::Test
   def test_turn_crank
     # Arrange
     monitor = CustomMock.new
-    machine = GumballMachine.new(monitor: monitor)
     monitor.expect :display, nil, ["A gumball come out!"]
+    machine = GumballMachine.new(monitor: monitor)
+    machine.insert_coin
 
     # Act
     machine.turn_crank
@@ -39,5 +42,36 @@ class GumballMachineE2eTest < Minitest::Test
     # Assert
     monitor.verify
     assert_equal NoCoin, machine.state.class
+  end
+
+  def test_turn_crank_with_no_coin
+    # Arrange
+    monitor = CustomMock.new
+    monitor.expect :display, nil, ["Please insert coin before turning the crank."]
+    machine = GumballMachine.new(monitor: monitor)
+    machine.eject_coin
+
+    # Act
+    machine.turn_crank
+
+    # Assert
+    monitor.verify
+    assert_equal NoCoin, machine.state.class
+  end
+
+  def test_turn_crank_when_sold_out
+    # Arrange
+    monitor = CustomMock.new
+    monitor.expect :display, nil, ["It is sold out, sorry."]
+    machine = GumballMachine.new(monitor: monitor)
+
+    # Act
+    machine.stub :state, SoldOut.new do
+      machine.turn_crank
+    end
+
+    # Assert
+    monitor.verify
+    assert_equal SoldOut, machine.state.class
   end
 end

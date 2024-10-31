@@ -4,10 +4,13 @@ require_relative "has_coin"
 require_relative "no_coin"
 
 class GumballMachine
-  attr_reader :state
+  attr_accessor :state
+  attr_reader :monitor, :remaining
 
   def initialize(monitor:)
+    @remaining = 20
     @monitor = monitor
+    @state = NoCoin.new
   end
 
   def insert_coin
@@ -19,7 +22,6 @@ class GumballMachine
   end
 
   def turn_crank
-    @state = NoCoin.new
-    @monitor.display "A gumball come out!"
+    @state.turn_crank self
   end
 end
