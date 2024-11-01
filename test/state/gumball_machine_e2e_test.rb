@@ -89,4 +89,28 @@ class GumballMachineE2eTest < Minitest::Test
     # Assert
     assert_equal SoldOut, machine.state.class
   end
+
+  def test_insert_coin_when_sold_out
+    # Arrange
+    machine = GumballMachine.new(monitor: nil, remaining: 0)
+    assert_equal SoldOut, machine.state.class
+
+    # Act
+    machine.insert_coin
+
+    # Assert
+    assert_equal SoldOut, machine.state.class
+  end
+
+  def test_eject_coin_when_sold_out
+    # Arrange
+    machine = GumballMachine.new(monitor: nil, remaining: 0)
+    assert_equal SoldOut, machine.state.class
+
+    # Act
+    machine.eject_coin
+
+    # Assert
+    assert_equal SoldOut, machine.state.class
+  end
 end

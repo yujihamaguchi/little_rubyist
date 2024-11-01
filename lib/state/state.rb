@@ -2,11 +2,11 @@
 
 class State
   def insert_coin(machine)
-    machine.state = HasCoin.new
+    raise NotImplementedError
   end
 
   def eject_coin(machine)
-    machine.state = NoCoin.new
+    raise NotImplementedError
   end
 
   def turn_crank(machine)

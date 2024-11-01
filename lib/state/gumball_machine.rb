@@ -10,7 +10,11 @@ class GumballMachine
   def initialize(monitor:, remaining: 20)
     @monitor = monitor
     @remaining = remaining
-    @state = NoCoin.new
+    @state = if @remaining.zero?
+               SoldOut.new
+             else
+               NoCoin.new
+             end
   end
 
   def insert_coin
