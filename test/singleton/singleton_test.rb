@@ -11,5 +11,19 @@ class SingletonTest < Minitest::Test
     assert_same instance1, instance2
   end
 
-  # TODO: スレッドセーフでなければ落ちるテストを書く
+  def test_singleton_instance_thread_safety
+    instances = []
+
+    threads = 10.times.map do
+      Thread.new do
+        instances.push MySingleton::INSTANCE
+      end
+    end
+
+    threads.each(&:join)
+
+    instances.each do |instance|
+      assert_same instances.first, instance
+    end
+  end
 end
