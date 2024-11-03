@@ -11,9 +11,9 @@ class GumballMachine
     @monitor = monitor
     @remaining = remaining
     @state = if @remaining.zero?
-               SoldOut.new
+               SoldOut.instance
              else
-               NoCoin.new
+               NoCoin.instance
              end
   end
 

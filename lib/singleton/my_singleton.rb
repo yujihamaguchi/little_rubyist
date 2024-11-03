@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class MySingleton
-  def self.instance
-    @instance ||= new
-  end
-
+  INSTANCE = new
   private_class_method :new
 end

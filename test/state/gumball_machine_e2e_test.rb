@@ -68,7 +68,7 @@ class GumballMachineE2eTest < Minitest::Test
     machine = GumballMachine.new(monitor: monitor)
 
     # Act
-    machine.stub :state, SoldOut.new do
+    machine.stub :state, SoldOut.instance do
       machine.turn_crank
     end
 

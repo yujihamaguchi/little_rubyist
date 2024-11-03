@@ -5,7 +5,7 @@ require_relative "has_coin"
 
 class NoCoin < State
   def insert_coin(machine)
-    machine.state = HasCoin.new
+    machine.state = HasCoin.instance
   end
 
   def eject_coin(machine) end

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require "singleton"
+
 class State
+  include Singleton
+
   def insert_coin(machine)
     raise NotImplementedError
   end
