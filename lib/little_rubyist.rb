@@ -89,8 +89,8 @@ class Array
 
     x = self.first
     xs = self.drop(1)
-    lt = xs.filter { |x_| x_ < x }
-    ge = xs.filter { |x_| x_ >= x }
+    lt = xs.select { |x_| x_ < x }
+    ge = xs.select { |x_| x_ >= x }
     ge.rqsort + [x] + lt.rqsort
   end
 end
@@ -145,4 +145,9 @@ class Array
   #
   #   self.first + self.drop(1).my_concat
   # end
+end
+
+# Q010: 正の整数に対し、すべての約数を計算する関数 my-factors を書け
+def my_factors(n)
+  (1..n).select { |divisor| (n % divisor).zero? }
 end

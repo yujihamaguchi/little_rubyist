@@ -82,4 +82,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2], [[1, 2]].my_concat
     assert_equal [], [].my_concat
   end
+
+  def test_my_factors
+    assert_equal [1, 2, 5, 10], my_factors(10)
+    assert_equal [1, 5], my_factors(5)
+    assert_equal [1], my_factors(1)
+    assert_equal [], my_factors(0)
+  end
 end
