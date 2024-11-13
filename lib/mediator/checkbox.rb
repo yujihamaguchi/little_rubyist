@@ -3,8 +3,6 @@
 require_relative "component"
 
 class Checkbox < Mediator::Component
-  attr_reader :dialog
-
   def initialize(dialog:)
     super
     @checked = false
@@ -15,7 +13,12 @@ class Checkbox < Mediator::Component
   end
 
   def check
-    dialog.notify(self, :check)
     @checked = true
+    dialog.notify(component: self, event: :check)
+  end
+
+  def uncheck
+    @checked = false
+    dialog.notify(component: self, event: :uncheck)
   end
 end

@@ -13,10 +13,15 @@ class AuthDialog
     @register_form = RegisterForm.new(dialog: self)
   end
 
-  def notify(component, event)
-    return unless component.instance_of?(Checkbox) && event == :check
+  def notify(component:, event:)
+    return unless component.is_a?(Checkbox)
 
-    login_form.enable
-    register_form.disable
+    if event == :check
+      login_form.enable
+      register_form.disable
+    elsif event == :uncheck
+      login_form.disable
+      register_form.enable
+    end
   end
 end

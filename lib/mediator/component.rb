@@ -2,6 +2,13 @@
 
 module Mediator
   class Component
+    attr_reader :dialog
+
+    def initialize(dialog:)
+      @dialog = dialog
+      @enabled = false
+    end
+
     def disable
       @enabled = false
     end
@@ -16,10 +23,6 @@ module Mediator
 
     def enabled?
       @enabled
-    end
-
-    def initialize(dialog:)
-      @dialog = dialog
     end
   end
 end
