@@ -89,4 +89,14 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1], my_factors(1)
     assert_equal [], my_factors(0)
   end
+
+  def test_myfind
+    assert_equal [], [[1, "a"], [2, "b"]].my_find(4)
+    assert_equal ["a"], [[1, "a"], [2, "b"]].my_find(1)
+    assert_equal ["a"], [[2, "b"], [1, "a"]].my_find(1)
+    assert_equal ["a"], [[2, "b"], [1, "a"], [3, "c"]].my_find(1)
+    assert_equal %w[a b], [[1, "a"], [1, "b"], [3, "c"]].my_find(1)
+    assert_equal [1], [["a", 1], ["b", 2], ["c", 3]].my_find("a")
+    assert_equal [1], [["abc", 1], ["def", 2]].my_find("abc")
+  end
 end
