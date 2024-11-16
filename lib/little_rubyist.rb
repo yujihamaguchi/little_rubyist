@@ -152,7 +152,9 @@ def my_factors(n)
   (1..n).select { |divisor| (n % divisor).zero? }
 end
 
-# Q011: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find をリスト内包表記と分配束縛を用いて書け。
+# Q011: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find を書け。
 class Array
-  def my_find(key) end
+  def my_find(key)
+    self.map { |k, v| v if key == k }.compact
+  end
 end
