@@ -8,13 +8,13 @@ class BoxE2eTest < Minitest::Test
   def test_price
     # Arrange
     box = Box.new
-    product1 = Product.new(price: 50)
-    product2 = Product.new(price: 30)
+    product1 = CarProduct.new(price: 50)
+    product2 = CarProduct.new(price: 30)
     box.add(product1)
     box.add(product2)
 
     small_box = Box.new
-    small_product = Product.new(price: 20)
+    small_product = CarProduct.new(price: 20)
     small_box.add(small_product)
 
     box.add(small_box)
