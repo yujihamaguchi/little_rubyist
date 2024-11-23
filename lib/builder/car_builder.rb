@@ -11,12 +11,14 @@ class CarBuilder
     @car = Car.new
   end
 
-  def engine(engine_type:)
+  def with_engine(engine_type:)
     @car.engine = engine_type
+    self
   end
 
-  def seats(seat_count:)
+  def with_seats(seat_count:)
     @car.seats = seat_count
+    self
   end
 
   def result
