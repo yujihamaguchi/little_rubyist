@@ -2,14 +2,14 @@
 
 class Director
   def construct_sports_car(builder:)
-    builder.engine("sport engine")
-    builder.seats(2)
-    builder.product
+    builder.engine(engine_type: "sport engine")
+    builder.seats(seat_count: 2)
+    builder.result
   end
 
   def construct_suv_car(builder:)
-    builder.engine("normal engine")
-    builder.seats(4)
-    builder.car
+    builder.engine(engine_type: "normal engine")
+    builder.seats(seat_count: 4)
+    builder.result
   end
 end
