@@ -99,4 +99,14 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1], [["a", 1], ["b", 2], ["c", 3]].my_find("a")
     assert_equal [1], [["abc", 1], ["def", 2]].my_find("abc")
   end
+
+  def test_firsts
+    assert_equal [1], [[1]].firsts
+    assert_equal [1], [[1, 2]].firsts
+    assert_equal [1], [[1, 2, 3]].firsts
+    assert_equal [1, 2], [[1], [2]].firsts
+    assert_equal [1, 3], [[1, 2], [3, 4]].firsts
+    assert_equal [1, 4], [[1, 2, 3], [4, 5, 6]].firsts
+    assert_equal %w[a d], %w[abc def].firsts
+  end
 end

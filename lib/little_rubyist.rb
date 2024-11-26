@@ -158,3 +158,10 @@ class Array
     self.map { |k, v| v if key == k }.compact
   end
 end
+
+# Q012: 対のリストから、対の先頭の要素を取り出してリストを生成する firsts を書け。
+class Array
+  def firsts
+    self.map { |item| item[0] }
+  end
+end
