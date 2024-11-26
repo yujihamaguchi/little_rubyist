@@ -165,3 +165,23 @@ class Array
     self.map { |item| item[0] }
   end
 end
+
+# Q013: haskell の length を、 sum とリスト内包表記で書け。
+# length :: [a] -> Int
+# length xs
+#     リスト xs の長さを返す。
+#         length [1,2,3]   = 3
+#         length "abcde"   = 5
+#         length []        = 0
+#         length ""        = 0
+module Enumerable
+  def my_length
+    self.reduce(0) { |acc, _| acc + 1 }
+  end
+end
+
+class String
+  def my_length
+    self.chars.my_length
+  end
+end
