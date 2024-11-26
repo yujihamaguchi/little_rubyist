@@ -3,14 +3,19 @@
 class TestResult
   def initialize
     @run_count = 0
+    @error_count = 0
   end
 
   def test_started
     @run_count += 1
   end
 
+  def test_failed
+    @error_count += 1
+  end
+
   def summary
-    "#{@run_count} run, 0 failed"
+    "#{@run_count} run, #{@error_count} failed"
   end
 end
 
@@ -27,7 +32,11 @@ class TestCase
     result = TestResult.new
     result.test_started
     self.set_up
-    self.send(@name)
+    begin
+      self.send(@name)
+    rescue StandardError
+      result.test_failed
+    end
     self.tear_down
     result
   end
@@ -71,8 +80,16 @@ class TestCaseTest < TestCase
     result = test.run
     raise unless result.summary == "1 run, 1 failed"
   end
+
+  def test_failed_result_formatting
+    result = TestResult.new
+    result.test_started
+    result.test_failed
+    raise unless result.summary == "1 run, 1 failed"
+  end
 end
 
 TestCaseTest.new("test_template_method").run
 TestCaseTest.new("test_result").run
-# TestCaseTest.new("test_failed_result").run
+TestCaseTest.new("test_failed_result").run
+TestCaseTest.new("test_failed_result_formatting").run
