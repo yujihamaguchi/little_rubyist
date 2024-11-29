@@ -12,19 +12,19 @@ require "abstract_factory/modern_style_table"
 
 class FurnitureFactoryTest < Minitest::Test
   TESTCASES = [
-    { factory: ArtDecoStyleFactory, action: :create_chair, furniture_class: ArtDecoStyleChair },
-    { factory: ArtDecoStyleFactory, action: :create_table, furniture_class: ArtDecoStyleTable },
-    { factory: ArtDecoStyleFactory, action: :create_bench, furniture_class: ArtDecoStyleBench },
-    { factory: ModernStyleFactory, action: :create_chair, furniture_class: ModernStyleChair },
-    { factory: ModernStyleFactory, action: :create_table, furniture_class: ModernStyleTable },
-    { factory: ModernStyleFactory, action: :create_bench, furniture_class: ModernStyleBench }
+    { factory: ArtDecoStyleFactory, action: :create_chair, factory_class: ArtDecoStyleChair },
+    { factory: ArtDecoStyleFactory, action: :create_table, factory_class: ArtDecoStyleTable },
+    { factory: ArtDecoStyleFactory, action: :create_bench, factory_class: ArtDecoStyleBench },
+    { factory: ModernStyleFactory, action: :create_chair, factory_class: ModernStyleChair },
+    { factory: ModernStyleFactory, action: :create_table, factory_class: ModernStyleTable },
+    { factory: ModernStyleFactory, action: :create_bench, factory_class: ModernStyleBench }
   ].freeze
 
   def test_create_chair
     TESTCASES.each do |test_case|
       factory = test_case[:factory]
       action = test_case[:action]
-      furniture_class = test_case[:furniture_class]
+      furniture_class = test_case[:factory_class]
 
       # Arrange
       furniture_factory = factory.new

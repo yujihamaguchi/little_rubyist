@@ -84,10 +84,10 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_factors
-    assert_equal [1, 2, 5, 10], my_factors(10)
-    assert_equal [1, 5], my_factors(5)
-    assert_equal [1], my_factors(1)
-    assert_equal [], my_factors(0)
+    assert_equal [1, 2, 5, 10], 10.my_factors
+    assert_equal [1, 5], 5.my_factors
+    assert_equal [1], 1.my_factors
+    assert_equal [], 0.my_factors
   end
 
   def test_myfind
@@ -117,5 +117,14 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 3, "abc".my_length
     assert_equal 3, [1, 2, 3].to_set.my_length
     assert_equal 3, { a: 1, b: 2, c: 3 }.my_length
+  end
+
+  def test_prime?
+    assert_equal false, 1.prime?
+    assert_equal true, 2.prime?
+    assert_equal true, 3.prime?
+    assert_equal false, 4.prime?
+    assert_equal true, 5.prime?
+    assert_equal false, 6.prime?
   end
 end

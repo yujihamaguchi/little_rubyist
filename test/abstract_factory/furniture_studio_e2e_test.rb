@@ -7,29 +7,26 @@ require "abstract_factory/modern_style_factory"
 
 class FurnitureStudioE2eTest < Minitest::Test
   TESTCASES = [
-    { furniture_class: ArtDecoStyleFactory, str: "art deco" },
-    { furniture_class: ModernStyleFactory, str: "modern" }
+    { factory_class: ArtDecoStyleFactory, style_name: "art deco" },
+    { factory_class: ModernStyleFactory, style_name: "modern" }
   ].freeze
 
   def test_create_table_set
     TESTCASES.each do |testcase|
-      klass = testcase[:furniture_class]
-      str = testcase[:str]
+      factory_class = testcase[:factory_class]
+      style_name = testcase[:style_name]
 
       # Arrange
-      art_deco_style_factory = klass.new
-      furniture_studio = FurnitureStudio.new(factory: art_deco_style_factory)
+      some_style_factory = factory_class.new
+      furniture_studio = FurnitureStudio.new(factory: some_style_factory)
 
       # Act
       table_set = furniture_studio.create_table_set
-      actual_sit = table_set.chair.sit
-      actual_stand = table_set.table.stand
-      actual_lie = table_set.bench.lie
 
       # Assert
-      assert_equal "Sit on the #{str} chair.", actual_sit
-      assert_equal "Stand on the #{str} table.", actual_stand
-      assert_equal "Lie on the #{str} bench.", actual_lie
+      assert_equal "Sit on the #{style_name} chair.", table_set.chair.sit
+      assert_equal "Stand on the #{style_name} table.", table_set.table.stand
+      assert_equal "Lie on the #{style_name} bench.", table_set.bench.lie
     end
   end
 end

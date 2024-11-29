@@ -148,8 +148,10 @@ class Array
 end
 
 # Q010: 正の整数に対し、すべての約数を計算する関数 my-factors を書け
-def my_factors(n)
-  (1..n).select { |divisor| (n % divisor).zero? }
+class Integer
+  def my_factors
+    (1..self).select { |divisor| (self % divisor).zero? }
+  end
 end
 
 # Q011: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find を書け。
@@ -183,5 +185,14 @@ end
 class String
   def my_length
     self.chars.my_length
+  end
+end
+
+# Q014: my-factors を用いて、整数が素数か判定する関数 prime? を書け。
+class Integer
+  def prime?
+    return false if self == 1
+
+    self.my_factors == [1, self]
   end
 end
