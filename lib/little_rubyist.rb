@@ -196,3 +196,21 @@ class Integer
     self.my_factors == [1, self]
   end
 end
+
+# Q015: prime? を用いて与えられた上限数までの全ての素数を生成する関数 primes を書け。
+def primes(max)
+  (1..max).select(&:prime?)
+end
+
+# Q016: リストから隣り合う要素をマップにして返す関数 pairs を Enumerable#each_cons を用いて書け。
+class Array
+  def pairs
+    self.each_cons(2).to_h
+  end
+end
+
+class String
+  def pairs
+    self.chars.pairs
+  end
+end

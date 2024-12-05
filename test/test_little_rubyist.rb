@@ -127,4 +127,19 @@ class TestLittleRubyist < Minitest::Test
     assert_equal true, 5.prime?
     assert_equal false, 6.prime?
   end
+
+  def test_prime
+    assert_equal [], primes(1)
+    assert_equal [2, 3, 5], primes(5)
+  end
+
+  def test_pairs
+    assert_equal({ 1 => 2 }, [1, 2].pairs)
+    assert_equal({ 1 => 2, 2 => 3 }, [1, 2, 3].pairs)
+    assert_equal({ 1 => 2, 2 => 3, 3 => 4 }, [1, 2, 3, 4].pairs)
+    assert_equal({}, [1].pairs)
+    assert_equal({}, [].pairs)
+    assert_equal({}, [].pairs)
+    assert_equal({ "a" => "b", "b" => "c" }, "abc".pairs)
+  end
 end

@@ -34,6 +34,6 @@ class RoundHoleE2eTest < Minitest::Test
     square_peg_adaptor = SquarePegAdaptor.new(square_peg: square_peg)
 
     # Assert
-    assert !round_hole.fits?(square_peg_adaptor)
+    refute round_hole.fits?(square_peg_adaptor)
   end
 end

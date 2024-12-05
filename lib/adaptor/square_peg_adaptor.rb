@@ -3,6 +3,7 @@
 class SquarePegAdaptor < RoundPeg
   def initialize(square_peg:)
     @square_peg = square_peg
+    super(radius: nil)
   end
 
   def radius
