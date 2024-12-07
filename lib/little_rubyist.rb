@@ -214,3 +214,10 @@ class String
     self.chars.pairs
   end
 end
+
+# Q018: 目的とする値がリストのどの位置にあるかを調べて、その位置全てをリストとして返す関数 positions を書け。(index は 0 から開始される事)
+class Array
+  def positions(n)
+    (0..self.length).select { |i| self[i] == n }
+  end
+end
