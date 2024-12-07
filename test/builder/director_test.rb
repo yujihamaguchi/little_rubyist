@@ -11,7 +11,7 @@ class DirectorTest < Minitest::Test
     car_product = CustomMock.new
     car_builder.expect :with_engine, car_builder, [], engine_type: "sport engine"
     car_builder.expect :with_seats, car_builder, [], seat_count: 2
-    car_builder.expect :result, car_product
+    car_builder.expect :build, car_product
 
     # Act
     result = director.construct_sports_car(builder: car_builder)
@@ -28,7 +28,8 @@ class DirectorTest < Minitest::Test
     car_product = CustomMock.new
     car_builder.expect :with_engine, car_builder, [], engine_type: "normal engine"
     car_builder.expect :with_seats, car_builder, [], seat_count: 4
-    car_builder.expect :result, car_product
+    car_builder.expect :with_roof_rails, car_builder, [], color: :black
+    car_builder.expect :build, car_product
 
     # Act
     result = director.construct_suv_car(builder: car_builder)

@@ -9,7 +9,11 @@ module Builder
     raise NotImplementedError
   end
 
-  def result
+  def with_roof_rails(color:)
+    raise NotImplementedError
+  end
+
+  def build
     raise NotImplementedError
   end
 end

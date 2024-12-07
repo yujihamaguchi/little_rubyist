@@ -2,6 +2,6 @@
 
 module Builder
   class CarProduct
-    attr_accessor :engine, :seats
+    attr_accessor :engine, :seats, :roof_rails
   end
 end

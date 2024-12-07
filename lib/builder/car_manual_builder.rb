@@ -21,7 +21,11 @@ class CarManualBuilder
     self
   end
 
-  def result
+  def with_roof_rails(color:)
+    self
+  end
+
+  def build
     @manual
   end
 end

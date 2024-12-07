@@ -36,7 +36,9 @@ class DirectorE2eTest < Minitest::Test
     # Assert
     assert_equal "normal engine", car.engine
     assert_equal 4, car.seats
+    assert_equal :black, car.roof_rails
     assert_equal "normal engine manual", manual.engine
     assert_equal "4 seats", manual.seats
+    assert_nil manual.roof_rails
   end
 end

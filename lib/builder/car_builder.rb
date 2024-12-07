@@ -21,7 +21,12 @@ class CarBuilder
     self
   end
 
-  def result
+  def with_roof_rails(color:)
+    @car.roof_rails = color
+    self
+  end
+
+  def build
     @car
   end
 end
