@@ -39,15 +39,15 @@ class RemoteControlTest < Minitest::Test
   def test_push_undo_button
     # Arrange
     remote_control = RemoteControl.new
-    undo_command = CustomMock.new
-    undo_command.expect :undo, nil
+    last_command = CustomMock.new
+    last_command.expect :undo, nil
 
     # Act
-    remote_control.stub :last_command, undo_command do
+    remote_control.stub :last_command, last_command do
       remote_control.push_undo_button
     end
 
     # Assert
-    undo_command.verify
+    last_command.verify
   end
 end

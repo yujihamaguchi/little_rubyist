@@ -9,6 +9,18 @@ require "command/remote_control"
 require "command/fan_off_command"
 require "command/stereo_volume_down_command"
 
+# +--------------------------+
+# |      Remote Control      |
+# +--------------------------+
+# |         DISPLAY          |
+# +--------------------------+
+# | Slot 1     [ON] [OFF]    |
+# | Slot 2     [ON] [OFF]    |
+# | Slot 3     [ON] [OFF]    |
+# +--------------------------+
+# |          [UNDO]          |
+# +--------------------------+
+
 class RemoteControlE2eTest < Minitest::Test
   def test_push_on_button
     # Arrange
@@ -17,18 +29,15 @@ class RemoteControlE2eTest < Minitest::Test
     stereo = Stereo.new
     init_volume = stereo.volume
 
-    fan_slot_number = 1
-    fan_on_command = FanOnCommand.new(receiver: fan)
-    stereo_slot_number = 2
-    stereo_volume_up_command = StereoVolumeUpCommand.new(receiver: stereo)
-
     remote_control = RemoteControl.new
-    remote_control.add_command(slot_number: fan_slot_number, on_command: fan_on_command, off_command: nil)
-    remote_control.add_command(slot_number: stereo_slot_number, on_command: stereo_volume_up_command, off_command: nil)
+    fan_on_command = FanOnCommand.new(receiver: fan)
+    remote_control.add_command(slot_number: 1, on_command: fan_on_command, off_command: nil)
+    stereo_volume_up_command = StereoVolumeUpCommand.new(receiver: stereo)
+    remote_control.add_command(slot_number: 2, on_command: stereo_volume_up_command, off_command: nil)
 
     # Act
-    remote_control.push_on_button(slot_number: fan_slot_number)
-    remote_control.push_on_button(slot_number: stereo_slot_number)
+    remote_control.push_on_button(slot_number: 1)
+    remote_control.push_on_button(slot_number: 2)
 
     # Assert
     assert_equal :on, fan.status
@@ -42,24 +51,20 @@ class RemoteControlE2eTest < Minitest::Test
     stereo = Stereo.new
     init_volume = stereo.volume
 
-    fan_slot_number = 1
+    remote_control = RemoteControl.new
     fan_on_command = FanOnCommand.new(receiver: fan)
     fan_off_command = FanOffCommand.new(receiver: fan)
-
-    stereo_slot_number = 2
+    remote_control.add_command(slot_number: 1, on_command: fan_on_command, off_command: fan_off_command)
     stereo_volume_down_command = StereoVolumeDownCommand.new(receiver: stereo)
-
-    remote_control = RemoteControl.new
-    remote_control.add_command(slot_number: fan_slot_number, on_command: fan_on_command, off_command: fan_off_command)
-    remote_control.add_command(slot_number: stereo_slot_number, on_command: nil,
+    remote_control.add_command(slot_number: 2, on_command: nil,
                                off_command: stereo_volume_down_command)
 
-    remote_control.push_on_button(slot_number: fan_slot_number)
+    remote_control.push_on_button(slot_number: 1)
     assert_equal :on, fan.status
 
     # Act
-    remote_control.push_off_button(slot_number: fan_slot_number)
-    remote_control.push_off_button(slot_number: stereo_slot_number)
+    remote_control.push_off_button(slot_number: 1)
+    remote_control.push_off_button(slot_number: 2)
 
     # Assert
     assert_equal :off, fan.status
@@ -67,34 +72,35 @@ class RemoteControlE2eTest < Minitest::Test
   end
 
   def test_push_undo_button
-    # Arrange
+    # Arrange 1
     fan = Fan.new
     assert_equal :off, fan.status
     stereo = Stereo.new
     init_volume = stereo.volume
 
-    fan_slot_number = 1
+    remote_control = RemoteControl.new
     fan_on_command = FanOnCommand.new(receiver: fan)
     fan_off_command = FanOffCommand.new(receiver: fan)
-    stereo_slot_number = 2
+    remote_control.add_command(slot_number: 1, on_command: fan_on_command, off_command: fan_off_command)
     stereo_volume_up_command = StereoVolumeUpCommand.new(receiver: stereo)
     stereo_volume_down_command = StereoVolumeDownCommand.new(receiver: stereo)
-
-    remote_control = RemoteControl.new
-    remote_control.add_command(slot_number: fan_slot_number, on_command: fan_on_command, off_command: fan_off_command)
-    remote_control.add_command(slot_number: stereo_slot_number, on_command: stereo_volume_up_command,
+    remote_control.add_command(slot_number: 2, on_command: stereo_volume_up_command,
                                off_command: stereo_volume_down_command)
-    # Act 1
-    remote_control.push_on_button(slot_number: fan_slot_number)
+
+    remote_control.push_on_button(slot_number: 1)
     assert_equal :on, fan.status
+
+    # Act 1
     remote_control.push_undo_button
 
     # Assert 1
     assert_equal :off, fan.status
 
-    # Act 2
-    remote_control.push_off_button(slot_number: stereo_slot_number)
+    # Arrange 2
+    remote_control.push_off_button(slot_number: 2)
     assert_equal init_volume - 1, stereo.volume
+
+    # Act 2
     remote_control.push_undo_button
 
     # Assert 2
