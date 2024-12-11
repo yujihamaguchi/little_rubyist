@@ -226,5 +226,7 @@ end
 class String
   def my_count(target_char)
     self.chars.select { |c| target_char == c }.length
+    # self.chars.map { |c| c == target_char ? 1 : 0 }.sum
+    # self.chars.map { |c| c == target_char ? 1 : 0 }.reduce(&:+)
   end
 end
