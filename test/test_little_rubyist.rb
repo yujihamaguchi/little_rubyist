@@ -149,4 +149,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [0, 2], [1, 2, 1].positions(1)
     assert_equal [1, 2], [0, 1, 1, 2].positions(1)
   end
+
+  def test_my_count
+    assert_equal 1, "abc".my_count("a")
+    assert_equal 1, "abc".my_count("b")
+    assert_equal 1, "abc".my_count("c")
+    assert_equal 0, "abc".my_count("d")
+    assert_equal 2, "abca".my_count("a")
+    assert_equal 3, "abaca".my_count("a")
+  end
 end

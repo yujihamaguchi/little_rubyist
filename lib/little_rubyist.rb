@@ -221,3 +221,10 @@ class Array
     self.each_index.select { |i| self[i] == target_value }
   end
 end
+
+# Q019: 指定した特定の文字がいくつ含まれているか数える関数 my_count を書け。
+class String
+  def my_count(target_char)
+    self.chars.select { |c| target_char == c }.length
+  end
+end
