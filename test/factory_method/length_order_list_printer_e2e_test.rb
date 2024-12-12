@@ -6,10 +6,10 @@ require "factory_method/length_order_list_printer"
 class LengthOrderListPrinterE2eTest < Minitest::Test
   def test_print_list
     # Arrange
-    length_order_list_printer = LengthOrderListPrinter.new
+    list_printer = LengthOrderListPrinter.new
 
     # Act
-    actual = length_order_list_printer.print_list(%w[banana cake apple])
+    actual = list_printer.print_list(%w[banana cake apple])
 
     # Assert
     assert_equal "[\"cake\", \"apple\", \"banana\"]",

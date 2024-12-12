@@ -158,4 +158,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, "abca".my_count("a")
     assert_equal 3, "abaca".my_count("a")
   end
+
+  def test_lower_count
+    assert_equal 3, "abcあ亜ア".lower_count
+    assert_equal 2, "あ亜アAbc".lower_count
+    assert_equal 2, "aBcあ亜ア".lower_count
+    assert_equal 2, "あ亜アabC".lower_count
+  end
 end

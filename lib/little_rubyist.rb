@@ -230,3 +230,10 @@ class String
     # self.chars.map { |c| c == target_char ? 1 : 0 }.reduce(&:+)
   end
 end
+
+# Q020: 文字列から小文字を数える関数 lower_count を書け。
+class String
+  def lower_count
+    self.chars.select { |c| /[a-z]/.match?(c) }.length
+  end
+end
