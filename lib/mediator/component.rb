@@ -6,7 +6,6 @@ module Mediator
 
     def initialize(dialog:)
       @dialog = dialog
-      @enabled = false
     end
 
     def disable

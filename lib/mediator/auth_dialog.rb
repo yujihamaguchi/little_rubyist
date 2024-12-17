@@ -5,12 +5,14 @@ require_relative "login_form"
 require_relative "register_form"
 
 class AuthDialog
-  attr_reader :checkbox, :login_form, :register_form
+  attr_reader :login_checkbox, :login_form, :register_form
 
   def initialize
-    @checkbox = Checkbox.new(dialog: self)
+    @login_checkbox = Checkbox.new(dialog: self)
     @login_form = LoginForm.new(dialog: self)
+    @login_form.disable
     @register_form = RegisterForm.new(dialog: self)
+    @register_form.enable
   end
 
   def notify(component:, event:)

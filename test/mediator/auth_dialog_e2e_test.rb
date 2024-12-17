@@ -7,15 +7,15 @@ class AuthDialogE2eTest < Minitest::Test
   def test_checkbox_check
     # Arrange
     dialog = AuthDialog.new
-    refute dialog.checkbox.checked?
+    refute dialog.login_checkbox.checked?
     refute dialog.login_form.enabled?
     assert dialog.register_form.enabled?
 
     # Act
-    dialog.checkbox.check
+    dialog.login_checkbox.check
 
     # Assert
-    assert dialog.checkbox.checked?
+    assert dialog.login_checkbox.checked?
     assert dialog.login_form.enabled?
     assert dialog.register_form.disabled?
   end
@@ -23,16 +23,16 @@ class AuthDialogE2eTest < Minitest::Test
   def test_checkbox_uncheck
     # Arrange
     dialog = AuthDialog.new
-    dialog.checkbox.check
-    assert dialog.checkbox.checked?
+    dialog.login_checkbox.check
+    assert dialog.login_checkbox.checked?
     assert dialog.login_form.enabled?
     assert dialog.register_form.disabled?
 
     # Act
-    dialog.checkbox.uncheck
+    dialog.login_checkbox.uncheck
 
     # Assert
-    refute dialog.checkbox.checked?
+    refute dialog.login_checkbox.checked?
     assert dialog.login_form.disabled?
     assert dialog.register_form.enabled?
   end
