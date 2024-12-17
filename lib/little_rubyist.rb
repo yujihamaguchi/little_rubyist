@@ -247,3 +247,11 @@ class Integer
     end
   end
 end
+
+# Q032: ピタゴラス数のリストを生成する関数 pyths を定義せよ。
+#       ただし、ピタゴラス数の要素は与えられた上限 n 以下であるとする。
+class Integer
+  def pyths
+    (1..self).to_a.combination(3).select { |x, y, z| x**2 + y**2 == z**2 }
+  end
+end

@@ -172,4 +172,8 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [], 0.perfects
     assert_equal [], 1.perfects
   end
+
+  def test_pyths
+    assert_equal [[3, 4, 5], [6, 8, 10]], 10.pyths
+  end
 end
