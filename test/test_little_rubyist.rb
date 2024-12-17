@@ -165,4 +165,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, "aBcあ亜ア".lower_count
     assert_equal 2, "あ亜アabC".lower_count
   end
+
+  def test_perfects
+    assert_equal [6], 10.perfects
+    assert_equal [6, 28], 100.perfects
+    assert_equal [], 0.perfects
+    assert_equal [], 1.perfects
+  end
 end

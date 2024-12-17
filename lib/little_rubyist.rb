@@ -237,3 +237,13 @@ class String
     self.chars.select { |c| /[a-z]/.match?(c) }.length
   end
 end
+
+# Q031: 与えられた上限の数値までに含まれる完全数全てを算出する関数 perfects を関数 my_factors および my_sum を使って定義せよ。
+#       完全数：自分自身をのぞく約数の和が自分自身と等しい整数
+class Integer
+  def perfects
+    (1..self).select do |n|
+      n == n.my_factors[0...-1].my_sum
+    end
+  end
+end
