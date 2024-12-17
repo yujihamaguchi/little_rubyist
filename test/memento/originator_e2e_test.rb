@@ -5,33 +5,37 @@ require_relative "../../lib/memento/originator"
 require_relative "../../lib/memento/caretaker"
 
 class OriginatorE2eTest < Minitest::Test
+  def setup
+    @originator = Originator.new
+    @caretaker = Caretaker.new
+  end
+
+  TEST_CASES = [{ index: 0, state: :state1 }, { index: 1, state: :state2 }].freeze
+
   def test_restore_from_memento
     # Arrange
-    originator = Originator.new
-    caretaker = Caretaker.new
+    @originator.state = :state1
+    @caretaker.add_memento(@originator.memento)
+    @originator.state = :state2
+    @caretaker.add_memento(@originator.memento)
+    @originator.state = :state3
 
-    originator.state = :state1
-    originator.state = :state2
-    caretaker.add_memento(originator.memento)
-    originator.state = :state3
-    caretaker.add_memento(originator.memento)
-    originator.state = :state4
+    TEST_CASES.each do |test_case|
+      # Act
+      memento = @caretaker.memento_at(test_case[:index])
+      @originator.restore_from(memento: memento)
 
-    # Act
-    memento = caretaker.memento_at(1)
-    originator.restore_from(memento: memento)
-
-    # Assert
-    assert_equal :state3, originator.state
+      # Assert
+      assert_equal test_case[:state], @originator.state
+    end
   end
 
   def test_memento
     # Arrange
-    originator = Originator.new
-    originator.state = :some_state
+    @originator.state = :some_state
 
     # Act
-    memento = originator.memento
+    memento = @originator.memento
 
     # Assert
     assert_equal :some_state, memento.state

@@ -16,6 +16,7 @@ class OriginatorTest < Minitest::Test
     originator.restore_from(memento: memento)
 
     # Assert
+    memento.verify
     assert_equal :some_state, originator.state
   end
 end
