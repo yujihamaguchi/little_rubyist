@@ -176,4 +176,9 @@ class TestLittleRubyist < Minitest::Test
   def test_pyths
     assert_equal [[3, 4, 5], [6, 8, 10]], 10.pyths
   end
+
+  def test_my_replicate
+    # (is (=  [true true true] (my-replicate 3 true)))
+    assert_equal [true, true, true], true.my_replicate(3)
+  end
 end

@@ -255,3 +255,26 @@ class Integer
     (1..self).to_a.combination(3).select { |x, y, z| x**2 + y**2 == z**2 }
   end
 end
+
+# Q033: ある要素のみからなるリストを生成する関数 my_replicate を書け。(直接の再帰、末尾再帰のそれぞれを書け)
+#    ex) >replicate 3 True
+#        [True, True, True]
+# 直接の再帰
+# class Object
+#   def my_replicate(n)
+#     return [] if n.zero?
+#
+#     self.my_replicate(n - 1) << self
+#   end
+# end
+# 末尾再帰
+class Object
+  def my_replicate(n)
+    my_replicate_ = lambda do |acc, n|
+      return acc if n.zero?
+
+      my_replicate_.call(acc << self, n - 1)
+    end
+    my_replicate_.call([], n)
+  end
+end
