@@ -10,7 +10,10 @@ class OriginatorE2eTest < Minitest::Test
     @caretaker = Caretaker.new
   end
 
-  TEST_CASES = [{ index: 0, state: :state1 }, { index: 1, state: :state2 }].freeze
+  TEST_CASES = [
+    { index: 0, state: :state1 },
+    { index: 1, state: :state2 }
+  ].freeze
 
   def test_restore_from_memento
     # Arrange

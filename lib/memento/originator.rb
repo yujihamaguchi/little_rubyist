@@ -10,8 +10,6 @@ class Originator
   end
 
   def memento
-    memento = Memento.new
-    memento.state = @state
-    memento
+    Memento.new(state: @state)
   end
 end
