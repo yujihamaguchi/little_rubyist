@@ -184,4 +184,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 1], 1.my_replicate(2)
     assert_equal %w[a a], "a".my_replicate(2)
   end
+
+  def test_scalar_product
+    assert_equal 32, [1, 2, 3].scalar_product([4, 5, 6])
+    assert_equal 0, [].scalar_product([])
+  end
 end

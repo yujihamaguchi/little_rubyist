@@ -277,3 +277,11 @@ end
 #     my_replicate_.call([], n)
 #   end
 # end
+
+# Q034: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
+class Array
+  def scalar_product(other)
+    # self.zip(other).sum { |n, m| n * m }
+    self.zip(other).reduce(0) { |acc, (n, m)| acc + n * m }
+  end
+end
