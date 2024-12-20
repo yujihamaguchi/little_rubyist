@@ -178,7 +178,10 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_replicate
-    # (is (=  [true true true] (my-replicate 3 true)))
-    assert_equal [true, true, true], true.my_replicate(3)
+    assert_equal [], true.my_replicate(0)
+    assert_equal [true], true.my_replicate(1)
+    assert_equal [true, true], true.my_replicate(2)
+    assert_equal [1, 1], 1.my_replicate(2)
+    assert_equal %w[a a], "a".my_replicate(2)
   end
 end
