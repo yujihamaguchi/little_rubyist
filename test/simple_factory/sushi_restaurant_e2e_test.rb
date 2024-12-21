@@ -8,7 +8,6 @@ require "simple_factory/norimaki"
 
 class SushiRestaurantE2eTest < Minitest::Test
   TESTCASES = {
-    # input => expected
     ikura: Ikura,
     norimaki: Norimaki
   }.freeze
