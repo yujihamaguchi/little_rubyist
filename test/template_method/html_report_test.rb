@@ -9,14 +9,16 @@ class HtmlReportTest < Minitest::Test
     report = HtmlReport.new
     calls = []
 
+    result_fetch_data = "fetched_data"
     fetch_data = lambda {
       calls << { called: :fetch_data }
-      "fetched_data"
+      result_fetch_data
     }
 
+    result_format_data = "formatted_data"
     format_data = lambda { |data|
       calls << { called: :format_data, args: [data] }
-      "formatted_data"
+      result_format_data
     }
 
     output_report = lambda { |data|
@@ -36,8 +38,8 @@ class HtmlReportTest < Minitest::Test
     # Assert
     assert_equal [
       { called: :fetch_data },
-      { called: :format_data, args: ["fetched_data"] },
-      { called: :output_report, args: ["formatted_data"] }
+      { called: :format_data, args: [result_fetch_data] },
+      { called: :output_report, args: [result_format_data] }
     ], calls
   end
 end
