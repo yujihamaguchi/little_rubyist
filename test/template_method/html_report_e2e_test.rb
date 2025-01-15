@@ -13,6 +13,6 @@ class HtmlReportE2eTest < Minitest::Test
 
     # Assert
     assert_match "[HTML Report]", output
-    assert_match "<html><body>HTML formatted report data</bod></html>", output
+    assert_match "<html><body>report data</bod></html>", output
   end
 end

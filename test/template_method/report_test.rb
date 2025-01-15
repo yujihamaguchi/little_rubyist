@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/template_method/html_report"
+require_relative "../../lib/template_method/report"
 
-class HtmlReportTest < Minitest::Test
+class ReportTest < Minitest::Test
   def test_generate
     # Arrange
-    report = HtmlReport.new
+    report = Report.new
     calls = []
 
     result_fetch_data = "fetched_data"

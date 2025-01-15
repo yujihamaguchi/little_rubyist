@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
-class HtmlReport
-  def generate
-    fetched_data = fetch_data
-    formatted_data = format_data(fetched_data)
-    output_report(formatted_data)
+require_relative "report"
+
+class HtmlReport < Report
+  def fetch_data
+    "report data"
   end
 
-  def fetch_data; end
+  def format_data(data)
+    "<html><body>#{data}</bod></html>"
+  end
 
-  def format_data(data); end
-
-  def output_report(data); end
+  def output_report(data)
+    "[HTML Report]#{data}"
+  end
 end
