@@ -189,4 +189,12 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 32, [1, 2, 3].scalar_product([4, 5, 6])
     assert_equal 0, [].scalar_product([])
   end
+
+  def test_my_reverse
+    assert_equal [], [].my_reverse
+    assert_equal [1], [1].my_reverse
+    assert_equal [2, 1], [1, 2].my_reverse
+    assert_equal [1, 2, 3], [3, 2, 1].my_reverse
+    assert_equal [3, 2, 1], [1, 2, 3].my_reverse
+  end
 end

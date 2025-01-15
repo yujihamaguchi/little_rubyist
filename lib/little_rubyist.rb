@@ -285,3 +285,12 @@ class Array
     self.zip(other).reduce(0) { |acc, (n, m)| acc + n * m }
   end
 end
+
+# Q035: リストの順番を逆転する関数 my-reverse を直接の再帰を用いて自作せよ。
+class Array
+  def my_reverse
+    return [] if self.empty?
+
+    self.drop(1).my_reverse + [self.first]
+  end
+end
