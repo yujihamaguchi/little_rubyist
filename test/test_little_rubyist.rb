@@ -16,6 +16,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [], [1].my_zip([])
   end
 
+  def test_my_insert
+    assert_equal [1, 2, 3, 4, 5], [1, 2, 4, 5].my_insert(3)
+    assert_equal [1], [].my_insert(1)
+  end
+
   def test_my_sum
     assert_equal 1, [1].my_sum
     assert_equal 3, [1, 2].my_sum

@@ -42,7 +42,7 @@ class Array
 
   # # reduce
   # def my_sum
-  #   self.reduce(0) { |acc, n| acc + n }
+  #   self.reduce(0) { |acc, value| acc + value }
   # end
 end
 
@@ -78,7 +78,7 @@ class Array
 
   # # reduce
   # def product
-  #   self.reduce(1) { |acc, n| acc * n }
+  #   self.reduce(1) { |acc, value| acc * value }
   # end
 end
 
@@ -249,7 +249,7 @@ class Integer
 end
 
 # Q032: ピタゴラス数のリストを生成する関数 pyths を定義せよ。
-#       ただし、ピタゴラス数の要素は与えられた上限 n 以下であるとする。
+#       ただし、ピタゴラス数の要素は与えられた上限 value 以下であるとする。
 class Integer
   def pyths
     (1..self).to_a.combination(3).select { |x, y, z| x**2 + y**2 == z**2 }
@@ -268,20 +268,20 @@ end
 
 # 末尾再帰
 # class Object
-#   def my_replicate(n)
-#     my_replicate_ = lambda do |acc, n|
-#       return acc if n.zero?
+#   def my_replicate(value)
+#     my_replicate_ = lambda do |acc, value|
+#       return acc if value.zero?
 #
-#       my_replicate_.call(acc + [self], n - 1)
+#       my_replicate_.call(acc + [self], value - 1)
 #     end
-#     my_replicate_.call([], n)
+#     my_replicate_.call([], value)
 #   end
 # end
 
 # Q034: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
 class Array
   def scalar_product(other)
-    # self.zip(other).sum { |n, m| n * m }
+    # self.zip(other).sum { |value, elem| value * elem }
     self.zip(other).reduce(0) { |acc, (n, m)| acc + n * m }
   end
 end
@@ -292,5 +292,18 @@ class Array
     return [] if self.empty?
 
     self.drop(1).my_reverse + [self.first]
+  end
+end
+
+# Q036: ある要素を、整列されたリストに挿入する関数 my-insert を書け。( 再帰バージョンも書いてみよう )
+class Array
+  # def my_insert(value)
+  #   self.take_while { |elem| elem < value } + [value] + self.drop_while { |elem| elem < value }
+  # end
+  def my_insert(value)
+    return [value] if self.empty?
+    return [value] + self if value <= self.first
+
+    [self.first] + self.drop(1).my_insert(value)
   end
 end
