@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
-require_relative "visitor"
-
-class XMLExportVisitor
+class JSONExportVisitor
   include Visitor
 
   def visit_for_dot(_)
-    "XMLed dot"
+    "JSON dot"
   end
 
   def visit_for_circle(_)
-    "XMLed circle"
+    "JSON circle"
   end
 
   def visit_for_rectangle(_)
-    "XMLed rectangle"
+    "JSON rectangle"
   end
 end

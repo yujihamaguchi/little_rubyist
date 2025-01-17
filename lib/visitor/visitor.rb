@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
-require_relative "visitor"
-
-class XMLExportVisitor
-  include Visitor
-
+module Visitor
   def visit_for_dot(_)
-    "XMLed dot"
+    raise NotImplementedError
   end
 
   def visit_for_circle(_)
-    "XMLed circle"
+    raise NotImplementedError
   end
 
   def visit_for_rectangle(_)
-    "XMLed rectangle"
+    raise NotImplementedError
   end
 end
