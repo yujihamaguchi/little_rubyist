@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 
-require "adaptor/round_hole"
+require_relative "../../lib/adaptor/round_hole"
 
 class RoundHoleTest < Minitest::Test
   def test_fits_round_peg

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "decorator/prime_price"
+require_relative "../../lib/decorator/prime_price"
 
 class PrimePriceTest < Minitest::Test
   def test_value

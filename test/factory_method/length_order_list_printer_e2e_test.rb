@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "factory_method/length_order_list_printer"
+require_relative "../../lib/factory_method/length_order_list_printer"
 
 class LengthOrderListPrinterE2eTest < Minitest::Test
   def test_print_list

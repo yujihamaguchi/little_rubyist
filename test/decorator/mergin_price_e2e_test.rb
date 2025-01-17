@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "decorator/prime_price"
-require "decorator/double_price"
-require "decorator/wholesale_price"
+require_relative "../../lib/decorator/prime_price"
+require_relative "../../lib/decorator/double_price"
+require_relative "../../lib/decorator/wholesale_price"
 
 class MarginPriceE2eTest < Minitest::Test
   def test_value

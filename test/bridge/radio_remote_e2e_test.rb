@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "bridge/advanced_remote_control"
-require "bridge/radio"
+require_relative "../../lib/bridge/advanced_remote_control"
+require_relative "../../lib/bridge/radio"
 
 class RadioRemoteE2eTest < Minitest::Test
   def test_toggle_power_when_disabled

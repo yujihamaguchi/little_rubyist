@@ -14,8 +14,8 @@
 # 	volume_up
 #
 require_relative "../test_helper"
-require "bridge/remote_control"
-require "bridge/television"
+require_relative "../../lib/bridge/remote_control"
+require_relative "../../lib/bridge/television"
 
 class TvRemoteE2eTest < Minitest::Test
   def test_toggle_power_when_disabled

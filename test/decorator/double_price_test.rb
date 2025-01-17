@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "decorator/double_price"
+require_relative "../../lib/decorator/double_price"
 
 class DoublePriceTest < Minitest::Test
   def test_value

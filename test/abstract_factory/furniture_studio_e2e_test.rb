@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "abstract_factory/furniture_studio"
-require "abstract_factory/art_deco_style_factory"
-require "abstract_factory/modern_style_factory"
+require_relative "../../lib/abstract_factory/furniture_studio"
+require_relative "../../lib/abstract_factory/art_deco_style_factory"
+require_relative "../../lib/abstract_factory/modern_style_factory"
 
 class FurnitureStudioE2eTest < Minitest::Test
   TESTCASES = [

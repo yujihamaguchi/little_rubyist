@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "composite/box"
-require "composite/product"
+require_relative "../../lib/composite/box"
+require_relative "../../lib/composite/product"
 
 class BoxE2eTest < Minitest::Test
   def test_price

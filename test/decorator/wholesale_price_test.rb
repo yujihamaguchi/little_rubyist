@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "decorator/wholesale_price"
+require_relative "../../lib/decorator/wholesale_price"
 
 class WholesalePriceTest < Minitest::Test
   def test_value

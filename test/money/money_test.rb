@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require "multiset"
-require "money/money"
-require "money/money_sum"
+require_relative "../../lib/money/money"
+require_relative "../../lib/money/money_sum"
 
 class MoneyTest < Minitest::Test
   def test_plus_money

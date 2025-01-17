@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "simple_factory/ikura"
-require "simple_factory/norimaki"
+require_relative "ikura"
+require_relative "norimaki"
 
 class SushiFactory
   SUSHI_TYPES = {

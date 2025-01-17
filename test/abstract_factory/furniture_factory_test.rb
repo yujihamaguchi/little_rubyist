@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "abstract_factory/art_deco_style_chair"
-require "abstract_factory/art_deco_style_table"
-require "abstract_factory/art_deco_style_bench"
-require "abstract_factory/art_deco_style_factory"
-require "abstract_factory/modern_style_factory"
-require "abstract_factory/modern_style_chair"
-require "abstract_factory/modern_style_bench"
-require "abstract_factory/modern_style_table"
+require_relative "../../lib/abstract_factory/art_deco_style_chair"
+require_relative "../../lib/abstract_factory/art_deco_style_table"
+require_relative "../../lib/abstract_factory/art_deco_style_bench"
+require_relative "../../lib/abstract_factory/art_deco_style_factory"
+require_relative "../../lib/abstract_factory/modern_style_factory"
+require_relative "../../lib/abstract_factory/modern_style_chair"
+require_relative "../../lib/abstract_factory/modern_style_bench"
+require_relative "../../lib/abstract_factory/modern_style_table"
 
 class FurnitureFactoryTest < Minitest::Test
   TESTCASES = [

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "strategy/duck"
+require_relative "../../lib/strategy/duck"
 
 class DuckTest < Minitest::Test
   def test_fly

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "observer/weather_data"
+require_relative "../../lib/observer/weather_data"
 
 class WeatherDataTest < Minitest::Test
   def test_update

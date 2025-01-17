@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "command/fan"
-require "command/stereo"
-require "command/fan_on_command"
-require "command/stereo_volume_up_command"
-require "command/remote_control"
-require "command/fan_off_command"
-require "command/stereo_volume_down_command"
+require_relative "../../lib/command/fan"
+require_relative "../../lib/command/stereo"
+require_relative "../../lib/command/fan_on_command"
+require_relative "../../lib/command/stereo_volume_up_command"
+require_relative "../../lib/command/remote_control"
+require_relative "../../lib/command/fan_off_command"
+require_relative "../../lib/command/stereo_volume_down_command"
 
 # +--------------------------+
 # |      Remote Control      |

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "singleton/my_singleton"
+require_relative "../../lib/singleton/my_singleton"
 
 class SingletonTest < Minitest::Test
   def test_singleton_instance

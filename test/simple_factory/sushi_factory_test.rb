@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "simple_factory/ikura"
-require "simple_factory/norimaki"
+require_relative "../../lib/simple_factory/ikura"
+require_relative "../../lib/simple_factory/norimaki"
 
 class SushiFactoryTest < Minitest::Test
   TESTCASES = {

@@ -2,10 +2,10 @@
 
 require_relative "../test_helper"
 
-require "adaptor/round_peg"
-require "adaptor/round_hole"
-require "adaptor/square_peg"
-require "adaptor/square_peg_adaptor"
+require_relative "../../lib/adaptor/round_peg"
+require_relative "../../lib/adaptor/round_hole"
+require_relative "../../lib/adaptor/square_peg"
+require_relative "../../lib/adaptor/square_peg_adaptor"
 
 class RoundHoleE2eTest < Minitest::Test
   def test_fits_round_peg

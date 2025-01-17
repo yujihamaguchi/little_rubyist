@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "simple_factory/sushi_factory"
-require "simple_factory/sushi_restaurant"
-require "simple_factory/ikura"
-require "simple_factory/norimaki"
+require_relative "../../lib/simple_factory/sushi_factory"
+require_relative "../../lib/simple_factory/sushi_restaurant"
+require_relative "../../lib/simple_factory/ikura"
+require_relative "../../lib/simple_factory/norimaki"
 
 class SushiRestaurantE2eTest < Minitest::Test
   TESTCASES = {

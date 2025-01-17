@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require "abstract_factory/table_set"
+require_relative "../../lib/abstract_factory/table_set"
 
 class FurnitureStudioTest < Minitest::Test
   def test_create_table_set

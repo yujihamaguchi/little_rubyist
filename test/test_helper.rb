@@ -2,7 +2,7 @@
 
 # noinspection RubyMismatchedArgumentType
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-require "little_rubyist"
+require_relative "../lib/little_rubyist"
 
 require "minitest/autorun"
 
