@@ -6,15 +6,15 @@ require_relative "../../lib/abstract_factory/art_deco_style_factory"
 require_relative "../../lib/abstract_factory/modern_style_factory"
 
 class FurnitureStudioE2eTest < Minitest::Test
-  TESTCASES = [
-    { factory_class: ArtDecoStyleFactory, style_name: "art deco" },
-    { factory_class: ModernStyleFactory, style_name: "modern" }
+  TEST_CASES = [
+    { style_name: "art deco", factory_class: ArtDecoStyleFactory },
+    { style_name: "modern", factory_class: ModernStyleFactory }
   ].freeze
 
   def test_create_table_set
-    TESTCASES.each do |testcase|
-      factory_class = testcase[:factory_class]
-      style_name = testcase[:style_name]
+    TEST_CASES.each do |test_case|
+      factory_class = test_case[:factory_class]
+      style_name = test_case[:style_name]
 
       # Arrange
       some_style_factory = factory_class.new

@@ -295,7 +295,7 @@ class Array
   end
 end
 
-# Q036: ある要素を、整列されたリストに挿入する関数 my-insert を書け。( 再帰バージョンも書いてみよう )
+# Q036: ある要素を、整列されたリストに挿入する関数 my_insert を書け。( 再帰バージョンも書いてみよう )
 class Array
   # def my_insert(value)
   #   self.take_while { |elem| elem < value } + [value] + self.drop_while { |elem| elem < value }
@@ -305,5 +305,14 @@ class Array
     return [value] + self if value <= self.first
 
     [self.first] + self.drop(1).my_insert(value)
+  end
+end
+
+# Q037: 関数 my-insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
+class Array
+  def isort
+    return [] if self.empty?
+
+    self.drop(1).isort.my_insert(self.first)
   end
 end

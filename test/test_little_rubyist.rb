@@ -204,4 +204,17 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2, 3], [1, 2].my_insert(3)
     assert_equal [1], [].my_insert(1)
   end
+
+  def test_isort
+    assert_equal [], [].isort
+    assert_equal [1], [1].isort
+    assert_equal [1, 2], [1, 2].isort
+    assert_equal [1, 2], [2, 1].isort
+    assert_equal [1, 2, 3], [1, 2, 3].isort
+    assert_equal [1, 2, 3], [1, 3, 2].isort
+    assert_equal [1, 2, 3], [2, 3, 1].isort
+    assert_equal [1, 2, 3], [2, 1, 3].isort
+    assert_equal [1, 2, 3], [3, 1, 2].isort
+    assert_equal [1, 2, 3], [3, 2, 1].isort
+  end
 end
