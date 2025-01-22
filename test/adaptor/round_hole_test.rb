@@ -5,7 +5,7 @@ require_relative "../test_helper"
 require_relative "../../lib/adaptor/round_hole"
 
 class RoundHoleTest < Minitest::Test
-  def test_fits_round_peg
+  def test_fits_peg
     # Arrange
     radius = 5
     round_hole = RoundHole.new(radius: radius)
@@ -18,6 +18,4 @@ class RoundHoleTest < Minitest::Test
     # Assert
     round_peg.verify
   end
-
-  def test_fits_square_peg; end
 end
