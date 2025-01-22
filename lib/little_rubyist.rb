@@ -308,11 +308,21 @@ class Array
   end
 end
 
-# Q037: 関数 my-insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
+# Q037: 関数 my_insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
 class Array
   def isort
     return [] if self.empty?
 
     self.drop(1).isort.my_insert(self.first)
+  end
+end
+
+# Q038: drop を再帰を用いて自作( my_drop )せよ。
+class Array
+  def my_drop(n)
+    return [] if self.empty?
+    return self if n.zero?
+
+    self[1..].my_drop(n - 1)
   end
 end

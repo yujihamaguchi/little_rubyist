@@ -217,4 +217,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2, 3], [3, 1, 2].isort
     assert_equal [1, 2, 3], [3, 2, 1].isort
   end
+
+  def test_my_drop
+    assert_equal [], [].my_drop(1)
+    assert_equal [1, 2, 3], [1, 2, 3].my_drop(0)
+    assert_equal [2, 3], [1, 2, 3].my_drop(1)
+    assert_equal [3], [1, 2, 3].my_drop(2)
+    assert_equal [], [1, 2, 3].my_drop(3)
+    assert_equal [], [1, 2, 3].my_drop(4)
+  end
 end
