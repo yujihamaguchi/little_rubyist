@@ -319,10 +319,10 @@ end
 
 # Q038: drop を再帰を用いて自作( my_drop )せよ。
 class Array
-  def my_drop(n)
+  def my_drop(num)
     return [] if self.empty?
-    return self if n.zero?
+    return self if num.zero?
 
-    self[1..].my_drop(n - 1)
+    self[1..].my_drop(num - 1)
   end
 end
