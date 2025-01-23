@@ -226,4 +226,12 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [], [1, 2, 3].my_drop(3)
     assert_equal [], [1, 2, 3].my_drop(4)
   end
+
+  def test_my_zip_2
+    assert_equal [], [].my_zip_2([4, 5, 6])
+    assert_equal [], [1, 2, 3].my_zip_2([])
+    assert_equal [[1, 4], [2, 5], [3, 6]], [1, 2, 3].my_zip_2([4, 5, 6])
+    assert_equal [[1, 4], [2, 5]], [1, 2, 3].my_zip_2([4, 5])
+    assert_equal [[1, 4], [2, 5]], [1, 2].my_zip_2([4, 5, 6])
+  end
 end

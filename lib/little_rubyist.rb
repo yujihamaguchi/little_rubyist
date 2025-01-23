@@ -326,3 +326,22 @@ class Array
     self[1..].my_drop(num - 1)
   end
 end
+
+# Q039: Haskell の zip 関数を直接の再帰を用いて自作( my_zip_2 )せよ。( パターンマッチを用いた書き方も )
+#       [a] -> [b] -> [(a,b)]
+class Array
+  def my_zip_2(other)
+    # パターンマッチを使用しない
+    return [] if self.empty? || other.empty?
+
+    [[self.first, other.first]] + self.drop(1).my_zip_2(other.drop(1))
+
+    # パターンマッチを使用
+    # case [self, other]
+    # in [[x, *xs], [y, *ys]]
+    #   [[x, y]] + xs.my_zip_2(ys)
+    # else
+    #   []
+    # end
+  end
+end
