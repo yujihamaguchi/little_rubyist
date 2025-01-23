@@ -2,17 +2,17 @@
 
 require_relative "../test_helper"
 
-class RemoteTest < Minitest::Test
+class RemoteControlTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange
     device = CustomMock.new
     device.expect :enabled?, false
     device.expect :enable, nil
-    remote = Bridge::RemoteControl.new(device: device)
+    remote_control = Bridge::RemoteControl.new(device: device)
 
     # Act
-    remote.stub :device, device do
-      remote.toggle_power
+    remote_control.stub :device, device do
+      remote_control.toggle_power
     end
 
     # Assert
@@ -24,11 +24,11 @@ class RemoteTest < Minitest::Test
     device = CustomMock.new
     device.expect :enabled?, true
     device.expect :disable, nil
-    remote = Bridge::RemoteControl.new(device: device)
+    remote_control = Bridge::RemoteControl.new(device: device)
 
     # Act
-    remote.stub :device, device do
-      remote.toggle_power
+    remote_control.stub :device, device do
+      remote_control.toggle_power
     end
 
     # Assert

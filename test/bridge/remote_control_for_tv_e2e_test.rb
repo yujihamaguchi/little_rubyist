@@ -1,31 +1,29 @@
 # frozen_string_literal: true
 
-# Device は以下のインタフェースを有し、
+# Remote control は以下のインタフェースを有し、
+#
+# 	toggle_power
+#
+# Device は以下のインタフェースを有する
 #
 # 	enabled?
 # 	enable
 # 	disable
-# 	volume
-# 	volume(volume_int)
 #
-# Remote control は以下のインタフェースを有するものとする
-# 	toggle_power
-# 	volume_down
-# 	volume_up
-#
+# (TVRemoteControl, RadioRemoteControl... というふうに Device ごとの RemoteControl をつくってないようにするには？)
 require_relative "../test_helper"
 require_relative "../../lib/bridge/remote_control"
 require_relative "../../lib/bridge/television"
 
-class TvRemoteE2eTest < Minitest::Test
+class RemoteControlForTvE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange
     tv = Television.new
     assert_equal false, tv.enabled?
-    remote = Bridge::RemoteControl.new(device: tv)
+    remote_control = Bridge::RemoteControl.new(device: tv)
 
     # Act
-    remote.toggle_power
+    remote_control.toggle_power
 
     # Assert
     assert_equal true, tv.enabled?
@@ -34,12 +32,12 @@ class TvRemoteE2eTest < Minitest::Test
   def test_toggle_power_when_enabled
     # Arrange
     tv = Television.new
-    remote = Bridge::RemoteControl.new(device: tv)
-    remote.toggle_power
+    remote_control = Bridge::RemoteControl.new(device: tv)
+    remote_control.toggle_power
     assert_equal true, tv.enabled?
 
     # Act
-    remote.toggle_power
+    remote_control.toggle_power
 
     # Assert
     assert_equal false, tv.enabled?

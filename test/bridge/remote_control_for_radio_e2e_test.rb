@@ -4,15 +4,15 @@ require_relative "../test_helper"
 require_relative "../../lib/bridge/advanced_remote_control"
 require_relative "../../lib/bridge/radio"
 
-class RadioRemoteE2eTest < Minitest::Test
+class RemoteControlForRadioE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange
     radio = Radio.new
     assert_equal false, radio.enabled?
-    remote = Bridge::RemoteControl.new(device: radio)
+    remote_control = Bridge::RemoteControl.new(device: radio)
 
     # Act
-    remote.toggle_power
+    remote_control.toggle_power
 
     # Assert
     assert_equal true, radio.enabled?
@@ -21,12 +21,12 @@ class RadioRemoteE2eTest < Minitest::Test
   def test_toggle_power_when_enabled
     # Arrange
     radio = Radio.new
-    remote = Bridge::RemoteControl.new(device: radio)
-    remote.toggle_power
+    remote_control = Bridge::RemoteControl.new(device: radio)
+    remote_control.toggle_power
     assert_equal true, radio.enabled?
 
     # Act
-    remote.toggle_power
+    remote_control.toggle_power
 
     # Assert
     assert_equal false, radio.enabled?
