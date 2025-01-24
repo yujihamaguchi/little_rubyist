@@ -345,3 +345,14 @@ class Array
     # end
   end
 end
+
+# Q040: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。
+class Integer
+  def my_even?
+    self.zero? || (self.abs - 1).my_odd?
+  end
+
+  def my_odd?
+    !self.zero? && (self.abs - 1).my_even?
+  end
+end

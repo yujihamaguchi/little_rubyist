@@ -234,4 +234,24 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [[1, 4], [2, 5]], [1, 2, 3].my_zip_2([4, 5])
     assert_equal [[1, 4], [2, 5]], [1, 2].my_zip_2([4, 5, 6])
   end
+
+  def test_my_even?
+    assert 0.my_even?
+    refute 1.my_even?
+    assert 2.my_even?
+    refute 3.my_even?
+    refute(-1.my_even?)
+    assert(-2.my_even?)
+    refute(-3.my_even?)
+  end
+
+  def test_my_odd?
+    refute 0.my_odd?
+    assert 1.my_odd?
+    refute 2.my_odd?
+    assert 3.my_odd?
+    assert(-1.my_odd?)
+    refute(-2.my_odd?)
+    assert(-3.my_odd?)
+  end
 end
