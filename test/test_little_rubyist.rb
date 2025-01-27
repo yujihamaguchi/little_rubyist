@@ -254,4 +254,12 @@ class TestLittleRubyist < Minitest::Test
     refute(-2.my_odd?)
     assert(-3.my_odd?)
   end
+
+  def test_fibonacci
+    assert_equal 0, 0.fibonacci
+    assert_equal 1, 1.fibonacci
+    assert_equal 1, 2.fibonacci
+    assert_equal 2, 3.fibonacci
+    assert_equal 3, 4.fibonacci
+  end
 end

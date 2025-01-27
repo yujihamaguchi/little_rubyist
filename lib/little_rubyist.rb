@@ -356,3 +356,13 @@ class Integer
     !self.zero? && (self.abs - 1).my_even?
   end
 end
+
+# Q041: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を書け。（直接の再帰を用いて良い）
+class Integer
+  def fibonacci
+    return 0 if self.zero?
+    return 1 if self == 1
+
+    (self - 1).fibonacci + (self - 2).fibonacci
+  end
+end
