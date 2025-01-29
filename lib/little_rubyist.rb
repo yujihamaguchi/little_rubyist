@@ -367,7 +367,7 @@ class Integer
   end
 end
 
-# Q042: qsort を再帰を用いて書け。（直接の再帰を用いて良い）
+# Q042: qsort を再帰を用いて書け。（直接の再帰を用いて）
 class Array
   def qsort
     return [] if self.empty?
