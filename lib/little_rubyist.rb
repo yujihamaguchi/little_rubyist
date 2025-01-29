@@ -366,3 +366,17 @@ class Integer
     (self - 1).fibonacci + (self - 2).fibonacci
   end
 end
+
+# Q042: qsort を再帰を用いて書け。（直接の再帰を用いて良い）
+class Array
+  def qsort
+    return [] if self.empty?
+
+    return self if self.size == 1
+
+    x, *xs = self
+    lt = xs.select { |x_| x_ < x }
+    ge = xs.select { |x_| x_ >= x }
+    lt.qsort + [x] + ge.qsort
+  end
+end

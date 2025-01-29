@@ -262,4 +262,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, 3.fibonacci
     assert_equal 3, 4.fibonacci
   end
+
+  def test_qsort
+    assert_equal [], [].qsort
+    assert_equal [1], [1].qsort
+    assert_equal [1, 2, 3], [1, 2, 3].qsort
+    assert_equal [1, 2, 3], [3, 1, 2].qsort
+    assert_equal [1, 2, 3], [2, 3, 1].qsort
+    assert_equal [1, 2, 2, 3], [2, 3, 2, 1].qsort
+  end
 end

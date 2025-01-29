@@ -27,6 +27,9 @@ class CarBuilder
   end
 
   def build
+    raise "Engine is missing!" unless @car.engine
+    raise "Seats is missing!" unless @car.seats
+
     @car
   end
 end
