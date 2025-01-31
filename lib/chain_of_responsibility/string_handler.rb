@@ -3,9 +3,11 @@
 require_relative "handler"
 
 class StringHandler < Handler
-  def handle(request:)
-    return "Handled by StringHandler: #{request}" if request.is_a? String
+  def do_handle(request:)
+    return request unless request.key?(:text)
 
-    @next_handler&.handle(request: request)
+    updated = request.dup
+    updated[:text] = updated[:text].upcase
+    updated
   end
 end

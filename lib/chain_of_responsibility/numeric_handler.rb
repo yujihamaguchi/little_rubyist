@@ -3,9 +3,11 @@
 require_relative "handler"
 
 class NumericHandler < Handler
-  def handle(request:)
-    return "Handled by NumericHandler: #{request}" if request.is_a? Numeric
+  def do_handle(request:)
+    return request unless request.key?(:number)
 
-    @next_handler&.handle(request: request)
+    updated = request.dup
+    updated[:number] = updated[:number] + 1
+    updated
   end
 end
