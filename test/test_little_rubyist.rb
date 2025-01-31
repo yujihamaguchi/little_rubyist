@@ -271,4 +271,20 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2, 3], [2, 3, 1].qsort
     assert_equal [1, 2, 2, 3], [2, 3, 2, 1].qsort
   end
+
+  def test_evens
+    assert_equal [], [].evens
+    assert_equal [], [1].evens
+    assert_equal [2], [1, 2].evens
+    assert_equal [2], [1, 2, 3].evens
+    assert_equal [2, 4], [1, 2, 3, 4].evens
+  end
+
+  def test_odds
+    assert_equal [], [].odds
+    assert_equal [1], [1].odds
+    assert_equal [1], [1, 2].odds
+    assert_equal [1, 3], [1, 2, 3].odds
+    assert_equal [1, 3], [1, 2, 3, 4].odds
+  end
 end

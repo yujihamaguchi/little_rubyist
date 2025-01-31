@@ -380,3 +380,18 @@ class Array
     lt.qsort + [x] + ge.qsort
   end
 end
+
+# Q043: リストから偶数の位置の要素を取り出す関数 evens と、奇数の位置の要素を取り出す関数 odds を相互再帰を用いて書け。
+class Array
+  def evens
+    return [] if self.empty?
+
+    self.drop(1).odds
+  end
+
+  def odds
+    return [] if self.empty?
+
+    [self.first] + self.drop(1).evens
+  end
+end
