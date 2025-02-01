@@ -287,4 +287,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 3], [1, 2, 3].odds
     assert_equal [1, 3], [1, 2, 3, 4].odds
   end
+
+  def test_my_init
+    assert_equal [], [].my_init
+    assert_equal [], [1].my_init
+    assert_equal [1], [1, 2].my_init
+    assert_equal [1, 2], [1, 2, 3].my_init
+  end
 end

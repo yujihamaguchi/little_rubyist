@@ -395,3 +395,22 @@ class Array
     [self.first] + self.drop(1).evens
   end
 end
+
+# Q044: Haskell の init 関数を自作( my_init )せよ。(直接の再帰を用いたもの、遅延評価関数を用いたもの両方書くこと）
+# init :: [a] -> [a]
+# リスト xs の最後の要素を除いたリストを返す。
+#     init [1,2,3]   = [1,2]
+#     init [1]       = []
+class Array
+  # 再帰を用いたもの
+  def my_init
+    return [] if self.size <= 1
+
+    [self.first] + self.drop(1).my_init
+  end
+
+  # 遅延評価関数を用いたもの
+  # def my_init
+  #   self.reverse.drop(1).reverse
+  # end
+end

@@ -16,7 +16,6 @@ require_relative "../../lib/command/stereo_volume_down_command"
 # +--------------------------+
 # | Slot 1     [ON] [OFF]    |
 # | Slot 2     [ON] [OFF]    |
-# | Slot 3     [ON] [OFF]    |
 # +--------------------------+
 # |          [UNDO]          |
 # +--------------------------+
