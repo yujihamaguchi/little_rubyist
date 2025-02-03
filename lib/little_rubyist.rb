@@ -417,3 +417,10 @@ end
 
 # Q045: Haskell の elem を直接の再帰を用いて自作( my_elem )せよ。
 #       elem :: Eq a => a -> [a] -> Bool
+class Object
+  def my_elem(arr)
+    return false if arr.empty?
+
+    self == arr.first || self.my_elem(arr.drop(1))
+  end
+end

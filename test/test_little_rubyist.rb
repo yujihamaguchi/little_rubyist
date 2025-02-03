@@ -296,13 +296,10 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_elem
-    # (is (= false (my-elem 1 [])))
-    # (is (= true (my-elem 1 [1])))
-    # (is (= false (my-elem 3 [1 2])))
-    # (is (= true (my-elem 3 [1 2 3])))
-    refute [].my_elem(1)
-    assert [1].my_elem(1)
-    refute [1, 2].my_elem(3)
-    assert [1, 2, 3].my_elem(3)
+    refute 1.my_elem([])
+    assert 1.my_elem([1])
+    refute 2.my_elem([1])
+    assert 2.my_elem([1, 2])
+    assert 2.my_elem([1, 2, 3])
   end
 end
