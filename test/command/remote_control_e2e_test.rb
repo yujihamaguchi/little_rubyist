@@ -187,13 +187,8 @@ class RemoteControlE2eTest < Minitest::Test
   def test_push_no_undo_command_assigned_button
     # Arrange
     remote_control = RemoteControl.new
-    slot_number = 1
-    command = CustomMock.new
-    command.expect :undo, nil
-    remote_control.add_command(slot_number: slot_number, on_command: command, off_command: nil)
 
     # Act
-    remote_control.push_on_button(slot_number: slot_number)
     remote_control.push_undo_button
 
     # Assert

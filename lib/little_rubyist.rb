@@ -414,3 +414,6 @@ class Array
   #   self.reverse.drop(1).reverse
   # end
 end
+
+# Q045: Haskell の elem を直接の再帰を用いて自作( my_elem )せよ。
+#       elem :: Eq a => a -> [a] -> Bool

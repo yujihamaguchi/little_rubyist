@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemoteControl
-  attr_accessor :button_layout, :last_command, :display_message
+  attr_reader :button_layout, :last_command, :display_message
 
   def initialize
     @button_layout = {}
