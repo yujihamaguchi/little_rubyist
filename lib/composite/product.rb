@@ -2,7 +2,7 @@
 
 require_relative "component"
 
-class CarProduct
+class Product
   include Component
 
   attr_reader :price
