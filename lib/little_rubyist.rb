@@ -425,7 +425,7 @@ class Object
   end
 end
 
-# Q046: Haskell の !! の前置記法版である index 関数( my_index )を直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
+# Q046: Haskell の !! を my_index という名のメソッドとして直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
 #       (!!) :: [a] -> Int -> a
 class Array
   def my_index(num)
