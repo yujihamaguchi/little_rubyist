@@ -302,4 +302,11 @@ class TestLittleRubyist < Minitest::Test
     assert 2.my_elem([1, 2])
     assert 2.my_elem([1, 2, 3])
   end
+
+  def test_my_index
+    assert_nil [].my_index(0)
+    assert_nil [1].my_index(1)
+    assert_equal 1, [1].my_index(0)
+    assert_equal 2, [1, 2].my_index(1)
+  end
 end

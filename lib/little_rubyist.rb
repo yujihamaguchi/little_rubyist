@@ -424,3 +424,13 @@ class Object
     self == arr.first || self.my_elem(arr.drop(1))
   end
 end
+
+# Q046: Haskell の !! の前置記法版である index 関数( my_index )を直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
+#       (!!) :: [a] -> Int -> a
+class Array
+  def my_index(num)
+    return self.first if num.zero?
+
+    self.drop(1).my_index(num - 1)
+  end
+end
