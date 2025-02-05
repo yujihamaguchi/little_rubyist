@@ -2,7 +2,7 @@
 
 require_relative "price"
 
-class MarginPrice
+class PriceDecorator
   include Price
 
   def initialize(price:)

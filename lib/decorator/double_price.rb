@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "margin_price"
+require_relative "price_decorator"
 
-class DoublePrice < MarginPrice
+class DoublePrice < PriceDecorator
   def value
     @price.value * 2
   end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "margin_price"
+require_relative "price_decorator"
 
-class WholesalePrice < MarginPrice
+class WholesalePrice < PriceDecorator
   def initialize(price:, advantage:)
     super(price: price)
     @advantage = advantage
