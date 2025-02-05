@@ -434,3 +434,20 @@ class Array
     self.drop(1).my_index(num - 1)
   end
 end
+
+# Q047: 整列されたリストを二つとり、一つの整列されたリストにして返す関数 merge を直接の再帰を用いて自作せよ。( my_merge )
+#       整列されたリストを処理する関数は用いてはならない。
+#       ex) merge [2,5,6] [1,3,4] ==> [1,2,3,4,5,6]
+class Array
+  def my_merge(other)
+    return self if other.empty?
+    return other if self.empty?
+
+    x, *xs = self
+    y, *ys = other
+
+    return [x] + xs.my_merge(other) if x < y
+
+    [y] + self.my_merge(ys)
+  end
+end
