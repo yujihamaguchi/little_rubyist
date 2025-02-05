@@ -9,6 +9,6 @@ class WholesalePrice < MarginPrice
   end
 
   def value
-    @price.value + @advantage
+    @price.value - @advantage
   end
 end

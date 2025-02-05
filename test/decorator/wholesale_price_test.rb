@@ -7,7 +7,7 @@ class WholesalePriceTest < Minitest::Test
     # Arrange
     original_value = 10
     advantage = 3
-    expected = original_value + advantage
+    expected = original_value - advantage
     price = CustomMock.new
     price.expect :value, original_value
     wholesale_price = WholesalePrice.new(price: price, advantage: advantage)
