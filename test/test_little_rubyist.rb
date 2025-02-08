@@ -317,4 +317,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2, 3, 4, 5, 6], [2, 5, 6].my_merge([1, 3, 4])
     assert_equal [0, 1, 1, 1, 2, 2, 2, 3], [0, 1, 1, 2].my_merge([1, 2, 2, 3])
   end
+
+  def test_msort
+    assert_equal [], [].msort
+    assert_equal [1, 2, 3], [1, 2, 3].msort
+    assert_equal [1, 2, 3], [3, 2, 1].msort
+    assert_equal [1, 2, 3], [2, 3, 1].msort
+  end
 end
