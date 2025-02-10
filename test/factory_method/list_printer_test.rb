@@ -9,12 +9,13 @@ class ListPrinterTest < Minitest::Test
     list_printer = ListPrinter.new
 
     comparator = CustomMock.new
-    comparison_proc = proc {}
-    comparator.expect :comparison_proc, comparison_proc
+    comparison_lambda = -> {}
+    comparator.expect :comparison_lambda, comparison_lambda
 
     list = CustomMock.new
     sorted_list = CustomMock.new
-    list.expect(:sort_by, sorted_list) { |&_comparison_proc| _comparison_proc }
+    passed_lambda = nil
+    list.expect(:sort_by, sorted_list) { |&some_lambda| passed_lambda = some_lambda }
 
     sorted_list_string = CustomMock.new
     sorted_list.expect :to_s, sorted_list_string
@@ -26,6 +27,7 @@ class ListPrinterTest < Minitest::Test
     end
 
     # Assert
+    assert_same comparison_lambda, passed_lambda
     assert_equal sorted_list_string, actual
     comparator.verify
     list.verify

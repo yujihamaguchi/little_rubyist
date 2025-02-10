@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Comparator
-  def comparison_proc
+  def comparison_lambda
     raise NotImplementedError
   end
 end
