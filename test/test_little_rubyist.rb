@@ -325,4 +325,10 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2], [2, 1].msort
     assert_equal [1, 2, 3], [1, 3, 2].msort
   end
+
+  def test_my_replicate_rec
+    assert_equal [], "a".my_replicate_rec(0)
+    assert_equal ["a"], "a".my_replicate_rec(1)
+    assert_equal %w[a a], "a".my_replicate_rec(2)
+  end
 end

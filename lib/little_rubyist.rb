@@ -259,10 +259,10 @@ end
 # Q033: ある要素のみからなるリストを生成する関数 my_replicate を書け。(直接の再帰、末尾再帰のそれぞれを書け)
 # 直接の再帰
 class Object
-  def my_replicate(n)
-    return [] if n.zero?
+  def my_replicate(num)
+    return [] if num.zero?
 
-    self.my_replicate(n - 1) + [self]
+    self.my_replicate(num - 1) + [self]
   end
 end
 
@@ -468,5 +468,15 @@ class Array
 
     xs, ys = self.simple_halve
     xs.msort.my_merge(ys.msort)
+  end
+end
+
+# Q049: Haskell の replicate を再帰を用いて自作せよ。( my_replicate_rec )
+#       replicate :: Int -> a -> [a]
+class Object
+  def my_replicate_rec(num)
+    return [] if num.zero?
+
+    [self] + self.my_replicate_rec(num - 1)
   end
 end
