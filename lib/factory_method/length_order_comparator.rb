@@ -5,7 +5,15 @@ require_relative "comparator"
 class LengthOrderComparator
   include Comparator
 
+  def initialize(reverse: false)
+    @reverse = reverse
+  end
+
   def comparison_lambda
-    lambda(&:length)
+    if @reverse
+      ->(word) { -word.length }
+    else
+      ->(word) { word.length }
+    end
   end
 end

@@ -5,7 +5,15 @@ require_relative "comparator"
 class DictionaryOrderComparator
   include Comparator
 
+  def initialize(case_sensitive: false)
+    @case_sensitive = case_sensitive
+  end
+
   def comparison_lambda
-    ->(word) { word }
+    if @case_sensitive
+      ->(word) { word }
+    else
+      ->(word) { word.downcase }
+    end
   end
 end

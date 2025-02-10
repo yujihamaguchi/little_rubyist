@@ -9,10 +9,21 @@ class DictionaryOrderListPrinterE2eTest < Minitest::Test
     list_printer = DictionaryOrderListPrinter.new
 
     # Act
-    actual = list_printer.print_list(%w[banana cake apple])
+    actual = list_printer.print_list(%w[banana Cake apple])
 
     # Assert
-    assert_equal "[\"apple\", \"banana\", \"cake\"]",
+    assert_equal "[\"apple\", \"banana\", \"Cake\"]",
                  actual
+  end
+
+  def test_print_list_with_mixed_case
+    # Arrange
+    list_printer = DictionaryOrderListPrinter.new(case_sensitive: true)
+
+    # Act
+    actual = list_printer.print_list(%w[banana Cake apple])
+
+    # Assert
+    assert_equal "[\"Cake\", \"apple\", \"banana\"]", actual
   end
 end
