@@ -320,8 +320,9 @@ class TestLittleRubyist < Minitest::Test
 
   def test_msort
     assert_equal [], [].msort
-    assert_equal [1, 2, 3], [1, 2, 3].msort
-    assert_equal [1, 2, 3], [3, 2, 1].msort
-    assert_equal [1, 2, 3], [2, 3, 1].msort
+    assert_equal [1], [1].msort
+    assert_equal [1, 2], [1, 2].msort
+    assert_equal [1, 2], [2, 1].msort
+    assert_equal [1, 2, 3], [1, 3, 2].msort
   end
 end

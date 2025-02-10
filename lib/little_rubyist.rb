@@ -464,7 +464,7 @@ class Array
   end
 
   def msort
-    return self if self.size == 1
+    return self if self.size <= 1
 
     xs, ys = self.simple_halve
     xs.msort.my_merge(ys.msort)
