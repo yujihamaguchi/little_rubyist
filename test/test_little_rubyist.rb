@@ -331,4 +331,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal ["a"], "a".my_replicate_rec(1)
     assert_equal %w[a a], "a".my_replicate_rec(2)
   end
+
+  def test_my
+    assert_equal 1, 0.my(0)
+    assert_equal 1, 1.my(0)
+    assert_equal 1, 1.my(1)
+    assert_equal 2, 2.my(1)
+    assert_equal 4, 2.my(2)
+    assert_equal 8, 2.my(3)
+  end
 end

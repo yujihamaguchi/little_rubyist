@@ -480,3 +480,12 @@ class Object
     [self] + self.my_replicate_rec(num - 1)
   end
 end
+
+# Q050: 負でない整数に対する累乗演算を行う関数 my を直接の再帰を用いて定義せよ。
+class Integer
+  def my(other)
+    return 1 if other.zero?
+
+    self * self.my(other - 1)
+  end
+end
