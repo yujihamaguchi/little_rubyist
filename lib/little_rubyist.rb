@@ -489,3 +489,12 @@ class Integer
     self * self.my(other - 1)
   end
 end
+
+# Q051: map をリスト内包表記を用いて自作せよ( my-map )。
+class Array
+  def my_map(lmd)
+    return [] if self.empty?
+
+    [lmd.call(self.first)] + self.drop(1).my_map(lmd)
+  end
+end

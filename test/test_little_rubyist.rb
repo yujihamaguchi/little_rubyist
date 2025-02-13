@@ -340,4 +340,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 4, 2.my(2)
     assert_equal 8, 2.my(3)
   end
+
+  def test_my_map
+    assert_equal [2, 3, 4], [1, 2, 3].my_map(->(n) { n + 1 })
+    assert_equal [1, 4, 9], [1, 2, 3].my_map(->(n) { n * n })
+  end
 end
