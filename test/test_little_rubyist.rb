@@ -342,7 +342,17 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_map
-    assert_equal [2, 3, 4], [1, 2, 3].my_map(->(n) { n + 1 })
-    assert_equal [1, 4, 9], [1, 2, 3].my_map(->(n) { n * n })
+    assert_equal [], [].my_map(->(n) { n })
+    assert_equal [1], [1].my_map(->(n) { n })
+    assert_equal [2], [1].my_map(->(n) { n + 1 })
+    assert_equal [2, 3], [1, 2].my_map(->(n) { n + 1 })
+  end
+
+  def test_my_filter
+    assert_equal [], [].my_filter(&:odd?)
+    assert_equal [], [2].my_filter(&:odd?)
+    assert_equal [1], [1, 2].my_filter(&:odd?)
+    assert_equal [3], [2, 3].my_filter(&:odd?)
+    assert_equal [1, 3], [1, 2, 3].my_filter(&:odd?)
   end
 end

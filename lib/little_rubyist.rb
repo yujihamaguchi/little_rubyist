@@ -490,11 +490,20 @@ class Integer
   end
 end
 
-# Q051: map をリスト内包表記を用いて自作せよ( my-map )。
+# Q051: map 直接の再帰を用いて自作せよ( my_map )。
 class Array
   def my_map(lmd)
     return [] if self.empty?
 
     [lmd.call(self.first)] + self.drop(1).my_map(lmd)
+  end
+end
+
+# Q052: filterを直接の再帰を用いて自作せよ。( my_filter )
+class Array
+  def my_filter(&pred)
+    return [] if self.empty?
+
+    (pred.call(self.first) ? [self.first] : []) + self.drop(1).my_filter(&pred)
   end
 end
