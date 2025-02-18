@@ -507,3 +507,12 @@ class Array
     (pred.call(self.first) ? [self.first] : []) + self.drop(1).my_filter(pred)
   end
 end
+
+# Q054: リストの先頭から述語を満たす連続した要素を取り除く関数 drop-while を自作せよ。( my_drop_while )
+class Array
+  def my_drop_while(lmd)
+    return [] if self.empty?
+
+    lmd.call(self.first) ? self.drop(1).my_drop_while(lmd) : self
+  end
+end

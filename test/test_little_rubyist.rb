@@ -356,4 +356,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [3], [2, 3].my_filter(->(n) { n.odd? })
     assert_equal [1, 3], [1, 2, 3].my_filter(->(n) { n.odd? })
   end
+
+  def test_my_drop_while
+    assert_equal [], [].my_drop_while(->(_) {})
+    assert_equal [], [1].my_drop_while(->(n) { n.odd? })
+    assert_equal [2], [2].my_drop_while(->(n) { n.odd? })
+    assert_equal [2], [1, 2].my_drop_while(->(n) { n.odd? })
+    assert_equal [], [1, 3].my_drop_while(->(n) { n.odd? })
+    assert_equal [2, 3], [1, 2, 3].my_drop_while(->(n) { n.odd? })
+  end
 end
