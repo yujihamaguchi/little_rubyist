@@ -349,10 +349,11 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_filter
-    assert_equal [], [].my_filter(&:odd?)
-    assert_equal [], [2].my_filter(&:odd?)
-    assert_equal [1], [1, 2].my_filter(&:odd?)
-    assert_equal [3], [2, 3].my_filter(&:odd?)
-    assert_equal [1, 3], [1, 2, 3].my_filter(&:odd?)
+    assert_equal [], [].my_filter(->(n) { n.odd? })
+    assert_equal [1], [1].my_filter(->(n) { n.odd? })
+    assert_equal [], [2].my_filter(->(n) { n.odd? })
+    assert_equal [1], [1, 2].my_filter(->(n) { n.odd? })
+    assert_equal [3], [2, 3].my_filter(->(n) { n.odd? })
+    assert_equal [1, 3], [1, 2, 3].my_filter(->(n) { n.odd? })
   end
 end

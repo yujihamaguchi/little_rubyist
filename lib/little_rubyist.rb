@@ -501,9 +501,9 @@ end
 
 # Q052: filterを直接の再帰を用いて自作せよ。( my_filter )
 class Array
-  def my_filter(&pred)
+  def my_filter(pred)
     return [] if self.empty?
 
-    (pred.call(self.first) ? [self.first] : []) + self.drop(1).my_filter(&pred)
+    (pred.call(self.first) ? [self.first] : []) + self.drop(1).my_filter(pred)
   end
 end
