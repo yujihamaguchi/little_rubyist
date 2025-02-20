@@ -365,4 +365,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [], [1, 3].my_drop_while(->(n) { n.odd? })
     assert_equal [2, 3], [1, 2, 3].my_drop_while(->(n) { n.odd? })
   end
+
+  def test_my_take_while
+    assert_equal [], [].my_take_while(->(n) { n.odd? })
+    assert_equal [1], [1].my_take_while(->(n) { n.odd? })
+    assert_equal [], [2].my_take_while(->(n) { n.odd? })
+    assert_equal [1], [1, 2].my_take_while(->(n) { n.odd? })
+    assert_equal [1], [1, 2, 3].my_take_while(->(n) { n.odd? })
+    assert_equal [1, 3], [1, 3, 4].my_take_while(->(n) { n.odd? })
+  end
 end

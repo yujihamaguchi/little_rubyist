@@ -516,3 +516,12 @@ class Array
     lmd.call(self.first) ? self.drop(1).my_drop_while(lmd) : self
   end
 end
+
+# Q056: リストの先頭から述語を満たす連続した要素を取り出す関数 takeWhile を自作せよ。( my_take_while )
+class Array
+  def my_take_while(lmd)
+    return [] if self.empty?
+
+    lmd.call(self.first) ? [self.first] + self.drop(1).my_take_while(lmd) : []
+  end
+end
