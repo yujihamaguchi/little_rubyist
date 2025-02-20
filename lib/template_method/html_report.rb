@@ -8,7 +8,7 @@ class HtmlReport < Report
   end
 
   def format_data(data)
-    "<html><body>#{data}</bod></html>"
+    "<html><body>#{data}</body></html>"
   end
 
   def output_report(data)
