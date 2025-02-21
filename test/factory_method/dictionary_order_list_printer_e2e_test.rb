@@ -3,6 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/factory_method/dictionary_order_list_printer"
 
+# プログラムの特定の部分のロジックを差し替えたいが、クライアントは詳細を知らなくてよいようにしたい
 class DictionaryOrderListPrinterE2eTest < Minitest::Test
   def test_print_list
     # Arrange

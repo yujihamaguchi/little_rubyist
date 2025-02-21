@@ -12,6 +12,7 @@ class SushiRestaurantE2eTest < Minitest::Test
     norimaki: Norimaki
   }.freeze
 
+  # 欲しいオブジェクトの生成の詳細をクライアントから隠蔽し、生成ロジックを一元管理したい
   def test_order
     TESTCASES.each do |input, expected|
       # Arrange

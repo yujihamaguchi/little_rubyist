@@ -4,6 +4,7 @@ require_relative "../test_helper"
 require_relative "../../lib/memento/originator"
 require_relative "../../lib/memento/caretaker"
 
+# あるオブジェクトのスナップショットを保存しあとから取り出したい。ただし、オブジェクトの内部情報を外部に漏らしたくない。
 class OriginatorE2eTest < Minitest::Test
   def setup
     @originator = Originator.new

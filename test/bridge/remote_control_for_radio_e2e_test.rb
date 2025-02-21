@@ -4,6 +4,8 @@ require_relative "../test_helper"
 require_relative "../../lib/bridge/advanced_remote_control"
 require_relative "../../lib/bridge/radio"
 
+# 操作主体と操作対象をそれぞれ独自に拡張できるようにしたい
+# ( なぜ、 Bridge パターンという名前かというと、この構造をたとえばクラス図で表すと、操作主体が操作対象を保持する関係とそれぞれが（下方に）拡張されるかたちが橋のようだから ）
 class RemoteControlForRadioE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange

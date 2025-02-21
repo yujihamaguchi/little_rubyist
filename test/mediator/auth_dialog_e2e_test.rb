@@ -3,6 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/mediator/auth_dialog"
 
+# 関連するコンポーネント同士の連動を各コンポーネントに任せて混沌としないように一元管理したい
 class AuthDialogE2eTest < Minitest::Test
   def test_checkbox_check
     # Arrange

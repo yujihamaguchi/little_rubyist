@@ -19,7 +19,8 @@ require_relative "../../lib/command/stereo_volume_down_command"
 # +--------------------------+
 # |          [UNDO]          |
 # +--------------------------+
-
+#
+# クライアントが操作対象に対するリクエストセット（実行、取り消しなど）を透過的に行いたい
 class RemoteControlE2eTest < Minitest::Test
   def test_push_on_button
     # Arrange

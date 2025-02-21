@@ -2,6 +2,7 @@
 
 require "minitest/autorun"
 
+# 複雑なオブジェクト生成過程を段階的に行いたい（ついでに複雑な生成過程を担う Builder を差し替えて様々なものを生成したい）
 class CarBuilderE2eTest < Minitest::Test
   def setup
     @car_builder = CarBuilder.new

@@ -4,6 +4,7 @@ require_relative "../../lib/decorator/prime_price"
 require_relative "../../lib/decorator/double_price"
 require_relative "../../lib/decorator/wholesale_price"
 
+# あるクラスの機能拡張を行いたいが、クラスの責務が肥大化するのを防ぎたい、同時に、「継承によるサブクラス乱立（クラス爆発）」も回避したい
 class MarginPriceE2eTest < Minitest::Test
   def test_value
     # Arrange

@@ -4,6 +4,7 @@ require_relative "../test_helper"
 require_relative "../../lib/composite/box"
 require_relative "../../lib/composite/product"
 
+# 部分が組み合わさった構成物に対してメッセージを送り、構成物総体としてのレスポンスを得たい
 class BoxE2eTest < Minitest::Test
   def test_price
     # Arrange

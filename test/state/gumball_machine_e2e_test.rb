@@ -7,6 +7,7 @@ require_relative "../../lib/state/sold_out"
 require_relative "../../lib/state/no_coin"
 require_relative "../../lib/state/monitor"
 
+# オブジェクトの現在状態によって操作の内容を変えたいが、分岐の乱立でコードが煩雑になるのは避けたい。
 class GumballMachineE2eTest < Minitest::Test
   def test_insert_coin
     # Arrange

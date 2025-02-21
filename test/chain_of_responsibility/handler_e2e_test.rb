@@ -2,6 +2,7 @@ require_relative "../test_helper"
 require_relative "../../lib/chain_of_responsibility/numeric_handler"
 require_relative "../../lib/chain_of_responsibility/string_handler"
 
+# あるリクエストを、特定の順序で複数のハンドラが段階的に処理していく必要がある
 class TestChainOfResponsibility < Minitest::Test
   def setup
     @numeric_handler = NumericHandler.new
