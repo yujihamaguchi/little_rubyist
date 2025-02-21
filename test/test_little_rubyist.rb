@@ -374,4 +374,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1], [1, 2, 3].my_take_while(->(n) { n.odd? })
     assert_equal [1, 3], [1, 3, 4].my_take_while(->(n) { n.odd? })
   end
+
+  def test_my_foldr
+    assert_equal 10, [1, 2, 3].my_foldr(->(n, m) { n + m }, 4)
+    assert_equal "abc", %w[a b].my_foldr(->(c1, c2) { c1 + c2 }, "c")
+  end
 end

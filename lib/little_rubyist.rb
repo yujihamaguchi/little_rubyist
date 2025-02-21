@@ -525,3 +525,27 @@ class Array
     lmd.call(self.first) ? [self.first] + self.drop(1).my_take_while(lmd) : []
   end
 end
+
+# Q057-00: foldr を自作せよ。（ my_foldr ）
+#         以下のように、 foldr に部分適用して関数をつくることができる。
+#
+#         cons = foldr (:) []
+#         sum = foldr (+) 0
+#         product = foldr (*) 1
+#         or = foldr (||) False
+#         and = foldr (&&) True
+#
+#       hint)
+#       * Haskell では以下のような実装になる。
+#
+#         myFoldr :: (a -> b -> b) -> b -> [a] -> b
+#         myFoldr _ v [] = v
+#         myFoldr f v (x:xs) = f x (myFoldr f v xs)
+class Array
+  def my_foldr(lmd, init)
+    return init if self.empty?
+
+    x, *xs = self
+    lmd.call(x, xs.my_foldr(lmd, init))
+  end
+end
