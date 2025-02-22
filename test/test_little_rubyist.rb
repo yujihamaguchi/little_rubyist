@@ -379,4 +379,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 10, [1, 2, 3].my_foldr(->(n, m) { n + m }, 4)
     assert_equal "abc", %w[a b].my_foldr(->(c1, c2) { c1 + c2 }, "c")
   end
+
+  def test_my_foldl
+    assert_equal 10, [1, 2, 3].my_foldl(->(n, m) { n + m }, 4)
+    assert_equal "cab", %w[a b].my_foldl(->(c1, c2) { c1 + c2 }, "c")
+  end
 end

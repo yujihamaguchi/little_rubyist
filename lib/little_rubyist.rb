@@ -549,3 +549,18 @@ class Array
     lmd.call(x, xs.my_foldr(lmd, init))
   end
 end
+
+# Q057-01: foldl を自作せよ。（ my-foldl ）
+#          * Haskell では以下のような実装になる。
+#
+#            myFoldr :: (a -> b -> a) -> a -> [b] -> a
+#            myFoldr _ v [] = v
+#            myFoldr f v (x:xs) = foldl f (f v x) xs
+class Array
+  def my_foldl(lmd, init)
+    return init if self.empty?
+
+    x, *xs = self
+    xs.my_foldl(lmd, lmd.call(init, x))
+  end
+end
