@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "furniture"
-
-class Bench < Furniture
+class Bench
   def lie
-    "Lie on the #{self.style} bench."
+    "Lie on the #{style_name} bench."
+  end
+
+  def style_name
+    raise NotImplementedError
   end
 end

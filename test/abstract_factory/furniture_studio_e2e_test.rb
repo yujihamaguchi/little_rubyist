@@ -8,8 +8,8 @@ require_relative "../../lib/abstract_factory/modern_style_factory"
 # 関連するオブジェクトの集まりを、具象クラスを指定することなく生成したい
 class FurnitureStudioE2eTest < Minitest::Test
   TEST_CASES = [
-    { style_name: "art deco", factory_class: ArtDecoStyleFactory },
-    { style_name: "modern", factory_class: ModernStyleFactory }
+    { factory_class: ArtDecoStyleFactory, style_name: "art deco" },
+    { factory_class: ModernStyleFactory, style_name: "modern" }
   ].freeze
 
   def test_create_table_set

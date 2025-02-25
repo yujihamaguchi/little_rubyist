@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class FurnitureFactory
-  def create_chair
+module FurnitureFactory
+  def create_table
     raise NotImplementedError
   end
 
-  def create_table
+  def create_chair
     raise NotImplementedError
   end
 

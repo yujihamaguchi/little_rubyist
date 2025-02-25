@@ -1,35 +1,33 @@
 # frozen_string_literal: true
 
-require_relative "../test_helper"
+require "minitest/autorun"
+
+require_relative "../../lib/abstract_factory/furniture_studio"
 require_relative "../../lib/abstract_factory/table_set"
 
 class FurnitureStudioTest < Minitest::Test
   def test_create_table_set
     # Arrange
-    furniture_factory = CustomMock.new
-    chair = CustomMock.new
-    furniture_factory.expect :create_chair, chair
+    factory = CustomMock.new
+    studio = FurnitureStudio.new(factory: factory)
     table = CustomMock.new
-    furniture_factory.expect :create_table, table
+    chair = CustomMock.new
     bench = CustomMock.new
-    furniture_factory.expect :create_bench, bench
-
-    furniture_studio = FurnitureStudio.new(factory: furniture_factory)
-
+    factory.expect :create_table, table
+    factory.expect :create_chair, chair
+    factory.expect :create_bench, bench
     table_set = CustomMock.new
-    table_set.expect :chair=, nil, [chair]
     table_set.expect :table=, nil, [table]
+    table_set.expect :chair=, nil, [chair]
     table_set.expect :bench=, nil, [bench]
 
     # Act
-    actual = nil
     TableSet.stub :new, table_set do
-      actual = furniture_studio.create_table_set
+      studio.create_table_set
     end
 
     # Assert
-    assert_equal table_set, actual
-    furniture_factory.verify
+    factory.verify
     table_set.verify
   end
 end

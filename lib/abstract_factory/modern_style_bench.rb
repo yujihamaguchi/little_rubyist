@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "bench"
+require_relative "modern_style"
 
 class ModernStyleBench < Bench
-  def style
-    "modern"
-  end
+  include ModernStyle
 end

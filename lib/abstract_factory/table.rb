@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
-require_relative "furniture"
-
-class Table < Furniture
+class Table
   def stand
-    "Stand on the #{self.style} table."
+    "Stand on the #{style_name} table."
+  end
+
+  def style_name
+    raise NotImplementedError
   end
 end
