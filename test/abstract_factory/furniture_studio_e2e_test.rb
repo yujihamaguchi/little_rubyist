@@ -2,8 +2,8 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/abstract_factory/furniture_studio"
-require_relative "../../lib/abstract_factory/art_deco_style_factory"
-require_relative "../../lib/abstract_factory/modern_style_factory"
+require_relative "../../lib/abstract_factory/factory/art_deco_style_factory"
+require_relative "../../lib/abstract_factory/factory/modern_style_factory"
 
 # 関連するオブジェクトの集まりを、具象クラスを指定することなく生成したい
 class FurnitureStudioE2eTest < Minitest::Test
@@ -27,7 +27,6 @@ class FurnitureStudioE2eTest < Minitest::Test
       # Assert
       assert_equal "Sit on the #{style_name} chair.", table_set.chair.sit
       assert_equal "Stand on the #{style_name} table.", table_set.table.stand
-      assert_equal "Lie on the #{style_name} bench.", table_set.bench.lie
     end
   end
 end

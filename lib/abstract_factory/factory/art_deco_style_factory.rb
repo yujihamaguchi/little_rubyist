@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "art_deco_style_table"
-require_relative "art_deco_style_chair"
-require_relative "art_deco_style_bench"
+require_relative "../product/art_deco_style_table"
+require_relative "../product/art_deco_style_chair"
 require_relative "furniture_factory"
 
 class ArtDecoStyleFactory
@@ -14,9 +13,5 @@ class ArtDecoStyleFactory
 
   def create_chair
     ArtDecoStyleChair.new
-  end
-
-  def create_bench
-    ArtDecoStyleBench.new
   end
 end

@@ -9,7 +9,6 @@ class FurnitureStudio
     table_set = TableSet.new
     table_set.table = @factory.create_table
     table_set.chair = @factory.create_chair
-    table_set.bench = @factory.create_bench
     table_set
   end
 end
