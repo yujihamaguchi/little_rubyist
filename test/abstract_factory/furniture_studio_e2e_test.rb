@@ -5,7 +5,7 @@ require_relative "../../lib/abstract_factory/furniture_studio"
 require_relative "../../lib/abstract_factory/factory/art_deco_style_factory"
 require_relative "../../lib/abstract_factory/factory/modern_style_factory"
 
-# 関連するオブジェクトの集まりを、具象クラスを指定することなく生成したい
+# 設計課題: 関連するオブジェクトの集まりを、具象クラスを指定することなく生成したい
 class FurnitureStudioE2eTest < Minitest::Test
   TEST_CASES = [
     { factory_class: ArtDecoStyleFactory, style_name: "art deco" },
