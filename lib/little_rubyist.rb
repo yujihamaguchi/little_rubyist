@@ -580,3 +580,8 @@ class Array
     self.zip(weights).reduce(0, &->(acc, (n, m)) { acc + n * m })
   end
 end
+
+# Q058: 負でない整数を二進表記へ変換する関数 int_to_bits を書け。( 0 は正の整数ではない )
+class Integer
+  def int_to_bits; end
+end

@@ -403,4 +403,24 @@ class TestLittleRubyist < Minitest::Test
       assert_equal test_case[:exp], test_case[:arg].bits_to_int
     end
   end
+
+  TEST_CASES_FOR_INT_TO_BITS = [
+    { exp: [1], arg: 1 },
+    { exp: [0, 1], arg: 2 },
+    { exp: [1, 1], arg: 3 },
+    { exp: [0, 0, 1], arg: 4 },
+    { exp: [1, 0, 1], arg: 5 },
+    { exp: [0, 1, 1], arg: 6 },
+    { exp: [1, 1, 1], arg: 7 },
+    { exp: [0, 0, 0, 1], arg: 8 },
+    { exp: [1, 0, 0, 1], arg: 9 },
+    { exp: [0, 1, 0, 1], arg: 10 },
+    { exp: [1, 1, 0, 1], arg: 111 }
+  ].freeze
+
+  def test_int_to_bits
+    TEST_CASES_FOR_INT_TO_BITS.each do |test_case|
+      assert_equal test_case[:exp], test_case[:arg].int_to_bits
+    end
+  end
 end
