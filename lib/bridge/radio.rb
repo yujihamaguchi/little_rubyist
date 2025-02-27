@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 
-require_relative "device"
+class Radio
+  def initialize
+    @enabled = false
+  end
 
-class Radio < Device
+  def enabled?
+    @enabled
+  end
+
+  def enable
+    @enabled = true
+  end
+
+  def disable
+    @enabled = false
+  end
 end

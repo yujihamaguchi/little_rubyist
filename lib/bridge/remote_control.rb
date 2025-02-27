@@ -2,8 +2,6 @@
 
 module Bridge
   class RemoteControl
-    attr_reader :device
-
     def initialize(device:)
       @device = device
     end

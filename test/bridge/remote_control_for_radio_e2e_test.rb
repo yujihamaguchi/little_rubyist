@@ -1,11 +1,26 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/bridge/advanced_remote_control"
+# require_relative "../../lib/bridge/advanced_remote_control"
+require_relative "../../lib/bridge/remote_control"
 require_relative "../../lib/bridge/radio"
 
 # 操作主体と操作対象をそれぞれ独自に拡張できるようにしたい
-# ( なぜ、 Bridge パターンという名前かというと、この構造をたとえばクラス図で表すと、操作主体が操作対象を保持する関係とそれぞれが（下方に）拡張されるかたちが橋のようだから ）
+#  ( なぜ、 Bridge パターンという名前かというと、この構造をたとえばクラス図で表すと、
+#    操作主体が操作対象を保持する関係とそれぞれが（下方に）拡張されるかたちが橋のようだから ）
+# ==
+# Remote control は以下のインタフェースを有し、
+#
+# 	toggle_power
+#
+# Device は以下のインタフェースを有する
+#
+# 	enabled?
+# 	enable
+# 	disable
+#
+# (TVRemoteControl, RadioRemoteControl... というふうに Device ごとの RemoteControl をつくってないようにするには？)
+
 class RemoteControlForRadioE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange
@@ -17,7 +32,7 @@ class RemoteControlForRadioE2eTest < Minitest::Test
     remote_control.toggle_power
 
     # Assert
-    assert_equal true, radio.enabled?
+    assert radio.enabled?
   end
 
   def test_toggle_power_when_enabled
@@ -31,18 +46,18 @@ class RemoteControlForRadioE2eTest < Minitest::Test
     remote_control.toggle_power
 
     # Assert
-    assert_equal false, radio.enabled?
+    refute radio.enabled?
   end
 
-  def test_mute
-    # Arrange
-    radio = Radio.new
-    remote = AdvancedRemoteControl.new(device: radio)
-
-    # Act
-    remote.mute
-
-    # Assert
-    assert_equal 0, radio.volume
-  end
+  # def test_mute
+  #   # Arrange
+  #   radio = Radio.new
+  #   remote_controll = AdvancedRemoteControl.new(device: radio)
+  #
+  #   # Act
+  #   remote_controll.mute
+  #
+  #   # Assert
+  #   assert_equal 0, radio.volume
+  # end
 end
