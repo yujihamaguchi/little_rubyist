@@ -12,7 +12,6 @@ class FurnitureStudioTest < Minitest::Test
     studio = FurnitureStudio.new(factory: factory)
     table = CustomMock.new
     chair = CustomMock.new
-    bench = CustomMock.new
     factory.expect :create_table, table
     factory.expect :create_chair, chair
     table_set = CustomMock.new

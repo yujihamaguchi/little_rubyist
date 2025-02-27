@@ -36,9 +36,9 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_product
-    assert_equal 6, [1, 2, 3].product
-    assert_equal 1, [1].product
-    assert_equal 1, [].product
+    assert_equal 6, [1, 2, 3].my_product
+    assert_equal 1, [1].my_product
+    assert_equal 1, [].my_product
   end
 
   def test_rqsort

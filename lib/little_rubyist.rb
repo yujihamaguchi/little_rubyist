@@ -61,7 +61,7 @@ class Array
   end
 end
 
-# Q004: Haskell の product と同様の機能の関数を書け(再帰を用いるパターン、 reduce を用いるパターン)
+# Q004: Haskell の product と同様の機能の関数( my_product )を書け(再帰を用いるパターン、 reduce を用いるパターン)
 # product :: (Num a) => [a] -> a
 # product ns
 #     数値のリスト ns の全要素の積を返す。
@@ -70,14 +70,14 @@ end
 #         product []          = 1
 class Array
   # recursion
-  def product
+  def my_product
     return 1 if self.empty?
 
-    self.first * self.drop(1).product
+    self.first * self.drop(1).my_product
   end
 
   # # reduce
-  # def product
+  # def my_product
   #   self.reduce(1) { |acc, value| acc * value }
   # end
 end

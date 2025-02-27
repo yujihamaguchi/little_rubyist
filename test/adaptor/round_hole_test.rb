@@ -9,7 +9,7 @@ class RoundHoleTest < Minitest::Test
     # Arrange
     round_hole = RoundHole.new(radius: Object)
     peg = CustomMock.new
-    peg.expect :radius, nil
+    peg.expect :radius, Object
 
     # Act
     round_hole.fits?(peg)
