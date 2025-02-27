@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
 require_relative "../test_helper"
-
 require_relative "../../lib/adaptor/round_hole"
 
 class RoundHoleTest < Minitest::Test
   def test_fits_peg
     # Arrange
-    radius = 5
-    round_hole = RoundHole.new(radius: radius)
-    round_peg = CustomMock.new
-    round_peg.expect :radius, radius
+    round_hole = RoundHole.new(radius: Object)
+    peg = CustomMock.new
+    peg.expect :radius, nil
 
     # Act
-    round_hole.fits?(round_peg)
+    round_hole.fits?(peg)
 
     # Assert
-    round_peg.verify
+    peg.verify
   end
 end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "round_peg"
+
 class SquarePegAdaptor < RoundPeg
   def initialize(square_peg:)
     @square_peg = square_peg

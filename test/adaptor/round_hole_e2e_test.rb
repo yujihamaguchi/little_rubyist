@@ -7,7 +7,7 @@ require_relative "../../lib/adaptor/round_hole"
 require_relative "../../lib/adaptor/square_peg"
 require_relative "../../lib/adaptor/square_peg_adaptor"
 
-# クライアントが要求するインタフェースに合わせて Adaptee を振る舞わせたいが、 それが Adaptee 本来の責務ではない
+# 設計課題: クライアントが要求するインタフェースに合わせて Adaptee を振る舞わせたいが、 それが Adaptee 本来の責務ではない
 class RoundHoleE2eTest < Minitest::Test
   def test_fits_round_peg
     # Arrange
@@ -16,6 +16,15 @@ class RoundHoleE2eTest < Minitest::Test
 
     # Assert
     assert hole.fits?(round_peg)
+  end
+
+  def test_not_fits_round_peg
+    # Arrange
+    hole = RoundHole.new(radius: 5)
+    round_peg = RoundPeg.new(radius: 6)
+
+    # Assert
+    refute hole.fits?(round_peg)
   end
 
   def test_fits_square_peg
