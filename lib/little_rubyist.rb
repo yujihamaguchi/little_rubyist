@@ -42,7 +42,7 @@ class Array
 
   # # reduce
   # def my_sum
-  #   self.reduce(0) { |acc, value| acc + value }
+  #   self.reduce(0, &->(acc, value) { acc + value })
   # end
 end
 
@@ -78,7 +78,7 @@ class Array
 
   # # reduce
   # def my_product
-  #   self.reduce(1) { |acc, value| acc * value }
+  #   self.reduce(1, &->(acc, value) { acc * value })
   # end
 end
 
@@ -136,7 +136,7 @@ end
 #          concat []                       = []
 class Array
   def my_concat
-    self.reduce([]) { |acc, x| acc + x }
+    self.reduce([], &->(acc, x) { acc + x })
   end
 
   # # recursion
@@ -178,7 +178,7 @@ end
 #         length ""        = 0
 module Enumerable
   def my_length
-    self.reduce(0) { |acc, _| acc + 1 }
+    self.reduce(0, &->(acc, _) { acc + 1 })
   end
 end
 
@@ -282,7 +282,7 @@ end
 class Array
   def scalar_product(other)
     # self.zip(other).sum { |value, elem| value * elem }
-    self.zip(other).reduce(0) { |acc, (n, m)| acc + n * m }
+    self.zip(other).reduce(0, &->(acc, (n, m)) { acc + n * m })
   end
 end
 
@@ -562,5 +562,21 @@ class Array
 
     x, *xs = self
     xs.my_foldl(lmd, lmd.call(init, x))
+  end
+end
+
+# Q057-02: ビットのリストで表現される二進表記を整数に変換する関数 bits_to_int を書け。
+#          ・ iterateを用いること
+#          ・ 二進表記は逆順であること
+#
+# type Bit = Int
+# bit2int :: [Bit] -> Int
+# bit2int bits = sum [b * w | (b, w) <- zip bits weights]
+#                 where
+#                   weights = iterate (*2) 1
+class Array
+  def bits_to_int
+    weights = Enumerator.produce(1, &->(n) { n * 2 }).lazy
+    self.zip(weights).reduce(0, &->(acc, (n, m)) { acc + n * m })
   end
 end

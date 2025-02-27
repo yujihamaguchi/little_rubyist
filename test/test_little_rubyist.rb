@@ -384,4 +384,23 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 10, [1, 2, 3].my_foldl(->(n, m) { n + m }, 4)
     assert_equal "cab", %w[a b].my_foldl(->(c1, c2) { c1 + c2 }, "c")
   end
+
+  TEST_CASES_FOR_BITS_TO_INT = [
+    { exp: 0, arg: [0] },
+    { exp: 1, arg: [1] },
+    { exp: 2, arg: [0, 1] },
+    { exp: 3, arg: [1, 1] },
+    { exp: 4, arg: [0, 0, 1] },
+    { exp: 5, arg: [1, 0, 1] },
+    { exp: 6, arg: [0, 1, 1] },
+    { exp: 7, arg: [1, 1, 1] },
+    { exp: 8, arg: [0, 0, 0, 1] },
+    { exp: 9, arg: [1, 0, 0, 1] }
+  ].freeze
+
+  def test_bits_to_int
+    TEST_CASES_FOR_BITS_TO_INT.each do |test_case|
+      assert_equal test_case[:exp], test_case[:arg].bits_to_int
+    end
+  end
 end
