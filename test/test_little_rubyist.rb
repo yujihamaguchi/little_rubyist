@@ -415,7 +415,7 @@ class TestLittleRubyist < Minitest::Test
     { exp: [0, 0, 0, 1], arg: 8 },
     { exp: [1, 0, 0, 1], arg: 9 },
     { exp: [0, 1, 0, 1], arg: 10 },
-    { exp: [1, 1, 0, 1], arg: 111 }
+    { exp: [1, 1, 0, 1], arg: 11 }
   ].freeze
 
   def test_int_to_bits
