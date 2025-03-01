@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-# require_relative "../../lib/bridge/advanced_remote_control"
 require_relative "../../lib/bridge/remote_control"
 require_relative "../../lib/bridge/radio"
+require_relative "../../lib/bridge/advanced_remote_control"
 
 # 操作主体と操作対象をそれぞれ独自に拡張できるようにしたい
 #  ( なぜ、 Bridge パターンという名前かというと、この構造をたとえばクラス図で表すと、
@@ -49,15 +49,16 @@ class RemoteControlForRadioE2eTest < Minitest::Test
     refute radio.enabled?
   end
 
-  # def test_mute
-  #   # Arrange
-  #   radio = Radio.new
-  #   remote_controll = AdvancedRemoteControl.new(device: radio)
-  #
-  #   # Act
-  #   remote_controll.mute
-  #
-  #   # Assert
-  #   assert_equal 0, radio.volume
-  # end
+  def test_mute
+    # Arrange
+    radio = Radio.new
+    assert_equal radio.volume, 5
+    remote_control = AdvancedRemoteControl.new(device: radio)
+
+    # Act
+    remote_control.mute
+
+    # Assert
+    assert_equal 0, radio.volume
+  end
 end

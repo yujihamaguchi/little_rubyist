@@ -1,19 +1,12 @@
 # frozen_string_literal: true
 
-class Radio
+require_relative "device"
+
+class Radio < Device
+  attr_accessor :volume
+
   def initialize
-    @enabled = false
-  end
-
-  def enabled?
-    @enabled
-  end
-
-  def enable
-    @enabled = true
-  end
-
-  def disable
-    @enabled = false
+    @volume = 5
+    super
   end
 end
