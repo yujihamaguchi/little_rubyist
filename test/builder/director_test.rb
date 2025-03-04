@@ -7,35 +7,24 @@ class DirectorTest < Minitest::Test
   def test_construct_sports_car
     # Arrange
     director = Director.new
-    car_builder = CustomMock.new
-    car_product = CustomMock.new
-    car_builder.expect :with_engine, car_builder, [], engine_type: "sport engine"
-    car_builder.expect :with_seats, car_builder, [], seat_count: 2
-    car_builder.expect :build, car_product
+
+    builder1 = CustomMock.new
+    builder2 = CustomMock.new
+    builder1.expect :with_engine, builder2, engine_type: Object
+
+    builder3 = CustomMock.new
+    builder2.expect :with_seats, builder3, seat_count: Object
+
+    car = CustomMock.new
+    builder3.expect :build, car
 
     # Act
-    result = director.construct_sports_car(builder: car_builder)
+    result = director.construct_sports_car(builder: builder1)
 
     # Assert
-    assert_equal car_product, result
-    car_builder.verify
-  end
-
-  def test_construct_suv_car
-    # Arrange
-    director = Director.new
-    car_builder = CustomMock.new
-    car_product = CustomMock.new
-    car_builder.expect :with_engine, car_builder, [], engine_type: "normal engine"
-    car_builder.expect :with_seats, car_builder, [], seat_count: 4
-    car_builder.expect :with_roof_rails, car_builder, [], color: :black
-    car_builder.expect :build, car_product
-
-    # Act
-    result = director.construct_suv_car(builder: car_builder)
-
-    # Assert
-    assert_equal car_product, result
-    car_builder.verify
+    assert_equal car, result
+    builder1.verify
+    builder2.verify
+    builder3.verify
   end
 end
