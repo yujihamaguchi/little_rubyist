@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "sports_car_builder"
-require_relative "sports_car_manual"
+require_relative "../product/sports_car_manual"
 
 class SportsCarManualBuilder < SportsCarBuilder
   def build

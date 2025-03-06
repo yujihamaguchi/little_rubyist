@@ -4,7 +4,7 @@ require_relative "sports_car"
 
 class SportsCarManual
   include SportsCar
-  attr_accessor :engine, :seats
+  attr_writer :engine, :seats
 
   def engine
     "#{@engine} manual"
