@@ -6,8 +6,8 @@ require_relative "sports_car_builder"
 class SportsCarBodyBuilder < SportsCarBuilder
   def build
     body = SportsCarBody.new
-    body.engine = @engine_type
-    body.seats = @seat_count
+    body.engine = @type
+    body.seats = @count
     body
   end
 end
