@@ -1,15 +1,20 @@
 # frozen_string_literal: true
-require_relative 'car'
 
 class CarBuilder
-  def initialize
-    @product = Car.new
-  end
-
   def product
+    raise RuntimeError unless @product.engine
+    raise RuntimeError unless @product.seats
+
     @product
   end
 
-  def with_engine(type:) end
+  def with_seats(count:)
+    @product.seats = count
+    self
+  end
 
+  def with_engine(type:)
+    @product.engine = type
+    self
+  end
 end

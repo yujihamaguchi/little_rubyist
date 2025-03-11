@@ -3,6 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/builder/director"
 require_relative "../../lib/builder/car_body_builder"
+require_relative "../../lib/builder/car_manual_builder"
 
 # 複雑なオブジェクト生成過程を段階的に行いたい（ついでに複雑な生成過程を担う Builder を差し替えて様々なものを生成したい）
 class DirectorE2eTest < Minitest::Test
@@ -19,18 +20,18 @@ class DirectorE2eTest < Minitest::Test
     assert_equal 2, car.seats
   end
 
-  # def test_construct_sports_car_manual
-  #   # Arrange
-  #   director = Director.new
-  #   car_manual_builder = CarManualBuilder.new
-  #
-  #   # Act
-  #   manual = director.construct_sports_car(builder: car_manual_builder)
-  #
-  #   # Assert
-  #   assert_equal "sport engine manual", manual.engine
-  #   assert_equal "2 seats", manual.seats
-  # end
+  def test_construct_sports_car_manual
+    # Arrange
+    director = Director.new
+    car_manual_builder = CarManualBuilder.new
+
+    # Act
+    manual = director.construct_sports_car(builder: car_manual_builder)
+
+    # Assert
+    assert_equal "sport engine manual", manual.engine
+    assert_equal "2 seats", manual.seats
+  end
 
   # def test_construct_suv_car
   #   # Arrange

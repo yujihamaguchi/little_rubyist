@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-require_relative "car"
+require_relative "car_manual"
 require_relative "car_builder"
 
-class CarBodyBuilder < CarBuilder
+class CarManualBuilder < CarBuilder
   def initialize
-    @product = Car.new
+    @product = CarManual.new
     super
   end
 end
