@@ -9,4 +9,8 @@ class CarManual < Car
   def seats
     "#{@seats} seats"
   end
+
+  def roof_rails
+    nil
+  end
 end

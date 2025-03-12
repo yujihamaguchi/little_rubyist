@@ -33,22 +33,31 @@ class DirectorE2eTest < Minitest::Test
     assert_equal "2 seats", manual.seats
   end
 
-  # def test_construct_suv_car
-  #   # Arrange
-  #   director = Director.new
-  #   car_builder = CarBuilder.new
-  #   car_manual_builder = CarManualBuilder.new
-  #
-  #   # Act
-  #   car = director.construct_suv_car(builder: car_builder)
-  #   manual = director.construct_suv_car(builder: car_manual_builder)
-  #
-  #   # Assert
-  #   assert_equal "normal engine", car.engine
-  #   assert_equal 4, car.seats
-  #   assert_equal :black, car.roof_rails
-  #   assert_equal "normal engine manual", manual.engine
-  #   assert_equal "4 seats", manual.seats
-  #   assert_nil manual.roof_rails
-  # end
+  def test_construct_suv_car_body
+    # Arrange
+    director = Director.new
+    car_builder = CarBodyBuilder.new
+
+    # Act
+    car = director.construct_suv_car(builder: car_builder)
+
+    # Assert
+    assert_equal "normal engine", car.engine
+    assert_equal 4, car.seats
+    assert_equal :black, car.roof_rails
+  end
+
+  def test_construct_suv_car_manual
+    # Arrange
+    director = Director.new
+    car_manual_builder = CarManualBuilder.new
+
+    # Act
+    manual = director.construct_suv_car(builder: car_manual_builder)
+
+    # Assert
+    assert_equal "normal engine manual", manual.engine
+    assert_equal "4 seats", manual.seats
+    assert_nil manual.roof_rails
+  end
 end

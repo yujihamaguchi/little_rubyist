@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class CarBuilder
-  def product
+  attr_reader :product
+
+  def finalize
     raise RuntimeError unless @product.engine
     raise RuntimeError unless @product.seats
 
@@ -15,6 +17,11 @@ class CarBuilder
 
   def with_engine(type:)
     @product.engine = type
+    self
+  end
+
+  def with_roof_rails(color:)
+    @product.roof_rails = color
     self
   end
 end
