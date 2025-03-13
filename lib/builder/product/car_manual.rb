@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-require_relative "car"
+require_relative "car_product"
 
-class CarManual < Car
+class CarManual < CarProduct
   def engine
     "#{@engine} manual"
   end

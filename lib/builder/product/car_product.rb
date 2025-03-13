@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Car
+class CarProduct
   attr_accessor :engine, :seats, :roof_rails
 end

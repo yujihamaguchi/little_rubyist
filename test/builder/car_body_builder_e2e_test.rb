@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/builder/car_body_builder"
-require_relative "../../lib/builder/car"
+require_relative "../../lib/builder/builder/car_body_builder"
+require_relative "../../lib/builder/product/car_body"
 
 class CarBodyBuilderE2eTest < Minitest::Test
   def test_product
@@ -23,5 +23,4 @@ class CarBodyBuilderE2eTest < Minitest::Test
     assert_equal seats_count, car.seats
     assert_equal roof_rails_color, car.roof_rails
   end
-
 end
