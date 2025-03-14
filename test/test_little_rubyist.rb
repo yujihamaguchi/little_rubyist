@@ -423,4 +423,10 @@ class TestLittleRubyist < Minitest::Test
       assert_equal test_case[:exp], test_case[:arg].int_to_bits
     end
   end
+
+  def test_make8
+    assert_equal [1, 0, 0, 0, 0, 0, 0, 0], [1].make8
+    assert_equal [1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0].make8
+    assert_equal [1, 0, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 0, 0].make8
+  end
 end

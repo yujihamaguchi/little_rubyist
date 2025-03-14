@@ -252,7 +252,7 @@ end
 #       ただし、ピタゴラス数の要素は与えられた上限 value 以下であるとする。
 class Integer
   def pyths
-    (1..self).to_a.combination(3).select { |x, y, z| x**2 + y**2 == z**2 }
+    (1..self).to_a.combination(3).select { |x, y, z| x ** 2 + y ** 2 == z ** 2 }
   end
 end
 
@@ -587,5 +587,12 @@ class Integer
     return [] if self < 1
 
     [self % 2] + (self / 2).int_to_bits
+  end
+end
+
+# Q059: 二進表記が必ず 8 ビットになるように切り詰めたり適切な数の 0 を詰め込んだりする関数 make8 を書け。
+class Array
+  def make8
+    (self + [0] * 8).take(8)
   end
 end
