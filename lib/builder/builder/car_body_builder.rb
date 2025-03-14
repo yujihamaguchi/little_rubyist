@@ -7,5 +7,4 @@ class CarBodyBuilder < CarBuilder
     @product = CarBody.new
     super
   end
-
 end
