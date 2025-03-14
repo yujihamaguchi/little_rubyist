@@ -429,4 +429,11 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0].make8
     assert_equal [1, 0, 1, 0, 0, 0, 0, 0], [1, 0, 1, 0, 0, 0, 0, 0].make8
   end
+
+  def test_chop8
+    assert_equal [[1, 0, 0, 0, 0, 0, 0, 0]], [1, 0, 0, 0, 0, 0, 0, 0].chop8
+    assert_equal [[1, 0, 0, 0, 0, 0, 0, 0]], [1, 0, 0, 0, 0, 0, 0].chop8
+    assert_equal [[1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]], [1, 0, 0, 0, 0, 0, 0, 0, 0].chop8
+    assert_equal [[1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0]], [1, 0, 0, 0, 0, 0, 0, 0, 1].chop8
+  end
 end

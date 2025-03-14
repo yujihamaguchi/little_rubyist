@@ -596,3 +596,12 @@ class Array
     (self + [0] * 8).take(8)
   end
 end
+
+# Q060: ビット列を 8 ビットの二進表記に分割する関数 chop8 を書け。
+class Array
+  def chop8
+    return [] if self.empty?
+
+    [self.take(8).make8] + self.drop(8).chop8
+  end
+end
