@@ -1,42 +1,49 @@
 require_relative "../test_helper"
-require_relative "../../lib/chain_of_responsibility/numeric_handler"
-require_relative "../../lib/chain_of_responsibility/string_handler"
+require_relative "../../lib/chain_of_responsibility/manager"
+require_relative "../../lib/chain_of_responsibility/director"
+require_relative "../../lib/chain_of_responsibility/ceo"
 
-# あるリクエストを、特定の順序で複数のハンドラが段階的に処理していく必要がある
-class TestChainOfResponsibility < Minitest::Test
+# どのハンドラがリクエストを処理するかを送信元に意識させずに、複数のハンドラが必要に応じて段階的に処理を委譲できる仕組みを作りたい
+class HandlerE2eTest
   def setup
-    @numeric_handler = NumericHandler.new
-    @string_handler = StringHandler.new
+    @manager = Manager.new
+    @director = Director.new
+    @ceo = CEO.new
 
-    @numeric_handler.set_next_handler(handler: @string_handler)
+    @manager.next_handler = @director
+    @director.next_handler = @ceo
   end
 
-  def test_both_number_and_text
-    request = { number: 1, text: "hello" }
-    updated_request = @numeric_handler.handle(request: request)
+  def test_manager_approval
+    # Arrange
+    request = LeaveRequest.new(3)
 
-    assert_equal 2, updated_request[:number]
-    assert_equal "HELLO", updated_request[:text]
+    # Act
+    result = @manager.handle(request)
+
+    # Assert
+    assert_equal "Manager approved 3-day leave.", result
   end
 
-  def test_only_number
-    request = { number: 10 }
-    updated_request = @numeric_handler.handle(request: request)
+  def test_director_approval
+    # Arrange
+    request = LeaveRequest.new(5)
 
-    assert_equal 11, updated_request[:number]
+    # Act
+    result = @manager.handle(request)
+
+    # Assert
+    assert_equal "Director approved 5-day leave.", result
   end
 
-  def test_only_text
-    request = { text: "abc" }
-    updated_request = @numeric_handler.handle(request: request)
+  def test_ceo_approval
+    # Arrange
+    request = LeaveRequest.new(10)
 
-    assert_equal "ABC", updated_request[:text]
-  end
+    # Act
+    result = @manager.handle(request)
 
-  def test_empty_request
-    request = {}
-    updated_request = @numeric_handler.handle(request: request)
-
-    assert_equal({}, updated_request)
+    # Assert
+    assert_equal "CEO approved 10-day leave.", result
   end
 end
