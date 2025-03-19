@@ -2,10 +2,13 @@
 require_relative "handler"
 
 class Manager < Handler
-  def handle(leave_request:)
-    days = leave_request.days
-    return "Manager approved #{days}-day leave." if days <= 3
+  def process(leave_request:)
+    "Manager approved #{leave_request.days}-day leave."
+  end
 
-    next_handler.handle(leave_request: leave_request)
+  private
+
+  def handleable?(leave_request:)
+    leave_request.days <= 3
   end
 end

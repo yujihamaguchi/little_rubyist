@@ -41,14 +41,16 @@ class HandlerE2eTest < Minitest::Test
     end
   end
 
-  # def test_ceo_approval
-  #   # Arrange
-  #   request = LeaveRequest.new(10)
-  #
-  #   # Act
-  #   result = @manager.handle(request)
-  #
-  #   # Assert
-  #   assert_equal "CEO approved 10-day leave.", result
-  # end
+  def test_ceo_approval
+    (6..10).each do |days|
+      # Arrange
+      request = LeaveRequest.new(days: days)
+
+      # Act
+      result = @manager.handle(leave_request: request)
+
+      # Assert
+      assert_equal "CEO approved #{days}-day leave.", result
+    end
+  end
 end
