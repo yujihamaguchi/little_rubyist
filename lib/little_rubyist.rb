@@ -605,3 +605,11 @@ class Array
     [self.take(8).make8] + self.drop(8).chop8
   end
 end
+
+# Q061: ビットのリストを文字列に復号する関数 decode を書け。
+#       リストを分割し、二進表記を Unicode のコードポイント（整数）へ変換し、文字へ直して、全体として文字列にする。
+class Array
+  def decode
+    self.chop8.map { |bs| bs.bits_to_int.chr }.join
+  end
+end
