@@ -1,8 +1,8 @@
 require_relative "../test_helper"
+require_relative "../../lib/chain_of_responsibility/leave_request"
 require_relative "../../lib/chain_of_responsibility/manager"
 require_relative "../../lib/chain_of_responsibility/director"
 require_relative "../../lib/chain_of_responsibility/ceo"
-require_relative "../../lib/chain_of_responsibility/leave_request"
 
 # どのハンドラがリクエストを処理するかを送信元に意識させずに、複数のハンドラが必要に応じて段階的に処理を委譲できる仕組みを作りたい
 class HandlerE2eTest < Minitest::Test
