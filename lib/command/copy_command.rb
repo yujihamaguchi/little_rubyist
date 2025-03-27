@@ -5,4 +5,6 @@ class CopyCommand < Command
   def execute
     @receiver.clipboard = @receiver.content
   end
+
+  def undo; end
 end

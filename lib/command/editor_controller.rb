@@ -10,8 +10,12 @@ class EditorController
   end
 
   def push_button(slot_number:)
-    @commands[slot_number].execute
+    command = @commands[slot_number]
+    command.execute
+    @last_command = command
   end
 
-  def push_undo_button; end
+  def push_undo_button
+    @last_command&.undo
+  end
 end

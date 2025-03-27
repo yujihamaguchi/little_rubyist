@@ -3,6 +3,11 @@ require_relative "command"
 
 class PasteCommand < Command
   def execute
-    @receiver.content = @receiver.content + @receiver.clipboard
+    @previous_content = @receiver.content
+    @receiver.content += @receiver.clipboard
+  end
+
+  def undo
+    @receiver.content = @previous_content
   end
 end
