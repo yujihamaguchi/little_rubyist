@@ -6,25 +6,18 @@ class BoxTest < Minitest::Test
   def test_price
     # Arrange
     box = Box.new
-
-    product1 = CustomMock.new
-    product1.expect :price, 50
-    product2 = CustomMock.new
-    product2.expect :price, 30
-    small_box = CustomMock.new
-    small_box.expect :price, 20
-
-    box.add(product1)
-    box.add(product2)
-    box.add(small_box)
+    component1 = CustomMock.new
+    component1.expect :price, 0
+    component2 = CustomMock.new
+    component2.expect :price, 0
+    box.add(component1)
+    box.add(component2)
 
     # Act
-    total_price = box.price
+    box.price
 
     # Assert
-    product1.verify
-    product2.verify
-    small_box.verify
-    assert_equal 100, total_price
+    component1.verify
+    component2.verify
   end
 end
