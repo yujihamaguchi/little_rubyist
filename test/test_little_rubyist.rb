@@ -441,4 +441,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal "ab", [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0].decode
     assert_equal "ac", [1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0].decode
   end
+
+  def test_my_encode
+    assert_equal [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0], "ab".my_encode
+    assert_equal [1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0], "ac".my_encode
+  end
 end

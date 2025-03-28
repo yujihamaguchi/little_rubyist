@@ -613,3 +613,14 @@ class Array
     self.chop8.map { |bs| bs.bits_to_int.chr }.join
   end
 end
+
+# Q062: 文字列をビット列に符号化する関数 encode を書け。
+#       それぞれの文字列を unicode のコードポイント（整数）に変換し、
+#       さらに 8 ビットの二進表記に直して、全体を連結することで、ビットのリストを作る。
+class String
+  def my_encode
+    self.map do |c|
+      c.ord.int_to_bits
+    end
+  end
+end
