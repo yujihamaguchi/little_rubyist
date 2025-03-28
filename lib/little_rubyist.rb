@@ -619,8 +619,8 @@ end
 #       さらに 8 ビットの二進表記に直して、全体を連結することで、ビットのリストを作る。
 class String
   def my_encode
-    self.map do |c|
-      c.ord.int_to_bits
+    self.chars.flat_map do |c|
+      c.ord.int_to_bits.make8
     end
   end
 end
