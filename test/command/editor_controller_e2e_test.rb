@@ -90,7 +90,7 @@ class EditorControllerE2eTest < Minitest::Test
   end
 
   def test_undo_no_last_command
-    # Act
+    # Act: error free
     @controller.push_undo_button
   end
 end
