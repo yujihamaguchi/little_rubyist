@@ -2,12 +2,11 @@
 
 require_relative "../test_helper"
 
-class DoublePriceTest < Minitest::Test
+class WholeSalePriceTest < Minitest::Test
   TEST_CASES = [
-    { value: 0, expected: 0 },
-    { value: 1, expected: 2 },
-    { value: 2, expected: 4 },
-    { value: 3, expected: 6 }
+    { value: 1, advantage: 1, expected: 0 },
+    { value: 2, advantage: 1, expected: 1 },
+    { value: 5, advantage: 3, expected: 2 }
   ].freeze
 
   def test_value
@@ -15,9 +14,10 @@ class DoublePriceTest < Minitest::Test
       # Arrange
       some_price = CustomMock.new
       some_price.expect :value, test_case[:value]
-      double_price = DoublePrice.new(price: some_price)
+      whole_sale_price = WholesalePrice.new(price: some_price, advantage: test_case[:advantage])
+
       # Act
-      actual = double_price.value
+      actual = whole_sale_price.value
 
       # Assert
       assert_equal test_case[:expected], actual

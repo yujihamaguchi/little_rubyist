@@ -1,8 +1,13 @@
 # frozen_string_literal: true
+require_relative "price"
 
-require_relative "price_decorator"
+class DoublePrice
+  include Price
 
-class DoublePrice < PriceDecorator
+  def initialize(price:)
+    @price = price
+  end
+
   def value
     @price.value * 2
   end
