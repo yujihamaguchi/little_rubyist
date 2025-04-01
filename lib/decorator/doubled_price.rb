@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative "price"
 
-class DoublePrice
+class DoubledPrice
   include Price
 
   def initialize(price:)

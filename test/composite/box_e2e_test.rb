@@ -4,7 +4,7 @@ require_relative "../test_helper"
 require_relative "../../lib/composite/box"
 require_relative "../../lib/composite/product"
 
-# 部分が組み合わさった構成物に対してメッセージを送り、構成物総体としてのレスポンスを得たい
+# リーフとコンテナ( composite )といった複数の要素を組み合わせた構造に対して、統一された操作を実行し、全体として一貫したレスポンスを得たい
 class BoxE2eTest < Minitest::Test
   def setup
     @box = Box.new
