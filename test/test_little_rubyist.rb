@@ -349,30 +349,30 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_filter
-    assert_equal [], [].my_filter(->(n) { n.odd? })
-    assert_equal [1], [1].my_filter(->(n) { n.odd? })
-    assert_equal [], [2].my_filter(->(n) { n.odd? })
-    assert_equal [1], [1, 2].my_filter(->(n) { n.odd? })
-    assert_equal [3], [2, 3].my_filter(->(n) { n.odd? })
-    assert_equal [1, 3], [1, 2, 3].my_filter(->(n) { n.odd? })
+    assert_equal [], [].my_filter(lambda(&:odd?))
+    assert_equal [1], [1].my_filter(lambda(&:odd?))
+    assert_equal [], [2].my_filter(lambda(&:odd?))
+    assert_equal [1], [1, 2].my_filter(lambda(&:odd?))
+    assert_equal [3], [2, 3].my_filter(lambda(&:odd?))
+    assert_equal [1, 3], [1, 2, 3].my_filter(lambda(&:odd?))
   end
 
   def test_my_drop_while
     assert_equal [], [].my_drop_while(->(_) {})
-    assert_equal [], [1].my_drop_while(->(n) { n.odd? })
-    assert_equal [2], [2].my_drop_while(->(n) { n.odd? })
-    assert_equal [2], [1, 2].my_drop_while(->(n) { n.odd? })
-    assert_equal [], [1, 3].my_drop_while(->(n) { n.odd? })
-    assert_equal [2, 3], [1, 2, 3].my_drop_while(->(n) { n.odd? })
+    assert_equal [], [1].my_drop_while(lambda(&:odd?))
+    assert_equal [2], [2].my_drop_while(lambda(&:odd?))
+    assert_equal [2], [1, 2].my_drop_while(lambda(&:odd?))
+    assert_equal [], [1, 3].my_drop_while(lambda(&:odd?))
+    assert_equal [2, 3], [1, 2, 3].my_drop_while(lambda(&:odd?))
   end
 
   def test_my_take_while
-    assert_equal [], [].my_take_while(->(n) { n.odd? })
-    assert_equal [1], [1].my_take_while(->(n) { n.odd? })
-    assert_equal [], [2].my_take_while(->(n) { n.odd? })
-    assert_equal [1], [1, 2].my_take_while(->(n) { n.odd? })
-    assert_equal [1], [1, 2, 3].my_take_while(->(n) { n.odd? })
-    assert_equal [1, 3], [1, 3, 4].my_take_while(->(n) { n.odd? })
+    assert_equal [], [].my_take_while(lambda(&:odd?))
+    assert_equal [1], [1].my_take_while(lambda(&:odd?))
+    assert_equal [], [2].my_take_while(lambda(&:odd?))
+    assert_equal [1], [1, 2].my_take_while(lambda(&:odd?))
+    assert_equal [1], [1, 2, 3].my_take_while(lambda(&:odd?))
+    assert_equal [1, 3], [1, 3, 4].my_take_while(lambda(&:odd?))
   end
 
   def test_my_foldr
@@ -445,5 +445,13 @@ class TestLittleRubyist < Minitest::Test
   def test_my_encode
     assert_equal [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0], "ab".my_encode
     assert_equal [1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0], "ac".my_encode
+  end
+
+  def test_my_all
+    assert [].my_all(lambda(&:odd?))
+    assert [1, 3, 5].my_all(lambda(&:odd?))
+    refute [2, 3, 5].my_all(lambda(&:odd?))
+    refute [1, 2, 3].my_all(lambda(&:odd?))
+    refute [1, 3, 4].my_all(lambda(&:odd?))
   end
 end

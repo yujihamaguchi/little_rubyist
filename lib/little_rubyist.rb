@@ -624,3 +624,19 @@ class String
     end
   end
 end
+
+# Q063: 関数 all を自作せよ。( my_all )
+#       all :: (a -> Bool) -> [a] -> Bool
+#       all f xs
+#       xs の要素 x について、f x がすべて True なら True。
+#
+#       all (==1) [5,4,3,2,1]   = False
+#       all (==1) [1,1,1]       = True
+#       all (==1) []            = True
+class Array
+  def my_all(pred)
+    return true if self.empty?
+
+    pred.call(self.first) && self.drop(1).my_all(pred)
+  end
+end
