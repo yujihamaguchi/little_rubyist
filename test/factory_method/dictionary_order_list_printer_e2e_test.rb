@@ -3,28 +3,28 @@
 require_relative "../test_helper"
 require_relative "../../lib/factory_method/dictionary_order_list_printer"
 
-# プログラムの特定の部分のロジックを差し替えたいが、クライアントは詳細を知らなくてよいようにしたい
+# 処理の一部のロジックを差し替えたいが、クライアントはその詳細を知らなくてよいようにしたい
 class DictionaryOrderListPrinterE2eTest < Minitest::Test
-  def test_print_list
+  def test_string_from
     # Arrange
     list_printer = DictionaryOrderListPrinter.new
 
     # Act
-    actual = list_printer.print_list(%w[banana Cake apple])
+    actual = list_printer.string_from(%w[banana cake apple])
 
     # Assert
-    assert_equal "[\"apple\", \"banana\", \"Cake\"]",
+    assert_equal "[\"apple\", \"banana\", \"cake\"]",
                  actual
   end
 
-  def test_print_list_with_mixed_case
+  def test_string_from_with_mixed_case
     # Arrange
-    list_printer = DictionaryOrderListPrinter.new(case_sensitive: true)
+    list_printer = DictionaryOrderListPrinter.new(case_sensitive: false)
 
     # Act
-    actual = list_printer.print_list(%w[banana Cake apple])
+    actual = list_printer.string_from(%w[banana Cake apple])
 
     # Assert
-    assert_equal "[\"Cake\", \"apple\", \"banana\"]", actual
+    assert_equal "[\"apple\", \"banana\", \"Cake\"]", actual
   end
 end

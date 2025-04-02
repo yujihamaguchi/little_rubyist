@@ -1,15 +1,15 @@
 # frozen_string_literal: true
-
 require_relative "list_printer"
-require_relative "dictionary_order_comparator"
-
 class DictionaryOrderListPrinter < ListPrinter
-  def initialize(case_sensitive: false)
-    super()
+  def initialize(case_sensitive: true)
     @case_sensitive = case_sensitive
   end
 
-  def create_comparator
-    DictionaryOrderComparator.new(case_sensitive: @case_sensitive)
+  def create_key_extractor
+    if @case_sensitive
+      ->(x) { x }
+    else
+      ->(x) { x.downcase }
+    end
   end
 end
