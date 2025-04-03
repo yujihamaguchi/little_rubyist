@@ -20,6 +20,8 @@ class AuthDialog
     when [@login_checkbox, :uncheck]
       @login_form.disable
       @register_form.enable
+    else
+      raise ArgumentError
     end
   end
 end
