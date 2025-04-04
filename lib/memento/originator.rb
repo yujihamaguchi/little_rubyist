@@ -21,4 +21,6 @@ class Originator
       @state = original.state
     end
   end
+
+  private_constant :Memento
 end
