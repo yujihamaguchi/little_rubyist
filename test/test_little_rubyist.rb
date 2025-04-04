@@ -447,11 +447,21 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0], "ac".my_encode
   end
 
-  def test_my_all
-    assert [].my_all(lambda(&:odd?))
-    assert [1, 3, 5].my_all(lambda(&:odd?))
-    refute [2, 3, 5].my_all(lambda(&:odd?))
-    refute [1, 2, 3].my_all(lambda(&:odd?))
-    refute [1, 3, 4].my_all(lambda(&:odd?))
+  def test_my_all?
+    assert [].my_all?(lambda(&:odd?))
+    assert [1, 3, 5].my_all?(lambda(&:odd?))
+    refute [2, 3, 5].my_all?(lambda(&:odd?))
+    refute [1, 2, 3].my_all?(lambda(&:odd?))
+    refute [1, 3, 4].my_all?(lambda(&:odd?))
+  end
+
+  def test_my_any?
+    refute [].my_any?(lambda(&:odd?))
+    assert [1].my_any?(lambda(&:odd?))
+    assert [1, 2, 4].my_any?(lambda(&:odd?))
+    assert [2, 3, 4].my_any?(lambda(&:odd?))
+    assert [2, 4, 5].my_any?(lambda(&:odd?))
+    refute [2].my_any?(lambda(&:odd?))
+    refute [2, 4].my_any?(lambda(&:odd?))
   end
 end

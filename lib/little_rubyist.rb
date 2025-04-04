@@ -252,7 +252,7 @@ end
 #       ただし、ピタゴラス数の要素は与えられた上限 value 以下であるとする。
 class Integer
   def pyths
-    (1..self).to_a.combination(3).select { |x, y, z| x ** 2 + y ** 2 == z ** 2 }
+    (1..self).to_a.combination(3).select { |x, y, z| x**2 + y**2 == z**2 }
   end
 end
 
@@ -625,7 +625,7 @@ class String
   end
 end
 
-# Q063: 関数 all を自作せよ。( my_all )
+# Q063: 関数 all を自作せよ。( my_all? )
 #       all :: (a -> Bool) -> [a] -> Bool
 #       all f xs
 #       xs の要素 x について、f x がすべて True なら True。
@@ -634,9 +634,25 @@ end
 #       all (==1) [1,1,1]       = True
 #       all (==1) []            = True
 class Array
-  def my_all(pred)
+  def my_all?(pred)
     return true if self.empty?
 
-    pred.call(self.first) && self.drop(1).my_all(pred)
+    pred.call(self.first) && self.drop(1).my_all?(pred)
+  end
+end
+
+# Q064: 関数 any を自作せよ。( my_any? )
+#       any :: (a -> Bool) -> [a] -> Bool
+#       any f xs
+#       xs のいずれかの要素 x について f x が True ならば True。
+#
+#       any (== 1) [5, 4, 3, 2, 1]   = True
+#       any (== 1) [5, 4, 1, 2, 3]   = True
+#       any (== 1) [5, 4, 3, 2]      = False
+class Array
+  def my_any?(pred)
+    return false if self.empty?
+
+    pred.call(self.first) || self.drop(1).my_any?(pred)
   end
 end
