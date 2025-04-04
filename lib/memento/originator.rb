@@ -1,15 +1,24 @@
 # frozen_string_literal: true
-
-require_relative "memento"
-
 class Originator
-  attr_accessor :state
+  attr_reader :state
+
+  def memento
+    Memento.new(original: self)
+  end
 
   def restore_from(memento:)
     @state = memento.state
   end
 
-  def memento
-    Memento.new(state: @state)
+  private
+
+  attr_writer :state
+
+  class Memento
+    attr_reader :state
+
+    def initialize(original:)
+      @state = original.state
+    end
   end
 end
