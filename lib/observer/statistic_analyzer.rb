@@ -2,8 +2,8 @@
 
 require_relative "observer"
 
-class StatisticAnalyze < Observer
-  def update(subject:)
+class StatisticAnalyzer < Observer
+  def notify(subject:)
     @temperature = subject.temperature
   end
 

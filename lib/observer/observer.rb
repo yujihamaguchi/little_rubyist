@@ -2,10 +2,11 @@
 
 class Observer
   def initialize(subject:)
-    subject.register(observer: self)
+    subject.add(observer: self)
+    @subject = subject
   end
 
-  def update(subject:)
+  def notify(subject:)
     raise NotImplementedError
   end
 end

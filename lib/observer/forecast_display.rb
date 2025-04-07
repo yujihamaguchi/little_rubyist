@@ -3,7 +3,7 @@
 require_relative "observer"
 
 class ForecastDisplay < Observer
-  def update(subject:)
+  def notify(subject:)
     @temperature = subject.temperature
     @humidity = subject.humidity
   end
