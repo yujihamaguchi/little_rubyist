@@ -14,6 +14,6 @@ class Weather
   def update(temperature:, humidity:)
     @temperature = temperature
     @humidity = humidity
-    observers.each { |observer| observer.notify(subject: self) }
+    observers.each { |observer| observer.notify(temperature: @temperature, humidity: @humidity) }
   end
 end

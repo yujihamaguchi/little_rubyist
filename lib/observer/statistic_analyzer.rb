@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "observer"
+require_relative "weather_observer"
 
-class StatisticAnalyzer < Observer
-  def notify(subject:)
-    @temperature = subject.temperature
+class StatisticAnalyzer < WeatherObserver
+  def notify(temperature:, humidity:)
+    @temperature = temperature
   end
 
   def analyze
