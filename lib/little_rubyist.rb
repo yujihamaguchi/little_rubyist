@@ -2,6 +2,7 @@
 
 # noinspection SpellCheckingInspection
 require_relative "little_rubyist/version"
+require "set"
 
 # Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
 # zip :: [a] -> [b] -> [(a, b)]
@@ -654,5 +655,19 @@ class Array
     return false if self.empty?
 
     pred.call(self.first) || self.drop(1).my_any?(pred)
+  end
+end
+
+# Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として)
+COMPOSITIONS = Set[
+  { name: "The Art of the Fugue", composer: "J. S. Bach" },
+  { name: "Requiem", composer: "W. A. Mozart" },
+  { name: "Requiem", composer: "Giuseppe Verdi" },
+  { name: "Musical Offering", composer: "J. S. Bach" }
+].freeze
+
+class Set
+  def set1
+    self
   end
 end

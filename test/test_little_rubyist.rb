@@ -464,4 +464,13 @@ class TestLittleRubyist < Minitest::Test
     refute [2].my_any?(lambda(&:odd?))
     refute [2, 4].my_any?(lambda(&:odd?))
   end
+
+  def test_set1
+    assert_equal Set[
+                   { title: "The Art of the Fugue", composer: "J. S. Bach" },
+                   { title: "Requiem", composer: "W. A. Mozart" },
+                   { title: "Requiem", composer: "Giuseppe Verdi" },
+                   { title: "Musical Offering", composer: "J. S. Bach" }
+                 ], COMPOSITIONS.set1
+  end
 end
