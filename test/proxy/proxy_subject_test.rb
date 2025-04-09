@@ -1,31 +1,31 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/proxy/proxy_subject"
 
 class ProxySubjectTest < Minitest::Test
-  def test_request_as_admin
+  def test_request_with_admin
     # Arrange
-    some_subject = CustomMock.new
-    some_subject.expect(:request, nil, role: :admin)
-    proxy_subject = ProxySubject.new(service: some_subject)
+    real_subject = CustomMock.new
+    role = :admin
+    real_subject.expect :request, nil, role: role
+    proxy_subject = ProxySubject.new(service: real_subject)
 
     # Act
-    proxy_subject.request(role: :admin)
+    proxy_subject.request(role: role)
 
     # Assert
-    some_subject.verify
+    real_subject.verify
   end
 
-  def test_request_as_guest
+  def test_request_with_not_admin
     # Arrange
-    some_subject = CustomMock.new
-    proxy_subject = ProxySubject.new(service: some_subject)
+    real_subject = CustomMock.new
+    proxy_subject = ProxySubject.new(service: real_subject)
 
     # Act
-    proxy_subject.request(role: :guest)
+    proxy_subject.request(role: :not_admin)
 
     # Assert
-    some_subject.verify
+    real_subject.verify
   end
 end

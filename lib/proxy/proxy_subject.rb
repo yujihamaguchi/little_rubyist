@@ -10,8 +10,8 @@ class ProxySubject
   end
 
   def request(role:)
-    return @service.request(role: role) if role == :admin
+    return "Access denied for #{role}" unless role == :admin
 
-    "Access denied for #{role}"
+    @service.request(role: role)
   end
 end

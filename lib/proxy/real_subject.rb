@@ -6,6 +6,6 @@ class RealSubject
   include Subject
 
   def request(role:)
-    "Request processed for #{role}"
+    "Request processed by #{role}"
   end
 end
