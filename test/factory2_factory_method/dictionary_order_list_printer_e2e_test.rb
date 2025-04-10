@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/factory_method/dictionary_order_list_printer"
+require_relative "../../lib/factory2_factory_method/dictionary_order_list_printer"
 
-# 処理の一部のロジックを差し替えたいが、クライアントはその詳細を知らなくてよいようにしたい
+# クライアントから、オブジェクトや匿名関数などのカプセル化されたロジックがどのように生成されているかを隠蔽したい
 class DictionaryOrderListPrinterE2eTest < Minitest::Test
   def test_string_from
     # Arrange

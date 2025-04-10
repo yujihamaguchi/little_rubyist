@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
-require_relative "../../lib/abstract_factory/factory/modern_style_factory"
-require_relative "../../lib/abstract_factory/product/modern_style_table"
-require_relative "../../lib/abstract_factory/product/modern_style_chair"
+require_relative "../../lib/factory3_abstract_factory/factory/modern_style_factory"
+require_relative "../../lib/factory3_abstract_factory/product/modern_style_table"
+require_relative "../../lib/factory3_abstract_factory/product/modern_style_chair"
 
 class ModernStyleFactoryTest < Minitest::Test
   def test_create

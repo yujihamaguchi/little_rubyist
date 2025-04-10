@@ -2,8 +2,8 @@
 
 require "minitest/autorun"
 
-require_relative "../../lib/abstract_factory/furniture_studio"
-require_relative "../../lib/abstract_factory/table_set"
+require_relative "../../lib/factory3_abstract_factory/furniture_studio"
+require_relative "../../lib/factory3_abstract_factory/table_set"
 
 class FurnitureStudioTest < Minitest::Test
   def test_create_table_set

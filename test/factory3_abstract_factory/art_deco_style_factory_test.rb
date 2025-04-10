@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
-require_relative "../../lib/abstract_factory/factory/art_deco_style_factory"
-require_relative "../../lib/abstract_factory/product/art_deco_style_table"
-require_relative "../../lib/abstract_factory/product/art_deco_style_chair"
+require_relative "../../lib/factory3_abstract_factory/factory/art_deco_style_factory"
+require_relative "../../lib/factory3_abstract_factory/product/art_deco_style_table"
+require_relative "../../lib/factory3_abstract_factory/product/art_deco_style_chair"
 
 class ArtDecoStyleFactoryTest < Minitest::Test
   def test_create
