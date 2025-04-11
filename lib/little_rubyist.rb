@@ -658,7 +658,7 @@ class Array
   end
 end
 
-# Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として)
+# Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
 COMPOSITIONS = Set[
   { name: "The Art of the Fugue", composer: "J. S. Bach" },
   { name: "Requiem", composer: "W. A. Mozart" },
@@ -667,7 +667,13 @@ COMPOSITIONS = Set[
 ].freeze
 
 class Set
-  def set1
-    self
+  def rename(keymap)
+    self.map do |hash|
+      hash.transform_keys { |k| keymap[k] || k }
+    end.to_set
   end
+end
+
+def set1
+  COMPOSITIONS.rename({ name: :title })
 end
