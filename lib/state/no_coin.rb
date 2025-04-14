@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 require_relative "state"
-require_relative "has_coin"
 
 class NoCoin < State
-  def insert_coin(machine)
+  def insert_coin(machine:)
     machine.state = HasCoin.instance
   end
 
-  def eject_coin(machine) end
+  def eject_coin(machine:) end
 
-  def turn_crank(machine)
-    machine.monitor.display "Please insert coin before turning the crank."
+  def turn_crank(machine:)
+    print "Please insert coin before turning the crank."
   end
 end
