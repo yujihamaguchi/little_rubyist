@@ -29,6 +29,10 @@ class GumballMachine
 
   def stock=(count)
     @stock = count
+    align_state
+  end
+
+  def align_state
     @state = SoldOut.instance unless @stock.positive?
   end
 end
