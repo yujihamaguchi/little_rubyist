@@ -5,7 +5,7 @@ require_relative "fly_behavior"
 class FlyWithWings
   include FlyBehavior
 
-  def fly
+  def behave
     "Flying with wings..."
   end
 end

@@ -6,6 +6,6 @@ class Duck
   end
 
   def fly
-    @fly_behavior.fly
+    @fly_behavior.behave
   end
 end
