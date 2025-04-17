@@ -473,4 +473,19 @@ class TestLittleRubyist < Minitest::Test
                    { title: "Musical Offering", composer: "J. S. Bach" }
                  ], set1
   end
+
+  def test_set2
+    assert_equal Set[
+                   { name: "Requiem", composer: "W. A. Mozart" },
+                   { name: "Requiem", composer: "Giuseppe Verdi" }
+                 ], set2
+  end
+
+  def test_set3
+    assert_equal Set[
+                   { name: "The Art of the Fugue" },
+                   { name: "Requiem" },
+                   { name: "Musical Offering" }
+                 ], set3
+  end
 end

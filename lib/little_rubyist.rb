@@ -677,3 +677,33 @@ end
 def set1
   COMPOSITIONS.rename({ name: :title })
 end
+
+# Q068: compositions から :nameが "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
+COMPOSITIONS = Set[
+  { name: "The Art of the Fugue", composer: "J. S. Bach" },
+  { name: "Requiem", composer: "W. A. Mozart" },
+  { name: "Requiem", composer: "Giuseppe Verdi" },
+  { name: "Musical Offering", composer: "J. S. Bach" }
+].freeze
+
+def set2
+  COMPOSITIONS.select { |h| h[:name] == "Requiem" }.to_set
+end
+
+# Q069: compositions を　:name で射影せよ。（ set3 関数の戻り値として）
+COMPOSITIONS = Set[
+  { name: "The Art of the Fugue", composer: "J. S. Bach" },
+  { name: "Requiem", composer: "W. A. Mozart" },
+  { name: "Requiem", composer: "Giuseppe Verdi" },
+  { name: "Musical Offering", composer: "J. S. Bach" }
+].freeze
+
+class Set
+  def project(*attributes)
+    self.map { |r| r.slice(*attributes) }.to_set
+  end
+end
+
+def set3
+  COMPOSITIONS.project(:name)
+end
