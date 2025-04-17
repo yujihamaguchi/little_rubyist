@@ -12,7 +12,6 @@ class HtmlReportE2eTest < Minitest::Test
     output = report.generate
 
     # Assert
-    assert_match "[HTML Report]", output
-    assert_match "<html><body>report data</body></html>", output
+    assert_equal "<ul><li>foo</li><li>bar</li><li>baz</li></ul>", output
   end
 end

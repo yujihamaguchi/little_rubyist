@@ -13,7 +13,6 @@ class CsvReportE2eTest < Minitest::Test
     output = report.generate
 
     # Assert
-    assert_match "[CSV Report]", output
-    assert_match "CSV,formatted,report,data", output
+    assert_equal "foo,bar,baz\n", output
   end
 end
