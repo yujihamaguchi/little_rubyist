@@ -2,16 +2,17 @@
 
 require_relative "shape"
 
-class Dot
+class Square
   include Shape
-  attr_reader :x, :y
+  attr_reader :x, :y, :w
 
-  def initialize(x:, y:)
+  def initialize(x:, y:, w:)
     @x = x
     @y = y
+    @w = w
   end
 
   def accept(visitor)
-    visitor.visit_dot(self)
+    visitor.visit_square(self)
   end
 end
