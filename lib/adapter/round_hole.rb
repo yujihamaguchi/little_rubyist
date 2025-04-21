@@ -5,7 +5,7 @@ class RoundHole
     @radius = radius
   end
 
-  def fits?(peg)
-    @radius >= peg.radius
+  def fits?(other)
+    other.radius <= @radius
   end
 end
