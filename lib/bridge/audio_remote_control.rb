@@ -2,8 +2,8 @@
 
 require_relative "remote_control"
 
-class AdvancedRemoteControl < Bridge::RemoteControl
+class AudioRemoteControl < Bridge::RemoteControl
   def mute
-    @device.volume = 0
+    @device.mute
   end
 end

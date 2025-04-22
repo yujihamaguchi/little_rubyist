@@ -3,19 +3,20 @@
 require_relative "../test_helper"
 require_relative "../../lib/bridge/remote_control"
 require_relative "../../lib/bridge/television"
-
+# クライアントに提供したいインタフェースを表現する抽象( Abstraction: RemoteControl )と
+# その抽象が委譲する実装( Implementation: Television / Radio )の組み合わせ爆発を防ぎ、両者を相互に依存させずに独立拡張できるようにしたい
 class RemoteControlForTvE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange
     tv = Television.new
-    assert_equal false, tv.enabled?
+    refute tv.enabled?
     remote_control = Bridge::RemoteControl.new(device: tv)
 
     # Act
     remote_control.toggle_power
 
     # Assert
-    assert_equal true, tv.enabled?
+    assert tv.enabled?
   end
 
   def test_toggle_power_when_enabled
@@ -23,12 +24,12 @@ class RemoteControlForTvE2eTest < Minitest::Test
     tv = Television.new
     remote_control = Bridge::RemoteControl.new(device: tv)
     remote_control.toggle_power
-    assert_equal true, tv.enabled?
+    assert tv.enabled?
 
     # Act
     remote_control.toggle_power
 
     # Assert
-    assert_equal false, tv.enabled?
+    refute tv.enabled?
   end
 end

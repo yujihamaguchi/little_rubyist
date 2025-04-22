@@ -3,7 +3,6 @@
 class Device
   def initialize
     @enabled = false
-    super
   end
 
   def disable
