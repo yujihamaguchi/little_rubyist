@@ -5,7 +5,7 @@ require_relative "../../lib/builder/director"
 require_relative "../../lib/builder/builder/car_body_builder"
 require_relative "../../lib/builder/builder/car_manual_builder"
 
-# 複雑なオブジェクト生成過程を段階的に行いたい（ついでに複雑な生成過程を担う Builder を差し替えて様々なものを生成したい）
+# 複雑なオブジェクト生成過程を段階的に行いたい（ついでに生成過程を担う Builder を差し替えて様々なものを生成したい）
 class DirectorE2eTest < Minitest::Test
   def test_construct_sports_car_body
     # Arrange

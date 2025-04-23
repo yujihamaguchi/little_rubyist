@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require_relative "car_product"
 
-class CarBody < CarProduct
+require_relative "car"
+
+class CarBody < Car
 end

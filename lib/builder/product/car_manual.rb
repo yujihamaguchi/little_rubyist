@@ -1,16 +1,6 @@
 # frozen_string_literal: true
-require_relative "car_product"
 
-class CarManual < CarProduct
-  def engine
-    "#{@engine} manual"
-  end
+require_relative "car"
 
-  def seats
-    "#{@seats} seats"
-  end
-
-  def roof_rails
-    nil
-  end
+class CarManual < Car
 end

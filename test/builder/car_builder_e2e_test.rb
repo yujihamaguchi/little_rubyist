@@ -8,15 +8,13 @@ class CarBuilderE2eTest < Minitest::Test
     @product = CarBody.new
   end
 
-  def test_product_without_engine
+  def test_build_without_engine
     # Arrange
     builder = CarBuilder.new
 
     # Act & Assert
     error = assert_raises(RuntimeError) do
-      builder.stub :product, @product do
-        builder.with_seats(count: 1).finalize
-      end
+      builder.with_seats(count: 1).build
     end
     assert_match(/engine/, error.message)
   end
@@ -27,10 +25,8 @@ class CarBuilderE2eTest < Minitest::Test
 
     # Act & Assert
     error = assert_raises(RuntimeError) do
-      builder.stub :product, @product do
-        builder.with_engine(type: "foo").finalize
-      end
+      builder.with_engine(type: "foo").build
     end
-    assert_match(/seats/, error.message)
+    assert_match(/seat/, error.message)
   end
 end
