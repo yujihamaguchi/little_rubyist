@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+original_verbose = $VERBOSE
+$VERBOSE = nil
 require "multiset"
+$VERBOSE = original_verbose
 require_relative "../../lib/money/money"
 require_relative "../../lib/money/money_sum"
 
