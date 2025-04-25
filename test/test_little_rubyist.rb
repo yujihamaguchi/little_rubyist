@@ -488,4 +488,13 @@ class TestLittleRubyist < Minitest::Test
                    { name: "Musical Offering" }
                  ], set3
   end
+
+  def test_set4
+    assert_equal Set[
+                   { name: "The Art of the Fugue", composer: "J. S. Bach", country: "Germany" },
+                   { name: "Requiem", composer: "W. A. Mozart", country: "Austria" },
+                   { name: "Requiem", composer: "Giuseppe Verdi", country: "Italy" },
+                   { name: "Musical Offering", composer: "J. S. Bach", country: "Germany" }
+                 ], set4
+  end
 end
