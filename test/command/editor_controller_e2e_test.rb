@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/command/command"
-require_relative "../../lib/command/copy_command"
-require_relative "../../lib/command/cut_command"
-require_relative "../../lib/command/paste_command"
-require_relative "../../lib/command/editor_controller"
 require_relative "../../lib/command/text_editor"
+require_relative "../../lib/command/editor_invoker"
+require_relative "../../lib/command/cut_command"
+require_relative "../../lib/command/copy_command"
+require_relative "../../lib/command/command"
+require_relative "../../lib/command/paste_command"
 
 # クライアントが操作対象に対するリクエストセット（実行、取り消しなど）を透過的に行いたい
 
@@ -18,11 +18,11 @@ require_relative "../../lib/command/text_editor"
 
 class EditorControllerE2eTest < Minitest::Test
   def setup
-    @controller = EditorController.new
     @editor = TextEditor.new
-    @controller.add_command(slot_number: 1, command: CutCommand.new(receiver: @editor))
-    @controller.add_command(slot_number: 2, command: CopyCommand.new(receiver: @editor))
-    @controller.add_command(slot_number: 3, command: PasteCommand.new(receiver: @editor))
+    @controller = EditorInvoker.new
+    @controller.add_command(name: :cut, command: CutCommand.new(receiver: @editor))
+    @controller.add_command(name: :copy, command: CopyCommand.new(receiver: @editor))
+    @controller.add_command(name: :paste, command: PasteCommand.new(receiver: @editor))
   end
 
   def test_cut_command
@@ -30,7 +30,7 @@ class EditorControllerE2eTest < Minitest::Test
     @editor.content = "Hello World"
 
     # Act
-    @controller.push_button(slot_number: 1)
+    @controller.push_button(:cut)
 
     # Assert
     assert_equal "", @editor.content
@@ -42,7 +42,7 @@ class EditorControllerE2eTest < Minitest::Test
     @editor.content = "Hello World"
 
     # Act
-    @controller.push_button(slot_number: 2)
+    @controller.push_button(:copy)
 
     # Assert
     assert_equal "Hello World", @editor.content
@@ -55,7 +55,7 @@ class EditorControllerE2eTest < Minitest::Test
     @editor.clipboard = " World"
 
     # Act
-    @controller.push_button(slot_number: 3)
+    @controller.push_button(:paste)
 
     # Assert
     assert_equal "Hello World", @editor.content
@@ -64,10 +64,10 @@ class EditorControllerE2eTest < Minitest::Test
   def test_undo_cut
     # Arrange
     @editor.content = "Hello World"
+    @controller.push_button(:cut)
+    assert_equal "", @editor.content
 
     # Act
-    @controller.push_button(slot_number: 1)
-    assert_equal "", @editor.content
     @controller.push_undo_button
 
     # Assert
@@ -79,14 +79,15 @@ class EditorControllerE2eTest < Minitest::Test
     # Arrange
     @editor.content = "Hello"
     @editor.clipboard = " World"
+    @controller.push_button(:paste)
+    assert_equal "Hello World", @editor.content
 
     # Act
-    @controller.push_button(slot_number: 3)
-    assert_equal "Hello World", @editor.content
     @controller.push_undo_button
 
     # Assert
     assert_equal "Hello", @editor.content
+    assert_equal " World", @editor.clipboard
   end
 
   def test_undo_no_last_command
