@@ -9,8 +9,11 @@ class MarginPriceE2eTest < Minitest::Test
   def test_value
     # Arrange
     prime_price = PrimePrice.new(value: 3)
+    assert_equal 3, prime_price.value
     doubled_price = DoubledPrice.new(price: prime_price)
+    assert_equal 6, doubled_price.value
     wholesale_price = WholesalePrice.new(price: doubled_price, advantage: 2)
+    assert_equal 4, wholesale_price.value
     doubled_price = DoubledPrice.new(price: wholesale_price)
 
     # Act & Assert
