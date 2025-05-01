@@ -2,12 +2,10 @@
 
 require_relative "price"
 
-class PrimePrice
+class PriceDecorator
   include Price
 
-  def initialize(value:)
-    @value = value
+  def initialize(price:)
+    @price = price
   end
-
-  attr_reader :value
 end
