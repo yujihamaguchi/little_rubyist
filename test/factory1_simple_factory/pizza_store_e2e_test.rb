@@ -6,20 +6,20 @@ require_relative "../../lib/factory1_simple_factory/pizza_factory"
 require_relative "../../lib/factory1_simple_factory/margherita"
 require_relative "../../lib/factory1_simple_factory/pepperoni"
 
-# クライアントから、オブジェクトや匿名関数などのカプセル化されたロジックがどのように生成されているかを隠蔽したい
+# クライアントが生成の詳細を意識せずに必要なオブジェクトを得られるようにしたい
 class PizzaStoreE2eTest < Minitest::Test
   def test_order_margherita
     # Arrange
     pizza_store = PizzaStore.new(factory: PizzaFactory.new)
 
     # Act
-    actual = pizza_store.order(:margherita)
+    pizza = pizza_store.order(:margherita)
 
     # Assert
-    assert_equal Margherita, actual.class
-    assert actual.baked?
-    assert actual.cut?
-    assert actual.boxed?
+    assert_equal Margherita, pizza.class
+    assert pizza.baked?
+    assert pizza.cut?
+    assert pizza.boxed?
   end
 
   def test_order_pepperoni
