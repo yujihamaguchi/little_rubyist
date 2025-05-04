@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/factory2_factory_method/dictionary_order_list_printer"
 
-# クライアントから、オブジェクトや匿名関数などのカプセル化されたロジックがどのように生成されているかを隠蔽したい
+# アルゴリズムの骨格は固定しつつ、オブジェクト生成の特定ステップだけを差し替え可能にする。クライアントはサブクラスを指定するだけで、目的に応じたバリエーションを選択できる。
 class DictionaryOrderListPrinterE2eTest < Minitest::Test
   def test_string_from
     # Arrange

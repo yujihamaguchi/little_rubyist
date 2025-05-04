@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-class ListPrinter
-  def create_key_extractor
+module ListPrinter
+  def sort_key
     raise NotImplementedError
   end
+
   def string_from(list)
-    list.sort_by(&create_key_extractor).to_s
+    list.sort_by(&sort_key).to_s
   end
 end
