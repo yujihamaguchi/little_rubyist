@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "list_printer"
+require_relative "base_list_printer"
 
-class LengthOrderListPrinter
-  include ListPrinter
-
+class LengthOrderListPrinter < BaseListPrinter
   def initialize(reverse: false)
+    super()
     @reverse = reverse
   end
 
-  def sort_key
+  private
+
+  def create_sort_key
     ->(attr) { @reverse ? -attr.length : attr.length }
   end
 end
