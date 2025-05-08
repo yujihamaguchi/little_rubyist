@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class TableSet
-  attr_accessor :table, :chair
+  attr_accessor :chair, :table
 end

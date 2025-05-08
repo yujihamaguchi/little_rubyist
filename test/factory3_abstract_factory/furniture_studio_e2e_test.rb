@@ -5,28 +5,32 @@ require_relative "../../lib/factory3_abstract_factory/furniture_studio"
 require_relative "../../lib/factory3_abstract_factory/factory/art_deco_style_factory"
 require_relative "../../lib/factory3_abstract_factory/factory/modern_style_factory"
 
-# クライアントから、互いに関連するオブジェクト群の生成やその組み合わせに関する詳細な実装ロジックが隠蔽され、一貫性ある統一インターフェースを通じて提供されるようにしたい
+# 互いに協調して動作する複数の製品クラスを“バリエーションごと”にまとめて生成できるようにし
+# クライアントはそのバリエーションを選択するだけで、互換性の取れたオブジェクト群を得られるようにしたい
 class FurnitureStudioE2eTest < Minitest::Test
-  TEST_CASES = [
-    { factory_class: ArtDecoStyleFactory, style_name: "art deco" },
-    { factory_class: ModernStyleFactory, style_name: "modern" }
-  ].freeze
+  def test_create_art_deco_style_table_set
+    # Arrange
+    art_deco_style_factory = ArtDecoStyleFactory.new
+    furniture_studio = FurnitureStudio.new(factory: art_deco_style_factory)
 
-  def test_create_table_set
-    TEST_CASES.each do |test_case|
-      factory_class = test_case[:factory_class]
-      style_name = test_case[:style_name]
+    # Act
+    table_set = furniture_studio.create_table_set
 
-      # Arrange
-      some_style_factory = factory_class.new
-      furniture_studio = FurnitureStudio.new(factory: some_style_factory)
+    # Assert
+    assert_equal "Sit on the art deco style chair.", table_set.chair.sit
+    assert_equal "Stand on the art deco style table.", table_set.table.stand
+  end
 
-      # Act
-      table_set = furniture_studio.create_table_set
+  def test_create_modern_style_table_set
+    # Arrange
+    modern_style_factory = ModernStyleFactory.new
+    furniture_studio = FurnitureStudio.new(factory: modern_style_factory)
 
-      # Assert
-      assert_equal "Sit on the #{style_name} chair.", table_set.chair.sit
-      assert_equal "Stand on the #{style_name} table.", table_set.table.stand
-    end
+    # Act
+    table_set = furniture_studio.create_table_set
+
+    # Assert
+    assert_equal "Sit on the modern style chair.", table_set.chair.sit
+    assert_equal "Stand on the modern style table.", table_set.table.stand
   end
 end

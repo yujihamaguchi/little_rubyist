@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "./product/table_set"
+
 class FurnitureStudio
   def initialize(factory:)
     @factory = factory

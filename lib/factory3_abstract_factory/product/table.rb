@@ -2,7 +2,7 @@
 
 class Table
   def stand
-    "Stand on the #{style_name} table."
+    "Stand on the #{style_name} style table."
   end
 
   def style_name

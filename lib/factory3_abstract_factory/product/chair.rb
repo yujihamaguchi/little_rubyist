@@ -2,7 +2,7 @@
 
 class Chair
   def sit
-    "Sit on the #{style_name} chair."
+    "Sit on the #{style_name} style chair."
   end
 
   def style_name
