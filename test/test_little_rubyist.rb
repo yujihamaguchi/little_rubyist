@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "test_helper"
+require "bmg"
 
 class TestLittleRubyist < Minitest::Test
   def test_that_it_has_a_version_number
@@ -466,35 +467,35 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_set1
-    assert_equal Set[
-                   { title: "The Art of the Fugue", composer: "J. S. Bach" },
-                   { title: "Requiem", composer: "W. A. Mozart" },
-                   { title: "Requiem", composer: "Giuseppe Verdi" },
-                   { title: "Musical Offering", composer: "J. S. Bach" }
-                 ], set1
+    assert_equal Bmg::Relation.new([
+                                     { title: "The Art of the Fugue", composer: "J. S. Bach" },
+                                     { title: "Requiem", composer: "W. A. Mozart" },
+                                     { title: "Requiem", composer: "Giuseppe Verdi" },
+                                     { title: "Musical Offering", composer: "J. S. Bach" }
+                                   ]).to_a, set1
   end
 
   def test_set2
-    assert_equal Set[
-                   { name: "Requiem", composer: "W. A. Mozart" },
-                   { name: "Requiem", composer: "Giuseppe Verdi" }
-                 ], set2
+    assert_equal Bmg::Relation.new([
+                                     { name: "Requiem", composer: "W. A. Mozart" },
+                                     { name: "Requiem", composer: "Giuseppe Verdi" }
+                                   ]).to_a, set2
   end
 
   def test_set3
-    assert_equal Set[
-                   { name: "The Art of the Fugue" },
-                   { name: "Requiem" },
-                   { name: "Musical Offering" }
-                 ], set3
+    assert_equal Bmg::Relation.new([
+                                     { name: "The Art of the Fugue" },
+                                     { name: "Requiem" },
+                                     { name: "Musical Offering" }
+                                   ]).to_a, set3
   end
 
   def test_set4
-    assert_equal Set[
-                   { name: "The Art of the Fugue", composer: "J. S. Bach", country: "Germany" },
-                   { name: "Requiem", composer: "W. A. Mozart", country: "Austria" },
-                   { name: "Requiem", composer: "Giuseppe Verdi", country: "Italy" },
-                   { name: "Musical Offering", composer: "J. S. Bach", country: "Germany" }
-                 ], set4
+    assert_equal Bmg::Relation.new([
+                                     { name: "The Art of the Fugue", composer: "J. S. Bach", country: "Germany" },
+                                     { name: "Requiem", composer: "W. A. Mozart", country: "Austria" },
+                                     { name: "Requiem", composer: "Giuseppe Verdi", country: "Italy" },
+                                     { name: "Musical Offering", composer: "J. S. Bach", country: "Germany" }
+                                   ]).to_a, set4
   end
 end

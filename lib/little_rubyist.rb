@@ -3,6 +3,7 @@
 # noinspection SpellCheckingInspection
 require_relative "little_rubyist/version"
 require "set"
+require "bmg"
 
 # Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
 # zip :: [a] -> [b] -> [(a, b)]
@@ -658,71 +659,41 @@ class Array
   end
 end
 
+COMPOSITIONS = Bmg::Relation.new([
+                                   { name: "The Art of the Fugue", composer: "J. S. Bach" },
+                                   { name: "Requiem", composer: "W. A. Mozart" },
+                                   { name: "Requiem", composer: "Giuseppe Verdi" },
+                                   { name: "Musical Offering", composer: "J. S. Bach" }
+                                 ])
+
+COMPOSERS = Bmg::Relation.new([
+                                { composer: "J. S. Bach", country: "Germany" },
+                                { composer: "W. A. Mozart", country: "Austria" },
+                                { composer: "Giuseppe Verdi", country: "Italy" }
+                              ])
+
+NATIONS = Bmg::Relation.new([
+                              { nation: "Germany", language: "Germany" },
+                              { nation: "Austria", language: "German" },
+                              { nation: "Italy", language: "Italian" }
+                            ])
+
 # Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
-
-COMPOSITIONS = Set[
-  { name: "The Art of the Fugue", composer: "J. S. Bach" },
-  { name: "Requiem", composer: "W. A. Mozart" },
-  { name: "Requiem", composer: "Giuseppe Verdi" },
-  { name: "Musical Offering", composer: "J. S. Bach" }
-].freeze
-
-COMPOSERS = Set[
-  { composer: "J. S. Bach", country: "Germany" },
-  { composer: "W. A. Mozart", country: "Austria" },
-  { composer: "Giuseppe Verdi", country: "Italy" }
-].freeze
-
-NATIONS = Set[
-  { nation: "Germany", language: "Germany" },
-  { nation: "Austria", language: "German" },
-  { nation: "Italy", language: "Italian" }
-].freeze
-
-class Set
-  def rename(keymap)
-    self.map do |hash|
-      hash.transform_keys { |k| keymap[k] || k }
-    end.to_set
-  end
-end
-
 def set1
-  COMPOSITIONS.rename({ name: :title })
+  COMPOSITIONS.rename(name: :title).to_a
 end
 
-# Q068: compositions から :nameが "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
+# Q068: compositions から :name が "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
 def set2
-  COMPOSITIONS.select { |h| h[:name] == "Requiem" }.to_set
+  COMPOSITIONS.restrict(name: "Requiem").to_a
 end
 
 # Q069: compositions を　:name で射影せよ。（ set3 関数の戻り値として）
-class Set
-  def project(*attributes)
-    self.map { |r| r.slice(*attributes) }.to_set
-  end
-end
-
 def set3
-  COMPOSITIONS.project(:name)
+  COMPOSITIONS.project([:name]).to_a
 end
 
 # Q070: compositions と composers を自然結合せよ。（ set4 関数の戻り値として ）
-class Set
-  def natural_join(other)
-    key = self.first.keys.intersection(other.first.keys).first
-    return Set.new unless key
-
-    result = Set.new
-    self.each do |r1|
-      other.each do |r2|
-        result << r1.merge(r2) if r1[key] == r2[key]
-      end
-    end
-    result
-  end
-end
-
 def set4
-  COMPOSITIONS.natural_join(COMPOSERS)
+  COMPOSITIONS.join(COMPOSERS, [:composer]).to_a
 end
