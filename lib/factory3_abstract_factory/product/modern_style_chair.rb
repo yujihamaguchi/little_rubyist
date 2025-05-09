@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 require_relative "chair"
+require_relative "style"
 
 class ModernStyleChair < Chair
-  def style_name
-    "modern"
-  end
+  include Style::Modern
 end

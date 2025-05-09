@@ -4,9 +4,7 @@ require_relative "../product/art_deco_style_table"
 require_relative "../product/art_deco_style_chair"
 require_relative "furniture_factory"
 
-class ArtDecoStyleFactory
-  include FurnitureFactory
-
+class ArtDecoStyleFactory < FurnitureFactory
   def create_table
     ArtDecoStyleTable.new
   end

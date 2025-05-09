@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
-module FurnitureFactory
+require_relative "../product/table_set"
+
+class FurnitureFactory
+  def create_table_set
+    TableSet.new(table: create_table, chair: create_chair)
+  end
+
   def create_table
     raise NotImplementedError
   end
