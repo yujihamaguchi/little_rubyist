@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-class LoginCheckbox
-  def initialize(parent:)
-    @parent = parent
+require_relative "component"
+class LoginCheckbox < Mediator::Component
+  def initialize(mediator:)
+    super(mediator: mediator)
     @checked = false
   end
 
@@ -12,11 +13,11 @@ class LoginCheckbox
 
   def check
     @checked = true
-    @parent.notify(sender: self, action: :check)
+    @mediator.login_checkbox_checked
   end
 
   def uncheck
     @checked = false
-    @parent.notify(sender: self, action: :uncheck)
+    @mediator.login_checkbox_unchecked
   end
 end
