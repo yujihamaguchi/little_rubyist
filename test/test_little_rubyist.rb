@@ -498,4 +498,19 @@ class TestLittleRubyist < Minitest::Test
                                      { name: "Musical Offering", composer: "J. S. Bach", country: "Germany" }
                                    ]).to_a, set4
   end
+
+  # #{{:country "Germany", :nation "Germany", :language "Germany", :composer "J. S. Bach"}
+  # {:country "Italy", :nation "Italy", :language "Italian", :composer "Giuseppe Verdi"}
+  # {:country "Austria", :nation "Austria", :language "German", :composer "W. A. Mozart"}}))
+
+  def test_set5
+    assert_equal Bmg::Relation.new([
+                                     { country: "Germany", nation: "Germany", language: "Germany",
+                                       composer: "J. S. Bach" },
+                                     { country: "Italy", nation: "Italy", language: "Italian",
+                                       composer: "Giuseppe Verdi" },
+                                     { country: "Austria", nation: "Austria", language: "German",
+                                       composer: "W. A. Mozart" }
+                                   ]).to_a, set5
+  end
 end

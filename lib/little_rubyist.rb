@@ -697,3 +697,8 @@ end
 def set4
   COMPOSITIONS.join(COMPOSERS, [:composer]).to_a
 end
+
+# Q071: composers と nations を :country と :nation で結合せよ。（ set5 関数の戻り値として）
+def set5
+  COMPOSERS.join(NATIONS, COMPOSERS: :country, NATIONS: :nation).to_a
+end
