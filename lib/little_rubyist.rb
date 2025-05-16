@@ -680,25 +680,30 @@ NATIONS = Bmg::Relation.new([
 
 # Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
 def set1
-  COMPOSITIONS.rename(name: :title).to_a
+  COMPOSITIONS.rename(name: :title).to_set
 end
 
 # Q068: compositions から :name が "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
 def set2
-  COMPOSITIONS.restrict(name: "Requiem").to_a
+  COMPOSITIONS.restrict(name: "Requiem").to_set
 end
 
 # Q069: compositions を　:name で射影せよ。（ set3 関数の戻り値として）
 def set3
-  COMPOSITIONS.project([:name]).to_a
+  COMPOSITIONS.project([:name]).to_set
 end
 
 # Q070: compositions と composers を自然結合せよ。（ set4 関数の戻り値として ）
 def set4
-  COMPOSITIONS.join(COMPOSERS, [:composer]).to_a
+  COMPOSITIONS.join(COMPOSERS, [:composer]).to_set
 end
 
 # Q071: composers と nations を :country と :nation で結合せよ。（ set5 関数の戻り値として）
 def set5
-  COMPOSERS.join(NATIONS, on: { country: :nation }).to_a
+  COMPOSERS.join(NATIONS, country: :nation).to_set
+end
+
+# Q072: compositions から :name が "Requiem" のレコードを抽出し、 composers と自然結合し、 :country キーで射影せよ。（ set6 関数の戻り値として）
+def set6
+  COMPOSITIONS.restrict(name: "Requiem").join(COMPOSERS, [:composer]).project([:country]).to_set
 end

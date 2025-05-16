@@ -472,14 +472,14 @@ class TestLittleRubyist < Minitest::Test
                                      { title: "Requiem", composer: "W. A. Mozart" },
                                      { title: "Requiem", composer: "Giuseppe Verdi" },
                                      { title: "Musical Offering", composer: "J. S. Bach" }
-                                   ]).to_a, set1
+                                   ]).to_set, set1
   end
 
   def test_set2
     assert_equal Bmg::Relation.new([
                                      { name: "Requiem", composer: "W. A. Mozart" },
                                      { name: "Requiem", composer: "Giuseppe Verdi" }
-                                   ]).to_a, set2
+                                   ]).to_set, set2
   end
 
   def test_set3
@@ -487,7 +487,7 @@ class TestLittleRubyist < Minitest::Test
                                      { name: "The Art of the Fugue" },
                                      { name: "Requiem" },
                                      { name: "Musical Offering" }
-                                   ]).to_a, set3
+                                   ]).to_set, set3
   end
 
   def test_set4
@@ -496,12 +496,8 @@ class TestLittleRubyist < Minitest::Test
                                      { name: "Requiem", composer: "W. A. Mozart", country: "Austria" },
                                      { name: "Requiem", composer: "Giuseppe Verdi", country: "Italy" },
                                      { name: "Musical Offering", composer: "J. S. Bach", country: "Germany" }
-                                   ]).to_a, set4
+                                   ]).to_set, set4
   end
-
-  # #{{:country "Germany", :nation "Germany", :language "Germany", :composer "J. S. Bach"}
-  # {:country "Italy", :nation "Italy", :language "Italian", :composer "Giuseppe Verdi"}
-  # {:country "Austria", :nation "Austria", :language "German", :composer "W. A. Mozart"}}))
 
   def test_set5
     assert_equal Bmg::Relation.new([
@@ -511,6 +507,13 @@ class TestLittleRubyist < Minitest::Test
                                        composer: "Giuseppe Verdi" },
                                      { country: "Austria", nation: "Austria", language: "German",
                                        composer: "W. A. Mozart" }
-                                   ]).to_a, set5
+                                   ]).to_set, set5
+  end
+
+  def test_set6
+    assert_equal Bmg::Relation.new([
+                                     { country: "Italy" },
+                                     { country: "Austria" }
+                                   ]).to_set, set6
   end
 end
