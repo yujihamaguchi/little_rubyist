@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/mediator/auth_dialog"
 
-# 各コンポーネント間で直接相互作用させると依存関係が複雑化しがちな連動ロジックを、中央の仲介者（Mediator）によって一元管理し、システム全体の秩序と拡張性を確保したい
+# 多対多のオブジェクト間の直接的な依存関係を排除し、振る舞いの連携を中央の仲介者に集約することで、構造の単純化と柔軟な変更を可能にしたい
 class AuthDialogE2eTest < Minitest::Test
   def test_checkbox_check
     # Arrange
