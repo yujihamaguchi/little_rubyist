@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 class Originator
   attr_reader :state
 
   def memento
-    Memento.new(original: self)
+    Memento.new(self)
   end
 
   def restore_from(memento:)
@@ -17,10 +18,9 @@ class Originator
   class Memento
     attr_reader :state
 
-    def initialize(original:)
-      @state = original.state
+    def initialize(object)
+      @state = object.state
     end
   end
-
   private_constant :Memento
 end
