@@ -501,11 +501,11 @@ class TestLittleRubyist < Minitest::Test
 
   def test_set5
     assert_equal Bmg::Relation.new([
-                                     { country: "Germany", nation: "Germany", language: "Germany",
+                                     { country: "Germany", language: "Germany",
                                        composer: "J. S. Bach" },
-                                     { country: "Italy", nation: "Italy", language: "Italian",
+                                     { country: "Italy", language: "Italian",
                                        composer: "Giuseppe Verdi" },
-                                     { country: "Austria", nation: "Austria", language: "German",
+                                     { country: "Austria", language: "German",
                                        composer: "W. A. Mozart" }
                                    ]).to_set, set5
   end
