@@ -516,4 +516,10 @@ class TestLittleRubyist < Minitest::Test
                                      { country: "Austria" }
                                    ]).to_set, set6
   end
+
+  def test_deeply_nested
+    assert_equal :bottom, :bottom.deeply_nested(0)
+    assert_equal [:bottom], :bottom.deeply_nested(1)
+    assert_equal [[:bottom]], :bottom.deeply_nested(2)
+  end
 end

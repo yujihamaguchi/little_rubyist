@@ -707,3 +707,12 @@ end
 def set6
   COMPOSITIONS.restrict(name: "Requiem").join(COMPOSERS, [:composer]).project([:country]).to_set
 end
+
+# Q073: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply-nested 関数を書け。
+class Object
+  def deeply_nested(n)
+    return self if n.zero?
+
+    [self].deeply_nested(n - 1)
+  end
+end
