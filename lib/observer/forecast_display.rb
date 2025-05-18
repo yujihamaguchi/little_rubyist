@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "weather_observer"
-
-class ForecastDisplay < WeatherObserver
-  def notify(temperature:, humidity:)
-    @temperature = temperature
-    @humidity = humidity
-  end
-
+require_relative "observer"
+class ForecastDisplay < Observer
   def display
     "Forecast / temperature: #{@temperature}, humidity: #{@humidity}"
+  end
+
+  def update(temperature:, humidity:)
+    @temperature = temperature
+    @humidity = humidity
   end
 end

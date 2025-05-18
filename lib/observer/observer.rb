@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class WeatherObserver
+class Observer
   def initialize(subject:)
     subject.add(observer: self)
   end
 
-  def notify(temperature:, humidity:)
+  def update(temperature:, humidity:)
     raise NotImplementedError
   end
 end
