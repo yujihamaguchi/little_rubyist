@@ -27,4 +27,15 @@ class ProxySubjectE2eTest < Minitest::Test
     # Assert
     assert_equal "Access denied for guest", result
   end
+
+  def test_request_as_user
+    # Arrange
+    proxy_subject = ProxySubject.new(service: RealSubject.new)
+
+    # Act
+    result = proxy_subject.request(role: :user)
+
+    # Assert
+    assert_equal "Access denied for user", result
+  end
 end
