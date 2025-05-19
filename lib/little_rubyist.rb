@@ -716,3 +716,12 @@ class Object
     [self].deeply_nested(n - 1)
   end
 end
+
+# Q074: 以下のコイントスの結果データ（ :h 表、 :t 裏 ）について、 表が 2 回続けて出たケースをカウントする関数 count_heads_pairs を再帰を用いて書け。
+class Array
+  def count_heads_pairs
+    return 0 if self.count < 2
+
+    (self.take(2).all? { |r| r == :h } ? 1 : 0) + self.drop(1).count_heads_pairs
+  end
+end

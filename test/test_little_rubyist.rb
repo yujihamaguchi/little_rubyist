@@ -522,4 +522,24 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [:bottom], :bottom.deeply_nested(1)
     assert_equal [[:bottom]], :bottom.deeply_nested(2)
   end
+
+  def test_count_heads_pairs
+    assert_equal 0, [].count_heads_pairs
+    assert_equal 0, [:h].count_heads_pairs
+    assert_equal 0, %i[t h].count_heads_pairs
+    assert_equal 0, %i[h t].count_heads_pairs
+    assert_equal 0, %i[t t].count_heads_pairs
+    assert_equal 0, %i[t t t].count_heads_pairs
+    assert_equal 0, %i[h t t].count_heads_pairs
+    assert_equal 0, %i[t h t].count_heads_pairs
+    assert_equal 0, %i[t t h].count_heads_pairs
+    assert_equal 1, %i[h h].count_heads_pairs
+    assert_equal 2, %i[h h h].count_heads_pairs
+    assert_equal 3, %i[h h h h].count_heads_pairs
+    assert_equal 2, %i[h h t h h].count_heads_pairs
+    assert_equal 3, %i[t h h h h].count_heads_pairs
+    assert_equal 3, %i[h h h h t].count_heads_pairs
+    assert_equal 2, %i[h h h t h].count_heads_pairs
+    assert_equal 2, %i[h t t h h h].count_heads_pairs
+  end
 end
