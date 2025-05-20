@@ -725,3 +725,14 @@ class Array
     (self.take(2).all? { |r| r == :h } ? 1 : 0) + self.drop(1).count_heads_pairs
   end
 end
+
+# Q075: 以下の変換を行う関数 by-pairs を書け。
+#     変換前： [:h :t :t :h :h :h]
+#     変換後： ((:h :t) (:t :t) (:t :h) (:h :h) (:h :h))
+class Array
+  def by_pairs
+    return [] if self.count < 2
+
+    [self.take(2)] + self.drop(1).by_pairs
+  end
+end

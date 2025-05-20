@@ -542,4 +542,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, %i[h h h t h].count_heads_pairs
     assert_equal 2, %i[h t t h h h].count_heads_pairs
   end
+
+  def test_by_pairs
+    assert_equal [], [].by_pairs
+    assert_equal [], [:t].by_pairs
+    assert_equal [%i[t t]], %i[t t].by_pairs
+    assert_equal [%i[t t], %i[t t]], %i[t t t].by_pairs
+    assert_equal [%i[t t], %i[t t], %i[t t]], %i[t t t t].by_pairs
+    assert_equal [%i[h t], %i[t t], %i[t h], %i[h h], %i[h h]], %i[h t t h h h].by_pairs
+  end
 end
