@@ -562,4 +562,28 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 1, [1, 2, 2].unique_attribute
     assert_equal 3, [1, 2, 2, 3, 1].unique_attribute
   end
+
+  def test_overlap?
+    refute [1, 2].overlap?([3, 4])
+    assert [1, 2].overlap?([1, 2])
+    assert [1, 2].overlap?([2, 3])
+    assert [2, 3].overlap?([1, 2])
+    refute [1, 2].overlap?([3, 4])
+    refute [3, 4].overlap?([1, 2])
+  end
+
+  def test_merge_intervals
+    assert_equal [[1, 2], [3, 4]], [[1, 2], [3, 4]].merge_intervals
+    assert_equal [[1, 3]], [[1, 2], [2, 3]].merge_intervals
+    assert_equal [[1, 2], [3, 4]], [[3, 4], [1, 2]].merge_intervals
+    assert_equal [[1, 3]], [[2, 3], [1, 2]].merge_intervals
+    assert_equal [[1, 2] [3, 4] [5, 6]], [[1, 2] [3, 4] [5, 6]].merge_intervals
+    assert_equal [[1, 3], [4, 5]], [[1, 2], [3, 4], [4.5]].merge_intervals
+    assert_equal [[1, 4]], [[1, 2], [2, 3], [3, 4]].merge_intervals
+    assert_equal [[1, 2], [3, 5]], [[1, 2], [3, 4], [4, 5]].merge_intervals
+    assert_equal [[1, 3], [4, 5]], [[1, 3], [4, 5], [1, 3]].merge_intervals
+    assert_equal [[0, 3], [4, 5]], [[1, 3], [0, 3], [4, 5]].merge_intervals
+    assert_equal [[1, 6], [[1, 6]], [2, 5], [3, 4]].merge_intervals
+    assert_equal [[1, 3], [4, 6], [7, 9]], [[1, 3], [4, 6], [7, 9]].merge_intervals
+  end
 end

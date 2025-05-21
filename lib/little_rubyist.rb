@@ -757,3 +757,15 @@ class Array
     self.group_by { |x| x }.filter_map { |k, v| k if v.count == 1 }.first
   end
 end
+
+# Q203: 間隔が重複しないように間隔同士を組み合わせる関数 merge_intervals を書け。先立って overlap? 述語を書くと便利である。
+#         [[1,2],[2,3],[3,4]] -> [[1,4]]
+#         [[1,3],[1,3],[4,5]] -> [[1,3],[4,5]]
+#         [[1,3],[0,3],[4,5]] -> [[0,3],[4,5]]
+#         [[1,6],[2,5],[3,4]] -> [[1,6]]
+#         [[1,3],[4,6],[7,9]] -> [[1,3],[4,6],[7,9]]
+class Array
+  def overlap?(other); end
+
+  def merge_intervals; end
+end
