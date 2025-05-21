@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
+require_relative "no_coin"
+require_relative "has_coin"
 class GumballMachine
   attr_reader :stock
   attr_accessor :state
 
   def initialize(stock: 10)
-    @state = NoCoin.instance
-    self.stock = stock
-  end
+    @state = if stock.zero?
+               SoldOut.instance
+             else
+               NoCoin.instance
+             end
 
-  def decrease
-    self.stock = @stock - 1
+    @stock = stock
   end
 
   def insert_coin
@@ -25,14 +28,8 @@ class GumballMachine
     @state.turn_crank(machine: self)
   end
 
-  private
-
-  def stock=(count)
-    @stock = count
-    align_state
-  end
-
-  def align_state
-    @state = SoldOut.instance unless @stock.positive?
+  def decrease_stock
+    @stock -= 1
+    @state = SoldOut.instance if @stock.zero?
   end
 end
