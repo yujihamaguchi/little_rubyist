@@ -736,3 +736,24 @@ class Array
     [self.take(2)] + self.drop(1).by_pairs
   end
 end
+
+# Q201: 関数の返り値として、非ゼロ値の順番を保ったまま、 ゼロ値を末尾に移動しする関数 move_zeros_2_back を書け
+#         [0,1,2,3] -> [1,2,3,0]
+#         [4,1,0,0,5] -> [4,1,5,0,0]
+class Array
+  def move_zeros_2_back
+    self.reject(&:zero?) + self.select(&:zero?)
+  end
+end
+
+# Q202: 空配列ではなく、さらに1つの要素を除いて同じ要素が必ず2度現れるリストの中で1度しか現れない唯一の要素を返す関数 unique_attribute を書け
+#         [1,2,2] -> 1
+#         [1,2,2,3,1] -> 3
+#         [1] -> 1
+class Array
+  def unique_attribute
+    return self.first if self.count == 1
+
+    self.group_by { |x| x }.filter_map { |k, v| k if v.count == 1 }.first
+  end
+end

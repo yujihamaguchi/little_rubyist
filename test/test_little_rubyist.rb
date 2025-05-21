@@ -551,4 +551,15 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [%i[t t], %i[t t], %i[t t]], %i[t t t t].by_pairs
     assert_equal [%i[h t], %i[t t], %i[t h], %i[h h], %i[h h]], %i[h t t h h h].by_pairs
   end
+
+  def test_move_zeros_2_back
+    assert_equal [1, 2, 3, 0], [0, 1, 2, 3].move_zeros_2_back
+    assert_equal [4, 1, 5, 0, 0], [4, 1, 0, 0, 5].move_zeros_2_back
+  end
+
+  def test_unique_attribute
+    assert_equal 1, [1].unique_attribute
+    assert_equal 1, [1, 2, 2].unique_attribute
+    assert_equal 3, [1, 2, 2, 3, 1].unique_attribute
+  end
 end
