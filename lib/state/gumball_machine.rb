@@ -7,13 +7,17 @@ class GumballMachine
   attr_accessor :state
 
   def initialize(stock: 10)
-    @state = if stock.zero?
-               SoldOut.instance
-             else
-               NoCoin.instance
-             end
+    @state = NoCoin.instance
+    self.stock = stock
+  end
 
-    @stock = stock
+  def stock=(count)
+    @stock = count
+    @state = SoldOut.instance unless @stock.positive?
+  end
+
+  def decrease_stock
+    self.stock -= 1
   end
 
   def insert_coin
@@ -26,10 +30,5 @@ class GumballMachine
 
   def turn_crank
     @state.turn_crank(machine: self)
-  end
-
-  def decrease_stock
-    @stock -= 1
-    @state = SoldOut.instance if @stock.zero?
   end
 end
