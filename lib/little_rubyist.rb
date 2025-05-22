@@ -770,16 +770,15 @@ class Array
   end
 
   def merge_intervals
-    result = self.sort!.reduce([]) do |acc, p|
+    self.sort.reduce([]) do |acc, p|
       next acc.push(p) if acc.empty?
 
       if acc.last.overlap?(p)
-        acc = acc.take(acc.size - 1).push([[acc.last.first, p.first].min, [acc.last.last, p.last].max])
-        next acc
+        acc.take(acc.size - 1).push([[acc.last.first, p.first].min,
+                                     [acc.last.last, p.last].max])
       else
         acc.push(p)
       end
     end
-    result.sort
   end
 end
