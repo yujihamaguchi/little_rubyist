@@ -765,7 +765,21 @@ end
 #         [[1,6],[2,5],[3,4]] -> [[1,6]]
 #         [[1,3],[4,6],[7,9]] -> [[1,3],[4,6],[7,9]]
 class Array
-  def overlap?(other); end
+  def overlap?(other)
+    self.last >= other.first && self.first <= other.last
+  end
 
-  def merge_intervals; end
+  def merge_intervals
+    result = self.sort!.reduce([]) do |acc, p|
+      next acc.push(p) if acc.empty?
+
+      if acc.last.overlap?(p)
+        acc = acc.take(acc.size - 1).push([[acc.last.first, p.first].min, [acc.last.last, p.last].max])
+        next acc
+      else
+        acc.push(p)
+      end
+    end
+    result.sort
+  end
 end

@@ -577,13 +577,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [[1, 3]], [[1, 2], [2, 3]].merge_intervals
     assert_equal [[1, 2], [3, 4]], [[3, 4], [1, 2]].merge_intervals
     assert_equal [[1, 3]], [[2, 3], [1, 2]].merge_intervals
-    assert_equal [[1, 2] [3, 4] [5, 6]], [[1, 2] [3, 4] [5, 6]].merge_intervals
-    assert_equal [[1, 3], [4, 5]], [[1, 2], [3, 4], [4.5]].merge_intervals
+    assert_equal [[1, 2], [3, 4], [5, 6]], [[1, 2], [3, 4], [5, 6]].merge_intervals
+    assert_equal [[1, 3], [4, 5]], [[1, 2], [2, 3], [4, 5]].merge_intervals
     assert_equal [[1, 4]], [[1, 2], [2, 3], [3, 4]].merge_intervals
     assert_equal [[1, 2], [3, 5]], [[1, 2], [3, 4], [4, 5]].merge_intervals
     assert_equal [[1, 3], [4, 5]], [[1, 3], [4, 5], [1, 3]].merge_intervals
     assert_equal [[0, 3], [4, 5]], [[1, 3], [0, 3], [4, 5]].merge_intervals
-    assert_equal [[1, 6], [[1, 6]], [2, 5], [3, 4]].merge_intervals
+    assert_equal [[1, 6]], [[1, 6], [2, 5], [3, 4]].merge_intervals
     assert_equal [[1, 3], [4, 6], [7, 9]], [[1, 3], [4, 6], [7, 9]].merge_intervals
   end
 end
