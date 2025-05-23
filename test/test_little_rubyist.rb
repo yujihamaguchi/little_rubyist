@@ -593,12 +593,13 @@ class TestLittleRubyist < Minitest::Test
     assert_equal %i[b b], %i[a b].replace_symbol(:a, :b)
     assert_equal %i[b b], %i[b a].replace_symbol(:a, :b)
     assert_equal [[:b], :b], [[:a], :b].replace_symbol(:a, :b)
-    assert_equal [:b, [:b]], [[:a], :b].replace_symbol(:a, :b)
-    assert_equal [:b, [:b], [:b]], [:a, [:a], :b].replace_symbol(:a, :b)
+    assert_equal [:b, [:b]], [:b, [:a]].replace_symbol(:a, :b)
+    assert_equal [:b, [:b], :b], [:a, [:a], :b].replace_symbol(:a, :b)
     assert_equal [:b, [:b]], [:b, [:a]].replace_symbol(:a, :b)
     assert_equal [[:b], [:b], :b], [[:a], [:a], :b].replace_symbol(:a, :b)
     assert_equal [%i[a a], [[%i[a g r], %i[f r]], :c, %i[d e]], :a],
-                 [%i[a b], [[%i[b g r], %i[f r]], :c, %i[d e]], :a].replace_symbol(:a, :b)
+                 [%i[a b], [[%i[b g r], %i[f r]], :c, %i[d e]], :a].replace_symbol(:b, :a)
     # (is (= (repeat 5 'b) (take 5 (replace-symbol (repeat 'a) 'a 'b)))))
+    assert_equal Array.new(5, :b), Enumerator.new { |y| loop { y << :b } }.replace_symbol(:a, :b)
   end
 end
