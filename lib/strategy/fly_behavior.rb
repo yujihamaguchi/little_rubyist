@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module FlyBehavior
-  def behave
+  def execute
     raise NotImplementedError
   end
 end
