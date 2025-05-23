@@ -784,14 +784,11 @@ class Array
 end
 
 # Q076: s-list （シンボルとシンボルのリスト両方を要素に出来るリスト）、 old_sym、 new_sym を引数に取り
-#       s-list の中の old_sym をすべて new_sym に置き換える関数 replace-symbol を
-#       シンボル（と見られる要素）の置換を行う replace-symbol-expression 関数との相互再帰で書け。
-#       マルチメソッドを用いたパターンも書け。
+#       s-list の中の old_sym をすべて new_sym に置き換える関数 replace_symbol を
+#       シンボル（と見られる要素）の置換を行う replace_symbol_expression 関数との相互再帰で書け。
 #
 #       (replace-symbol '((a b) (((b g r) (f r)) c (d e)) b) 'b 'a)
 #       ;;= ((a a) (((a g r) (f r)) c (d e)) a)
-#
-#       この関数は深くネストした構造をあたえるとスタックを溢れさせる可能性がある。これを避ける為に遅延評価を用いること。
 class Array
   def replace_symbol(old_sym, new_sym)
     return [] if self.empty?
