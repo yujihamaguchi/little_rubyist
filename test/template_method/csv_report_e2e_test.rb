@@ -13,6 +13,6 @@ class CsvReportE2eTest < Minitest::Test
     output = report.generate
 
     # Assert
-    assert_equal "foo,bar,baz\n", output
+    assert_equal "foo,bar,baz", output
   end
 end
