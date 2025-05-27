@@ -3,6 +3,6 @@
 require_relative "report"
 class CsvReport < Report
   def generate
-    self.fetch_data.join(",")
+    self.fetch.join(",")
   end
 end
