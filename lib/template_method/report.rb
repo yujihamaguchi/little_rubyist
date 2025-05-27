@@ -2,11 +2,17 @@
 
 class Report
   def generate
-    data = self.fetch
-    format(data)
+    raw_data = self.fetch
+    format(raw_data)
   end
+
+  protected
 
   def fetch
     %i[foo bar baz]
+  end
+
+  def format(data)
+    raise NotImplementedError
   end
 end
