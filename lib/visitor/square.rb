@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "shape"
-
 class Square
   include Shape
   attr_reader :x, :y, :w

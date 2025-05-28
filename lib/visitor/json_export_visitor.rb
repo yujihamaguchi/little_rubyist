@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
-require_relative "export_visitor"
-
+require_relative "visitor"
 class JSONExportVisitor
-  include ExportVisitor
-
+  include Visitor
   def visit_dot(dot)
-    "JSONed #{dot.class.name}(x: #{dot.x}, y: #{dot.y})"
+    "JSONed Dot(x: #{dot.x}, y: #{dot.y})"
   end
 
   def visit_circle(circle)
-    "JSONed #{circle.class.name}(x: #{circle.x}, y: #{circle.y}, r: #{circle.r})"
+    "JSONed Circle(x: #{circle.x}, y: #{circle.y}, r: #{circle.r})"
   end
 
   def visit_square(square)
-    "JSONed #{square.class.name}(x: #{square.x}, y: #{square.y}, w: #{square.w})"
+    "JSONed Square(x: #{square.x}, y: #{square.y}, w: #{square.w})"
   end
 end

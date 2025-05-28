@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
-require_relative "export_visitor"
-
+require_relative "visitor"
 class XMLExportVisitor
-  include ExportVisitor
-
+  include Visitor
   def visit_dot(dot)
-    "XMLed #{dot.class.name}(x: #{dot.x}, y: #{dot.y})"
+    "XMLed Dot(x: #{dot.x}, y: #{dot.y})"
   end
 
   def visit_circle(circle)
-    "XMLed #{circle.class.name}(x: #{circle.x}, y: #{circle.y}, r: #{circle.r})"
+    "XMLed Circle(x: #{circle.x}, y: #{circle.y}, r: #{circle.r})"
   end
 
   def visit_square(square)
-    "XMLed #{square.class.name}(x: #{square.x}, y: #{square.y}, w: #{square.w})"
+    "XMLed Square(x: #{square.x}, y: #{square.y}, w: #{square.w})"
   end
 end
