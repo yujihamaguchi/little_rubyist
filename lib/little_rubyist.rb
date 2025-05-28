@@ -808,3 +808,16 @@ class Object
     end
   end
 end
+
+# Q078: 名前（ username ）をパラメータとし、 "{greeting_prefix}, {username}" の文字列を返す関数を返す、
+#       挨拶の種類（ greeting_prefix ）をパラメータとする関数 make_greeter を書け。
+#
+#       ((make-greeter "Hello") "Yuji")
+#       ;;= "Hello, Yuji"
+#       ((make-greeter "Aloha") "Yuji")
+#       ;;= "Aloha, Yuji"
+class String
+  def make_greeter
+    ->(name) { "#{self}, #{name}" }
+  end
+end

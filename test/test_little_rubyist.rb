@@ -603,4 +603,9 @@ class TestLittleRubyist < Minitest::Test
     # (is (= (repeat 5 'b) (take 5 (replace-symbol (repeat 'a) 'a 'b)))))
     # assert_equal Array.new(5, :b), Enumerator.new { |y| loop { y < :b } }.replace_symbol(:a, :b)
   end
+
+  def test_make_greeter
+    assert_equal "Hello, Yuji", "Hello".make_greeter.call("Yuji")
+    assert_equal "Aloha, Yuji", "Aloha".make_greeter.call("Yuji")
+  end
 end
