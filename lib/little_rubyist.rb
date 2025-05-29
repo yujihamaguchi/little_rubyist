@@ -821,3 +821,12 @@ class String
     ->(name) { "#{self}, #{name}" }
   end
 end
+
+# Q082: 文字列中の文字で、探すべき文字のセットにマッチする文字のインデックスを得る関数 index_filter を書け。
+class Set
+  def index_filter(string)
+    (0...string.length).zip(string.chars)
+                       .select { |_, char| self.include?(char) }
+                       .map { |index, _| index }
+  end
+end

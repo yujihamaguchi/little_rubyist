@@ -608,4 +608,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal "Hello, Yuji", "Hello".make_greeter.call("Yuji")
     assert_equal "Aloha, Yuji", "Aloha".make_greeter.call("Yuji")
   end
+
+  def test_index_filter
+    assert_equal [], Set.new(%w[a b]).index_filter("xyz")
+    assert_equal [0, 1, 4, 5, 6], Set.new(%w[a b]).index_filter("abcdbbb")
+  end
 end
