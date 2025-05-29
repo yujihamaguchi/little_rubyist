@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "radius"
-
+require_relative "radius_provider"
 class RoundPeg
-  include Radius
-
+  include RadiusProvider
   attr_reader :radius
 
   def initialize(radius:)

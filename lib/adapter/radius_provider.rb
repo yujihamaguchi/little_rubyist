@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Radius
+module RadiusProvider
   def radius
     raise NotImplementedError
   end

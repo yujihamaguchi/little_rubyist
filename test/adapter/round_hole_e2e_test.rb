@@ -7,8 +7,7 @@ require_relative "../../lib/adapter/round_hole"
 require_relative "../../lib/adapter/square_peg"
 require_relative "../../lib/adapter/square_peg_adapter"
 
-# クライアントが要求するインタフェースに合わせて既存のクラス（Adaptee）を振る舞わせたいが、
-# その責務は本来 Adaptee が担うべきものではない
+# クライアントが要求するインタフェースに合わせて既存のクラス（Adaptee）を振る舞わせたいが、その責務は本来 Adaptee が担うべきものではない
 class RoundHoleE2eTest < Minitest::Test
   def test_fits_round_peg
     (1..5).each do |peg_radius|
