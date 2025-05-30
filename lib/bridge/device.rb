@@ -5,12 +5,12 @@ class Device
     @enabled = false
   end
 
-  def disable
-    @enabled = false
-  end
-
   def enable
     @enabled = true
+  end
+
+  def disable
+    @enabled = false
   end
 
   def enabled?
