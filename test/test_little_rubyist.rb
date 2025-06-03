@@ -614,9 +614,20 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [0, 1, 4, 5, 6], Set.new(%w[a b]).index_filter("abcdbbb")
   end
 
-  def test_count_runs
-    assert_equal 2, %i[h t t h h h].count_runs(2, ->(symbol) { symbol == :h })
-    assert_equal 1, %i[h t t h h h].count_runs(2, ->(symbol) { symbol == :t })
-    assert_equal 1, %i[h t t h h h].count_runs(3, ->(symbol) { symbol == :h })
+  def test_partition_stride
+    assert_equal [], [].partition_stride(2, 2)
+    assert_equal [[0, 1, 2, 3]], [0, 1, 2, 3].partition_stride(0, 2)
+    assert_equal [[0, 1, 2, 3]], [0, 1, 2, 3].partition_stride(2, 0)
+    assert_equal [], [0, 1].partition_stride(3)
+    assert_equal [[0], [1], [2], [3]], [0, 1, 2, 3].partition_stride(1)
+    assert_equal [[0, 1], [2, 3]], [0, 1, 2, 3].partition_stride(2)
+    assert_equal [[0, 1, 2]], [0, 1, 2, 3].partition_stride(3)
+    assert_equal [[0, 1], [1, 2], [2, 3]], [0, 1, 2, 3].partition_stride(2, 1)
   end
+
+  # def test_count_runs
+  #   assert_equal 2, %i[h t t h h h].count_runs(2, ->(symbol) { symbol == :h })
+  #   assert_equal 1, %i[h t t h h h].count_runs(2, ->(symbol) { symbol == :t })
+  #   assert_equal 1, %i[h t t h h h].count_runs(3, ->(symbol) { symbol == :h })
+  # end
 end

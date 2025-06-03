@@ -839,5 +839,12 @@ end
 #       (count-runs 3 #(= :h %) [:h :t :t :h :h :h])
 #       ;;= 1
 class Array
+  def partition_stride(count, step = count)
+    return [] if self.empty? || self.size < count
+    return [self] if count.zero? || step.zero? || count < step
+
+    [self.take(count)] + self.drop(step).partition_stride(count, step)
+  end
+
   def count_runs(_count, _pred); end
 end
