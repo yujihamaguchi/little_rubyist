@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "car"
-
-class CarBody < Car
+class CarBody
+  attr_accessor :engine, :seats, :roof_rails
 end

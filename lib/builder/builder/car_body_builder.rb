@@ -2,10 +2,10 @@
 
 require_relative "../product/car_body"
 require_relative "car_builder"
-
 class CarBodyBuilder < CarBuilder
   def build
-    super
+    raise "engine type is required" if @engine_type.nil?
+
     car = CarBody.new
     car.engine = @engine_type
     car.seats = @seat_count
