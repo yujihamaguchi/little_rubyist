@@ -830,3 +830,14 @@ class Set
                        .map { |index, _| index }
   end
 end
+
+# Q088: 以下の動作をする関数 count-runs を partition を用いて書け。
+#       (count-runs 2 #(= :h %) [:h :t :t :h :h :h])
+#       ;;= 2
+#       (count-runs 2 #(= :t %) [:h :t :t :h :h :h])
+#       ;;= 1
+#       (count-runs 3 #(= :h %) [:h :t :t :h :h :h])
+#       ;;= 1
+class Array
+  def count_runs(_count, _pred); end
+end
