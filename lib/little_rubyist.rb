@@ -831,7 +831,7 @@ class Set
   end
 end
 
-# Q088: 以下の動作をする関数 count-runs を partition を用いて書け。
+# Q088: 以下の動作をする関数 count_runs を Clojure の partition 関数相当のメソッド partition_stride を作ったうえでそれを活用して書け。
 #       (count-runs 2 #(= :h %) [:h :t :t :h :h :h])
 #       ;;= 2
 #       (count-runs 2 #(= :t %) [:h :t :t :h :h :h])
@@ -846,5 +846,9 @@ class Array
     [self.take(count)] + self.drop(step).partition_stride(count, step)
   end
 
-  def count_runs(_count, _pred); end
+  def count_runs(count, pred)
+    return 0 if self.empty?
+
+    self.partition_stride(count, 1).sum(0) { |p| p.all? { |e| pred.call(e) } ? 1 : 0 }
+  end
 end
