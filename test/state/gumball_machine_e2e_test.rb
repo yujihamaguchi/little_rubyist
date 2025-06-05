@@ -2,9 +2,6 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/state/gumball_machine"
-require_relative "../../lib/state/has_coin"
-require_relative "../../lib/state/no_coin"
-require_relative "../../lib/state/sold_out"
 
 # オブジェクトの内部状態によって振る舞いを切り替えたいが、if文やswitch文などの多重条件分岐を使うことで、コードが冗長化・複雑化するのを避けたい。
 class GumballMachineE2eTest < Minitest::Test

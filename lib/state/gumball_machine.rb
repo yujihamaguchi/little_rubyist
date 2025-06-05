@@ -2,6 +2,7 @@
 
 require_relative "no_coin"
 require_relative "has_coin"
+require_relative "sold_out"
 class GumballMachine
   attr_reader :stock
   attr_accessor :state

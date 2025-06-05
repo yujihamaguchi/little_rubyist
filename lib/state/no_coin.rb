@@ -2,7 +2,7 @@
 
 require "singleton"
 require_relative "state"
-require_relative "has_coin"
+
 class NoCoin
   include State
   include Singleton
