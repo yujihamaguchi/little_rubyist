@@ -852,3 +852,13 @@ class Array
     self.partition_stride(count, 1).sum(0) { |p| p.all? { |e| pred.call(e) } ? 1 : 0 }
   end
 end
+
+# Q093: p22 という名前の関数を書きなさい。この関数は、与えられたシーケンスの要素の総数を返すこと。
+#      【特別な制約】
+#        count 関数は使わないこと
+#        reduce 関数を使うこと
+class Array
+  def p22
+    self.reduce(0) { |acc, _| acc + 1 }
+  end
+end

@@ -635,4 +635,12 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, %i[h h h t].count_runs(2, ->(sym) { sym == :h })
     assert_equal 2, %i[t h h h t].count_runs(2, ->(sym) { sym == :h })
   end
+
+  def test_p22
+    assert_equal 0, [].p22
+    assert_equal 1, [13].p22
+    assert_equal 3, %i[a b c].p22
+    assert_equal 5, [1, 2, 3, 3, 1].p22
+    assert_equal 3, [[1, 2], [3, 4], [5, 6]].p22
+  end
 end
