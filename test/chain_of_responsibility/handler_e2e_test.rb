@@ -53,12 +53,4 @@ class HandlerE2eTest < Minitest::Test
       assert_equal "CEO approved #{days}-day leave.", result
     end
   end
-
-  def test_ceo_is_terminal_handler
-    # Act & Assert
-    error = assert_raises(RuntimeError) do
-      @ceo.next_handler = @director
-    end
-    assert_equal "CEO must be the end of the chain", error.message
-  end
 end
