@@ -9,12 +9,13 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_zip
+    assert_equal [], [].my_zip([])
+    assert_equal [], [].my_zip([1])
+    assert_equal [], [1].my_zip([], [1])
+    assert_equal [], [1].my_zip([1], [])
     assert_equal [[1, "a", "x"], [2, "b", "y"]], [1, 2].my_zip(%w[a b], %w[x y])
     assert_equal [[1, "x"]], [1, 2].my_zip(["x"])
     assert_equal [[1, "x"]], [1].my_zip(%w[x y])
-    assert_equal [], [].my_zip([])
-    assert_equal [], [].my_zip([1])
-    assert_equal [], [1].my_zip([])
   end
 
   def test_my_sum
@@ -634,13 +635,5 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, %i[t h h h].count_runs(2, ->(sym) { sym == :h })
     assert_equal 2, %i[h h h t].count_runs(2, ->(sym) { sym == :h })
     assert_equal 2, %i[t h h h t].count_runs(2, ->(sym) { sym == :h })
-  end
-
-  def test_p22
-    assert_equal 0, [].p22
-    assert_equal 1, [13].p22
-    assert_equal 3, %i[a b c].p22
-    assert_equal 5, [1, 2, 3, 3, 1].p22
-    assert_equal 3, [[1, 2], [3, 4], [5, 6]].p22
   end
 end

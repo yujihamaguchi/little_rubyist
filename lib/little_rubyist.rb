@@ -8,23 +8,11 @@ require "bmg"
 # Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
 # zip :: [a] -> [b] -> [(a, b)]
 class Array
-  # not using recursion
-  def my_zip(*lists)
-    return self if lists.empty?
+  def my_zip(*others)
+    return [] if self.empty? || others.any?(&:empty?)
 
-    lists.unshift(self)
-    # noinspection RubyNilAnalysis
-    length = lists.min_by(&:length).length
-    lists.map { |list| list.take(length) }.transpose
+    [[self.first, *others.map(&:first)]] + self.drop(1).my_zip(*others.map { |arr| arr.drop(1) })
   end
-
-  # using recursion
-  # def my_zip(*lists)
-  #   return [] if self.empty? || lists.any?(&:empty?)
-  #
-  #   self.drop(1).my_zip(*lists.map { |list| list.drop(1) })
-  #       .prepend(lists.map(&:first).prepend(self.first))
-  # end
 end
 
 # Q002: haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
@@ -850,15 +838,5 @@ class Array
     return 0 if self.empty?
 
     self.partition_stride(count, 1).sum(0) { |p| p.all? { |e| pred.call(e) } ? 1 : 0 }
-  end
-end
-
-# Q093: p22 という名前の関数を書きなさい。この関数は、与えられたシーケンスの要素の総数を返すこと。
-#      【特別な制約】
-#        count 関数は使わないこと
-#        reduce 関数を使うこと
-class Array
-  def p22
-    self.reduce(0) { |acc, _| acc + 1 }
   end
 end
