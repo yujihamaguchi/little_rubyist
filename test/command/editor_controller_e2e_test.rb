@@ -2,10 +2,10 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/command/text_editor"
-require_relative "../../lib/command/editor_invoker"
+require_relative "../../lib/command/editor_controller"
+require_relative "../../lib/command/command"
 require_relative "../../lib/command/cut_command"
 require_relative "../../lib/command/copy_command"
-require_relative "../../lib/command/command"
 require_relative "../../lib/command/paste_command"
 
 # クライアントが操作対象に対するリクエストセット（実行、取り消しなど）を透過的に行いたい
@@ -19,7 +19,7 @@ require_relative "../../lib/command/paste_command"
 class EditorControllerE2eTest < Minitest::Test
   def setup
     @editor = TextEditor.new
-    @controller = EditorInvoker.new
+    @controller = EditorController.new
     @controller.add_command(name: :cut, command: CutCommand.new(receiver: @editor))
     @controller.add_command(name: :copy, command: CopyCommand.new(receiver: @editor))
     @controller.add_command(name: :paste, command: PasteCommand.new(receiver: @editor))
@@ -45,8 +45,8 @@ class EditorControllerE2eTest < Minitest::Test
     @controller.push_button(:copy)
 
     # Assert
-    assert_equal "Hello World", @editor.content
     assert_equal "Hello World", @editor.clipboard
+    assert_equal "Hello World", @editor.content
   end
 
   def test_paste_command
@@ -59,13 +59,13 @@ class EditorControllerE2eTest < Minitest::Test
 
     # Assert
     assert_equal "Hello World", @editor.content
+    assert_equal " World", @editor.clipboard
   end
 
   def test_undo_cut
     # Arrange
     @editor.content = "Hello World"
     @controller.push_button(:cut)
-    assert_equal "", @editor.content
 
     # Act
     @controller.push_undo_button
@@ -80,7 +80,6 @@ class EditorControllerE2eTest < Minitest::Test
     @editor.content = "Hello"
     @editor.clipboard = " World"
     @controller.push_button(:paste)
-    assert_equal "Hello World", @editor.content
 
     # Act
     @controller.push_undo_button
@@ -88,6 +87,20 @@ class EditorControllerE2eTest < Minitest::Test
     # Assert
     assert_equal "Hello", @editor.content
     assert_equal " World", @editor.clipboard
+  end
+
+  def test_undo_copy
+    # Arrange
+    @editor.content = "Hello World"
+    @editor.clipboard = ""
+    @controller.push_button(:copy)
+
+    # Act
+    @controller.push_undo_button
+
+    # Assert
+    assert_equal "Hello World", @editor.content
+    assert_equal "Hello World", @editor.clipboard
   end
 
   def test_undo_no_last_command

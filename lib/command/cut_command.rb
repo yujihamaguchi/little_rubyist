@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "command"
-
 class CutCommand < Command
   def execute
-    @receiver.clipboard = @receiver.content.dup
+    @receiver.clipboard = @receiver.content
     @receiver.content = ""
   end
 
   def undo
-    @receiver.content = @receiver.clipboard.dup
+    @receiver.content = @receiver.clipboard
   end
 end

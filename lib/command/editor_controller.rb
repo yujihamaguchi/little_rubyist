@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-class EditorInvoker
+class EditorController
   def initialize
     @commands = {}
   end
 
   def add_command(name:, command:)
-    @commands.store(name, command)
+    @commands[name] = command
   end
 
   def push_button(name)
-    command = @commands.fetch(name)
+    command = @commands[name]
     command.execute
     @last_command = command
   end

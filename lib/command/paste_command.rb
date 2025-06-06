@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "command"
-
 class PasteCommand < Command
   def execute
     @prev_content = @receiver.content.dup
