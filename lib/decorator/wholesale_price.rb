@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "price_decorator"
-
-class WholesalePrice < PriceDecorator
+require_relative "price"
+class WholesalePrice
+  include Price
   def initialize(price:, advantage:)
-    super(price: price)
+    @price = price
     @advantage = advantage
   end
 
