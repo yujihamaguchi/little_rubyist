@@ -7,7 +7,7 @@ require_relative "../../lib/decorator/wholesale_price"
 
 # あるクラスの機能拡張を行いたいが、クラスの責務が肥大化するのを防ぎたい。また「継承によるサブクラス乱立（クラス爆発）」も回避したい
 class PriceE2eTest < Minitest::Test
-  def test_base_price_valuein
+  def test_base_price_value
     # Arrange
     base_price = BasePrice.new(value: 3)
 
