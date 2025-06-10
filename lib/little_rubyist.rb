@@ -15,7 +15,7 @@ class Array
   end
 end
 
-# Q002: haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
+# Q002: Haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
 # sum :: (Num a) => [a] -> a
 # sum ns
 #     数値のリスト ns の総和を返す。
@@ -29,10 +29,9 @@ class Array
 
     self.first + self.drop(1).my_sum
   end
-
-  # # reduce
+  # reduce
   # def my_sum
-  #   self.reduce(0, &->(acc, value) { acc + value })
+  #   self.reduce(0) { |acc, elm| acc + elm }
   # end
 end
 

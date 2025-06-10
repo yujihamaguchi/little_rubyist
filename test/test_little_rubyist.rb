@@ -19,9 +19,9 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_sum
+    assert_equal 0, [].my_sum
     assert_equal 1, [1].my_sum
     assert_equal 3, [1, 2].my_sum
-    assert_equal 0, [].my_sum
   end
 
   def test_my_quick_sort
