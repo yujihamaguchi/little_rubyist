@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
+require_relative "../../lib/composite/composite"
 require_relative "../../lib/composite/box"
 require_relative "../../lib/composite/product"
 
-# リーフとコンテナ( composite )といった複数の要素を組み合わせた構造に対して、統一された操作を実行し、全体として一貫したレスポンスを得たい
+# リーフとコンテナ( Composite )要素からなる階層構造に対して、統一された操作で一貫したレスポンスを得たい
 class BoxE2eTest < Minitest::Test
   def setup
     @box = Box.new
