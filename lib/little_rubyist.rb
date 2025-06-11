@@ -35,18 +35,14 @@ class Array
   # end
 end
 
-# Q003: クイックソート関数 my_quick_sort を書け（リスト内包表記を使うこと）
+# Q003: クイックソート関数 my_quick_sort を書け
 class Array
   def my_quick_sort
     return [] if self.empty?
 
-    x = self.first
-    xs = self.drop(1)
-
-    lt = xs.select { |y| x > y }
-    ge = xs.select { |y| x <= y }
-
-    lt.my_quick_sort + [x] + ge.my_quick_sort
+    pivot, *rest = self
+    less_than, greater_equal = rest.partition { |x| x < pivot }
+    less_than.my_quick_sort + [pivot] + greater_equal.my_quick_sort
   end
 end
 

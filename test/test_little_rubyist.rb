@@ -25,6 +25,9 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_quick_sort
+    assert_equal [], [].my_quick_sort
+    assert_equal [1], [1].my_quick_sort
+    assert_equal %w[a], %w[a].my_quick_sort
     assert_equal [1, 2, 3], [3, 2, 1].my_quick_sort
     assert_equal [1, 2, 3], [2, 3, 1].my_quick_sort
     assert_equal [1, 2, 3], [1, 2, 3].my_quick_sort
@@ -32,9 +35,6 @@ class TestLittleRubyist < Minitest::Test
     assert_equal %w[a b c], %w[c b a].my_quick_sort
     assert_equal %w[a b c], %w[b c a].my_quick_sort
     assert_equal %w[a b c], %w[a b c].my_quick_sort
-    assert_equal [1], [1].my_quick_sort
-    assert_equal %w[a], %w[a].my_quick_sort
-    assert_equal [], [].my_quick_sort
   end
 
   def test_product
