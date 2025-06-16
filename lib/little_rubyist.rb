@@ -11,7 +11,8 @@ class Array
   def my_zip(*others)
     return [] if self.empty? || others.any?(&:empty?)
 
-    [[self.first, *others.map(&:first)]] + self.drop(1).my_zip(*others.map { |arr| arr.drop(1) })
+    first, *rest = self
+    [[first, *others.map(&:first)]] + rest.my_zip(*others.map { |arr| arr.drop(1) })
   end
 end
 
@@ -27,7 +28,8 @@ class Array
   def my_sum
     return 0 if self.empty?
 
-    self.first + self.drop(1).my_sum
+    first, *rest = self
+    first + rest.my_sum
   end
   # reduce
   # def my_sum
@@ -58,14 +60,27 @@ class Array
   def my_product
     return 1 if self.empty?
 
-    self.first * self.drop(1).my_product
+    first, *rest = self
+    first * rest.my_product
   end
-
   # # reduce
   # def my_product
-  #   self.reduce(1, &->(acc, value) { acc * value })
+  #   self.reduce(1) { |acc, num| num * acc }
   # end
 end
+# class Array
+#   # recursion
+#   def my_product
+#     return 1 if self.empty?
+#
+#     self.first * self.drop(1).my_product
+#   end
+#
+#   # # reduce
+#   # def my_product
+#   #   self.reduce(1, &->(acc, value) { acc * value })
+#   # end
+# end
 
 # Q005: リストを逆順に整列する関数 rqsort を再帰を用いて書け
 class Array
