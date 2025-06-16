@@ -95,7 +95,7 @@ class Array
   end
 end
 
-# Q007: Haskell の last と同様の機能の関数 my-last を書け(再帰を用いるバージョンも書くこと)
+# Q006: Haskell の last と同様の機能の関数 my-last を書け(再帰を用いるバージョンも書くこと)
 # last :: [a] -> a
 #     リストの最後の要素を返す。
 #         last [1,2,3]   = 3
@@ -115,7 +115,7 @@ class Array
   # end
 end
 
-# Q008: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
+# Q007: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
 class Array
   def halve
     raise ArgumentError if self.empty?
@@ -147,28 +147,28 @@ class Array
   # end
 end
 
-# Q010: 正の整数に対し、すべての約数を計算する関数 my-factors を書け
+# Q008: 正の整数に対し、すべての約数を計算する関数 my-factors を書け
 class Integer
   def my_factors
     (1..self).select { |divisor| (self % divisor).zero? }
   end
 end
 
-# Q011: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find を書け。
+# Q009: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find を書け。
 class Array
   def my_find(key)
     self.map { |k, v| v if key == k }.compact
   end
 end
 
-# Q012: 対のリストから、対の先頭の要素を取り出してリストを生成する firsts を書け。
+# Q010: 対のリストから、対の先頭の要素を取り出してリストを生成する firsts を書け。
 class Array
   def firsts
     self.map { |item| item[0] }
   end
 end
 
-# Q013: haskell の length を、 sum とリスト内包表記で書け。
+# Q011: haskell の length を、 sum とリスト内包表記で書け。
 # length :: [a] -> Int
 # length xs
 #     リスト xs の長さを返す。
@@ -188,7 +188,7 @@ class String
   end
 end
 
-# Q014: my-factors を用いて、整数が素数か判定する関数 prime? を書け。
+# Q012: my-factors を用いて、整数が素数か判定する関数 prime? を書け。
 class Integer
   def prime?
     return false if self == 1
@@ -197,12 +197,12 @@ class Integer
   end
 end
 
-# Q015: prime? を用いて与えられた上限数までの全ての素数を生成する関数 primes を書け。
+# Q013: prime? を用いて与えられた上限数までの全ての素数を生成する関数 primes を書け。
 def primes(max)
   (1..max).select(&:prime?)
 end
 
-# Q016: リストから隣り合う要素をマップにして返す関数 pairs を Enumerable#each_cons を用いて書け。
+# Q014: リストから隣り合う要素をマップにして返す関数 pairs を Enumerable#each_cons を用いて書け。
 class Array
   def pairs
     self.each_cons(2).to_h
@@ -215,14 +215,14 @@ class String
   end
 end
 
-# Q018: 目的とする値がリストのどの位置にあるかを調べて、その位置全てをリストとして返す関数 positions を書け。(index は 0 から開始される事)
+# Q015: 目的とする値がリストのどの位置にあるかを調べて、その位置全てをリストとして返す関数 positions を書け。(index は 0 から開始される事)
 class Array
   def positions(target_value)
     self.each_index.select { |i| self[i] == target_value }
   end
 end
 
-# Q019: 指定した特定の文字がいくつ含まれているか数える関数 my_count を書け。
+# Q016: 指定した特定の文字がいくつ含まれているか数える関数 my_count を書け。
 class String
   def my_count(target_char)
     self.chars.select { |c| target_char == c }.length
@@ -231,14 +231,14 @@ class String
   end
 end
 
-# Q020: 文字列から小文字を数える関数 lower_count を書け。
+# Q017: 文字列から小文字を数える関数 lower_count を書け。
 class String
   def lower_count
     self.chars.select { |c| /[a-z]/.match?(c) }.length
   end
 end
 
-# Q031: 与えられた上限の数値までに含まれる完全数全てを算出する関数 perfects を関数 my_factors および my_sum を使って定義せよ。
+# Q018: 与えられた上限の数値までに含まれる完全数全てを算出する関数 perfects を関数 my_factors および my_sum を使って定義せよ。
 #       完全数：自分自身をのぞく約数の和が自分自身と等しい整数
 class Integer
   def perfects
@@ -248,7 +248,7 @@ class Integer
   end
 end
 
-# Q032: ピタゴラス数のリストを生成する関数 pyths を定義せよ。
+# Q019: ピタゴラス数のリストを生成する関数 pyths を定義せよ。
 #       ただし、ピタゴラス数の要素は与えられた上限 value 以下であるとする。
 class Integer
   def pyths
@@ -256,7 +256,7 @@ class Integer
   end
 end
 
-# Q033: ある要素のみからなるリストを生成する関数 my_replicate を書け。(直接の再帰、末尾再帰のそれぞれを書け)
+# Q020: ある要素のみからなるリストを生成する関数 my_replicate を書け。(直接の再帰、末尾再帰のそれぞれを書け)
 # 直接の再帰
 class Object
   def my_replicate(num)
@@ -278,7 +278,7 @@ end
 #   end
 # end
 
-# Q034: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
+# Q021: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
 class Array
   def scalar_product(other)
     # self.zip(other).sum { |value, elem| value * elem }
@@ -286,7 +286,7 @@ class Array
   end
 end
 
-# Q035: リストの順番を逆転する関数 my-reverse を直接の再帰を用いて自作せよ。
+# Q022: リストの順番を逆転する関数 my-reverse を直接の再帰を用いて自作せよ。
 class Array
   def my_reverse
     return [] if self.empty?
@@ -295,7 +295,7 @@ class Array
   end
 end
 
-# Q036: ある要素を、整列されたリストに挿入する関数 my_insert を書け。( 再帰バージョンも書いてみよう )
+# Q023: ある要素を、整列されたリストに挿入する関数 my_insert を書け。( 再帰バージョンも書いてみよう )
 class Array
   # def my_insert(value)
   #   self.take_while { |elem| elem < value } + [value] + self.drop_while { |elem| elem < value }
@@ -308,7 +308,7 @@ class Array
   end
 end
 
-# Q037: 関数 my_insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
+# Q024: 関数 my_insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
 class Array
   def isort
     return [] if self.empty?
@@ -317,7 +317,7 @@ class Array
   end
 end
 
-# Q038: drop を再帰を用いて自作( my_drop )せよ。
+# Q025: drop を再帰を用いて自作( my_drop )せよ。
 class Array
   def my_drop(num)
     return [] if self.empty?
@@ -327,7 +327,7 @@ class Array
   end
 end
 
-# Q039: Haskell の zip 関数を直接の再帰を用いて自作( my_zip_2 )せよ。( パターンマッチを用いた書き方も )
+# Q026: Haskell の zip 関数を直接の再帰を用いて自作( my_zip_2 )せよ。( パターンマッチを用いた書き方も )
 #       [a] -> [b] -> [(a,b)]
 class Array
   def my_zip_2(other)
@@ -346,7 +346,7 @@ class Array
   end
 end
 
-# Q040: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。
+# Q027: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。
 class Integer
   def my_even?
     self.zero? || (self.abs - 1).my_odd?
@@ -357,7 +357,7 @@ class Integer
   end
 end
 
-# Q041: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を書け。（直接の再帰を用いて良い）
+# Q028: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を書け。（直接の再帰を用いて良い）
 class Integer
   def fibonacci
     return 0 if self.zero?
@@ -367,7 +367,7 @@ class Integer
   end
 end
 
-# Q042: qsort を再帰を用いて書け。（直接の再帰を用いて）
+# Q029: qsort を再帰を用いて書け。（直接の再帰を用いて）
 class Array
   def qsort
     return [] if self.empty?
@@ -381,7 +381,7 @@ class Array
   end
 end
 
-# Q043: リストから偶数の位置の要素を取り出す関数 evens と、奇数の位置の要素を取り出す関数 odds を相互再帰を用いて書け。
+# Q030: リストから偶数の位置の要素を取り出す関数 evens と、奇数の位置の要素を取り出す関数 odds を相互再帰を用いて書け。
 class Array
   def evens
     return [] if self.empty?
@@ -396,7 +396,7 @@ class Array
   end
 end
 
-# Q044: Haskell の init 関数を自作( my_init )せよ。(直接の再帰を用いたもの、遅延評価関数を用いたもの両方書くこと）
+# Q031: Haskell の init 関数を自作( my_init )せよ。(直接の再帰を用いたもの、遅延評価関数を用いたもの両方書くこと）
 # init :: [a] -> [a]
 # リスト xs の最後の要素を除いたリストを返す。
 #     init [1,2,3]   = [1,2]
@@ -415,7 +415,7 @@ class Array
   # end
 end
 
-# Q045: Haskell の elem を直接の再帰を用いて自作( my_elem )せよ。
+# Q032: Haskell の elem を直接の再帰を用いて自作( my_elem )せよ。
 #       elem :: Eq a => a -> [a] -> Bool
 class Object
   def my_elem(arr)
@@ -425,7 +425,7 @@ class Object
   end
 end
 
-# Q046: Haskell の !! を my_index という名のメソッドとして直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
+# Q033: Haskell の !! を my_index という名のメソッドとして直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
 #       (!!) :: [a] -> Int -> a
 class Array
   def my_index(num)
@@ -435,7 +435,7 @@ class Array
   end
 end
 
-# Q047: 整列されたリストを二つとり、一つの整列されたリストにして返す関数 merge を直接の再帰を用いて自作せよ。( my_merge )
+# Q034: 整列されたリストを二つとり、一つの整列されたリストにして返す関数 merge を直接の再帰を用いて自作せよ。( my_merge )
 #       整列されたリストを処理する関数は用いてはならない。
 #       ex) merge [2,5,6] [1,3,4] ==> [1,2,3,4,5,6]
 class Array
@@ -452,7 +452,7 @@ class Array
   end
 end
 
-# Q048: 関数 my_merge を用いてマージソートを実行する関数 msort を再帰を用いて書け。
+# Q035: 関数 my_merge を用いてマージソートを実行する関数 msort を再帰を用いて書け。
 #       マージソートは、引数のリストを二つに分割し、それぞれを整列した後、再び一つに戻す事で、整列を実現する。
 #       最初に、リストを半分に分割する関数 simple_halve を書け。
 class Array
@@ -471,7 +471,7 @@ class Array
   end
 end
 
-# Q049: Haskell の replicate を再帰を用いて自作せよ。( my_replicate_rec )
+# Q036: Haskell の replicate を再帰を用いて自作せよ。( my_replicate_rec )
 #       replicate :: Int -> a -> [a]
 class Object
   def my_replicate_rec(num)
@@ -481,7 +481,7 @@ class Object
   end
 end
 
-# Q050: 負でない整数に対する累乗演算を行う関数 my を直接の再帰を用いて定義せよ。
+# Q037: 負でない整数に対する累乗演算を行う関数 my を直接の再帰を用いて定義せよ。
 class Integer
   def my(other)
     return 1 if other.zero?
@@ -490,7 +490,7 @@ class Integer
   end
 end
 
-# Q051: map 直接の再帰を用いて自作せよ( my_map )。
+# Q038: map 直接の再帰を用いて自作せよ( my_map )。
 class Array
   def my_map(lmd)
     return [] if self.empty?
@@ -499,7 +499,7 @@ class Array
   end
 end
 
-# Q052: filterを直接の再帰を用いて自作せよ。( my_filter )
+# Q039: filterを直接の再帰を用いて自作せよ。( my_filter )
 class Array
   def my_filter(pred)
     return [] if self.empty?
@@ -508,7 +508,7 @@ class Array
   end
 end
 
-# Q054: リストの先頭から述語を満たす連続した要素を取り除く関数 drop-while を自作せよ。( my_drop_while )
+# Q040: リストの先頭から述語を満たす連続した要素を取り除く関数 drop-while を自作せよ。( my_drop_while )
 class Array
   def my_drop_while(lmd)
     return [] if self.empty?
@@ -517,7 +517,7 @@ class Array
   end
 end
 
-# Q056: リストの先頭から述語を満たす連続した要素を取り出す関数 takeWhile を自作せよ。( my_take_while )
+# Q041: リストの先頭から述語を満たす連続した要素を取り出す関数 takeWhile を自作せよ。( my_take_while )
 class Array
   def my_take_while(lmd)
     return [] if self.empty?
@@ -526,7 +526,7 @@ class Array
   end
 end
 
-# Q057-00: foldr を自作せよ。（ my_foldr ）
+# Q042: foldr を自作せよ。（ my_foldr ）
 #         以下のように、 foldr に部分適用して関数をつくることができる。
 #
 #         cons = foldr (:) []
@@ -550,7 +550,7 @@ class Array
   end
 end
 
-# Q057-01: foldl を自作せよ。（ my-foldl ）
+# Q043: foldl を自作せよ。（ my-foldl ）
 #          * Haskell では以下のような実装になる。
 #
 #            myFoldr :: (a -> b -> a) -> a -> [b] -> a
@@ -565,7 +565,7 @@ class Array
   end
 end
 
-# Q057-02: ビットのリストで表現される二進表記を整数に変換する関数 bits_to_int を書け。
+# Q044: ビットのリストで表現される二進表記を整数に変換する関数 bits_to_int を書け。
 #          ・ iterateを用いること
 #          ・ 二進表記は逆順であること
 #
@@ -581,7 +581,7 @@ class Array
   end
 end
 
-# Q058: 負でない整数を二進表記へ変換する関数 int_to_bits を書け。( 0 は正の整数ではない )
+# Q045: 負でない整数を二進表記へ変換する関数 int_to_bits を書け。( 0 は正の整数ではない )
 class Integer
   def int_to_bits
     return [] if self < 1
@@ -590,14 +590,14 @@ class Integer
   end
 end
 
-# Q059: 二進表記が必ず 8 ビットになるように切り詰めたり適切な数の 0 を詰め込んだりする関数 make8 を書け。
+# Q046: 二進表記が必ず 8 ビットになるように切り詰めたり適切な数の 0 を詰め込んだりする関数 make8 を書け。
 class Array
   def make8
     (self + [0] * 8).take(8)
   end
 end
 
-# Q060: ビット列を 8 ビットの二進表記に分割する関数 chop8 を書け。
+# Q047: ビット列を 8 ビットの二進表記に分割する関数 chop8 を書け。
 class Array
   def chop8
     return [] if self.empty?
@@ -606,7 +606,7 @@ class Array
   end
 end
 
-# Q061: ビットのリストを文字列に復号する関数 decode を書け。
+# Q048: ビットのリストを文字列に復号する関数 decode を書け。
 #       リストを分割し、二進表記を Unicode のコードポイント（整数）へ変換し、文字へ直して、全体として文字列にする。
 class Array
   def decode
@@ -614,7 +614,7 @@ class Array
   end
 end
 
-# Q062: 文字列をビット列に符号化する関数 encode を書け。
+# Q049: 文字列をビット列に符号化する関数 encode を書け。
 #       それぞれの文字列を unicode のコードポイント（整数）に変換し、
 #       さらに 8 ビットの二進表記に直して、全体を連結することで、ビットのリストを作る。
 class String
@@ -625,7 +625,7 @@ class String
   end
 end
 
-# Q063: 関数 all を自作せよ。( my_all? )
+# Q050: 関数 all を自作せよ。( my_all? )
 #       all :: (a -> Bool) -> [a] -> Bool
 #       all f xs
 #       xs の要素 x について、f x がすべて True なら True。
@@ -641,7 +641,7 @@ class Array
   end
 end
 
-# Q064: 関数 any を自作せよ。( my_any? )
+# Q051: 関数 any を自作せよ。( my_any? )
 #       any :: (a -> Bool) -> [a] -> Bool
 #       any f xs
 #       xs のいずれかの要素 x について f x が True ならば True。
@@ -676,37 +676,37 @@ NATIONS = Bmg::Relation.new([
                               { nation: "Italy", language: "Italian" }
                             ])
 
-# Q067: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
+# Q052: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
 def set1
   COMPOSITIONS.rename(name: :title).to_set
 end
 
-# Q068: compositions から :name が "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
+# Q053: compositions から :name が "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
 def set2
   COMPOSITIONS.restrict(name: "Requiem").to_set
 end
 
-# Q069: compositions を　:name で射影せよ。（ set3 関数の戻り値として）
+# Q054: compositions を　:name で射影せよ。（ set3 関数の戻り値として）
 def set3
   COMPOSITIONS.project([:name]).to_set
 end
 
-# Q070: compositions と composers を自然結合せよ。（ set4 関数の戻り値として ）
+# Q055: compositions と composers を自然結合せよ。（ set4 関数の戻り値として ）
 def set4
   COMPOSITIONS.join(COMPOSERS, [:composer]).to_set
 end
 
-# Q071: composers と nations を :country と :nation で結合せよ。（ set5 関数の戻り値として）
+# Q056: composers と nations を :country と :nation で結合せよ。（ set5 関数の戻り値として）
 def set5
   COMPOSERS.join(NATIONS, country: :nation).to_set
 end
 
-# Q072: compositions から :name が "Requiem" のレコードを抽出し、 composers と自然結合し、 :country キーで射影せよ。（ set6 関数の戻り値として）
+# Q057: compositions から :name が "Requiem" のレコードを抽出し、 composers と自然結合し、 :country キーで射影せよ。（ set6 関数の戻り値として）
 def set6
   COMPOSITIONS.restrict(name: "Requiem").join(COMPOSERS, [:composer]).project([:country]).to_set
 end
 
-# Q073: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply-nested 関数を書け。
+# Q058: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply-nested 関数を書け。
 class Object
   def deeply_nested(n)
     return self if n.zero?
@@ -715,7 +715,7 @@ class Object
   end
 end
 
-# Q074: 以下のコイントスの結果データ（ :h 表、 :t 裏 ）について、 表が 2 回続けて出たケースをカウントする関数 count_heads_pairs を再帰を用いて書け。
+# Q059: 以下のコイントスの結果データ（ :h 表、 :t 裏 ）について、 表が 2 回続けて出たケースをカウントする関数 count_heads_pairs を再帰を用いて書け。
 class Array
   def count_heads_pairs
     return 0 if self.count < 2
@@ -724,7 +724,7 @@ class Array
   end
 end
 
-# Q075: 以下の変換を行う関数 by-pairs を書け。
+# Q060: 以下の変換を行う関数 by-pairs を書け。
 #     変換前： [:h :t :t :h :h :h]
 #     変換後： ((:h :t) (:t :t) (:t :h) (:h :h) (:h :h))
 class Array
@@ -735,7 +735,7 @@ class Array
   end
 end
 
-# Q201: 関数の返り値として、非ゼロ値の順番を保ったまま、 ゼロ値を末尾に移動しする関数 move_zeros_2_back を書け
+# Q061: 関数の返り値として、非ゼロ値の順番を保ったまま、 ゼロ値を末尾に移動しする関数 move_zeros_2_back を書け
 #         [0,1,2,3] -> [1,2,3,0]
 #         [4,1,0,0,5] -> [4,1,5,0,0]
 class Array
@@ -744,7 +744,7 @@ class Array
   end
 end
 
-# Q202: 空配列ではなく、さらに1つの要素を除いて同じ要素が必ず2度現れるリストの中で1度しか現れない唯一の要素を返す関数 unique_attribute を書け
+# Q062: 空配列ではなく、さらに1つの要素を除いて同じ要素が必ず2度現れるリストの中で1度しか現れない唯一の要素を返す関数 unique_attribute を書け
 #         [1,2,2] -> 1
 #         [1,2,2,3,1] -> 3
 #         [1] -> 1
@@ -756,7 +756,7 @@ class Array
   end
 end
 
-# Q203: 間隔が重複しないように間隔同士を組み合わせる関数 merge_intervals を書け。先立って overlap? 述語を書くと便利である。
+# Q063: 間隔が重複しないように間隔同士を組み合わせる関数 merge_intervals を書け。先立って overlap? 述語を書くと便利である。
 #         [[1,2],[2,3],[3,4]] -> [[1,4]]
 #         [[1,3],[1,3],[4,5]] -> [[1,3],[4,5]]
 #         [[1,3],[0,3],[4,5]] -> [[0,3],[4,5]]
@@ -781,7 +781,7 @@ class Array
   end
 end
 
-# Q076: s-list （シンボルとシンボルのリスト両方を要素に出来るリスト）、 old_sym、 new_sym を引数に取り
+# Q064: s-list （シンボルとシンボルのリスト両方を要素に出来るリスト）、 old_sym、 new_sym を引数に取り
 #       s-list の中の old_sym をすべて new_sym に置き換える関数 replace_symbol を
 #       シンボル（と見られる要素）の置換を行う replace_symbol_expression 関数との相互再帰で書け。
 #
@@ -807,7 +807,7 @@ class Object
   end
 end
 
-# Q078: 名前（ username ）をパラメータとし、 "{greeting_prefix}, {username}" の文字列を返す関数を返す、
+# Q065: 名前（ username ）をパラメータとし、 "{greeting_prefix}, {username}" の文字列を返す関数を返す、
 #       挨拶の種類（ greeting_prefix ）をパラメータとする関数 make_greeter を書け。
 #
 #       ((make-greeter "Hello") "Yuji")
@@ -820,7 +820,7 @@ class String
   end
 end
 
-# Q082: 文字列中の文字で、探すべき文字のセットにマッチする文字のインデックスを得る関数 index_filter を書け。
+# Q066: 文字列中の文字で、探すべき文字のセットにマッチする文字のインデックスを得る関数 index_filter を書け。
 class Set
   def index_filter(string)
     (0...string.length).zip(string.chars)
@@ -829,7 +829,7 @@ class Set
   end
 end
 
-# Q088: 以下の動作をする関数 count_runs を Clojure の partition 関数相当のメソッド partition_stride を作ったうえでそれを活用して書け。
+# Q067: 以下の動作をする関数 count_runs を Clojure の partition 関数相当のメソッド partition_stride を作ったうえでそれを活用して書け。
 #       (count-runs 2 #(= :h %) [:h :t :t :h :h :h])
 #       ;;= 2
 #       (count-runs 2 #(= :t %) [:h :t :t :h :h :h])
