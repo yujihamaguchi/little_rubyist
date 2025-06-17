@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "base_list_printer"
-
-class DictionaryOrderListPrinter < BaseListPrinter
+require_relative "list_printer"
+class DictionaryOrderListPrinter < ListPrinter
   def initialize(case_sensitive: true)
     super()
     @case_sensitive = case_sensitive
   end
 
-  private
-
-  def create_sort_key
-    ->(attr) { @case_sensitive ? attr : attr.downcase }
+  def rule
+    ->(str) { @case_sensitive ? str : str.downcase }
   end
 end
