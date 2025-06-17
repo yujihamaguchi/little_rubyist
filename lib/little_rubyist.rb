@@ -68,30 +68,16 @@ class Array
   #   self.reduce(1) { |acc, num| num * acc }
   # end
 end
-# class Array
-#   # recursion
-#   def my_product
-#     return 1 if self.empty?
-#
-#     self.first * self.drop(1).my_product
-#   end
-#
-#   # # reduce
-#   # def my_product
-#   #   self.reduce(1, &->(acc, value) { acc * value })
-#   # end
-# end
 
 # Q005: リストを逆順に整列する関数 rqsort を再帰を用いて書け
 class Array
   def rqsort
     return [] if self.empty?
 
-    x = self.first
-    xs = self.drop(1)
-    lt = xs.select { |x_| x_ < x }
-    ge = xs.select { |x_| x_ >= x }
-    ge.rqsort + [x] + lt.rqsort
+    first, *rest = self
+    greater_equal = rest.select { |elm| elm >= first }
+    less_than = rest.select { |elm| elm < first }
+    greater_equal.rqsort + [first] + less_than.rqsort
   end
 end
 
