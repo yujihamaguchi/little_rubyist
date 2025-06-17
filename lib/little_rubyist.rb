@@ -836,3 +836,61 @@ class Array
     self.partition_stride(count, 1).sum(0) { |p| p.all? { |e| pred.call(e) } ? 1 : 0 }
   end
 end
+
+# Q068: バイナリツリーの高さを計算する関数 tree_height を書け。
+#       ツリーは :leaf または [:node, left, right] の形式で表現される。
+class Object
+  def tree_height
+    return 0 if self == :leaf
+
+    if self.is_a?(Array) && self.size == 3 && self.first == :node
+      left_height = self[1].tree_height
+      right_height = self[2].tree_height
+      1 + [left_height, right_height].max
+    else
+      0
+    end
+  end
+end
+
+# Q069: 与えられた範囲内の完全平方数のリストを生成する関数 perfect_squares を書け。
+class Integer
+  def perfect_squares
+    (1..self).select do |n|
+      sqrt_n = Math.sqrt(n)
+      sqrt_n == sqrt_n.to_i
+    end
+  end
+end
+
+# Q070: リストの要素を回転させる関数 rotate を書け。
+#       rotate(n, list) は list を左に n 要素回転させる。
+class Array
+  def rotate(n)
+    return self if self.empty? || n.zero?
+
+    n %= self.size
+    self.drop(n) + self.take(n)
+  end
+end
+
+# Q071: 文字列が回文かどうかを判定する関数 palindrome? を再帰を用いて書け。
+class String
+  def palindrome?
+    return true if self.length <= 1
+
+    return false if self[0] != self[-1]
+
+    self[1...-1].palindrome?
+  end
+end
+
+# Q072: ハノイの塔の解を求める関数 hanoi を書け。
+#       hanoi(n, from, to, aux) は n 枚の円盤を from から to へ aux を経由して移動する手順を返す。
+def hanoi(n, from, to, aux)
+  return [] if n.zero?
+
+  hanoi(n - 1, from, aux, to) +
+    [[from, to]] +
+    hanoi(n - 1, aux, to, from)
+end

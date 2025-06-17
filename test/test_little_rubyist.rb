@@ -638,4 +638,48 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 2, %i[h h h t].count_runs(2, ->(sym) { sym == :h })
     assert_equal 2, %i[t h h h t].count_runs(2, ->(sym) { sym == :h })
   end
+
+  def test_tree_height
+    assert_equal 0, :leaf.tree_height
+    assert_equal 1, [:node, :leaf, :leaf].tree_height
+    assert_equal 2, [:node, [:node, :leaf, :leaf], :leaf].tree_height
+    assert_equal 2, [:node, :leaf, [:node, :leaf, :leaf]].tree_height
+    assert_equal 3, [:node, [:node, [:node, :leaf, :leaf], :leaf], :leaf].tree_height
+  end
+
+  def test_perfect_squares
+    assert_equal [1, 4, 9], 10.perfect_squares
+    assert_equal [1, 4, 9, 16, 25], 25.perfect_squares
+    assert_equal [1], 3.perfect_squares
+    assert_equal [], 0.perfect_squares
+  end
+
+  def test_rotate
+    assert_equal [], [].rotate(1)
+    assert_equal [1, 2, 3], [1, 2, 3].rotate(0)
+    assert_equal [2, 3, 1], [1, 2, 3].rotate(1)
+    assert_equal [3, 1, 2], [1, 2, 3].rotate(2)
+    assert_equal [1, 2, 3], [1, 2, 3].rotate(3)
+    assert_equal [2, 3, 1], [1, 2, 3].rotate(4)
+    assert_equal [3, 1, 2], [1, 2, 3].rotate(-1)
+  end
+
+  def test_palindrome?
+    assert "".palindrome?
+    assert "a".palindrome?
+    assert "aa".palindrome?
+    assert "aba".palindrome?
+    assert "abba".palindrome?
+    refute "ab".palindrome?
+    refute "abc".palindrome?
+    refute "abca".palindrome?
+  end
+
+  def test_hanoi
+    assert_equal [], hanoi(0, :a, :b, :c)
+    assert_equal [[:a, :b]], hanoi(1, :a, :b, :c)
+    assert_equal [[:a, :c], [:a, :b], [:c, :b]], hanoi(2, :a, :b, :c)
+    assert_equal 7, hanoi(3, :a, :b, :c).length
+    assert_equal 15, hanoi(4, :a, :b, :c).length
+  end
 end
