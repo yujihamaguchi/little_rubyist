@@ -33,7 +33,7 @@ class Array
   end
   # reduce
   # def my_sum
-  #   self.reduce(0) { |acc, elm| acc + elm }
+  #   self.reduce(0) { |acc, item| acc + item }
   # end
 end
 
@@ -43,7 +43,7 @@ class Array
     return [] if self.empty?
 
     pivot, *rest = self
-    less_than, greater_equal = rest.partition { |x| x < pivot }
+    less_than, greater_equal = rest.partition { |item| item < pivot }
     less_than.my_quick_sort + [pivot] + greater_equal.my_quick_sort
   end
 end
@@ -69,15 +69,15 @@ class Array
   # end
 end
 
-# Q005: リストを逆順に整列する関数 rqsort を再帰を用いて書け
+# Q005: リストを逆順に整列する関数 reverse_quick_sort を再帰を用いて書け
 class Array
-  def rqsort
+  def reverse_quick_sort
     return [] if self.empty?
 
     first, *rest = self
-    greater_equal = rest.select { |elm| elm >= first }
-    less_than = rest.select { |elm| elm < first }
-    greater_equal.rqsort + [first] + less_than.rqsort
+    greater_equal = rest.select { |item| item >= first }
+    less_than = rest.select { |item| item < first }
+    greater_equal.reverse_quick_sort + [first] + less_than.reverse_quick_sort
   end
 end
 
