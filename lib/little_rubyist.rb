@@ -3,7 +3,12 @@
 # noinspection SpellCheckingInspection
 require_relative "little_rubyist/version"
 require "set"
+
+# Suppress warnings from bmg gem
+original_verbose = $VERBOSE
+$VERBOSE = nil
 require "bmg"
+$VERBOSE = original_verbose
 
 # Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
 # zip :: [a] -> [b] -> [(a, b)]
