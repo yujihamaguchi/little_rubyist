@@ -5,8 +5,8 @@ require_relative "../../lib/factory3_abstract_factory/furniture_studio"
 require_relative "../../lib/factory3_abstract_factory/factory/art_deco_style_factory"
 require_relative "../../lib/factory3_abstract_factory/factory/modern_style_factory"
 
-# 互いに協調して動作する複数の製品クラスを“バリエーションごと”にまとめて生成できるようにし
-# クライアントはそのバリエーションを選択するだけで、互換性の取れたオブジェクト群を得られるようにしたい
+# 関連するオブジェクト群をバリエーション別にまとめ、クライアントがバリエーションを選択するだけで、
+# 具体的なクラスに依存せず、互換性の担保された一貫性のあるオブジェクト群を生成できるようにしたい
 class FurnitureStudioE2eTest < Minitest::Test
   def test_create_art_deco_style_table_set
     # Arrange

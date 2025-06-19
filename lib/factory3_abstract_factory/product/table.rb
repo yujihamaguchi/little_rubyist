@@ -2,10 +2,10 @@
 
 class Table
   def stand
-    "Stand on the #{style_name} style table."
+    "Stand on the #{self.style} style table."
   end
 
-  def style_name
+  def style
     raise NotImplementedError
   end
 end

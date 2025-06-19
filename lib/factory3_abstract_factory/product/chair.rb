@@ -2,10 +2,10 @@
 
 class Chair
   def sit
-    "Sit on the #{style_name} style chair."
+    "Sit on the #{self.style} style chair."
   end
 
-  def style_name
+  def style
     raise NotImplementedError
   end
 end
