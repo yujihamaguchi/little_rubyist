@@ -654,14 +654,14 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [], 0.perfect_squares
   end
 
-  def test_rotate
-    assert_equal [], [].rotate(1)
-    assert_equal [1, 2, 3], [1, 2, 3].rotate(0)
-    assert_equal [2, 3, 1], [1, 2, 3].rotate(1)
-    assert_equal [3, 1, 2], [1, 2, 3].rotate(2)
-    assert_equal [1, 2, 3], [1, 2, 3].rotate(3)
-    assert_equal [2, 3, 1], [1, 2, 3].rotate(4)
-    assert_equal [3, 1, 2], [1, 2, 3].rotate(-1)
+  def test_my_rotate
+    assert_equal [], [].my_rotate(1)
+    assert_equal [1, 2, 3], [1, 2, 3].my_rotate(0)
+    assert_equal [2, 3, 1], [1, 2, 3].my_rotate(1)
+    assert_equal [3, 1, 2], [1, 2, 3].my_rotate(2)
+    assert_equal [1, 2, 3], [1, 2, 3].my_rotate(3)
+    assert_equal [2, 3, 1], [1, 2, 3].my_rotate(4)
+    assert_equal [3, 1, 2], [1, 2, 3].my_rotate(-1)
   end
 
   def test_palindrome?

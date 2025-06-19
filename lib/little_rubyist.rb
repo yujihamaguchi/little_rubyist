@@ -863,10 +863,10 @@ class Integer
   end
 end
 
-# Q070: リストの要素を回転させる関数 rotate を書け。
-#       rotate(n, list) は list を左に n 要素回転させる。
+# Q070: リストの要素を回転させる関数 my_rotate を書け。
+#       my_rotate(n, list) は list を左に n 要素回転させる。
 class Array
-  def rotate(n)
+  def my_rotate(n)
     return self if self.empty? || n.zero?
 
     n %= self.size
