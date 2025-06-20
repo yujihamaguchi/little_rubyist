@@ -2,9 +2,9 @@
 
 require_relative "colleague"
 class Form < Colleague
-  def initialize(mediator:)
+  def initialize(mediator:, enable: false)
     super(mediator: mediator)
-    @enable = false
+    @enable = enable
   end
 
   def enabled?

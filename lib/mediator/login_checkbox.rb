@@ -15,4 +15,9 @@ class LoginCheckbox < Colleague
     @checked = true
     @mediator.notify(source: self, action: :check)
   end
+
+  def uncheck
+    @checked = false
+    @mediator.notify(source: self, action: :uncheck)
+  end
 end
