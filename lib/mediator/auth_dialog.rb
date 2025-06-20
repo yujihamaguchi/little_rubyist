@@ -12,13 +12,10 @@ class AuthDialog
     @register_form = RegisterForm.new(mediator: self)
   end
 
-  def login_checkbox_checked
+  def notify(source:, action:)
+    return unless source.instance_of?(LoginCheckbox) && action == :check
+
     @login_form.enable
     @register_form.disable
-  end
-
-  def login_checkbox_unchecked
-    @login_form.disable
-    @register_form.enable
   end
 end
