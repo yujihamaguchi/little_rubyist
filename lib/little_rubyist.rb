@@ -86,23 +86,24 @@ class Array
   end
 end
 
-# Q006: Haskell の last と同様の機能の関数 my-last を書け(再帰を用いるバージョンも書くこと)
-# last :: [a] -> a
-#     リストの最後の要素を返す。
-#         last [1,2,3]   = 3
-#         last []        = エラー
+# Q006: Haskell の last と同様の機能の関数 my_last を書け(再帰を用いるバージョンも書くこと)
+#       last :: [a] -> a
+#       リストの最後の要素を返す。
+#       last [1,2,3]   = 3
 class Array
   def my_last
     raise StopIteration if self.empty?
 
     self.reverse.first
   end
-
   # # recursion
   # def my_last
   #   raise StopIteration if self.empty?
-  #   return self.first if self.length == 1
-  #   self.drop(1).my_last
+  #
+  #   first, *rest = self
+  #   return first if rest.empty?
+  #
+  #   rest.my_last
   # end
 end
 

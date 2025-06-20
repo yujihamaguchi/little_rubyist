@@ -54,16 +54,12 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_last
-    # (is (=  3 (my-last [1 2 3])))
-    # (is (=  2 (my-last [1 2])))
-    # (is (=  1 (my-last [1])))
-    # (is (thrown? java.util.NoSuchElementException (my-last [])))
-    assert_equal 3, [1, 2, 3].my_last
-    assert_equal 2, [1, 2].my_last
-    assert_equal 1, [1].my_last
     assert_raises StopIteration do
       [].my_last
     end
+    assert_equal 1, [1].my_last
+    assert_equal 2, [1, 2].my_last
+    assert_equal 3, [1, 2, 3].my_last
   end
 
   def test_halve
@@ -641,10 +637,10 @@ class TestLittleRubyist < Minitest::Test
 
   def test_tree_height
     assert_equal 0, :leaf.tree_height
-    assert_equal 1, [:node, :leaf, :leaf].tree_height
-    assert_equal 2, [:node, [:node, :leaf, :leaf], :leaf].tree_height
-    assert_equal 2, [:node, :leaf, [:node, :leaf, :leaf]].tree_height
-    assert_equal 3, [:node, [:node, [:node, :leaf, :leaf], :leaf], :leaf].tree_height
+    assert_equal 1, %i[node leaf leaf].tree_height
+    assert_equal 2, [:node, %i[node leaf leaf], :leaf].tree_height
+    assert_equal 2, [:node, :leaf, %i[node leaf leaf]].tree_height
+    assert_equal 3, [:node, [:node, %i[node leaf leaf], :leaf], :leaf].tree_height
   end
 
   def test_perfect_squares
@@ -677,8 +673,8 @@ class TestLittleRubyist < Minitest::Test
 
   def test_hanoi
     assert_equal [], hanoi(0, :a, :b, :c)
-    assert_equal [[:a, :b]], hanoi(1, :a, :b, :c)
-    assert_equal [[:a, :c], [:a, :b], [:c, :b]], hanoi(2, :a, :b, :c)
+    assert_equal [%i[a b]], hanoi(1, :a, :b, :c)
+    assert_equal [%i[a c], %i[a b], %i[c b]], hanoi(2, :a, :b, :c)
     assert_equal 7, hanoi(3, :a, :b, :c).length
     assert_equal 15, hanoi(4, :a, :b, :c).length
   end
