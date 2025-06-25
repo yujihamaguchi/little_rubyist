@@ -10,7 +10,7 @@ $VERBOSE = nil
 require "bmg"
 $VERBOSE = original_verbose
 
-# Q001: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
+# Q000: haskell の zip と同様の機能の関数 my_zip を書け （パラメータの数は可変であること）
 # zip :: [a] -> [b] -> [(a, b)]
 class Array
   def my_zip(*others)
@@ -21,7 +21,7 @@ class Array
   end
 end
 
-# Q002: Haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
+# Q001: Haskell の sum と同様の機能の関数 my_sum を書け。(再帰を用いるパターン, reduce を用いるパターン)
 # sum :: (Num a) => [a] -> a
 # sum ns
 #     数値のリスト ns の総和を返す。
@@ -42,7 +42,7 @@ class Array
   # end
 end
 
-# Q003: クイックソート関数 my_quick_sort を書け
+# Q002: クイックソート関数 my_quick_sort を書け
 class Array
   def my_quick_sort
     return [] if self.empty?
@@ -53,7 +53,7 @@ class Array
   end
 end
 
-# Q004: Haskell の product と同様の機能の関数( my_product )を書け(再帰を用いるパターン、 reduce を用いるパターン)
+# Q003: Haskell の product と同様の機能の関数( my_product )を書け(再帰を用いるパターン、 reduce を用いるパターン)
 # product :: (Num a) => [a] -> a
 # product ns
 #     数値のリスト ns の全要素の積を返す。
@@ -74,7 +74,7 @@ class Array
   # end
 end
 
-# Q005: リストを逆順に整列する関数 reverse_quick_sort を再帰を用いて書け
+# Q004: リストを逆順に整列する関数 reverse_quick_sort を再帰を用いて書け
 class Array
   def reverse_quick_sort
     return [] if self.empty?
@@ -86,7 +86,7 @@ class Array
   end
 end
 
-# Q006: Haskell の last と同様の機能の関数 my_last を書け(再帰を用いるバージョンも書くこと)
+# Q005: Haskell の last と同様の機能の関数 my_last を書け(再帰を用いるバージョンも書くこと)
 #       last :: [a] -> a
 #       リストの最後の要素を返す。
 #       last [1,2,3]   = 3
@@ -107,7 +107,7 @@ class Array
   # end
 end
 
-# Q007: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
+# Q006: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
 class Array
   def halve
     raise ArgumentError if self.empty?
@@ -118,24 +118,24 @@ class Array
   end
 end
 
-#  Q009: my-concat を書け。
+#  Q007: my-concat を書け。(再帰と reduce)
 #  concat :: [[a]] -> [a]
 #  concat xs
 #      リストのリスト xs を一つのリストに連結する。
 #          concat [[1,2], [3,4], [5,6]]    = [1,2,3,4,5,6]
-#          concat ["ab", "cd", "ef"]       = "abcdef"
 #          concat [[]]                     = []
 #          concat []                       = []
 class Array
+  # recursion
   def my_concat
-    self.reduce([], &->(acc, x) { acc + x })
-  end
+    return [] if self.empty?
 
-  # # recursion
+    first, *rest = self
+    first + rest.my_concat
+  end
+  # # reduce
   # def my_concat
-  #   return [] if self.empty?
-  #
-  #   self.first + self.drop(1).my_concat
+  #   self.reduce([]) { |acc, elm| acc + elm }
   # end
 end
 
