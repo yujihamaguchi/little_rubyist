@@ -4,7 +4,7 @@ require_relative "../test_helper"
 require_relative "../../lib/memento/originator"
 require_relative "../../lib/memento/caretaker"
 
-# オブジェクトの内部状態をスナップショットとして取り出し、安全に保存しておき、後から同じ内部状態に復元できるようにする
+# オブジェクトの内部状態をスナップショットとして取り出し、（カプセル化を損なわず）安全に保存しておき、後から同じ内部状態に復元できるようにする
 class OriginatorE2eTest < Minitest::Test
   def setup
     @originator = Originator.new
