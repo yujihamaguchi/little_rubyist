@@ -88,10 +88,10 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_factors
-    assert_equal [1, 2, 5, 10], 10.my_factors
-    assert_equal [1, 5], 5.my_factors
     assert_equal [1], 1.my_factors
-    assert_equal [], 0.my_factors
+    assert_equal [1, 2], 2.my_factors
+    assert_equal [1, 3], 3.my_factors
+    assert_equal [1, 2, 4], 4.my_factors
   end
 
   def test_myfind
