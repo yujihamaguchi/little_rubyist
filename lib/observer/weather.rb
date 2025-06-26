@@ -6,12 +6,10 @@ class Weather
   end
 
   def add(observer:)
-    @observers.push(observer)
+    @observers << observer
   end
 
   def update(temperature:, humidity:)
-    @observers.each do |observer|
-      observer.update(temperature: temperature, humidity: humidity)
-    end
+    @observers.each { |observer| observer.update(temperature: temperature, humidity: humidity) }
   end
 end

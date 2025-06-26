@@ -6,6 +6,7 @@ class Observer
   end
 
   def update(temperature:, humidity:)
-    raise NotImplementedError
+    @temperature = temperature
+    @humidity = humidity
   end
 end

@@ -4,8 +4,8 @@ require_relative "../../lib/observer/weather"
 require_relative "../../lib/observer/forecast_display"
 require_relative "../../lib/observer/statistic_analyzer"
 
-# Subject の状態の変化と連動して、 Observer(s) の状態も変化させたいが、Observer が Subject に直接依存し密結合になることは避けたい
-# ( Subject は自分が誰に通知しているか知らなくてもよく、Observer も Subject の内部構造に依存しないようにしたい )
+# Subject の状態の変化と連動して Observer 群の状態も変化させたいが、Observer と Subject が互いに直接依存し密結合になることは避けたい
+# ( Subject は自分がどの具象クラスに通知しているか知らなくてもよく、Observer も Subject の内部構造に依存しないようにしたい )
 class WeatherE2eTest < Minitest::Test
   def test_update
     # Arrange

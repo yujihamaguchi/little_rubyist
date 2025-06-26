@@ -5,9 +5,4 @@ class ForecastDisplay < Observer
   def display
     "Forecast / temperature: #{@temperature}, humidity: #{@humidity}"
   end
-
-  def update(temperature:, humidity:)
-    @temperature = temperature
-    @humidity = humidity
-  end
 end
