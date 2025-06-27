@@ -94,14 +94,14 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 2, 4], 4.my_factors
   end
 
-  def test_myfind
-    assert_equal [], [[1, "a"], [2, "b"]].my_find(4)
-    assert_equal ["a"], [[1, "a"], [2, "b"]].my_find(1)
-    assert_equal ["a"], [[2, "b"], [1, "a"]].my_find(1)
-    assert_equal ["a"], [[2, "b"], [1, "a"], [3, "c"]].my_find(1)
-    assert_equal %w[a b], [[1, "a"], [1, "b"], [3, "c"]].my_find(1)
-    assert_equal [1], [["a", 1], ["b", 2], ["c", 3]].my_find("a")
-    assert_equal [1], [["abc", 1], ["def", 2]].my_find("abc")
+  def test_my_select
+    assert_equal [], [].my_select("foo")
+    assert_equal [], [[1, :a], [2, :b]].my_select(3)
+    assert_equal [:a], [[1, :a], [2, :b]].my_select(1)
+    assert_equal [:a], [[2, :b], [1, :a]].my_select(1)
+    assert_equal [:a], [[2, :b], [1, :a], [3, :c]].my_select(1)
+    assert_equal %i[a b], [[1, :a], [1, :b], [3, :c]].my_select(1)
+    assert_equal [1], [[:a, 1]].my_select(:a)
   end
 
   def test_firsts

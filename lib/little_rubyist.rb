@@ -146,10 +146,13 @@ class Integer
   end
 end
 
-# Q009: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my-find を書け。
+# Q009: 対( pair )のリストを検索キーで探索し、対応する値を取り出してリストにする関数 my_select を再帰を用いて書け。
 class Array
-  def my_find(key)
-    self.map { |k, v| v if key == k }.compact
+  def my_select(target_key)
+    return [] if self.empty?
+
+    (key, value), *rest = self
+    (target_key == key ? [value] : []) + rest.my_select(target_key)
   end
 end
 
