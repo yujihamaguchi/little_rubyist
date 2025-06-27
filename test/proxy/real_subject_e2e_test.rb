@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
+require_relative "../../lib/proxy/real_subject"
 
-# クライアントと本来の処理対象の間に代理人（Proxy）を挟むことで、アクセス制御・最適化などの追加的な責務を、クライアントの実装変更なしに付与できるようにしたい
+# クライアントとリクエスト処理対象の本来の責務ではないアクセス制御や最適化などを行う必要がある
 class RealSubjectE2eTest < Minitest::Test
   TEST_CASES = [
     { role: :foo, expected: "Request processed by foo" },
