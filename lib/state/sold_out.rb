@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
-require "singleton"
 require_relative "state"
-class SoldOut
-  include State
-  include Singleton
-  def insert_coin(machine:); end
+class SoldOut < State
+  def insert_coin(context:); end
 
-  def eject_coin(machine:); end
+  def eject_coin(context:); end
 
-  def turn_crank(machine:)
+  def turn_crank(context:)
     print "It is sold out, sorry."
   end
 end

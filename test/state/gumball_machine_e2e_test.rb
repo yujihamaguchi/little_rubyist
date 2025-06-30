@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/state/gumball_machine"
 
-# オブジェクトの内部状態によって振る舞いを切り替えたいが、if文やswitch文などの多重条件分岐を使うことで、コードが冗長化・複雑化するのを避けたい。
+# オブジェクトの内部状態によって振る舞いを切り替えたいが、if 文や switch 文などの多重条件分岐を使うことで、コードが冗長化・複雑化するのを避けたい。
 class GumballMachineE2eTest < Minitest::Test
   def test_insert_coin
     # Arrange
@@ -83,7 +83,6 @@ class GumballMachineE2eTest < Minitest::Test
     # Arrange
     machine = GumballMachine.new(stock: 0)
     assert_equal 0, machine.stock
-    machine.insert_coin
 
     # Act & Assert
     assert_output("It is sold out, sorry.") { machine.turn_crank }

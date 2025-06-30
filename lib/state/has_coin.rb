@@ -1,21 +1,17 @@
 # frozen_string_literal: true
 
-require "singleton"
 require_relative "state"
 
-class HasCoin
-  include State
-  include Singleton
+class HasCoin < State
+  def insert_coin(context:); end
 
-  def insert_coin(machine:); end
-
-  def eject_coin(machine:)
-    machine.state = NoCoin.instance
+  def eject_coin(context:)
+    context.state = NoCoin.instance
   end
 
-  def turn_crank(machine:)
+  def turn_crank(context:)
     print "A gumball come out!"
-    machine.state = NoCoin.instance
-    machine.decrease_stock
+    context.state = NoCoin.instance
+    context.decrease_stock
   end
 end
