@@ -156,12 +156,24 @@ class Array
   end
 end
 
-# Q010: 対のリストから、対の先頭の要素を取り出してリストを生成する firsts を書け。
-class Array
-  def firsts
-    self.map { |item| item[0] }
+# Q010: リストのリストから、リストの先頭の要素を取り出してリストを生成する firsts を書け。
+class String
+  def first
+    self.chars.first
   end
 end
+
+class Array
+  def firsts
+    self.map(&:first)
+  end
+end
+
+# class Array
+#   def firsts
+#     self.map { |item| item[0] }
+#   end
+# end
 
 # Q011: haskell の length を、 sum とリスト内包表記で書け。
 # length :: [a] -> Int

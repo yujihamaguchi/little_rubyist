@@ -105,6 +105,7 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_firsts
+    assert_equal [], [].firsts
     assert_equal [1], [[1]].firsts
     assert_equal [1], [[1, 2]].firsts
     assert_equal [1], [[1, 2, 3]].firsts
