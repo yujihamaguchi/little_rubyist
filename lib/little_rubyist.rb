@@ -169,7 +169,7 @@ class Array
   end
 end
 
-# Q011: haskell の length を、 sum とリスト内包表記で書け。
+# Q011: haskell の length を、 sum とリスト内包表記で my_length として書け。
 # length :: [a] -> Int
 # length xs
 #     リスト xs の長さを返す。
@@ -179,7 +179,7 @@ end
 #         length ""        = 0
 module Enumerable
   def my_length
-    self.reduce(0, &->(acc, _) { acc + 1 })
+    self.map { |_| 1 }.sum
   end
 end
 

@@ -119,9 +119,9 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 0, [].my_length
     assert_equal 1, [1].my_length
     assert_equal 2, [1, 2].my_length
-    assert_equal 3, "abc".my_length
     assert_equal 3, [1, 2, 3].to_set.my_length
     assert_equal 3, { a: 1, b: 2, c: 3 }.my_length
+    assert_equal 3, "abc".my_length
   end
 
   def test_prime?
