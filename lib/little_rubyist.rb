@@ -169,12 +169,6 @@ class Array
   end
 end
 
-# class Array
-#   def firsts
-#     self.map { |item| item[0] }
-#   end
-# end
-
 # Q011: haskell の length を、 sum とリスト内包表記で書け。
 # length :: [a] -> Int
 # length xs
