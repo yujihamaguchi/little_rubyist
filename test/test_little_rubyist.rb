@@ -134,8 +134,8 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_prime
-    assert_equal [], primes(1)
-    assert_equal [2, 3, 5], primes(5)
+    assert_equal [], primes_by(1)
+    assert_equal [2, 3, 5], primes_by(5)
   end
 
   def test_pairs

@@ -189,7 +189,7 @@ class String
   end
 end
 
-# Q012: my-factors を用いて、整数が素数か判定する関数 prime? を書け。
+# Q012: my_factors を用いて、整数が素数か判定する関数 prime? を書け。
 class Integer
   def prime?
     return false if self == 1
@@ -198,8 +198,8 @@ class Integer
   end
 end
 
-# Q013: prime? を用いて与えられた上限数までの全ての素数を生成する関数 primes を書け。
-def primes(max)
+# Q013: prime? を用いて与えられた上限数までの全ての素数を生成する関数 primes_by を書け。
+def primes_by(max)
   (1..max).select(&:prime?)
 end
 
