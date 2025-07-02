@@ -139,12 +139,11 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_pairs
+    assert_equal({}, [].pairs)
+    assert_equal({}, [1].pairs)
     assert_equal({ 1 => 2 }, [1, 2].pairs)
     assert_equal({ 1 => 2, 2 => 3 }, [1, 2, 3].pairs)
     assert_equal({ 1 => 2, 2 => 3, 3 => 4 }, [1, 2, 3, 4].pairs)
-    assert_equal({}, [1].pairs)
-    assert_equal({}, [].pairs)
-    assert_equal({}, [].pairs)
     assert_equal({ "a" => "b", "b" => "c" }, "abc".pairs)
   end
 
