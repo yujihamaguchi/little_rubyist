@@ -2,7 +2,7 @@
 
 require_relative "report"
 class HtmlReport < Report
-  def format(data)
-    "<ul>#{data.map { |e| "<li>#{e}</li>" }.join}</ul>"
+  def format(raw_data)
+    "<ul>#{raw_data.map { |elm| "<li>#{elm}</li>" }.join}</ul>"
   end
 end

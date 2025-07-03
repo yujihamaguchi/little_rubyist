@@ -2,7 +2,7 @@
 
 require_relative "report"
 class CsvReport < Report
-  def format(data)
-    data.join(",")
+  def format(raw_data)
+    raw_data.join(",")
   end
 end
