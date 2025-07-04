@@ -148,6 +148,7 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_positions
+    assert_equal [], [].positions(1)
     assert_equal [], [2, 3].positions(1)
     assert_equal [0], [1, 2].positions(1)
     assert_equal [0, 2], [1, 2, 1].positions(1)
