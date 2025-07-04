@@ -2,21 +2,20 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/template_method/report"
-# ひとセットの共通プロセスを行いたいが、一部プロセスの中身にバリエーションをもたせたい。クライアントはオブジェクトの種類を選択するのみとしたい。
+# ひとセットの共通プロセスを行いたいが、一部プロセスの処理にバリエーションをもたせたい。クライアントはオブジェクトの種類を選択するのみとしたい。
 
 class ReportE2eTest < Minitest::Test
   def test_generate
+    # Arrange
     report = Report.new
-    fetched_data = nil
 
-    report.stub(:fetch, :mocked_fetched_data) do
-      report.stub(:format, lambda { |raw_data|
-        fetched_data = raw_data
-        :mocked_formatted_data
-      }) do
-        result = report.generate
-        assert_equal :mocked_fetched_data, fetched_data
-        assert_equal :mocked_formatted_data, result
+    # Act & Assert
+    report.stub :fetch, :fetched do
+      report.stub :format, lambda { |raw_data|
+        assert_equal :fetched, raw_data
+        :formatted
+      } do
+        assert_equal :formatted, report.generate
       end
     end
   end
