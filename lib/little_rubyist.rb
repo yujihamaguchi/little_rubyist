@@ -219,7 +219,10 @@ end
 # Q015: 目的とする値がリストのどの位置にあるかを調べて、その位置全てをリストとして返す関数 positions を書け。(index は 0 から開始される事)
 class Array
   def positions(target_value)
-    self.each_index.select { |index| self[index] == target_value }
+    (0...self.size).zip(self)
+                   .compact
+                   .select { |(_, value)| target_value == value }
+                   .map { |(index, _)| index }
   end
 end
 
