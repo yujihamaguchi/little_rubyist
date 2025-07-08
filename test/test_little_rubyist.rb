@@ -156,10 +156,17 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_count
+    assert_equal 0, "".my_count("a")
+    assert_raises(ArgumentError) do
+      "abc".my_count("")
+    end
+    assert_raises(ArgumentError) do
+      "abc".my_count("ab")
+    end
+    assert_equal 0, "abc".my_count("d")
     assert_equal 1, "abc".my_count("a")
     assert_equal 1, "abc".my_count("b")
     assert_equal 1, "abc".my_count("c")
-    assert_equal 0, "abc".my_count("d")
     assert_equal 2, "abca".my_count("a")
     assert_equal 3, "abaca".my_count("a")
   end

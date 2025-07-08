@@ -229,9 +229,19 @@ end
 # Q016: 指定した特定の文字がいくつ含まれているか数える関数 my_count を書け。
 class String
   def my_count(target_char)
-    self.chars.select { |c| target_char == c }.length
-    # self.chars.map { |c| c == target_char ? 1 : 0 }.sum
-    # self.chars.map { |c| c == target_char ? 1 : 0 }.reduce(&:+)
+    raise ArgumentError unless target_char.length == 1
+
+    # select
+    self.chars.select { |char| target_char == char }.length
+
+    # # reduce
+    # self.chars.reduce(0) { |acc, char| target_char == char ? acc + 1 : acc }
+
+    # # recursion
+    # return 0 if self.empty?
+    #
+    # first, *rest = self.chars
+    # (target_char == first ? 1 : 0) + rest.join.my_count(target_char)
   end
 end
 
