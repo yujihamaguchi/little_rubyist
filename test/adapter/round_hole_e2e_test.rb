@@ -7,7 +7,7 @@ require_relative "../../lib/adapter/round_hole"
 require_relative "../../lib/adapter/square_peg"
 require_relative "../../lib/adapter/square_peg_adapter"
 
-# クライアントが要求するインタフェースに合わせて既存のクラス（Adaptee）を振る舞わせたいが、その責務は本来 Adaptee が担うべきものではない
+# クライアントが要求するインタフェースに合わせて既存のクラス（ Adaptee ）を振る舞わせたいが、その責務は本来 Adaptee が担うべきものではない
 class RoundHoleE2eTest < Minitest::Test
   def test_fits_round_peg
     (1..5).each do |peg_radius|
@@ -16,7 +16,7 @@ class RoundHoleE2eTest < Minitest::Test
       round_peg = RoundPeg.new(radius: peg_radius)
 
       # Act & Assert
-      assert hole.fits?(round_peg)
+      assert hole.fits?(peg: round_peg)
     end
   end
 
@@ -26,7 +26,7 @@ class RoundHoleE2eTest < Minitest::Test
     round_peg = RoundPeg.new(radius: 6)
 
     # Act & Assert
-    refute hole.fits?(round_peg)
+    refute hole.fits?(peg: round_peg)
   end
 
   def test_fits_square_peg
@@ -38,7 +38,7 @@ class RoundHoleE2eTest < Minitest::Test
       square_peg_adapter = SquarePegAdapter.new(square_peg: square_peg)
 
       # Act & Assert
-      assert hole.fits?(square_peg_adapter)
+      assert hole.fits?(peg: square_peg_adapter)
     end
   end
 
@@ -49,6 +49,6 @@ class RoundHoleE2eTest < Minitest::Test
     square_peg_adapter = SquarePegAdapter.new(square_peg: square_peg)
 
     # Act & Assert
-    refute hole.fits?(square_peg_adapter)
+    refute hole.fits?(peg: square_peg_adapter)
   end
 end
