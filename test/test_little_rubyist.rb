@@ -172,6 +172,9 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_lower_count
+    assert_equal 0, "".lower_count
+    assert_equal 0, "A".lower_count
+    assert_equal 1, "a".lower_count
     assert_equal 3, "abcあ亜ア".lower_count
     assert_equal 2, "あ亜アAbc".lower_count
     assert_equal 2, "aBcあ亜ア".lower_count

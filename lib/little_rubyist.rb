@@ -247,9 +247,14 @@ end
 
 # Q017: 文字列から小文字を数える関数 lower_count を書け。
 class String
+  # use Multiple Character Selectors
   def lower_count
-    self.chars.select { |c| /[a-z]/.match?(c) }.length
+    self.count("a-z")
   end
+  # # use scan
+  # def lower_count
+  #   self.scan(/[a-z]/).length
+  # end
 end
 
 # Q018: 与えられた上限の数値までに含まれる完全数全てを算出する関数 perfects を関数 my_factors および my_sum を使って定義せよ。
