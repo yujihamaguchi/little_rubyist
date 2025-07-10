@@ -5,11 +5,11 @@ class Radio < Device
   attr_reader :volume
 
   def initialize
-    @volume = 5
     super
+    @volume = 5
   end
 
-  def volume=(level)
-    @volume = level if self.enabled?
+  def mute
+    @volume = 0
   end
 end

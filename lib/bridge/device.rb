@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Device
-  def initialize
+  attr_reader :enabled
+
+  def disable
     @enabled = false
   end
 
@@ -9,11 +11,11 @@ class Device
     @enabled = true
   end
 
-  def disable
-    @enabled = false
-  end
-
   def enabled?
     @enabled
+  end
+
+  def initialize
+    @enabled = false
   end
 end
