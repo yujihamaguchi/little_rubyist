@@ -261,8 +261,8 @@ end
 #       完全数：自分自身をのぞく約数の和が自分自身と等しい整数
 class Integer
   def perfects
-    (1..self).select do |n|
-      n == n.my_factors[0...-1].my_sum
+    (1..self).select do |int|
+      int.my_factors.my_sum - int == int
     end
   end
 end

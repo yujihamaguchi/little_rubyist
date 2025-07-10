@@ -182,10 +182,10 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_perfects
-    assert_equal [6], 10.perfects
-    assert_equal [6, 28], 100.perfects
     assert_equal [], 0.perfects
     assert_equal [], 1.perfects
+    assert_equal [6], 10.perfects
+    assert_equal [6, 28], 100.perfects
   end
 
   def test_pyths
