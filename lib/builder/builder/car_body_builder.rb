@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
-require_relative "../product/car_body"
-require_relative "car_builder"
-class CarBodyBuilder < CarBuilder
-  def build
-    raise "engine type is required" if @engine_type.nil?
+require_relative "../product/car"
+class CarBodyBuilder
+  def with_engine(engine_type)
+    @engine_type = engine_type
+    self
+  end
 
-    car = CarBody.new
-    car.engine = @engine_type
-    car.seats = @seat_count
-    car.roof_rails = @roof_rails_color
-    car
+  def with_seats(seat_count)
+    @seat_count = seat_count
+    self
+  end
+
+  def build
+    Car.new(engine_type: @engine_type, seats: @seat_count)
   end
 end
