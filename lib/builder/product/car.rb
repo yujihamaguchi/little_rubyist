@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Car
-  attr_reader :engine, :seats
+  attr_reader :engine, :seat
+  attr_accessor :roof_rails
 
-  def initialize(engine_type:, seats:)
-    @engine = engine_type
-    @seats = seats
+  def initialize(engine:, seat:)
+    @engine = engine
+    @seat = seat
   end
 end
