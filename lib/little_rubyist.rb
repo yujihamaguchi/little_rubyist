@@ -276,26 +276,23 @@ class Integer
 end
 
 # Q020: ある要素のみからなるリストを生成する関数 my_replicate を書け。(直接の再帰、末尾再帰のそれぞれを書け)
-# 直接の再帰
 class Object
+  # direct recursion
   def my_replicate(num)
     return [] if num.zero?
 
-    self.my_replicate(num - 1) + [self]
+    [self] + self.my_replicate(num - 1)
   end
+  # # tail recursion
+  # def my_replicate(num)
+  #   my_replicate_inner = lambda { |acc, num|
+  #     return acc if num.zero?
+  #
+  #     my_replicate_inner.call(acc << self, num - 1)
+  #   }
+  #   my_replicate_inner.call([], num)
+  # end
 end
-
-# 末尾再帰
-# class Object
-#   def my_replicate(value)
-#     my_replicate_ = lambda do |acc, value|
-#       return acc if value.zero?
-#
-#       my_replicate_.call(acc + [self], value - 1)
-#     end
-#     my_replicate_.call([], value)
-#   end
-# end
 
 # Q021: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
 class Array
