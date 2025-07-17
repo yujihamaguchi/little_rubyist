@@ -4,15 +4,12 @@ require_relative "../../lib/chain_of_responsibility/manager"
 require_relative "../../lib/chain_of_responsibility/director"
 require_relative "../../lib/chain_of_responsibility/ceo"
 
-# 送信元は処理者を意識せずリクエストを投げ、複数の候補が順に「自分が対応すべきか」を判定しつつ、候補の増減や並び替えが送信元に影響しない仕組みが欲しい
+# 送信元は処理者を意識せずリクエストを行い、しかるべき処理者からレスポンスを得られる。また、処理者の増減や並び替えが送信元に影響しないようにしたい
 class HandlerE2eTest < Minitest::Test
   def setup
-    @manager = Manager.new
-    @director = ChainOfResponsibility::Director.new
-    @ceo = CEO.new
-
-    @manager.next_handler = @director
-    @director.next_handler = @ceo
+    @ceo = CEO.new(next_handler: nil)
+    @director = ChainOfResponsibility::Director.new(next_handler: @ceo)
+    @manager = Manager.new(next_handler: @director)
   end
 
   def test_manager_approval

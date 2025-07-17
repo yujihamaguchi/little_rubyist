@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class Handler
-  attr_accessor :next_handler
+class LeaveRequestHandler
+  def initialize(next_handler:)
+    @next_handler = next_handler
+  end
 
   def handle(leave_request)
     raise NotImplementedError

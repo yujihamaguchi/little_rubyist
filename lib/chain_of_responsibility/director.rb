@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "handler"
+require_relative "leave_request_handler"
 module ChainOfResponsibility
-  class Director < Handler
-    def handle(leave_request)
-      days = leave_request.days
-      return "Director approved #{days}-day leave." if days < 6
+  class Director < LeaveRequestHandler
+    def handle(request)
+      return "Director approved #{request.days}-day leave." if request.days <= 5
 
-      @next_handler.handle(leave_request)
+      @next_handler.handle(request)
     end
   end
 end

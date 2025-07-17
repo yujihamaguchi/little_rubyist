@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "handler"
-class Manager < Handler
-  def handle(leave_request)
-    days = leave_request.days
-    return "Manager approved #{days}-day leave." if days <= 3
+require_relative "leave_request_handler"
+class Manager < LeaveRequestHandler
+  def handle(request)
+    return "Manager approved #{request.days}-day leave." if request.days <= 3
 
-    @next_handler.handle(leave_request)
+    @next_handler.handle(request)
   end
 end
