@@ -201,8 +201,8 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_scalar_product
-    assert_equal 32, [1, 2, 3].scalar_product([4, 5, 6])
     assert_equal 0, [].scalar_product([])
+    assert_equal 32, [1, 2, 3].scalar_product([4, 5, 6])
   end
 
   def test_my_reverse

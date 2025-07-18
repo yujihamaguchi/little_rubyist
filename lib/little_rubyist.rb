@@ -294,11 +294,13 @@ class Object
   # end
 end
 
-# Q021: 二つの整数のリストの内積を求める関数　scalar_product　を書け。
+# Q021: 二つの整数のリストの内積を求める関数　scalar_product　を書け。( sum を使うパターン、 reduce を使うパターンそれぞれ書け )
 class Array
   def scalar_product(other)
-    # self.zip(other).sum { |value, elem| value * elem }
-    self.zip(other).reduce(0, &->(acc, (n, m)) { acc + n * m })
+    # # use sum
+    # self.zip(other).sum { |num1, num2| num1 * num2 }
+    # use reduce
+    self.zip(other).reduce(0) { |acc, (num1, num2)| acc + num1 * num2 }
   end
 end
 
