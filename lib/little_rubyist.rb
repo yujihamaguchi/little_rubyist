@@ -309,7 +309,8 @@ class Array
   def my_reverse
     return [] if self.empty?
 
-    self.drop(1).my_reverse + [self.first]
+    first, *rest = self
+    rest.my_reverse + [first]
   end
 end
 
