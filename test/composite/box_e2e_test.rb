@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../test_helper"
-require_relative "../../lib/composite/composite"
+require_relative "../../lib/composite/price"
 require_relative "../../lib/composite/box"
 require_relative "../../lib/composite/product"
 

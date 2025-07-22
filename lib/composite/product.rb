@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+require_relative "price"
 class Product
-  include Composite
+  include Price
   attr_reader :price
 
   def initialize(price:)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Composite
+module Price
   def price
     raise NotImplementedError
   end

@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
+require_relative "price"
 class Box
-  include Composite
+  include Price
   def initialize
-    @composites = []
+    @children = []
   end
 
-  def add(composite)
-    @composites << composite
+  def add(child)
+    @children << child
   end
 
   def price
-    @composites.sum(&:price)
+    @children.sum(&:price)
   end
 end
