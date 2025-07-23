@@ -214,10 +214,14 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_my_insert
+    assert_equal [], [].my_insert
+    assert_equal [1], [1].my_insert
+    assert_equal [1], [].my_insert(1)
+    assert_equal [1, 2], [1].my_insert(2)
     assert_equal [1, 2, 3], [1, 3].my_insert(2)
     assert_equal [1, 2, 3], [2, 3].my_insert(1)
     assert_equal [1, 2, 3], [1, 2].my_insert(3)
-    assert_equal [1], [].my_insert(1)
+    assert_equal [1, 1, 2, 3, 3], [1, 1, 3, 3].my_insert(2)
   end
 
   def test_isort

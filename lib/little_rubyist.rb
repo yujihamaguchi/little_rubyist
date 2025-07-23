@@ -314,17 +314,26 @@ class Array
   end
 end
 
-# Q023: ある要素を、整列されたリストに挿入する関数 my_insert を書け。( 再帰バージョンも書いてみよう )
+# Q023: ある要素を、整列されたリストに挿入する関数 my_insert を書け。( *_while および、再帰の両方のバージョンを書け )
 class Array
-  # def my_insert(value)
-  #   self.take_while { |elem| elem < value } + [value] + self.drop_while { |elem| elem < value }
-  # end
-  def my_insert(value)
-    return [value] if self.empty?
-    return [value] + self if value <= self.first
+  # user *_while
+  def my_insert(insert_elm = nil)
+    return self if insert_elm.nil?
 
-    [self.first] + self.drop(1).my_insert(value)
+    self.take_while { |elm| elm < insert_elm } + [insert_elm] + self.drop_while { |elm| elm < insert_elm }
   end
+
+  # # user recursion
+  # def my_insert(elm = nil)
+  #   return self if elm.nil?
+  #   return [elm] if self.empty?
+  #
+  #   first, *rest = self
+  #
+  #   return [elm] + self if first > elm
+  #
+  #   [first] + rest.my_insert(elm)
+  # end
 end
 
 # Q024: 関数 my_insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
