@@ -12,7 +12,7 @@ class LengthOrderListPrinterE2eTest < Minitest::Test
     actual = list_printer.string_from(%w[banana cake apple])
 
     # Assert
-    assert_equal "[\"cake\", \"apple\", \"banana\"]",
+    assert_equal "cake, apple, banana",
                  actual
   end
 
@@ -24,6 +24,6 @@ class LengthOrderListPrinterE2eTest < Minitest::Test
     actual = list_printer.string_from(%w[banana cake apple])
 
     # Assert
-    assert_equal "[\"banana\", \"apple\", \"cake\"]", actual
+    assert_equal "banana, apple, cake", actual
   end
 end

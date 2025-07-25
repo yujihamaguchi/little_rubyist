@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/factory2_factory_method/dictionary_order_list_printer"
 
-# アルゴリズムの骨格は固定しつつ、特定ステップを担うオブジェクトを差し替え可能にしたい。
+# アルゴリズムの骨格は固定しつつ、特定ステップのアルゴリズムを担うオブジェクトを差し替えたい。
 # クライアントは具象クラスを選択するだけで、目的を達成できるようにしたい。
 class DictionaryOrderListPrinterE2eTest < Minitest::Test
   def test_string_from
@@ -14,7 +14,7 @@ class DictionaryOrderListPrinterE2eTest < Minitest::Test
     actual = list_printer.string_from(%w[banana cake apple])
 
     # Assert
-    assert_equal "[\"apple\", \"banana\", \"cake\"]",
+    assert_equal "apple, banana, cake",
                  actual
   end
 
@@ -26,6 +26,6 @@ class DictionaryOrderListPrinterE2eTest < Minitest::Test
     actual = list_printer.string_from(%w[banana Cake apple])
 
     # Assert
-    assert_equal "[\"apple\", \"banana\", \"Cake\"]", actual
+    assert_equal "apple, banana, Cake", actual
   end
 end

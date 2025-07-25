@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require_relative "list_printer"
-class DictionaryOrderListPrinter < ListPrinter
+class DictionaryOrderListPrinter
+  include ListPrinter
   def initialize(case_sensitive: true)
-    super()
     @case_sensitive = case_sensitive
   end
 
-  def rule
-    ->(str) { @case_sensitive ? str : str.downcase }
+  def key_selector
+    ->(elm) { @case_sensitive ? elm : elm.downcase }
   end
 end
