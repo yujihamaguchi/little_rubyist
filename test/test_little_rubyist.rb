@@ -224,17 +224,17 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1, 1, 2, 3, 3], [1, 1, 3, 3].my_insert(2)
   end
 
-  def test_isort
-    assert_equal [], [].isort
-    assert_equal [1], [1].isort
-    assert_equal [1, 2], [1, 2].isort
-    assert_equal [1, 2], [2, 1].isort
-    assert_equal [1, 2, 3], [1, 2, 3].isort
-    assert_equal [1, 2, 3], [1, 3, 2].isort
-    assert_equal [1, 2, 3], [2, 3, 1].isort
-    assert_equal [1, 2, 3], [2, 1, 3].isort
-    assert_equal [1, 2, 3], [3, 1, 2].isort
-    assert_equal [1, 2, 3], [3, 2, 1].isort
+  def test_sort_by_insertion
+    assert_equal [], [].sort_by_insertion
+    assert_equal [1], [1].sort_by_insertion
+    assert_equal [1, 2], [1, 2].sort_by_insertion
+    assert_equal [1, 2], [2, 1].sort_by_insertion
+    assert_equal [1, 2, 3], [1, 2, 3].sort_by_insertion
+    assert_equal [1, 2, 3], [1, 3, 2].sort_by_insertion
+    assert_equal [1, 2, 3], [2, 3, 1].sort_by_insertion
+    assert_equal [1, 2, 3], [2, 1, 3].sort_by_insertion
+    assert_equal [1, 2, 3], [3, 1, 2].sort_by_insertion
+    assert_equal [1, 2, 3], [3, 2, 1].sort_by_insertion
   end
 
   def test_my_drop

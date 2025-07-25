@@ -336,12 +336,13 @@ class Array
   # end
 end
 
-# Q024: 関数 my_insert を用いてリストのソートを"挿入ソート"で行う関数　isort　を書け。
+# Q024: 関数 my_insert を用いてリストのソートを「挿入ソート」で行う関数　sort_by_insertion　を書け。
 class Array
-  def isort
+  def sort_by_insertion
     return [] if self.empty?
 
-    self.drop(1).isort.my_insert(self.first)
+    first, *rest = self
+    rest.sort_by_insertion.my_insert(first)
   end
 end
 
