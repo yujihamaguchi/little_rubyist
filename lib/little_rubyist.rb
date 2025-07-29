@@ -356,23 +356,26 @@ class Array
   end
 end
 
-# Q026: Haskell の zip 関数を直接の再帰を用いて自作( my_zip_2 )せよ。( パターンマッチを用いた書き方も )
+# Q026: Haskell の zip 関数を直接の再帰を用いて自作( my_zip_2 )せよ。( case 句を用いたパターンマッチングを用いた書き方でも書け。 )
 #       [a] -> [b] -> [(a,b)]
 class Array
   def my_zip_2(other)
-    # パターンマッチを使用しない
     return [] if self.empty? || other.empty?
 
-    [[self.first, other.first]] + self.drop(1).my_zip_2(other.drop(1))
+    first1, *rest1 = self
+    first2, *rest2 = other
 
-    # パターンマッチを使用
-    # case [self, other]
-    # in [[x, *xs], [y, *ys]]
-    #   [[x, y]] + xs.my_zip_2(ys)
-    # else
-    #   []
-    # end
+    [[first1, first2]] + rest1.my_zip_2(rest2)
   end
+  # # use case
+  # def my_zip_2(other)
+  #   case [self, other]
+  #   in [[first1, *rest1], [first2, *rest2]]
+  #     [[first1, first2]] + rest1.my_zip_2(rest2)
+  #   else
+  #     []
+  #   end
+  # end
 end
 
 # Q027: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。
