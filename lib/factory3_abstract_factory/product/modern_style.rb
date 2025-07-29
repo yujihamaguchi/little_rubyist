@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "table"
-class ModernStyleTable < Table
+module ModernStyle
   def style
     "modern"
   end
