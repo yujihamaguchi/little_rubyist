@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
-require_relative "colleague"
-class Form < Colleague
-  def initialize(mediator:, enable: false)
-    super(mediator: mediator)
-    @enable = enable
-  end
-
-  def enabled?
-    @enable
+class Form
+  def initialize(mediator, enabled: false)
+    @mediator = mediator
+    @enabled = enabled
   end
 
   def disabled?
-    !@enable
+    !@enabled
+  end
+
+  def enabled?
+    @enabled
   end
 
   def enable
-    @enable = true
+    @enabled = true
   end
 
   def disable
-    @enable = false
+    @enabled = false
   end
 end

@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
-require_relative "colleague"
-class LoginCheckbox < Colleague
-  def initialize(mediator:)
-    super(mediator: mediator)
-    @checked = false
-  end
-
-  def checked?
-    @checked
+class LoginCheckbox
+  def initialize(mediator, checked: false)
+    @mediator = mediator
+    @checked = checked
   end
 
   def check
     @checked = true
-    @mediator.notify(source: self, action: :check)
+    @mediator.align(self, :check)
   end
 
   def uncheck
     @checked = false
-    @mediator.notify(source: self, action: :uncheck)
+    @mediator.align(self, :uncheck)
+  end
+
+  def checked?
+    @checked
   end
 end
