@@ -378,7 +378,8 @@ class Array
   # end
 end
 
-# Q027: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。
+# Q027: even と odd を相互再帰を用いて自作( my_even?, my_odd? )せよ。（各メソッドの実装は一行で書ける）
+
 class Integer
   def my_even?
     self.zero? || (self.abs - 1).my_odd?
