@@ -390,7 +390,7 @@ class Integer
   end
 end
 
-# Q028: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を書け。（直接の再帰を用いて良い）
+# Q028: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を直接の再帰を用いて書け。
 class Integer
   def fibonacci
     return 0 if self.zero?
