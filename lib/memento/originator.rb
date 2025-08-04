@@ -4,9 +4,7 @@ class Originator
   attr_reader :state
 
   def memento
-    memento = Memento.new
-    memento.state = self.state
-    memento
+    Memento.new(self)
   end
 
   def restore_from(memento)
@@ -14,11 +12,15 @@ class Originator
     self
   end
 
+  class Memento
+    attr_reader :state
+
+    def initialize(originator)
+      @state = originator.state
+    end
+  end
+
   private
 
   attr_writer :state
-
-  class Memento
-    attr_accessor :state
-  end
 end
