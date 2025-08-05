@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
-class Weather
-  def initialize
-    @observers = []
-  end
-
-  def add(observer:)
-    @observers << observer
-  end
+require_relative "subject"
+class Weather < Observer::Subject
+  attr_reader :temperature, :humidity
 
   def update(temperature:, humidity:)
-    @observers.each { |observer| observer.update(temperature: temperature, humidity: humidity) }
+    @temperature = temperature
+    @humidity = humidity
+    @observers.each { |observer| observer.update(temperature: @temperature, humidity: @humidity) }
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Observer
+class WeatherObserver
   def initialize(subject:)
     subject.add(observer: self)
   end
