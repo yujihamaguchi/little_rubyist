@@ -400,17 +400,16 @@ class Integer
   end
 end
 
-# Q029: qsort を再帰を用いて書け。（直接の再帰を用いて）
+# Q029: quick_sort を直接の再帰を用いて書け。
 class Array
-  def qsort
+  def quick_sort
     return [] if self.empty?
 
-    return self if self.size == 1
+    first, *rest = self
+    less_than = rest.select { |other| other < first }
+    greater_equal = rest.select { |other| first <= other }
 
-    x, *xs = self
-    lt = xs.select { |x_| x_ < x }
-    ge = xs.select { |x_| x_ >= x }
-    lt.qsort + [x] + ge.qsort
+    less_than.quick_sort + [first] + greater_equal.quick_sort
   end
 end
 
