@@ -418,13 +418,15 @@ class Array
   def evens
     return [] if self.empty?
 
-    self.drop(1).odds
+    _, *rest = self
+    rest.odds
   end
 
   def odds
     return [] if self.empty?
 
-    [self.first] + self.drop(1).evens
+    first, *rest = self
+    [first] + rest.evens
   end
 end
 
