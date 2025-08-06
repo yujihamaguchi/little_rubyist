@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "subject"
+require_relative "requestable"
 class ProxySubject
-  include Subject
+  include Requestable
   def initialize(service:)
     @service = service
   end
