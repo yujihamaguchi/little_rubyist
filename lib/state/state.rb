@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 require "singleton"
-
 class State
   include Singleton
-
   def insert_coin(context:)
     raise NotImplementedError
   end

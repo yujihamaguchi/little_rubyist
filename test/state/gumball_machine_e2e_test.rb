@@ -79,15 +79,6 @@ class GumballMachineE2eTest < Minitest::Test
     assert_equal 10, machine.stock
   end
 
-  def test_turn_crank_when_sold_out
-    # Arrange
-    machine = GumballMachine.new(stock: 0)
-    assert_equal 0, machine.stock
-
-    # Act & Assert
-    assert_output("It is sold out, sorry.") { machine.turn_crank }
-  end
-
   def test_turn_crank_on_last_gumball
     # Arrange
     machine = GumballMachine.new(stock: 1)
@@ -98,6 +89,15 @@ class GumballMachineE2eTest < Minitest::Test
 
     # Assert
     assert_equal SoldOut, machine.state.class
+  end
+
+  def test_turn_crank_when_sold_out
+    # Arrange
+    machine = GumballMachine.new(stock: 0)
+    assert_equal 0, machine.stock
+
+    # Act & Assert
+    assert_output("It is sold out, sorry.") { machine.turn_crank }
   end
 
   def test_insert_coin_when_sold_out

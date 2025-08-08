@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "state"
-
 class HasCoin < State
   def insert_coin(context:); end
 
@@ -11,7 +10,7 @@ class HasCoin < State
 
   def turn_crank(context:)
     print "A gumball come out!"
-    context.state = NoCoin.instance
-    context.decrease_stock
+    context.decrease
+    context.state = context.stock.zero? ? SoldOut.instance : NoCoin.instance
   end
 end
