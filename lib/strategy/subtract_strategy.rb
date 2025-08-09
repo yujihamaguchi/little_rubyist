@@ -3,7 +3,8 @@
 require_relative "binary_operation_strategy"
 class SubtractStrategy
   include BinaryOperationStrategy
-  def execute(number1, number2)
-    number1 - number2
+
+  def calculate(num1, num2)
+    num1 - num2
   end
 end

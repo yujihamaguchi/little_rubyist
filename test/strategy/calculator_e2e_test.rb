@@ -6,7 +6,7 @@ require_relative "../../lib/strategy/add_strategy"
 require_relative "../../lib/strategy/subtract_strategy"
 require_relative "../../lib/strategy/multiply_strategy"
 
-# 共通の操作に対して複数の実装が存在し、条件分岐による実装の肥大化を避けたい。
+# 共通の操作に対して複数の実装を使い分けたいが、条件分岐による実装の肥大化を避けたい。
 class CalculatorE2eTest < Minitest::Test
   def test_add
     # Arrange
