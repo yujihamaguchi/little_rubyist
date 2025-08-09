@@ -448,19 +448,6 @@ class Array
   #   self.reverse_each.lazy.drop(1).lazy.reverse_each.lazy.to_a
   # end
 end
-# class Array
-#   # 再帰を用いたもの
-#   def my_init
-#     return [] if self.size <= 1
-#
-#     [self.first] + self.drop(1).my_init
-#   end
-#
-#   # 遅延評価関数を用いたもの
-#   # def my_init
-#   #   self.reverse.drop(1).reverse
-#   # end
-# end
 
 # Q032: Haskell の elem を直接の再帰を用いて自作( my_elem )せよ。
 #       elem :: Eq a => a -> [a] -> Bool
