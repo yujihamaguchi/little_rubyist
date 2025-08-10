@@ -320,6 +320,12 @@ class TestLittleRubyist < Minitest::Test
     refute 2.my_elem([1])
     assert 2.my_elem([1, 2])
     assert 2.my_elem([1, 2, 3])
+    assert "a".my_elem(["a"])
+    assert [1].my_elem([[1]])
+    assert :foo.my_elem([:foo])
+    assert true.my_elem([true])
+    assert({}.my_elem([{}]))
+    assert (1..2).my_elem([(1..2)])
   end
 
   def test_my_index

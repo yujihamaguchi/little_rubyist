@@ -455,7 +455,8 @@ class Object
   def my_elem(arr)
     return false if arr.empty?
 
-    self == arr.first || self.my_elem(arr.drop(1))
+    first, *rest = arr
+    self == first || self.my_elem(rest)
   end
 end
 
