@@ -463,10 +463,13 @@ end
 # Q033: Haskell の !! を my_index という名のメソッドとして直接の再帰を用いて自作せよ。該当する要素がない場合は nil を返せ。
 #       (!!) :: [a] -> Int -> a
 class Array
-  def my_index(num)
-    return self.first if num.zero?
+  def my_index(index)
+    return nil if self.empty?
 
-    self.drop(1).my_index(num - 1)
+    first, *rest = self
+    return first if index.zero?
+
+    rest.my_index(index - 1)
   end
 end
 
