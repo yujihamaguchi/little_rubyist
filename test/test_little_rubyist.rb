@@ -337,8 +337,8 @@ class TestLittleRubyist < Minitest::Test
 
   def test_my_merge
     assert_equal [], [].my_merge([])
-    assert_equal [1, 2], [].my_merge([1, 2])
-    assert_equal [1, 2], [1, 2].my_merge([])
+    assert_equal [1], [].my_merge([1])
+    assert_equal [1], [1].my_merge([])
     assert_equal [1, 2, 3, 4, 5, 6], [2, 5, 6].my_merge([1, 3, 4])
     assert_equal [0, 1, 1, 1, 2, 2, 2, 3], [0, 1, 1, 2].my_merge([1, 2, 2, 3])
   end

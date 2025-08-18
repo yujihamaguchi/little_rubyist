@@ -120,8 +120,8 @@ end
 
 #  Q007: my-concat を書け。(再帰と reduce)
 #  concat :: [[a]] -> [a]
-#  concat xs
-#      リストのリスト xs を一つのリストに連結する。
+#  concat rest
+#      リストのリスト rest を一つのリストに連結する。
 #          concat [[1,2], [3,4], [5,6]]    = [1,2,3,4,5,6]
 #          concat [[]]                     = []
 #          concat []                       = []
@@ -171,8 +171,8 @@ end
 
 # Q011: haskell の length を、 sum とリスト内包表記で my_length として書け。
 # length :: [a] -> Int
-# length xs
-#     リスト xs の長さを返す。
+# length rest
+#     リスト rest の長さを返す。
 #         length [1,2,3]   = 3
 #         length "abcde"   = 5
 #         length []        = 0
@@ -370,8 +370,8 @@ class Array
   # # use case
   # def my_zip_2(other)
   #   case [self, other]
-  #   in [[first1, *rest1], [first2, *rest2]]
-  #     [[first1, first2]] + rest1.my_zip_2(rest2)
+  #   in [[first, *rest], [other_first, *other_rest]]
+  #     [[first, other_first]] + rest.my_zip_2(other_rest)
   #   else
   #     []
   #   end
@@ -432,7 +432,7 @@ end
 
 # Q031: Haskell の init 関数を自作( my_init )せよ。(直接の再帰を用いたもの、遅延評価を用いたもの両方書くこと）
 # init :: [a] -> [a]
-# リスト xs の最後の要素を除いたリストを返す。
+# リスト rest の最後の要素を除いたリストを返す。
 #     init [1,2,3]   = [1,2]
 #     init [1]       = []
 class Array
@@ -481,12 +481,14 @@ class Array
     return self if other.empty?
     return other if self.empty?
 
-    x, *xs = self
-    y, *ys = other
+    first, *rest = self
+    other_first, *other_rest = other
 
-    return [x] + xs.my_merge(other) if x <= y
-
-    [y] + self.my_merge(ys)
+    if first <= other_first
+      [first] + rest.my_merge(other)
+    else
+      [other_first] + self.my_merge(other_rest)
+    end
   end
 end
 
@@ -578,7 +580,7 @@ end
 #
 #         myFoldr :: (a -> b -> b) -> b -> [a] -> b
 #         myFoldr _ v [] = v
-#         myFoldr f v (x:xs) = f x (myFoldr f v xs)
+#         myFoldr f v (first:rest) = f first (myFoldr f v rest)
 class Array
   def my_foldr(lmd, init)
     return init if self.empty?
@@ -593,7 +595,7 @@ end
 #
 #            myFoldr :: (a -> b -> a) -> a -> [b] -> a
 #            myFoldr _ v [] = v
-#            myFoldr f v (x:xs) = foldl f (f v x) xs
+#            myFoldr f v (first:rest) = foldl f (f v first) rest
 class Array
   def my_foldl(lmd, init)
     return init if self.empty?
@@ -665,8 +667,8 @@ end
 
 # Q050: 関数 all を自作せよ。( my_all? )
 #       all :: (a -> Bool) -> [a] -> Bool
-#       all f xs
-#       xs の要素 x について、f x がすべて True なら True。
+#       all f rest
+#       rest の要素 first について、f first がすべて True なら True。
 #
 #       all (==1) [5,4,3,2,1]   = False
 #       all (==1) [1,1,1]       = True
@@ -681,8 +683,8 @@ end
 
 # Q051: 関数 any を自作せよ。( my_any? )
 #       any :: (a -> Bool) -> [a] -> Bool
-#       any f xs
-#       xs のいずれかの要素 x について f x が True ならば True。
+#       any f rest
+#       rest のいずれかの要素 first について f first が True ならば True。
 #
 #       any (== 1) [5, 4, 3, 2, 1]   = True
 #       any (== 1) [5, 4, 1, 2, 3]   = True
