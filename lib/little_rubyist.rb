@@ -492,22 +492,20 @@ class Array
   end
 end
 
-# Q035: 関数 my_merge を用いてマージソートを実行する関数 msort を再帰を用いて書け。
+# Q035: 関数 my_merge を用いてマージソートを実行する関数 merge_sort を再帰を用いて書け。
 #       マージソートは、引数のリストを二つに分割し、それぞれを整列した後、再び一つに戻す事で、整列を実現する。
 #       最初に、リストを半分に分割する関数 simple_halve を書け。
 class Array
   def simple_halve
-    return [] if self.empty?
-
-    num = self.size / 2
-    [self.take(num), self.drop(num)]
+    half_count = self.count / 2
+    [self.take(half_count), self.drop(half_count)]
   end
 
-  def msort
-    return self if self.size <= 1
+  def merge_sort
+    return self if self.count <= 1
 
-    xs, ys = self.simple_halve
-    xs.msort.my_merge(ys.msort)
+    first_half, second_half = self.simple_halve
+    first_half.merge_sort.my_merge(second_half.merge_sort)
   end
 end
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class SquarePegAdapter
+require_relative "radius"
+class SquarePegToRoundHoleAdapter
+  include Radius
   def initialize(square_peg:)
     @square_peg = square_peg
   end
