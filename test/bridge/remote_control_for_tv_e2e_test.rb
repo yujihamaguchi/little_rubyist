@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/bridge/remote_control"
 require_relative "../../lib/bridge/television"
-# クライアントに提供したいインタフェースと、そのインタフェースを用いた操作対象の組み合わせ爆発を防ぎ、両者を相互に依存させずに独立拡張できるようにしたい
+# クライアントに提供したいインタフェースと操作対象の組み合わせ爆発を防ぎ、両者を相互に依存させずに独立拡張できるようにしたい。
 class RemoteControlForTvE2eTest < Minitest::Test
   def test_toggle_power_when_disabled
     # Arrange

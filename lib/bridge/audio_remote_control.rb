@@ -2,7 +2,15 @@
 
 require_relative "remote_control"
 class AudioRemoteControl < Bridge::RemoteControl
-  def mute
-    @device.mute if @device.enabled?
+  def bass
+    @device.sound_effect = :BASS
+  end
+
+  def treble
+    @device.sound_effect = :TREBLE
+  end
+
+  def loudness
+    @device.sound_effect = :LOUDNESS
   end
 end

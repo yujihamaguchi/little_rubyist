@@ -7,9 +7,9 @@ module Bridge
     end
 
     def toggle_power
-      return @device.enable unless @device.enabled?
+      return @device.disable if @device.enabled?
 
-      @device.disable
+      @device.enable
     end
   end
 end

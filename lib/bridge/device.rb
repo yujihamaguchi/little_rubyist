@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Device
-  attr_reader :enabled
-
   def disable
     @enabled = false
   end
