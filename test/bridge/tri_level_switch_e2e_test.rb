@@ -3,9 +3,9 @@
 require_relative "../test_helper"
 require_relative "../../lib/bridge/light"
 require_relative "../../lib/bridge/fan"
-require_relative "../../lib/bridge/multi_level_switch"
+require_relative "../../lib/bridge/tri_level_switch"
 
-class MultiLevelSwitchE2eTest < Minitest::Test
+class TriLevelSwitchE2eTest < Minitest::Test
   LIGHT_TEST_CASES = [
     { method: :low, expect: :dim },
     { method: :medium, expect: :medium },
@@ -16,7 +16,7 @@ class MultiLevelSwitchE2eTest < Minitest::Test
     LIGHT_TEST_CASES.each do |test_case|
       # Arrange
       light = Light.new
-      switch = MultiLevelSwitch.new(device: light)
+      switch = TriLevelSwitch.new(device: light)
       switch.turn_on
       assert :bright, light.brightness
 
@@ -38,7 +38,7 @@ class MultiLevelSwitchE2eTest < Minitest::Test
     FAN_TEST_CASES.each do |test_case|
       # Arrange
       fan = Fan.new
-      switch = MultiLevelSwitch.new(device: fan)
+      switch = TriLevelSwitch.new(device: fan)
       switch.turn_on
       assert :bright, fan.speed
 

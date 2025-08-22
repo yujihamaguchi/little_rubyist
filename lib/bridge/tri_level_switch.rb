@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "switch"
-class MultiLevelSwitch < Switch
+class TriLevelSwitch < Switch
   def low
     @device.adjust_output_low_level
   end

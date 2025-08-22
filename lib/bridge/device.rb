@@ -23,16 +23,4 @@ class Device
   def adjust_output_level(percentage)
     @output_level = percentage
   end
-
-  def adjust_output_low_level
-    raise NotImplementedError
-  end
-
-  def adjust_output_medium_level
-    raise NotImplementedError
-  end
-
-  def adjust_output_high_level
-    raise NotImplementedError
-  end
 end
