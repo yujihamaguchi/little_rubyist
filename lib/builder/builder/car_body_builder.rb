@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
-require_relative "car_builder"
-require_relative "../product/car"
-require_relative "../product/seat"
-
+require_relative "../product/car_body"
 class CarBodyBuilder
-  include CarBuilder
   def with_engine(engine)
     @engine = engine
     self
   end
 
-  def with_seat(count: 2)
-    @seats = count.times.map { Seat.new }
+  def with_seats(seats)
+    @seats = seats
     self
   end
 
@@ -22,10 +18,6 @@ class CarBodyBuilder
   end
 
   def build
-    raise "engine is required" unless @engine
-
-    car = Car.new(engine: @engine, seat: @seats)
-    car.roof_rails = @roof_rails
-    car
+    CarBody.new(engine: @engine, seats: @seats, roof_rails: @roof_rails)
   end
 end
