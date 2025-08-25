@@ -1,23 +1,13 @@
 # frozen_string_literal: true
 
+require_relative "./car_builder"
 require_relative "../product/car_body"
+
 class CarBodyBuilder
-  def with_engine(engine)
-    @engine = engine
-    self
-  end
-
-  def with_seats(seats)
-    @seats = seats
-    self
-  end
-
-  def with_roof_rails(roof_rails)
-    @roof_rails = roof_rails
-    self
-  end
-
+  include CarBuilder
   def build
+    raise "engine is required" if @engine.nil?
+
     CarBody.new(engine: @engine, seats: @seats, roof_rails: @roof_rails)
   end
 end
