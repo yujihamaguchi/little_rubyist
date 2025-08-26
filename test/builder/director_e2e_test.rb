@@ -18,7 +18,7 @@ class DirectorE2eTest < Minitest::Test
     car_body = director.construct_sports_car(builder: car_body_builder)
 
     # Assert
-    assert_equal SportEngine, car_body.engine.class
+    assert_instance_of SportEngine, car_body.engine
     assert_equal 2, car_body.seats.count
   end
 
@@ -31,7 +31,7 @@ class DirectorE2eTest < Minitest::Test
     car_body = director.construct_suv_car(builder: car_body_builder)
 
     # Assert
-    assert_equal NormalEngine, car_body.engine.class
+    assert_instance_of NormalEngine, car_body.engine
     assert_equal 4, car_body.seats.count
     assert_equal :black, car_body.roof_rails.color
   end
