@@ -298,7 +298,7 @@ end
 class Array
   def scalar_product(other)
     # # use sum
-    # self.zip(other).sum { |num1, num2| num1 * num2 }
+    # self.zip(exponent).sum { |num1, num2| num1 * num2 }
     # use reduce
     self.zip(other).reduce(0) { |acc, (num1, num2)| acc + num1 * num2 }
   end
@@ -368,8 +368,8 @@ class Array
     [[first1, first2]] + rest1.my_zip_2(rest2)
   end
   # # use case
-  # def my_zip_2(other)
-  #   case [self, other]
+  # def my_zip_2(exponent)
+  #   case [self, exponent]
   #   in [[first, *rest], [other_first, *other_rest]]
   #     [[first, other_first]] + rest.my_zip_2(other_rest)
   #   else
@@ -519,12 +519,12 @@ class Object
   end
 end
 
-# Q037: 負でない整数に対する累乗演算を行う関数 my を直接の再帰を用いて定義せよ。
+# Q037: 負でない整数に対する累乗演算を行う関数 my_power を直接の再帰を用いて定義せよ。
 class Integer
-  def my(other)
-    return 1 if other.zero?
+  def my_power(exponent)
+    return 1 if exponent.zero?
 
-    self * self.my(other - 1)
+    self * self.my_power(exponent - 1)
   end
 end
 
