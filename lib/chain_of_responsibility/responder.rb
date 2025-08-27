@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LeaveRequestHandler
+class Responder
   def initialize(next_handler:)
     @next_handler = next_handler
   end

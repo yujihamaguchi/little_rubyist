@@ -1,15 +1,15 @@
 require_relative "../test_helper"
 require_relative "../../lib/chain_of_responsibility/leave_request"
 require_relative "../../lib/chain_of_responsibility/manager"
-require_relative "../../lib/chain_of_responsibility/director"
+require_relative "../../lib/chain_of_responsibility/general_manager"
 require_relative "../../lib/chain_of_responsibility/ceo"
 
-# 送信元は処理者を意識せずリクエストを行い、しかるべき処理者からレスポンスを得られる。また、処理者の増減や並び替えが送信元に影響しないようにしたい
+# クライアントはレスポンダーを意識せずリクエストを行い、しかるべきレスポンダーからレスポンスを得られる。また、レスポンダーの増減や並び替えがクライアントに影響しないようにしたい。
 class HandlerE2eTest < Minitest::Test
   def setup
     @ceo = CEO.new(next_handler: nil)
-    @director = ChainOfResponsibility::Director.new(next_handler: @ceo)
-    @manager = Manager.new(next_handler: @director)
+    @general_manager = GeneralManager.new(next_handler: @ceo)
+    @manager = Manager.new(next_handler: @general_manager)
   end
 
   def test_manager_approval
@@ -25,7 +25,7 @@ class HandlerE2eTest < Minitest::Test
     end
   end
 
-  def test_director_approval
+  def test_general_manager_approval
     [4, 5].each do |days|
       # Arrange
       leave_request = LeaveRequest.new(days: days)
@@ -34,7 +34,7 @@ class HandlerE2eTest < Minitest::Test
       result = @manager.handle(leave_request)
 
       # Assert
-      assert_equal "Director approved #{days}-day leave.", result
+      assert_equal "General manager approved #{days}-day leave.", result
     end
   end
 
