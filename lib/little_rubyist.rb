@@ -530,10 +530,11 @@ end
 
 # Q038: map 直接の再帰を用いて自作せよ( my_map )。
 class Array
-  def my_map(lmd)
+  def my_map(func)
     return [] if self.empty?
 
-    [lmd.call(self.first)] + self.drop(1).my_map(lmd)
+    first, *rest = self
+    [func.call(first)] + rest.my_map(func)
   end
 end
 
@@ -578,7 +579,7 @@ end
 #
 #         myFoldr :: (a -> b -> b) -> b -> [a] -> b
 #         myFoldr _ v [] = v
-#         myFoldr f v (first:rest) = f first (myFoldr f v rest)
+#         myFoldr func v (first:rest) = func first (myFoldr func v rest)
 class Array
   def my_foldr(lmd, init)
     return init if self.empty?
@@ -593,7 +594,7 @@ end
 #
 #            myFoldr :: (a -> b -> a) -> a -> [b] -> a
 #            myFoldr _ v [] = v
-#            myFoldr f v (first:rest) = foldl f (f v first) rest
+#            myFoldr func v (first:rest) = foldl func (func v first) rest
 class Array
   def my_foldl(lmd, init)
     return init if self.empty?
@@ -665,8 +666,8 @@ end
 
 # Q050: 関数 all を自作せよ。( my_all? )
 #       all :: (a -> Bool) -> [a] -> Bool
-#       all f rest
-#       rest の要素 first について、f first がすべて True なら True。
+#       all func rest
+#       rest の要素 first について、func first がすべて True なら True。
 #
 #       all (==1) [5,4,3,2,1]   = False
 #       all (==1) [1,1,1]       = True
@@ -681,8 +682,8 @@ end
 
 # Q051: 関数 any を自作せよ。( my_any? )
 #       any :: (a -> Bool) -> [a] -> Bool
-#       any f rest
-#       rest のいずれかの要素 first について f first が True ならば True。
+#       any func rest
+#       rest のいずれかの要素 first について func first が True ならば True。
 #
 #       any (== 1) [5, 4, 3, 2, 1]   = True
 #       any (== 1) [5, 4, 1, 2, 3]   = True
@@ -823,8 +824,8 @@ end
 #       s-list の中の old_sym をすべて new_sym に置き換える関数 replace_symbol を
 #       シンボル（と見られる要素）の置換を行う replace_symbol_expression 関数との相互再帰で書け。
 #
-#       (replace-symbol '((a b) (((b g r) (f r)) c (d e)) b) 'b 'a)
-#       ;;= ((a a) (((a g r) (f r)) c (d e)) a)
+#       (replace-symbol '((a b) (((b g r) (func r)) c (d e)) b) 'b 'a)
+#       ;;= ((a a) (((a g r) (func r)) c (d e)) a)
 class Array
   def replace_symbol(old_sym, new_sym)
     return [] if self.empty?
