@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "command"
-class PasteCommand < Command
+require_relative "editor_command"
+class PasteCommand < EditorCommand
   def execute
-    @undo_content = @receiver.content
+    @last_content = @receiver.content
     @receiver.content += @receiver.clipboard
   end
 
   def undo
-    @receiver.content = @undo_content
+    @receiver.content = @last_content
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Command
+class EditorCommand
   def initialize(receiver:)
     @receiver = receiver
   end

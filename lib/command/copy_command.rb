@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "command"
-class CopyCommand < Command
+require_relative "editor_command"
+class CopyCommand < EditorCommand
   def execute
     @receiver.clipboard = @receiver.content
   end
 
   def undo
-    # do nothing
+    # no op
   end
 end

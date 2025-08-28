@@ -2,15 +2,15 @@
 
 class EditorCommandInvoker
   def initialize
-    @commands = {}
+    @command_map = {}
   end
 
   def add_command(name:, command:)
-    @commands.store(name, command)
+    @command_map.store(name, command)
   end
 
   def push_button(name)
-    @last_command = @commands.fetch(name)
+    @last_command = @command_map.fetch(name)
     @last_command.execute
   end
 

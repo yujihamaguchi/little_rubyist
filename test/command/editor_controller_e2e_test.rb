@@ -3,12 +3,12 @@
 require_relative "../test_helper"
 require_relative "../../lib/command/text_editor"
 require_relative "../../lib/command/editor_command_invoker"
-require_relative "../../lib/command/command"
+require_relative "../../lib/command/editor_command"
 require_relative "../../lib/command/cut_command"
 require_relative "../../lib/command/copy_command"
 require_relative "../../lib/command/paste_command"
 
-# クライアントが操作対象に対するリクエストセット（実行、取り消しなど）を透過的に行えるようにすることで、クライアントロジックの複雑化・肥大化を避けたい
+# クライアントが操作対象に対するリクエストセット（実行、取り消しなど）を透過的に行えるようにすることで、クライアントロジックの複雑化・肥大化を避けたい。
 
 # +----------------------------------+
 # |          Text Editor             |
