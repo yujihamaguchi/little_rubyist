@@ -543,7 +543,8 @@ class Array
   def my_filter(pred)
     return [] if self.empty?
 
-    (pred.call(self.first) ? [self.first] : []) + self.drop(1).my_filter(pred)
+    first, *rest = self
+    (pred.call(first) ? [first] : []) + rest.my_filter(pred)
   end
 end
 
