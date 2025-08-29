@@ -391,6 +391,7 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [2], [2].my_drop_while(lambda(&:odd?))
     assert_equal [2], [1, 2].my_drop_while(lambda(&:odd?))
     assert_equal [], [1, 3].my_drop_while(lambda(&:odd?))
+    assert_equal [2, 4], [2, 4].my_drop_while(lambda(&:odd?))
     assert_equal [2, 3], [1, 2, 3].my_drop_while(lambda(&:odd?))
   end
 

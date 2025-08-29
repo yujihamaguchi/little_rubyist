@@ -550,10 +550,13 @@ end
 
 # Q040: リストの先頭から述語を満たす連続した要素を取り除く関数 drop-while を自作せよ。( my_drop_while )
 class Array
-  def my_drop_while(lmd)
+  def my_drop_while(pred)
     return [] if self.empty?
 
-    lmd.call(self.first) ? self.drop(1).my_drop_while(lmd) : self
+    first, *rest = self
+    return self unless pred.call(first)
+
+    rest.my_drop_while(pred)
   end
 end
 
