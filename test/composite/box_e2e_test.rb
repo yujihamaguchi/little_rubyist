@@ -5,7 +5,7 @@ require_relative "../../lib/composite/price"
 require_relative "../../lib/composite/box"
 require_relative "../../lib/composite/product"
 
-# リーフとコンテナ( Composite )要素からなる階層構造に対して、統一された操作で一貫したレスポンスを得たい
+# 単体（ Leaf ）と集約( Composite )からなる階層構造に対し、クライアントは階層を意識しない統一されたインタフェースで操作したい。
 class BoxE2eTest < Minitest::Test
   def setup
     @box = Box.new
@@ -17,10 +17,8 @@ class BoxE2eTest < Minitest::Test
 
   def test_price
     # Arrange
-    @box.add(@product1)
-    @box.add(@product2)
     @small_box.add(@small_product)
-    @box.add(@small_box)
+    @box.add(@product1).add(@product2).add(@small_box)
 
     # Act
     total_price = @box.price
