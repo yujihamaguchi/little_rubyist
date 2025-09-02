@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 require_relative "price"
-class DoubledPrice
+class DiscountedPrice
   include Price
-  def initialize(price:)
+  def initialize(price:, discount:)
     @price = price
+    @discount = discount
   end
 
   def value
-    @price.value * 2
+    @price.value - @discount
   end
 end
