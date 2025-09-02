@@ -402,6 +402,7 @@ class TestLittleRubyist < Minitest::Test
     assert_equal [1], [1, 2].my_take_while(lambda(&:odd?))
     assert_equal [1], [1, 2, 3].my_take_while(lambda(&:odd?))
     assert_equal [1, 3], [1, 3, 4].my_take_while(lambda(&:odd?))
+    assert_equal [1, 3, 5], [1, 3, 5].my_take_while(lambda(&:odd?))
   end
 
   def test_my_foldr

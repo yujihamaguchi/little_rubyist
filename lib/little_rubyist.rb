@@ -560,12 +560,15 @@ class Array
   end
 end
 
-# Q041: リストの先頭から述語を満たす連続した要素を取り出す関数 takeWhile を自作せよ。( my_take_while )
+# Q041: リストの先頭から述語を満たす連続した要素を取り出す関数 take_while を直接の再帰を用いて自作せよ。( my_take_while )
 class Array
-  def my_take_while(lmd)
+  def my_take_while(pred)
     return [] if self.empty?
 
-    lmd.call(self.first) ? [self.first] + self.drop(1).my_take_while(lmd) : []
+    first, *rest = self
+    return [] unless pred.call(first)
+
+    [first] + rest.my_take_while(pred)
   end
 end
 
