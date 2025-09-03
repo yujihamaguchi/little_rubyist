@@ -587,12 +587,13 @@ end
 #         myFoldr :: (a -> b -> b) -> b -> [a] -> b
 #         myFoldr _ v [] = v
 #         myFoldr func v (first:rest) = func first (myFoldr func v rest)
+
 class Array
-  def my_foldr(lmd, init)
+  def my_foldr(func, init)
     return init if self.empty?
 
-    x, *xs = self
-    lmd.call(x, xs.my_foldr(lmd, init))
+    first, *rest = self
+    func.call(first, rest.my_foldr(func, init))
   end
 end
 
