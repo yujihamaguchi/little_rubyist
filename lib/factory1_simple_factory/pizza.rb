@@ -27,10 +27,4 @@ class Pizza
     @baked = true
     self
   end
-
-  def initialize
-    @baked = false
-    @cut = false
-    @boxed = false
-  end
 end

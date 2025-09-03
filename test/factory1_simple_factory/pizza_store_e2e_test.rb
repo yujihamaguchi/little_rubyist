@@ -6,7 +6,7 @@ require_relative "../../lib/factory1_simple_factory/pizza_factory"
 require_relative "../../lib/factory1_simple_factory/margherita"
 require_relative "../../lib/factory1_simple_factory/pepperoni"
 
-# クライアントが名指しするだけで、欲しいオブジェクトを得られるようにしたい。クライアントは欲しい具象オブジェクトに依存せず、オブジェクトの生成過程の知識も持たない。
+# クライアントが種類を指定するだけで、利用可能な状態のオブジェクトを得られるようにしたい。クライアントは具象クラスの生成や初期化・加工の過程に依存しない。
 class PizzaStoreE2eTest < Minitest::Test
   def test_order_margherita
     # Arrange
@@ -16,7 +16,7 @@ class PizzaStoreE2eTest < Minitest::Test
     pizza = pizza_store.order(:margherita)
 
     # Assert
-    assert_equal Margherita, pizza.class
+    assert_instance_of Margherita, pizza
     assert pizza.baked?
     assert pizza.cut?
     assert pizza.boxed?
@@ -30,7 +30,7 @@ class PizzaStoreE2eTest < Minitest::Test
     actual = pizza_store.order(:pepperoni)
 
     # Assert
-    assert_equal Pepperoni, actual.class
+    assert_instance_of Pepperoni, actual
     assert actual.baked?
     assert actual.cut?
     assert actual.boxed?

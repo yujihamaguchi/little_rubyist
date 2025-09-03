@@ -2,14 +2,10 @@
 
 require_relative "margherita"
 class PizzaFactory
-  def create(name)
-    case name
-    when :margherita
-      Margherita.new
-    when :pepperoni
-      Pepperoni.new
-    else
-      raise ArgumentError
-    end
+  def create(pizza_name)
+    return Margherita.new if pizza_name == :margherita
+    return Pepperoni.new if pizza_name == :pepperoni
+
+    raise ArgumentError
   end
 end

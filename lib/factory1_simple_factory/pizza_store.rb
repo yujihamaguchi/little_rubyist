@@ -5,8 +5,8 @@ class PizzaStore
     @factory = factory
   end
 
-  def order(name)
-    pizza = @factory.create(name)
+  def order(pizza_name)
+    pizza = @factory.create(pizza_name)
     pizza.bake.cut.box
   end
 end
