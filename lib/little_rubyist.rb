@@ -572,7 +572,7 @@ class Array
   end
 end
 
-# Q042: foldr を自作せよ。（ my_foldr ）
+# Q042: foldr を再帰を用いて自作せよ。（ my_foldr ）
 #         以下のように、 foldr に部分適用して関数をつくることができる。
 #
 #         cons = foldr (:) []
@@ -597,18 +597,18 @@ class Array
   end
 end
 
-# Q043: foldl を自作せよ。（ my-foldl ）
+# Q043: foldl を再帰を用いて自作せよ。（ my_foldl ）
 #          * Haskell では以下のような実装になる。
 #
-#            myFoldr :: (a -> b -> a) -> a -> [b] -> a
-#            myFoldr _ v [] = v
-#            myFoldr func v (first:rest) = foldl func (func v first) rest
+#            myFoldl :: (a -> b -> a) -> a -> [b] -> a
+#            myFoldl _ v [] = v
+#            myFoldl func v (first:rest) = foldl func (func v first) rest
 class Array
-  def my_foldl(lmd, init)
+  def my_foldl(func, init)
     return init if self.empty?
 
-    x, *xs = self
-    xs.my_foldl(lmd, lmd.call(init, x))
+    first, *rest = self
+    rest.my_foldl(func, func.call(init, first))
   end
 end
 
