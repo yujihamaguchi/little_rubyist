@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require_relative "../product/art_deco_chair"
-require_relative "../product/art_deco_table"
 require_relative "furniture_factory"
+require_relative "../product/art_deco_style_table"
+require_relative "../product/art_deco_style_chair"
 class ArtDecoStyleFurnitureFactory
   include FurnitureFactory
-  def create_chair
-    ArtDecoChair.new
+  def create_table
+    ArtDecoStyleTable.new
   end
 
-  def create_table
-    ArtDecoTable.new
+  def create_chair
+    ArtDecoStyleChair.new
   end
 end

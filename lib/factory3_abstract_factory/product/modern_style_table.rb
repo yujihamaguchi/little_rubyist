@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "chair"
+require_relative "table"
 require_relative "modern_style"
-class ModernChair < Chair
+class ModernStyleTable < Table
   include ModernStyle
 end

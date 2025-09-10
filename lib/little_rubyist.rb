@@ -684,7 +684,8 @@ class Array
   def my_all?(pred)
     return true if self.empty?
 
-    pred.call(self.first) && self.drop(1).my_all?(pred)
+    first, *rest = self
+    pred.call(first) && rest.my_all?(pred)
   end
 end
 

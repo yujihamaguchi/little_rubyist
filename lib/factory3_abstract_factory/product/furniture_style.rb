@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-class Chair
-  def sit
-    "Sit on the #{style} style chair."
-  end
-
-  private
-
+module FurnitureStyle
   def style
     raise NotImplementedError
   end
