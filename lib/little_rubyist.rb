@@ -672,7 +672,7 @@ class String
   end
 end
 
-# Q050: 関数 all を自作せよ。( my_all? )
+# Q050: 関数 all を再帰を用いて自作せよ。( my_all? )
 #       all :: (a -> Bool) -> [a] -> Bool
 #       all func rest
 #       rest の要素 first について、func first がすべて True なら True。
@@ -689,7 +689,7 @@ class Array
   end
 end
 
-# Q051: 関数 any を自作せよ。( my_any? )
+# Q051: 関数 any を再帰を用いて自作せよ。( my_any? )
 #       any :: (a -> Bool) -> [a] -> Bool
 #       any func rest
 #       rest のいずれかの要素 first について func first が True ならば True。
@@ -701,7 +701,8 @@ class Array
   def my_any?(pred)
     return false if self.empty?
 
-    pred.call(self.first) || self.drop(1).my_any?(pred)
+    first, *rest = self
+    pred.call(first) || rest.my_any?(pred)
   end
 end
 
