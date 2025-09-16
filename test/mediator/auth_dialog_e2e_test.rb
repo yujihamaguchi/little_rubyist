@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 require_relative "../../lib/mediator/auth_dialog"
 
-# 多対多関係のオブジェクト間の直接的な依存関係を排除し、振る舞いの連携を仲介者に集約することで、構造の単純化し柔軟な変更を可能にしたい
+# 多対多のオブジェクト間依存を排除し、やり取りを仲介者に集約することで、オブジェクト同士を疎結合に保ちつつ処理の見通しをよくしたい。
 class AuthDialogE2eTest < Minitest::Test
   def test_checkbox_check
     # Arrange

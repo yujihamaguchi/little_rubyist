@@ -1,22 +1,23 @@
 # frozen_string_literal: true
 
-class LoginCheckbox
-  def initialize(mediator, checked: false)
-    @mediator = mediator
+require_relative "component"
+class LoginCheckbox < Component
+  def initialize(mediator:, checked: false)
+    super(mediator: mediator)
     @checked = checked
-  end
-
-  def check
-    @checked = true
-    @mediator.align(self, :check)
-  end
-
-  def uncheck
-    @checked = false
-    @mediator.align(self, :uncheck)
   end
 
   def checked?
     @checked
+  end
+
+  def check
+    @checked = true
+    @mediator.notify(sender: self, action: :check)
+  end
+
+  def uncheck
+    @checked = false
+    @mediator.notify(sender: self, action: :uncheck)
   end
 end

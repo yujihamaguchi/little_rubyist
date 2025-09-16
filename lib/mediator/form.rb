@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
-class Form
-  def initialize(mediator, enabled: false)
-    @mediator = mediator
+require_relative "component"
+class Form < Component
+  def initialize(mediator:, enabled: false)
+    super(mediator: mediator)
     @enabled = enabled
-  end
-
-  def disabled?
-    !@enabled
   end
 
   def enabled?
     @enabled
+  end
+
+  def disabled?
+    !@enabled
   end
 
   def enable
