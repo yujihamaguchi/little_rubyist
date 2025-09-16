@@ -706,6 +706,7 @@ class Array
   end
 end
 
+# Q052: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
 COMPOSITIONS = Bmg::Relation.new([
                                    { name: "The Art of the Fugue", composer: "J. S. Bach" },
                                    { name: "Requiem", composer: "W. A. Mozart" },
@@ -725,9 +726,8 @@ NATIONS = Bmg::Relation.new([
                               { nation: "Italy", language: "Italian" }
                             ])
 
-# Q052: compositions のキーワード :name の別名として :title を持つ集合を取得せよ。( set1 関数の戻り値として )
 def set1
-  COMPOSITIONS.rename(name: :title).to_set
+  COMPOSITIONS.rename({ name: :title }).to_set
 end
 
 # Q053: compositions から :name が "Requiem" のレコードを抽出せよ（ set2 関数の戻り値として）
