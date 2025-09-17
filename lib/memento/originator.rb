@@ -8,8 +8,7 @@ class Originator
   end
 
   def restore_from(memento)
-    self.state = memento.state
-    self
+    @state = memento.state
   end
 
   class Memento
