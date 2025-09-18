@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
-module Observer
-  class Subject
-    def add(observer:)
-      @observers << observer
-    end
+class Subject
+  def initialize
+    @observers = []
+  end
 
-    def initialize
-      @observers = []
+  def add(observer:)
+    @observers << observer
+  end
+
+  def notify_all
+    @observers.each do |observer|
+      self.notify(observer)
     end
+  end
+
+  def notify(observer)
+    raise NotImplementedError
   end
 end
