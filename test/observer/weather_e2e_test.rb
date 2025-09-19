@@ -14,8 +14,8 @@ class WeatherE2eTest < Minitest::Test
   end
 
   TEST_CASES = [
-    { temperature: 10, humidity: 2, analysis: :cold },
-    { temperature: 11, humidity: 2, analysis: :warm }
+    { temperature: 10, humidity: 40, analysis: :cold },
+    { temperature: 11, humidity: 50, analysis: :warm }
   ].freeze
 
   def test_update
