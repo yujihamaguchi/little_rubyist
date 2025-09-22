@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "requestable"
+require_relative "role_based_requestable"
 class RealSubject
-  include Requestable
+  include RoleBasedRequestable
   def request(role:)
     "Request processed by #{role}"
   end

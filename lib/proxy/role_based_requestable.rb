@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Requestable
+module RoleBasedRequestable
   def request(role:)
     raise NotImplementedError
   end

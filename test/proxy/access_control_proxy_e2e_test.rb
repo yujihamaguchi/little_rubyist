@@ -5,7 +5,7 @@ require_relative "../../lib/proxy/real_subject"
 require_relative "../../lib/proxy/access_control_proxy"
 
 class AccessControlProxyE2eTest < Minitest::Test
-  def test_request_as_adminrake(_test)
+  def test_request_as_admin
     # Arrange
     proxy_subject = AccessControlProxy.new(subject: RealSubject.new)
 
