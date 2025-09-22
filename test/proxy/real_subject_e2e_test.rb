@@ -3,7 +3,7 @@
 require "minitest/autorun"
 require_relative "../../lib/proxy/real_subject"
 
-# クライアントとリクエスト処理対象の本来の責務ではないアクセス制御や最適化などを行う必要がある
+# リクエスト処理対象の本来の責務ではないアクセス制御や最適化などを行う必要がある。
 class RealSubjectE2eTest < Minitest::Test
   TEST_CASES = [
     { role: :foo, expected: "Request processed by foo" },
