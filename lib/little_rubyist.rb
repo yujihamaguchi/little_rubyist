@@ -712,19 +712,19 @@ COMPOSITIONS = Bmg::Relation.new([
                                    { name: "Requiem", composer: "W. A. Mozart" },
                                    { name: "Requiem", composer: "Giuseppe Verdi" },
                                    { name: "Musical Offering", composer: "J. S. Bach" }
-                                 ])
+                                 ]).freeze
 
 COMPOSERS = Bmg::Relation.new([
                                 { composer: "J. S. Bach", country: "Germany" },
                                 { composer: "W. A. Mozart", country: "Austria" },
                                 { composer: "Giuseppe Verdi", country: "Italy" }
-                              ])
+                              ]).freeze
 
 NATIONS = Bmg::Relation.new([
                               { nation: "Germany", language: "Germany" },
                               { nation: "Austria", language: "German" },
                               { nation: "Italy", language: "Italian" }
-                            ])
+                            ]).freeze
 
 def set1
   COMPOSITIONS.rename({ name: :title }).to_set

@@ -4,27 +4,35 @@ require_relative "no_coin"
 require_relative "has_coin"
 require_relative "sold_out"
 class GumballMachine
-  attr_reader :stock
   attr_accessor :state
+  attr_reader :stock
 
   def initialize(stock: 10)
+    @state = NoCoin.new
     @stock = stock
-    @state = @stock.zero? ? SoldOut.instance : NoCoin.instance
-  end
-
-  def decrease
-    @stock -= 1
+    self.reset_state
   end
 
   def insert_coin
-    @state.insert_coin(context: self)
+    @state.insert_coin(self)
   end
 
   def eject_coin
-    @state.eject_coin(context: self)
+    @state.eject_coin(self)
   end
 
   def turn_crank
-    @state.turn_crank(context: self)
+    @state.turn_crank(self)
+  end
+
+  def decrease_stock
+    @stock -= 1
+    self.reset_state
+  end
+
+  private
+
+  def reset_state
+    @state = SoldOut.new if @stock.zero?
   end
 end
