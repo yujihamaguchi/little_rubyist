@@ -8,9 +8,8 @@ class GumballMachine
   attr_reader :stock
 
   def initialize(stock: 10)
-    @state = NoCoin.new
-    @stock = stock
-    self.reset_state
+    @state = NoCoin.instance
+    self.stock = stock
   end
 
   def insert_coin
@@ -26,13 +25,17 @@ class GumballMachine
   end
 
   def decrease_stock
-    @stock -= 1
-    self.reset_state
+    self.stock = @stock - 1
   end
 
   private
 
+  def stock=(number)
+    @stock = number
+    self.reset_state
+  end
+
   def reset_state
-    @state = SoldOut.new if @stock.zero?
+    @state = SoldOut.instance if @stock.zero?
   end
 end

@@ -2,15 +2,14 @@
 
 require_relative "state"
 require_relative "has_coin"
-class NoCoin
-  include State
-  def insert_coin(machine)
-    machine.state = HasCoin.new
+class NoCoin < State
+  def insert_coin(context)
+    context.state = HasCoin.instance
   end
 
-  def eject_coin(machine); end
+  def eject_coin(context); end
 
-  def turn_crank(_machine)
+  def turn_crank(_context)
     print "Please insert coin before turning the crank."
   end
 end

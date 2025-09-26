@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 require_relative "state"
-class HasCoin
-  include State
-  def insert_coin(machine); end
+class HasCoin < State
+  def insert_coin(context); end
 
-  def eject_coin(machine)
-    machine.state = NoCoin.new
+  def eject_coin(context)
+    context.state = NoCoin.instance
   end
 
-  def turn_crank(machine)
+  def turn_crank(context)
     print "A gumball come out!"
-    machine.state = NoCoin.new
-    machine.decrease_stock
+    context.state = NoCoin.instance
+    context.decrease_stock
   end
 end
