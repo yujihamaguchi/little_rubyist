@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require_relative "binary_operation"
-class AddStrategy
+class MultiplyStrategy
   include BinaryOperation
-  def calculate(value1, value2)
-    value1 + value2
+
+  def calculate(n, m)
+    n * m
   end
 end

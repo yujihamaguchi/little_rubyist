@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative "binary_operation"
-class AddStrategy
+class SubtractStrategy
   include BinaryOperation
   def calculate(value1, value2)
-    value1 + value2
+    value1 - value2
   end
 end

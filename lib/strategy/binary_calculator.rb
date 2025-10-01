@@ -5,7 +5,7 @@ class BinaryCalculator
     @strategy = strategy
   end
 
-  def calculate(n, m)
-    @strategy.calculate(n, m)
+  def calculate(value1, value2)
+    @strategy.calculate(value1, value2)
   end
 end
