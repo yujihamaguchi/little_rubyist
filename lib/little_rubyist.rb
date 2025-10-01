@@ -755,13 +755,17 @@ def set6
   COMPOSITIONS.restrict(name: "Requiem").join(COMPOSERS, [:composer]).project([:country]).to_set
 end
 
-# Q058: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply-nested 関数を書け。
-class Object
-  def deeply_nested(n)
-    return self if n.zero?
+# Q058: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply_nested 関数を書け。
+module DeeplyNestable
+  def deeply_nested(depth)
+    return self if depth.zero?
 
-    [self].deeply_nested(n - 1)
+    [self].extend(DeeplyNestable).deeply_nested(depth - 1)
   end
+end
+
+class Symbol
+  include DeeplyNestable
 end
 
 # Q059: 以下のコイントスの結果データ（ :h 表、 :t 裏 ）について、 表が 2 回続けて出たケースをカウントする関数 count_heads_pairs を再帰を用いて書け。
