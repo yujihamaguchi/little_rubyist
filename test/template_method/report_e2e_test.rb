@@ -2,7 +2,7 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/template_method/report"
-# ひとセットの共通プロセスを行いたいが、一部プロセスの処理にバリエーションをもたせたい。クライアントはオブジェクトの種類を選択するのみとしたい。
+# 共通の処理フローを持ちつつ、一部の手順にバリエーションを持たせたい。クライアントはフローを意識せず、種類の選択だけで処理を実行できるようにしたい。
 
 class ReportE2eTest < Minitest::Test
   def test_generate
