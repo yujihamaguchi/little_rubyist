@@ -771,9 +771,9 @@ end
 # Q059: 以下のコイントスの結果データ（ :h 表、 :t 裏 ）について、 表が 2 回続けて出たケースをカウントする関数 count_heads_pairs を再帰を用いて書け。
 class Array
   def count_heads_pairs
-    return 0 if self.count < 2
+    return 0 if self.length <= 1
 
-    (self.take(2).all? { |r| r == :h } ? 1 : 0) + self.drop(1).count_heads_pairs
+    (self.take(2).all? { |result| result == :h } ? 1 : 0) + self.drop(1).count_heads_pairs
   end
 end
 
