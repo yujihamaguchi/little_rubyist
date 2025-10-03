@@ -782,7 +782,7 @@ end
 #     変換後： ((:h :t) (:t :t) (:t :h) (:h :h) (:h :h))
 class Array
   def by_pairs
-    return [] if self.count < 2
+    return [] if self.length < 2
 
     [self.take(2)] + self.drop(1).by_pairs
   end
