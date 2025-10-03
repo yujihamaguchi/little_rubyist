@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ExportVisitor
+module ShapeVisitor
   def visit_dot(dot)
     raise NotImplementedError
   end

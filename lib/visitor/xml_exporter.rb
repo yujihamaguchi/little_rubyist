@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "export_visitor"
+require_relative "shape_visitor"
 class XMLExporter
-  include ExportVisitor
+  include ShapeVisitor
   def visit_dot(dot)
     "XMLed Dot(x: #{dot.x}, y: #{dot.y})"
   end

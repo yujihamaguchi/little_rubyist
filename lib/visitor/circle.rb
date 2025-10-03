@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "shape"
+require_relative "visitable"
 class Circle
-  include Shape
+  include Visitable
   attr_reader :x, :y, :r
 
   def initialize(x:, y:, r:)
@@ -11,7 +11,7 @@ class Circle
     @r = r
   end
 
-  def delegate_to(visitor)
+  def accept(visitor)
     visitor.visit_circle(self)
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Shape
-  def delegate_to(visitor)
+module Visitable
+  def accept(visitor)
     raise NotImplementedError
   end
 end

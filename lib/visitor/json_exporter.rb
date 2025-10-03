@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "export_visitor"
+require_relative "shape_visitor"
 class JSONExporter
-  include ExportVisitor
+  include ShapeVisitor
+
   def visit_dot(dot)
     "JSONed Dot(x: #{dot.x}, y: #{dot.y})"
   end

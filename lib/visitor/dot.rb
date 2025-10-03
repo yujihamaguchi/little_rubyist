@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "shape"
+require_relative "visitable"
 class Dot
-  include Shape
+  include Visitable
   attr_reader :x, :y
 
   def initialize(x:, y:)
@@ -10,7 +10,7 @@ class Dot
     @y = y
   end
 
-  def delegate_to(visitor)
+  def accept(visitor)
     visitor.visit_dot(self)
   end
 end
