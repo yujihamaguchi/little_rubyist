@@ -3,8 +3,8 @@
 require_relative "radius"
 class SquarePegToRoundHoleAdapter
   include Radius
-  def initialize(square_peg:)
-    @square_peg = square_peg
+  def initialize(adaptee:)
+    @square_peg = adaptee
   end
 
   def radius
