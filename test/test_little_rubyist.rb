@@ -582,8 +582,8 @@ class TestLittleRubyist < Minitest::Test
   end
 
   def test_move_zeros_2_back
-    assert_equal [1, 2, 3, 0], [0, 1, 2, 3].move_zeros_2_back
-    assert_equal [4, 1, 5, 0, 0], [4, 1, 0, 0, 5].move_zeros_2_back
+    assert_equal [1, 2, 3, 0], [0, 1, 2, 3].move_zeros_to_back
+    assert_equal [4, 1, 5, 0, 0], [4, 1, 0, 0, 5].move_zeros_to_back
   end
 
   def test_unique_attribute

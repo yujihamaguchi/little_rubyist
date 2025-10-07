@@ -788,11 +788,11 @@ class Array
   end
 end
 
-# Q061: 関数の返り値として、非ゼロ値の順番を保ったまま、 ゼロ値を末尾に移動しする関数 move_zeros_2_back を書け
+# Q061: 関数の返り値として、非ゼロ値の順番を保ったまま、 ゼロ値を末尾に移動しする関数 move_zeros_to_back を書け
 #         [0,1,2,3] -> [1,2,3,0]
 #         [4,1,0,0,5] -> [4,1,5,0,0]
 class Array
-  def move_zeros_2_back
+  def move_zeros_to_back
     self.reject(&:zero?) + self.select(&:zero?)
   end
 end
