@@ -3,14 +3,14 @@
 require_relative "switch"
 class TriLevelSwitch < Switch
   def low
-    @device.adjust_output_low_level
+    @device.low
   end
 
   def medium
-    @device.adjust_output_medium_level
+    @device.medium
   end
 
   def high
-    @device.adjust_output_high_level
+    @device.high
   end
 end

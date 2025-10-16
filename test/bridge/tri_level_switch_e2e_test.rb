@@ -40,7 +40,7 @@ class TriLevelSwitchE2eTest < Minitest::Test
       fan = Fan.new
       switch = TriLevelSwitch.new(device: fan)
       switch.turn_on
-      assert :bright, fan.speed
+      assert :medium, fan.speed
 
       # Act
       switch.send(test_case[:method])

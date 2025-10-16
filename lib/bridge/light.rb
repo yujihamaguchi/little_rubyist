@@ -1,25 +1,27 @@
 # frozen_string_literal: true
 
 require_relative "device"
-require_relative "tri_multi_level_adjustable"
+require_relative "tri_level_adjustable"
+require_relative "slider_adjustable"
 class Light < Device
-  include TriMultiLevelAdjustable
-  def adjust_output_low_level
-    self.adjust_output_level(10)
+  include TriLevelAdjustable
+  include SliderAdjustable
+  attr_reader :brightness
+
+  def initialize
+    super
+    @brightness = :bright
   end
 
-  def adjust_output_medium_level
-    self.adjust_output_level(50)
+  def low
+    @brightness = :dim
   end
 
-  def adjust_output_high_level
-    self.adjust_output_level(100)
+  def medium
+    @brightness = :medium
   end
 
-  def brightness
-    return :dim if self.output_level <= 10
-    return :medium if self.output_level <= 80
-
-    :bright
+  def high
+    @brightness = :bright
   end
 end

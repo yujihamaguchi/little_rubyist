@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-module TriMultiLevelAdjustable
-  def adjust_output_low_level
+module TriLevelAdjustable
+  def low
     raise NotImplementedError
   end
 
-  def adjust_output_medium_level
+  def medium
     raise NotImplementedError
   end
 
-  def adjust_output_high_level
+  def high
     raise NotImplementedError
   end
 end

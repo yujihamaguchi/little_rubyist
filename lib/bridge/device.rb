@@ -8,19 +8,15 @@ class Device
     @output_level = 100
   end
 
-  def power_off
-    @power_on = false
+  def power_on?
+    @power_on
   end
 
   def power_on
     @power_on = true
   end
 
-  def power_on?
-    @power_on
-  end
-
-  def adjust_output_level(percentage)
-    @output_level = percentage
+  def power_off
+    @power_on = false
   end
 end
