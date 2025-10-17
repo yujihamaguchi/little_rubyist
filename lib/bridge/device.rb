@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class Device
-  attr_reader :output_level
-
   def initialize
     @power_on = false
-    @output_level = 100
   end
 
   def power_on?

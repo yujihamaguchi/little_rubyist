@@ -18,13 +18,13 @@ class TriLevelSwitchE2eTest < Minitest::Test
       light = Light.new
       switch = TriLevelSwitch.new(device: light)
       switch.turn_on
-      assert :bright, light.brightness
+      assert_equal :bright, light.brightness
 
       # Act
       switch.send(test_case[:method])
 
       # Assert
-      assert test_case[:expect], light.brightness
+      assert_equal test_case[:expect], light.brightness
     end
   end
 
@@ -40,13 +40,13 @@ class TriLevelSwitchE2eTest < Minitest::Test
       fan = Fan.new
       switch = TriLevelSwitch.new(device: fan)
       switch.turn_on
-      assert :medium, fan.speed
+      assert_equal :medium, fan.speed
 
       # Act
       switch.send(test_case[:method])
 
       # Assert
-      assert test_case[:expect], fan.speed
+      assert_equal test_case[:expect], fan.speed
     end
   end
 end

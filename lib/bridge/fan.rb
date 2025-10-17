@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "device"
 require_relative "tri_level_adjustable"
-require_relative "slider_adjustable"
-class Fan < Device
+require_relative "slider_adjustable_device"
+class Fan < SliderAdjustableDevice
   include TriLevelAdjustable
-  include SliderAdjustable
   attr_reader :speed
 
   def initialize
