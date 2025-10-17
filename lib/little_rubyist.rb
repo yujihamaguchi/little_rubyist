@@ -797,15 +797,17 @@ class Array
   end
 end
 
-# Q062: 空配列ではなく、さらに1つの要素を除いて同じ要素が必ず2度現れるリストの中で1度しか現れない唯一の要素を返す関数 unique_attribute を書け
+# Q062: 空配列ではなく1つの要素を除いて同じ要素が必ず2度現れるリストの中で1度しか現れない唯一の要素を返す関数 unique_attribute を書け
 #         [1,2,2] -> 1
 #         [1,2,2,3,1] -> 3
-#         [1] -> 1
+#         [1] -> 1ter
 class Array
   def unique_attribute
     return self.first if self.count == 1
 
-    self.group_by { |x| x }.filter_map { |k, v| k if v.count == 1 }.first
+    self.group_by { |elm| elm }
+        .filter_map { |key, arr| key if arr.count == 1 }
+        .first
   end
 end
 
