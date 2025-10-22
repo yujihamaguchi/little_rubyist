@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CarBuilder
+class CarBuilder
   def with_roof_rails(roof_rails)
     @roof_rails = roof_rails
     self

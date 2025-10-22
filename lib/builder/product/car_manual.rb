@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "car"
-class CarManual < Car
+require_relative "car_product"
+class CarManual < CarProduct
   def engine
-    "#{@engine.class.name} equipped"
+    "#{@engine.class.to_s.sub("Engine", "")} engine equipped"
   end
 
   def seats
@@ -11,6 +11,6 @@ class CarManual < Car
   end
 
   def roof_rails
-    "#{@roof_rails.color} roof rails" unless @roof_rails.nil?
+    "#{@roof_rails.first.color} roof rails".capitalize
   end
 end

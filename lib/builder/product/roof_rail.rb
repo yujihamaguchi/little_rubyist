@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RoofRails
+class RoofRail
   attr_reader :color
 
   def initialize(color:)

@@ -2,9 +2,7 @@
 
 require_relative "./car_builder"
 require_relative "../product/car_body"
-
-class CarBodyBuilder
-  include CarBuilder
+class CarBodyBuilder < CarBuilder
   def build
     raise "engine is required" if @engine.nil?
 

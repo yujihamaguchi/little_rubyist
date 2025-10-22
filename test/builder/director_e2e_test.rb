@@ -7,7 +7,7 @@ require_relative "../../lib/builder/product/sport_engine"
 require_relative "../../lib/builder/product/normal_engine"
 require_relative "../../lib/builder/builder/car_manual_builder"
 
-# 複雑なオブジェクト生成過程を段階的に行いたい。また、生成を実現する Builder を差し替えて様々なものを生成できるようにしたい。
+# 複雑なオブジェクトの生成過程を段階的に進めたい。また、生成手順自体は共通のまま、生成の具体的内容を担う Builder を差し替えて、様々な生成結果を得られるようにしたい。
 class DirectorE2eTest < Minitest::Test
   def test_construct_sports_car_body
     # Arrange
@@ -33,7 +33,8 @@ class DirectorE2eTest < Minitest::Test
     # Assert
     assert_instance_of NormalEngine, car_body.engine
     assert_equal 4, car_body.seats.count
-    assert_equal :black, car_body.roof_rails.color
+    assert_equal 2, car_body.roof_rails.count
+    assert(car_body.roof_rails.all? { |roof_rail| roof_rail.color == :black })
   end
 
   def test_construct_suv_car_manual
@@ -45,8 +46,8 @@ class DirectorE2eTest < Minitest::Test
     manual = director.construct_suv_car(builder: car_manual_builder)
 
     # Assert
-    assert_equal "NormalEngine equipped", manual.engine
+    assert_equal "Normal engine equipped", manual.engine
     assert_equal "4 seats", manual.seats
-    assert_equal "black roof rails", manual.roof_rails
+    assert_equal "Black roof rails", manual.roof_rails
   end
 end
