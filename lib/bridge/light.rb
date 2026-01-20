@@ -3,6 +3,7 @@
 require_relative "device"
 require_relative "tri_level_adjustable"
 class Light < Device
+  include TriLevelAdjustable
   attr_reader :brightness
 
   def initialize

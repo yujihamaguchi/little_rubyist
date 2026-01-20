@@ -5,7 +5,7 @@ require_relative "../../lib/bridge/light"
 require_relative "../../lib/bridge/fan"
 require_relative "../../lib/bridge/switch"
 
-# クライアントに提供したいインタフェースとその操作対象の組み合わせ爆発を防ぎ、両者を相互に依存させずに独立して拡張できるようにしたい。ｔ
+# クライアントに提供したいインタフェースとその操作対象の組み合わせ爆発を防ぎ、両者を相互に依存させずに独立して拡張できるようにしたい。
 
 DEVICE_CLASSES = [
   Light, Fan

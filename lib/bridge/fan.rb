@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+require_relative "analog_adjustable_device"
 require_relative "tri_level_adjustable"
-require_relative "slider_adjustable_device"
-class Fan < SliderAdjustableDevice
+class Fan < AnalogAdjustableDevice
   include TriLevelAdjustable
   attr_reader :speed
 
