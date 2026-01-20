@@ -824,30 +824,17 @@ class Array
 
   def merge_intervals
     self.sort.reduce([]) do |acc, interval|
+      next acc.push(interval) if acc.empty?
+
       other = acc.last
-      if !other.nil? && interval.overlap?(acc.last)
-        acc[0..-2] << [[interval.first, other.first].min, [interval.last, other.last].max]
+      if other.overlap?(interval)
+        acc.take(acc.size - 1).push([[interval.first, other.first].min,
+                                     [interval.last, other.last].max])
       else
-        acc << interval
+        acc.push(interval)
       end
     end
   end
-  # def overlap?(other)
-  #   self.last >= other.first && self.first <= other.last
-  # end
-  #
-  # def merge_intervals
-  #   self.sort.reduce([]) do |acc, p|
-  #     next acc.push(p) if acc.empty?
-  #
-  #     if acc.last.overlap?(p)
-  #       acc.take(acc.size - 1).push([[acc.last.first, p.first].min,
-  #                                    [acc.last.last, p.last].max])
-  #     else
-  #       acc.push(p)
-  #     end
-  #   end
-  # end
 end
 
 # Q064: s-list （シンボルとシンボルのリスト両方を要素に出来るリスト）、 old_sym、 new_sym を引数に取り
