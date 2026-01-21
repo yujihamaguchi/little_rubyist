@@ -37,6 +37,19 @@ class DirectorE2eTest < Minitest::Test
     assert(car_body.roof_rails.all? { |roof_rail| roof_rail.color == :black })
   end
 
+  def test_construct_sports_car_manual
+    # Arrange
+    director = Director.new
+    car_manual_builder = CarManualBuilder.new
+
+    # Act
+    manual = director.construct_sports_car(builder: car_manual_builder)
+
+    # Assert
+    assert_equal "SportEngine equipped", manual.engine
+    assert_equal "2 seats", manual.seats
+  end
+
   def test_construct_suv_car_manual
     # Arrange
     director = Director.new
@@ -46,8 +59,8 @@ class DirectorE2eTest < Minitest::Test
     manual = director.construct_suv_car(builder: car_manual_builder)
 
     # Assert
-    assert_equal "Normal engine equipped", manual.engine
+    assert_equal "NormalEngine equipped", manual.engine
     assert_equal "4 seats", manual.seats
-    assert_equal "Black roof rails", manual.roof_rails
+    assert_equal "black roof rails", manual.roof_rails
   end
 end
