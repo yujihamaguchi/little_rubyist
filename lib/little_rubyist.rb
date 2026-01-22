@@ -36,9 +36,10 @@ class Array
     first, *rest = self
     first + rest.my_sum
   end
-  # reduce
+
+  # # reduce
   # def my_sum
-  #   self.reduce(0) { |acc, item| acc + item }
+  #   self.reduce(0) { |acc, n| acc + n }
   # end
 end
 
