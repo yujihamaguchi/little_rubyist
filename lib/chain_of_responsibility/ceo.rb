@@ -3,6 +3,6 @@
 require_relative "responder"
 class CEO < Responder
   def handle(leave_request)
-    "CEO approved #{leave_request.days}-day leave."
+    "CEO approved #{leave_request.days}-days leave."
   end
 end

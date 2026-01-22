@@ -3,8 +3,7 @@
 require_relative "responder"
 class GeneralManager < Responder
   def handle(leave_request)
-    days = leave_request.days
-    return "General manager approved #{days}-day leave." if days < 6
+    return "General manager approved #{leave_request.days}-days leave." if leave_request.days <= 5
 
     @next_handler.handle(leave_request)
   end

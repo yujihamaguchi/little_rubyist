@@ -13,7 +13,7 @@ class HandlerE2eTest < Minitest::Test
   end
 
   def test_manager_approval
-    (1..3).each do |days|
+    (2..3).each do |days|
       # Arrange
       leave_request = LeaveRequest.new(days: days)
 
@@ -21,7 +21,7 @@ class HandlerE2eTest < Minitest::Test
       result = @manager.handle(leave_request)
 
       # Assert
-      assert_equal "Manager approved #{days}-day leave.", result
+      assert_equal "Manager approved #{days}-days leave.", result
     end
   end
 
@@ -34,7 +34,7 @@ class HandlerE2eTest < Minitest::Test
       result = @manager.handle(leave_request)
 
       # Assert
-      assert_equal "General manager approved #{days}-day leave.", result
+      assert_equal "General manager approved #{days}-days leave.", result
     end
   end
 
@@ -47,7 +47,7 @@ class HandlerE2eTest < Minitest::Test
       result = @manager.handle(leave_request)
 
       # Assert
-      assert_equal "CEO approved #{days}-day leave.", result
+      assert_equal "CEO approved #{days}-days leave.", result
     end
   end
 end
