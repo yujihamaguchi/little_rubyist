@@ -48,9 +48,9 @@ class Array
   def my_quick_sort
     return [] if self.empty?
 
-    pivot, *rest = self
-    less_than, greater_equal = rest.partition { |item| item < pivot }
-    less_than.my_quick_sort + [pivot] + greater_equal.my_quick_sort
+    first, *rest = self
+    less_than, greater_or_equal = rest.partition { |n| n < first }
+    less_than.my_quick_sort + [first] + greater_or_equal.my_quick_sort
   end
 end
 
