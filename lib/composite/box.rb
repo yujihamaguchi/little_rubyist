@@ -3,16 +3,17 @@
 require_relative "price"
 class Box
   include Price
+
   def initialize
-    @components = []
+    @children = []
   end
 
-  def add(component)
-    @components << component
+  def add(child)
+    @children.push(child)
     self
   end
 
   def price
-    @components.sum(&:price)
+    @children.sum(&:price)
   end
 end
