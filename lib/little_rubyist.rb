@@ -71,7 +71,7 @@ class Array
   end
   # # reduce
   # def my_product
-  #   self.reduce(1) { |acc, num| num * acc }
+  #   self.reduce(1) { |acc, n| acc * n }
   # end
 end
 
