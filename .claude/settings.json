@@ -1,0 +1,14 @@
+{
+  "agents": {
+    "code-reviewer": "agents/code-reviewer.md",
+    "tdd-guide": "agents/tdd-guide.md",
+    "planner": "agents/planner.md",
+    "refactor-cleaner": "agents/refactor-cleaner.md"
+  },
+  "commands": {
+    "review": "commands/review.md",
+    "tdd": "commands/tdd.md",
+    "plan": "commands/plan.md",
+    "refactor": "commands/refactor.md"
+  }
+}
