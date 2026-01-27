@@ -81,9 +81,8 @@ class Array
     return [] if self.empty?
 
     first, *rest = self
-    greater_equal = rest.select { |item| item >= first }
-    less_than = rest.select { |item| item < first }
-    greater_equal.reverse_quick_sort + [first] + less_than.reverse_quick_sort
+    less_than, greater_or_equal = rest.partition { |n| n < first }
+    greater_or_equal.reverse_quick_sort + [first] + less_than.reverse_quick_sort
   end
 end
 

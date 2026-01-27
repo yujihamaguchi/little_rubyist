@@ -43,7 +43,7 @@ class TestLittleRubyist < Minitest::Test
     assert_equal 6, [1, 2, 3].my_product
   end
 
-  def test_rqsort
+  def test_reverse_quick_sort
     assert_equal [], [].reverse_quick_sort
     assert_equal [1], [1].reverse_quick_sort
     assert_equal [3, 2, 1], [1, 2, 3].reverse_quick_sort
