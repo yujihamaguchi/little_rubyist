@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "../test_helper"
 require_relative "../../lib/decorator/base_price"
 require_relative "../../lib/decorator/doubled_price"
 require_relative "../../lib/decorator/discounted_price"
