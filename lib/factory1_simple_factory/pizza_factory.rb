@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require_relative "margherita"
-class PizzaFactory
-  def create(pizza_name)
-    return Margherita.new if pizza_name == :margherita
-    return Pepperoni.new if pizza_name == :pepperoni
+require_relative "pepperoni"
 
-    raise ArgumentError
+class PizzaFactory
+  def create(name)
+    case name
+    when :margherita then Margherita.new
+    when :pepperoni then Pepperoni.new
+    else raise ArgumentError
+    end
   end
 end

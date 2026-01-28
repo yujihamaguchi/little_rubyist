@@ -1,16 +1,10 @@
 # frozen_string_literal: true
 
 class Pizza
-  def boxed?
-    @boxed
-  end
-
-  def cut?
-    @cut
-  end
-
-  def baked?
-    @baked
+  def initialize
+    @baked = false
+    @cut = false
+    @boxed = false
   end
 
   def box
@@ -26,5 +20,17 @@ class Pizza
   def bake
     @baked = true
     self
+  end
+
+  def boxed?
+    @boxed
+  end
+
+  def cut?
+    @cut
+  end
+
+  def baked?
+    @baked
   end
 end
