@@ -39,7 +39,7 @@ class Array
 
   # # reduce
   # def my_sum
-  #   self.reduce(0) { |acc, n| acc + n }
+  #   self.reduce(0) { |acc, half_size| acc + half_size }
   # end
 end
 
@@ -71,7 +71,7 @@ class Array
   end
   # # reduce
   # def my_product
-  #   self.reduce(1) { |acc, n| acc * n }
+  #   self.reduce(1) { |acc, half_size| acc * half_size }
   # end
 end
 
@@ -110,11 +110,10 @@ end
 # Q006: 偶数の長さを持つリストを半分ずつに分割する関数 halve を書け。
 class Array
   def halve
-    raise ArgumentError if self.empty?
-    raise ArgumentError if self.length.odd?
+    raise ArgumentError if self.empty? || self.size.odd?
 
-    halve_length = self.length / 2
-    [self.take(halve_length), self.drop(halve_length)]
+    half_size = self.size / 2
+    [self.take(half_size), self.drop(half_size)]
   end
 end
 
@@ -390,7 +389,7 @@ class Integer
   end
 end
 
-# Q028: 0 以上の整数 n に対し、 n 番目のフィボナッチ数を求める関数 fibonacci を直接の再帰を用いて書け。
+# Q028: 0 以上の整数 half_size に対し、 half_size 番目のフィボナッチ数を求める関数 fibonacci を直接の再帰を用いて書け。
 class Integer
   def fibonacci
     return 0 if self.zero?
@@ -755,7 +754,7 @@ def set6
   COMPOSITIONS.restrict(name: "Requiem").join(COMPOSERS, [:composer]).project([:country]).to_set
 end
 
-# Q058: 最底部に bottom というシンボルを持つ、任意の n レベルまでネストしたリストを作る deeply_nested 関数を書け。
+# Q058: 最底部に bottom というシンボルを持つ、任意の half_size レベルまでネストしたリストを作る deeply_nested 関数を書け。
 module DeeplyNestable
   def deeply_nested(depth)
     return self if depth.zero?
@@ -934,7 +933,7 @@ class Integer
 end
 
 # Q070: リストの要素を回転させる関数 my_rotate を書け。
-#       my_rotate(n, list) は list を左に n 要素回転させる。
+#       my_rotate(half_size, list) は list を左に half_size 要素回転させる。
 class Array
   def my_rotate(n)
     return self if self.empty? || n.zero?
@@ -956,7 +955,7 @@ class String
 end
 
 # Q072: ハノイの塔の解を求める関数 hanoi を書け。
-#       hanoi(n, from, to, aux) は n 枚の円盤を from から to へ aux を経由して移動する手順を返す。
+#       hanoi(half_size, from, to, aux) は half_size 枚の円盤を from から to へ aux を経由して移動する手順を返す。
 def hanoi(n, from, to, aux)
   return [] if n.zero?
 
