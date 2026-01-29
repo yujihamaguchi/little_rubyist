@@ -3,10 +3,11 @@
 require_relative "../test_helper"
 require_relative "../../lib/factory1_simple_factory/pizza_store"
 require_relative "../../lib/factory1_simple_factory/pizza_factory"
-require_relative "../../lib/factory1_simple_factory/margherita"
-require_relative "../../lib/factory1_simple_factory/pepperoni"
+require_relative "../../lib/factory0_pizza/margherita"
+require_relative "../../lib/factory0_pizza/pepperoni"
 
-# クライアントが種類を指定するだけで、利用可能な状態のオブジェクトを得られるようにしたい。クライアントは具象クラスの生成や初期化・加工の過程に依存しない。
+# クライアントが種類を指定するだけで、利用可能な状態のオブジェクトを得られるようにしたい。
+# クライアントは具象クラスの生成や初期化・加工の過程に依存しない。
 class PizzaStoreE2eTest < Minitest::Test
   def test_order_margherita
     # Arrange
@@ -27,13 +28,13 @@ class PizzaStoreE2eTest < Minitest::Test
     pizza_store = PizzaStore.new(factory: PizzaFactory.new)
 
     # Act
-    actual = pizza_store.order(:pepperoni)
+    pizza = pizza_store.order(:pepperoni)
 
     # Assert
-    assert_instance_of Pepperoni, actual
-    assert actual.baked?
-    assert actual.cut?
-    assert actual.boxed?
+    assert_instance_of Pepperoni, pizza
+    assert pizza.baked?
+    assert pizza.cut?
+    assert pizza.boxed?
   end
 
   def test_order_unsupported_pizza

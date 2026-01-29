@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "margherita"
-require_relative "pepperoni"
+require_relative "../factory0_pizza/margherita"
+require_relative "../factory0_pizza/pepperoni"
 
 class PizzaFactory
   def create(name)
