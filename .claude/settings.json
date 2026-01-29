@@ -1,4 +1,10 @@
 {
+  "mcpServers": {
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@anthropics/mcp-fetch"]
+    }
+  },
   "agents": {
     "code-reviewer": "agents/code-reviewer.md",
     "tdd-guide": "agents/tdd-guide.md",
