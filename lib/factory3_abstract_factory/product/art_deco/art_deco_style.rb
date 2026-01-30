@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "furniture_style"
+require_relative "../base/has_style"
+
 module ArtDecoStyle
-  include FurnitureStyle
+  include HasStyle
   def style
     "art deco"
   end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative "furniture_factory"
-require_relative "../product/modern_style_table"
-require_relative "../product/modern_style_chair"
+require_relative "../product/modern/modern_style_table"
+require_relative "../product/modern/modern_style_chair"
+
 class ModernStyleFurnitureFactory
   include FurnitureFactory
-
   def create_table
     ModernStyleTable.new
   end

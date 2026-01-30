@@ -7,4 +7,8 @@ class TableSet
     @table = table
     @chair = chair
   end
+
+  def description
+    "#{self.table.style.capitalize} style furniture set."
+  end
 end

@@ -5,7 +5,7 @@ require_relative "../../lib/factory3_abstract_factory/furniture_studio"
 require_relative "../../lib/factory3_abstract_factory/factory/art_deco_style_furniture_factory"
 require_relative "../../lib/factory3_abstract_factory/factory/modern_style_furniture_factory"
 
-# クライアントがオブジェクトファミリーをバリエーションを選択するだけで取得できるようにしたい。クライアントは具象のオブジェクトに依存しない。
+# クライアントがバリエーションを選択するだけでオブジェクトファミリーを取得できるようにしたい。クライアントは具象のオブジェクトに依存しない。
 class FurnitureStudioE2eTest < Minitest::Test
   def test_create_art_deco_style_table_set
     # Arrange
@@ -16,6 +16,7 @@ class FurnitureStudioE2eTest < Minitest::Test
     table_set = furniture_studio.create_table_set
 
     # Assert
+    assert_equal "Art deco style furniture set.", table_set.description
     assert_equal "Sit on the art deco style chair.", table_set.chair.sit
     assert_equal "Stand on the art deco style table.", table_set.table.stand
   end
@@ -29,6 +30,7 @@ class FurnitureStudioE2eTest < Minitest::Test
     table_set = furniture_studio.create_table_set
 
     # Assert
+    assert_equal "Modern style furniture set.", table_set.description
     assert_equal "Sit on the modern style chair.", table_set.chair.sit
     assert_equal "Stand on the modern style table.", table_set.table.stand
   end

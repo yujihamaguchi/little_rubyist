@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-class Table
-  def stand
-    "Stand on the #{self.style} style table."
+class Chair
+  def sit
+    "Sit on the #{self.style} style chair."
   end
-
-  private
 
   def style
     raise NotImplementedError
