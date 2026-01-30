@@ -2,7 +2,6 @@
 
 require_relative "../test_helper"
 require_relative "../../lib/factory1_simple_factory/pizza_store"
-require_relative "../../lib/factory1_simple_factory/pizza_factory"
 require_relative "../../lib/factory0_pizza/margherita"
 require_relative "../../lib/factory0_pizza/pepperoni"
 
@@ -11,7 +10,7 @@ require_relative "../../lib/factory0_pizza/pepperoni"
 class PizzaStoreE2eTest < Minitest::Test
   def test_order_margherita
     # Arrange
-    pizza_store = PizzaStore.new(factory: PizzaFactory.new)
+    pizza_store = PizzaStore.new
 
     # Act
     pizza = pizza_store.order(:margherita)
@@ -25,7 +24,7 @@ class PizzaStoreE2eTest < Minitest::Test
 
   def test_order_pepperoni
     # Arrange
-    pizza_store = PizzaStore.new(factory: PizzaFactory.new)
+    pizza_store = PizzaStore.new
 
     # Act
     pizza = pizza_store.order(:pepperoni)
@@ -39,7 +38,7 @@ class PizzaStoreE2eTest < Minitest::Test
 
   def test_order_unsupported_pizza
     # Arrange
-    pizza_store = PizzaStore.new(factory: PizzaFactory.new)
+    pizza_store = PizzaStore.new
 
     # Act & Assert
     assert_raises(ArgumentError) do
