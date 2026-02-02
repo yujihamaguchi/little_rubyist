@@ -5,7 +5,7 @@ require_relative "../../lib/mediator/auth_dialog"
 
 # 多対多のオブジェクト間依存を排除し、やり取りを仲介者に集約することで、オブジェクト同士を疎結合に保ちつつ処理の見通しをよくしたい。
 class AuthDialogE2eTest < Minitest::Test
-  def test_checkbox_check
+  def test_check_checkbox
     # Arrange
     dialog = AuthDialog.new
     refute dialog.login_checkbox.checked?
@@ -21,7 +21,7 @@ class AuthDialogE2eTest < Minitest::Test
     assert dialog.register_form.disabled?
   end
 
-  def test_checkbox_uncheck
+  def test_uncheck_checkbox
     # Arrange
     dialog = AuthDialog.new
     dialog.login_checkbox.check
@@ -36,5 +36,20 @@ class AuthDialogE2eTest < Minitest::Test
     refute dialog.login_checkbox.checked?
     assert dialog.login_form.disabled?
     assert dialog.register_form.enabled?
+  end
+
+  def test_submit_register_form
+    # Arrange
+    dialog = AuthDialog.new
+    refute dialog.login_checkbox.checked?
+    assert dialog.register_form.enabled?
+
+    # Act
+    dialog.register_form.submit
+
+    # Assert
+    assert dialog.login_checkbox.checked?
+    assert dialog.login_form.enabled?
+    assert dialog.register_form.disabled?
   end
 end

@@ -2,8 +2,8 @@
 
 require_relative "component"
 class LoginCheckbox < Component
-  def initialize(mediator:, checked: false)
-    super(mediator: mediator)
+  def initialize(mediator, checked:)
+    super(mediator)
     @checked = checked
   end
 
@@ -13,11 +13,11 @@ class LoginCheckbox < Component
 
   def check
     @checked = true
-    @mediator.notify(sender: self, action: :check)
+    @mediator.notify(self, :check)
   end
 
   def uncheck
     @checked = false
-    @mediator.notify(sender: self, action: :uncheck)
+    @mediator.notify(self, :uncheck)
   end
 end

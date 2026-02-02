@@ -2,8 +2,8 @@
 
 require_relative "component"
 class Form < Component
-  def initialize(mediator:, enabled: false)
-    super(mediator: mediator)
+  def initialize(mediator, enabled:)
+    super(mediator)
     @enabled = enabled
   end
 
