@@ -125,7 +125,7 @@ end
 #          concat [[]]                     = []
 #          concat []                       = []
 class Array
-  # recursion
+  # recursive
   def my_concat
     return [] if self.empty?
 
@@ -134,7 +134,7 @@ class Array
   end
   # # reduce
   # def my_concat
-  #   self.reduce([]) { |acc, elm| acc + elm }
+  #   self.reduce([]) { |acc, arr| acc + arr }
   # end
 end
 
