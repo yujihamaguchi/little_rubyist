@@ -3,6 +3,10 @@
 class Originator
   attr_reader :state
 
+  def update_state(new_state)
+    @state = new_state
+  end
+
   def memento
     Memento.new(self)
   end
@@ -18,8 +22,4 @@ class Originator
       @state = originator.state
     end
   end
-
-  private
-
-  attr_writer :state
 end

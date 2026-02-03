@@ -6,10 +6,10 @@ class Caretaker
   end
 
   def add_memento(memento)
-    @mementos << memento
+    @mementos.push(memento)
   end
 
   def memento_at(index)
-    @mementos[index]
+    @mementos.fetch(index)
   end
 end

@@ -18,11 +18,11 @@ class OriginatorE2eTest < Minitest::Test
 
   def test_restore_from_memento
     # Arrange
-    @originator.send(:state=, :state1)
+    @originator.update_state(:state1)
     @caretaker.add_memento(@originator.memento)
-    @originator.send(:state=, :state2)
+    @originator.update_state(:state2)
     @caretaker.add_memento(@originator.memento)
-    @originator.send(:state=, :state3)
+    @originator.update_state(:state3)
 
     TEST_CASES.each do |test_case|
       # Act
