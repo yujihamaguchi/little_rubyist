@@ -138,10 +138,10 @@ class Array
   # end
 end
 
-# Q008: 正の整数に対し、すべての約数を計算する関数 my_factors を書け
+# Q008: 正の整数に対し、すべての約数を計算するメソッド my_factors を書け
 class Integer
   def my_factors
-    (1..self).select { |int| (self % int).zero? }
+    (1..self).select { |n| (self % n).zero? }
   end
 end
 
