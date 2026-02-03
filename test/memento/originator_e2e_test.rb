@@ -27,7 +27,7 @@ class OriginatorE2eTest < Minitest::Test
     TEST_CASES.each do |test_case|
       # Act
       memento = @caretaker.memento_at(test_case[:index])
-      @originator.restore_from(memento)
+      @originator.restore_to(memento)
 
       # Assert
       assert_equal test_case[:state], @originator.state

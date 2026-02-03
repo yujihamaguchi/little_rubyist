@@ -11,7 +11,7 @@ class Originator
     Memento.new(self)
   end
 
-  def restore_from(memento)
+  def restore_to(memento)
     @state = memento.state
   end
 
